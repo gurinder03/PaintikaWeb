@@ -1,0 +1,120 @@
+.delivery-address {
+    background: #000000;
+    color: #ffffff;
+}
+.product-img img {
+    width: 100%;
+}
+.img-description{
+    background: lightgray;
+}
+.product-hdng{
+    font-size: 15px;
+    color: #212121;
+    line-height: 1;
+    font-weight: 500;
+}
+.brand{
+    color: #878787;
+    font-size: 14px;
+    height: 20px;
+}
+.save-later a , .remove a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    color: #000000;
+}
+.save-later a:hover , .remove a:hover{
+    color: #2874f0;
+}
+.incr-dcr-btns{
+    display: flex;
+}
+input[type="text"] {
+    width: 41px;
+    margin: 0 10px;
+    text-align: center;
+}
+.dec-btn,.inc-btn {
+    color: #000000;
+    border-color: #c2c2c2;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: none !important;
+}
+@media screen and (max-width:1200px){
+    .img-description{
+        padding-left: 12px !important;
+    }
+    .save-later a, .remove a{
+        font-size: 14px;
+    }
+    input[type=text]{
+        margin: 0  !important;
+        width: 28px;
+    }
+}
+@media screen and (max-width:992px){
+    .brand{
+        font-size: 10px;
+    }
+    b.rate {
+        font-size: 10px;
+    }
+    input[type=text]{
+        width: 18px;
+    }
+     .remove a{
+        font-size: 10px;
+    }
+    .product-img{
+        height: 100px;
+        padding-top: 10px !important;
+    }
+}
+@media screen and (max-width:767px){
+    .product-img img{
+        height: 100px;
+        padding-left: 12px;
+    }
+    .detail-container {
+        margin-top: 14%;
+    }
+    input[type=text]{
+        width: 52px;
+        margin: 0 10px !important;
+    }
+    .brand{
+        font-size: 18px;
+        margin-top: 10px;
+    }
+    b.rate{
+        font-size: 18px;
+    }
+    .save-later a, .remove a{
+        font-size: 21px;
+    }
+    p.dlvr-txt{
+        font-size: 18px;
+        margin-top: 10px;
+    }
+    .cut-rate{
+        margin-top: 10px;
+    }
+}
+@media screen and (max-width:576px){
+  .remove a {
+        font-size: 18px;
+    }
+}
+@media screen and (max-width:440px){
+    .detail-container {
+        margin-top: 25%;
+    }
+}
+@media screen and (max-width:300px){
+    .detail-container{
+        margin-top: 29%;
+    }
+}

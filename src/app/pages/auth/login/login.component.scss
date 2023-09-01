@@ -1,0 +1,112 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body{
+    min-height: 100vh;
+    width: 100%;
+  }
+  .container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    max-width: 430px;
+    width: 100%;
+    background: #fff;
+    border-radius: 7px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+  }
+  .container .form{
+    padding: 2rem;
+  }
+  .form header{
+    font-size: 2rem;
+    font-weight: 500;
+   
+    margin-bottom: 1.5rem;
+  }
+   .form input{
+     height: 60px;
+     width: 100%;
+     padding: 0 15px;
+     font-size: 17px;
+     margin-bottom: 1.3rem;
+     border: 1px solid #ddd;
+     border-radius: 6px;
+     outline: none;
+   }
+   .form input:focus{
+    box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+  }
+  .form a{
+    font-size: 16px;
+    color: #000000;
+    text-decoration: none;
+  }
+  .form a:hover{
+    text-decoration: underline;
+  }
+  .button {
+    color: #fff;
+    background: #000000;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.4s;
+    width: 100%;
+    padding: 10px 0;
+    margin: 20px 0;
+ }
+
+  .forgot-password svg {
+    font-size: 22px;
+}
+.button:hover{
+    background: lightgrey;
+  }
+  a.forgt-pswrd{
+    display: flex;
+    justify-content: end;
+    font-size: 20px !important; 
+    align-items: center;
+  }
+  .have-account span,.have-account span a {
+    font-size: 20px;
+}
+  .have-account{
+    text-align: center;
+}
+.social-account span {
+  font-size: 20px;
+}
+.social-account {
+    margin-top: 24px;
+    text-align: center;
+}
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+span.google-icon img {
+    height: 33px;
+}
+span.facebook-icon img {
+    height: 25px;
+    // margin-top: 5px;
+}
+
+span.facebook-icon , span.google-icon{
+    box-shadow: 0 0 5px #e7e7e7;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 20px;
+   
+}
+span.facebook-icon{
+    padding: 15px;
+}

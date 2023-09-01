@@ -1,0 +1,63 @@
+.container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    max-width: 430px;
+    width: 100%;
+    background: #fff;
+    border-radius: 7px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    padding: 1rem 2rem 2rem 2rem;
+}
+.form header{
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.form input{
+    height: 60px;
+    width: 100%;
+    padding: 0 15px;
+    font-size: 17px;
+    margin-bottom: 1.3rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+}
+.button {
+    color: #fff;
+    background: #000000;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.4s;
+    width: 100%;
+    padding: 10px 0;
+ }
+ .back-to-login {
+   margin-bottom: 20px;
+}
+.back-to-login a{
+    font-size: 27px;
+}
+label.otp-label {
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+.resend-otp {
+    text-align: end;
+    margin-top: 18px;
+}
+
+.resend-otp a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 17px;
+    font-weight: 500;
+}
+.resend-otp a:hover{
+    text-decoration: underline;
+    color: #0d6efd;
+}

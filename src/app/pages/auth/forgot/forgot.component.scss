@@ -1,0 +1,143 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ }
+  body{
+    min-height: 100vh;
+    width: 100%;
+    background: #009579;
+  }
+  .container {
+    padding: 1rem 2rem 2rem 2rem;
+  }
+  .container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    max-width: 430px;
+    width: 100%;
+    background: #fff;
+    border-radius: 7px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    
+  }
+  .form header{
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
+  .form h3{
+      text-align: center;
+  }
+  .form input{
+     height: 60px;
+     width: 100%;
+     padding: 0 15px;
+     font-size: 17px;
+     margin-bottom: 1.3rem;
+     border: 1px solid #ddd;
+     border-radius: 6px;
+     outline: none;
+   }
+  .button {
+      color: #fff;
+      background: #000000;
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: 0.4s;
+      width: 100%;
+    padding: 10px 0;
+  }
+  .back-to-login {
+    margin-bottom: 20px;
+}
+.back-to-login a{
+    font-size: 27px;
+}
+input.email-field {
+    margin-top: 30px;
+}
+.button:hover{
+    background: lightgray;
+    // border: none;
+}
+label.email-label {
+    font-size: 20px;
+}
+
+
+
+// toggle switch css
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 52px;
+  height: 26px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 23px;
+  width: 23px;
+  left: 2px;
+  top: 1px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+input:checked + .slider {
+  background-color: green;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px green;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}  
+.toggle-switch {
+  display: flex;
+  justify-content: end;
+  margin-bottom: 18px;
+}
+span.hdng {
+  vertical-align: middle;
+  margin-right: 15px;
+  font-size: 20px;
+}
+
+// toggle switch css end
