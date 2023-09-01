@@ -34,7 +34,7 @@ export class ForgotComponent {
       this.auth.sendOptForgotPasswrd(this.forgotPassForm.value).then((res:any) => {
         if (res && res.statusCode === 200) {
           this.toast.success(res.message)
-          this.navCtrl.goTo('/auth/verify-otp', {}, 'root');
+          this.navCtrl.goTo(`/auth/verify-otp/${JSON.stringify(res.data)}`, {}, 'root');
           // this.forgotPassForm.reset()
         }
         else if(res.statusCode === 500){

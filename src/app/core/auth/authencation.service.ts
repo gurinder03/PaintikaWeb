@@ -33,7 +33,6 @@ export class AuthencationService {
   sendOptForgotPasswrd(data: any) {
     return new Promise((resolve, reject) => {
       const success = (value:any) => {
-        console.log('value => ', value);
         if (value) {
           resolve(value);
         }
@@ -43,6 +42,21 @@ export class AuthencationService {
         }
       };
       this.request.send('sendOtp', data, success, null, true);
+    });
+  }
+  
+  resendOtpPass(data: any) {
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value);
+        }
+        else {
+          reject(value.statusText);
+          this.toast.error(value.statusText);
+        }
+      };
+      this.request.send('reSendOtp', data, success, null, true);
     });
   }
 
@@ -56,6 +70,32 @@ export class AuthencationService {
       }
     };
     this.request.send('userSignup', data, success, null, true);
+  }
+
+  verifyOtp(data:any) {
+    const success = (value:any) => {
+      debugger
+      if (value && value.statusCode == 200) {
+        this.navCtrl.goTo('/auth/reset-password', value.data, 'root')
+        this.toast.success(value.message)
+      }else{
+        this.toast.error(value.message)
+      }
+    };
+    this.request.send('otpVerify', data, success, null, true);
+  }
+
+  passwordReset(data:any) {
+    const success = (value:any) => {
+      debugger
+      if (value && value.statusCode == 200) {
+        this.navCtrl.goTo('/auth/login', {}, 'root')
+        this.toast.success(value.message)
+      }else{
+        this.toast.error(value.message)
+      }
+    };
+    this.request.send('resetPassword', data, success, null, true);
   }
 
 

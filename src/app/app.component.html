@@ -1,1 +1,7 @@
+<div class="header" *ngIf="show_header && auth.isAuthenticated()">
+    <app-header></app-header>
+</div>
 <router-outlet></router-outlet>
+<div class="footer" *ngIf="show_header && auth.isAuthenticated()">
+    <app-footer></app-footer>
+</div>

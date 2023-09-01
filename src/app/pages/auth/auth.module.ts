@@ -6,14 +6,15 @@ import { LoginComponent } from './login/login.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { VerifyOtpComponent } from './verify-otp/verify-otp.component';
 
 @NgModule({
   declarations: [
     ForgotComponent,
     LoginComponent,
     SignInComponent,
-    ResetPasswordComponent
-  
+    ResetPasswordComponent,
+    VerifyOtpComponent
   ],
   imports: [
     CommonModule,

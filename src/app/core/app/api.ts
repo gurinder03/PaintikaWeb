@@ -13,6 +13,21 @@ const api = {
             url: '/user/forgot/password',
             responseInterface: []
         },
+        reSendOtp: {
+            requestType: 'post',
+            url: '/user/resendOTP',
+            responseInterface: []
+        },
+        otpVerify: {
+            requestType: 'post',
+            url: '/user/verifyOTP',
+            responseInterface: []
+        },
+        resetPassword: {
+            requestType: 'post',
+            url: '/user/reset/password',
+            responseInterface: []
+        },
         userSignup: {
             requestType: 'post',
             url: '/user/signup',
