@@ -22,14 +22,14 @@
   .container .form{
     padding: 2rem;
   }
-  .form header{
+  .form h4{
     font-size: 2rem;
     font-weight: 500;
    
-    margin-bottom: 1.5rem;
+    margin-bottom: 10px;
   }
    .form input{
-     height: 60px;
+     height: 40px;
      width: 100%;
      padding: 0 15px;
      font-size: 17px;
@@ -58,7 +58,7 @@
     cursor: pointer;
     transition: 0.4s;
     width: 100%;
-    padding: 10px 0;
+    padding: 4px 0;
     margin: 20px 0;
  }
 
@@ -84,7 +84,7 @@
   font-size: 20px;
 }
 .social-account {
-    margin-top: 24px;
+    
     text-align: center;
 }
 .social-icons {
@@ -109,4 +109,10 @@ span.facebook-icon , span.google-icon{
 }
 span.facebook-icon{
     padding: 15px;
+}
+.have-account a {
+  font-weight: 700;
+}
+@media screen and (max-width:1300px){
+
 }
