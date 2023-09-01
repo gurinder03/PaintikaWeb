@@ -23,16 +23,16 @@
     box-shadow: 0 5px 10px rgba(0,0,0,0.3);
     
   }
-  .form header{
-    font-size: 2rem;
+  .form h4{
+    font-size: 24px;
     font-weight: 500;
-    margin-bottom: 1.5rem;
+    margin-bottom: 10px;
   }
   .form h3{
       text-align: center;
   }
   .form input{
-     height: 60px;
+     height: 40px;
      width: 100%;
      padding: 0 15px;
      font-size: 17px;
@@ -50,13 +50,13 @@
       cursor: pointer;
       transition: 0.4s;
       width: 100%;
-    padding: 10px 0;
+    padding: 4px 0;
   }
   .back-to-login {
-    margin-bottom: 20px;
+    margin-bottom: 4px;
 }
 .back-to-login a{
-    font-size: 27px;
+    font-size: 20px;
 }
 input.email-field {
     margin-top: 30px;
@@ -67,6 +67,9 @@ input.email-field {
 }
 label.email-label {
     font-size: 20px;
+}
+.fa-4x {
+  font-size: 3em !important;
 }
 
 
