@@ -3,11 +3,14 @@
 .search-container {
     display: flex;
     justify-content: space-between;
-   max-height: 86px;
-   padding: 17px 20px 0;
+   max-height: 99px;
+   padding: 8px 20px 14px;
 //     background: #000000; 
    box-shadow: 3px 3px 19px rgba(0,0,0,0.2);
   }
+  label.city-label {
+    margin-bottom: 10px;
+}
   select {
      width: 100%;
       padding: 8px 4px;
@@ -19,13 +22,13 @@
   .search-field{
       width: 100%;
   }
-  form {
+   form{
     color: #555;
     display: flex;
     padding: 2px;
     border: 1px solid currentColor;
     border-radius: 5px;
-    margin: 0 0 30px;
+    margin: 32px 0 0;
     background-color: #ffffff;
     width: 35%;
   }
@@ -91,7 +94,7 @@
   }
   .paintings img{
       width: 100%;
-      height: auto;
+      height: 200px;
       margin-bottom: 15px;
   }
   .col-md-3{
@@ -124,6 +127,9 @@
       .col-sm-6{
           width: 98%  !important;
       }
+      .paintings img{
+        height: 275px;
+      }
   }
   @media screen and (max-width:549px){
       input[type="search"]{
@@ -133,7 +139,7 @@
     //       font-size: 10px;
     //   }
     .search-container{
-        max-height: 120px;
+        max-height: 140px;
     }
     .search-container{
         flex-direction: column;
@@ -144,6 +150,7 @@
     }
     form{
         width: 95%;
+        margin-top: 0 !important;
     }
     input[type=search]{
         width: 90%;

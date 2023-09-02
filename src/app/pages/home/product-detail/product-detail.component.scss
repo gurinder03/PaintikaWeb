@@ -135,6 +135,10 @@ p.lock-txt {
     text-decoration: none;
     color: #007185;
 }
+a.detail:hover{
+ color: red;
+ text-decoration: underline !important;
+}
 .location {
     display: flex;
     margin: 20px 0;
