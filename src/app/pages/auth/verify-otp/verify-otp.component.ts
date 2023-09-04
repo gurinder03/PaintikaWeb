@@ -27,6 +27,7 @@ export class VerifyOtpComponent implements OnInit {
     this.activatedRoute.params.subscribe((event:any) => {
       if(event){
         this.navData = JSON.parse(event.data)
+        console.log(this.navData);
       }
     });
   }
@@ -49,7 +50,20 @@ export class VerifyOtpComponent implements OnInit {
     this.verifyForm.markAllAsTouched();
     console.log('this.verifyForm => ', this.verifyForm);
     if (this.verifyForm.valid) {
-      this.auth.verifyOtp(this.verifyForm.value)
+      this.auth.verifyOtp(this.verifyForm.value).then((res:any) => {
+        if (res && res.statusCode === 200) {
+          if(this.navData && this.navData.isUserSined == "SignUp"){
+            this.navCtrl.goTo('/auth/login')
+          }else{
+            this.navCtrl.goTo('/auth/reset-password', res.data, 'root')
+          }
+        }
+        else if(res.statusCode === 500){
+          this.toast.error(res.message);
+        } else {
+          this.toast.error('Something went wrong');
+        }
+      });
     } else {
       this.toast.error('Form is not valid');
     }
@@ -66,5 +80,13 @@ export class VerifyOtpComponent implements OnInit {
         this.toast.error('Something went wrong');
       }
     });
+  }
+
+  back(){
+    if(this.navData && this.navData.isUserSined == "SignUp"){
+      this.navCtrl.goTo('/auth/sign-in')
+    }else{
+      this.navCtrl.goTo('/auth/forgot')
+    }
   }
 }

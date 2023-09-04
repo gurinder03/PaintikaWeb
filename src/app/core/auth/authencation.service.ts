@@ -63,7 +63,12 @@ export class AuthencationService {
   userSignIn(data:any) {
     const success = (value:any) => {
       if (value && value.statusCode == 200) {
-        this.navCtrl.goTo('/auth/verify-otp', {}, 'root')
+        let data = {
+          email_or_mobile_number: value.data.email_or_mobile_number,
+          role: value.data.role,
+          isUserSined: 'SignUp'
+        }
+        this.navCtrl.goTo(`/auth/verify-otp/${JSON.stringify(data)}`, {}, 'root')
         this.toast.success(value.message)
       }else{
         this.toast.error(value.message)
@@ -73,16 +78,18 @@ export class AuthencationService {
   }
 
   verifyOtp(data:any) {
-    const success = (value:any) => {
-      debugger
-      if (value && value.statusCode == 200) {
-        this.navCtrl.goTo('/auth/reset-password', value.data, 'root')
-        this.toast.success(value.message)
-      }else{
-        this.toast.error(value.message)
-      }
-    };
-    this.request.send('otpVerify', data, success, null, true);
+    return new Promise((resolve, reject) => { 
+      const success = (value:any) => {
+        if (value && value.statusCode == 200) {
+          resolve(value)
+          this.toast.success(value.message)
+        }else{
+          resolve(false)
+          this.toast.error(value.message)
+        }
+      };
+      this.request.send('otpVerify', data, success, null, true);
+    });
   }
 
   passwordReset(data:any) {
