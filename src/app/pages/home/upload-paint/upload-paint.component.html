@@ -7,38 +7,38 @@
                     <img *ngFor="let preview of previews" [src]="preview" class="preview">
                 </div>
             </div>
-        </div>
-        <div class="row pt-3">
-            <div class="name col-md-4 col-sm-12">
-                <label for="theme-name">Name:</label><br>
-                <input type="text" id="tname" name="tname">
+            <div class="row pt-3  justify-content-center">
+                <div class="name col-md-4 col-sm-12">
+                    <label for="theme-name">Name:</label><br>
+                    <input type="text" id="tname" name="tname">
+                </div>
+                <div class="size col-md-4 col-sm-12">
+                    <label for="fname">Size:</label><br>
+                    <input type="text" id="p-size" name="size">
+                </div>
             </div>
-            <div class="size col-md-4 col-sm-12">
-                <label for="fname">Size:</label><br>
-                <input type="text" id="p-size" name="size">
+            <div class="col-md-8 col-sm-12 pt-3 mx-auto">
+                <label for="theme">Painting theme:</label><br>
+                <textarea id="ptheme" name="paint-theme" rows="4" cols="50">
+                </textarea>
             </div>
-        </div>
-        <div class="col-md-8 col-sm-12 pt-3">
-            <label for="theme">Painting theme:</label><br>
-            <textarea id="ptheme" name="paint-theme" rows="4" cols="50">
-            </textarea>
-        </div>
 
-        <div class="row pt-3">
-            <div class="medium col-md-4 col-sm-12">
-                <label for="medium">Medium :</label><br>
-                <input type="text" id="medium" name="medium">
+            <div class="row pt-3  justify-content-center">
+                <div class="medium col-md-4 col-sm-12">
+                    <label for="medium">Medium :</label><br>
+                    <input type="text" id="medium" name="medium">
+                </div>
+                <div class="framing-quality col-md-4 col-sm-12">
+                    <label for="quality">Framing Quality:</label><br>
+                    <input type="text" id="f-quality" name="quality">
+                </div>
             </div>
-            <div class="framing-quality col-md-4 col-sm-12">
-                <label for="quality">Framing Quality:</label><br>
-                <input type="text" id="f-quality" name="quality">
+            <div class="col-md-8 col-sm-12 pt-3 mx-auto mb-5">
+                <label for="price">Price:</label><br>
+                <input type="text" id="painting-price" name="price">
+                
             </div>
-        </div>
-        <div class="col-md-8 col-sm-12 pt-3">
-            <label for="price">Price:</label><br>
-            <input type="text" id="painting-price" name="price">
-            
         </div>
     </div>
-    
 </div>
+
