@@ -130,7 +130,7 @@ export class AuthencationService {
     localStorage.removeItem('token');
     localStorage.removeItem(HAS_LOGGED_IN);
     this.authState.next(false);
-    this.navCtrl.goTo('/auth/login', {}, 'root');
+    this.navCtrl.goTo('/page/dashboard', {}, 'root');
   }
 
   getToken(): Promise<string> {

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthencationService } from 'src/app/core/auth/authencation.service';
 
 @Component({
@@ -8,12 +9,22 @@ import { AuthencationService } from 'src/app/core/auth/authencation.service';
 })
 export class HeaderComponent {
 
+  setEl = 1
   constructor(
-    public auth: AuthencationService
+    public auth: AuthencationService,
+    private router: Router
   ){
     
   }
   userLogout(){
     this.auth.logout()
+  }
+
+  navigateTo(route: string, ev:any) {
+    this.setEl = ev;
+    debugger
+    console.log('this.setEl => ', this.setEl);
+    
+    this.router.navigate([route]);
   }
 }

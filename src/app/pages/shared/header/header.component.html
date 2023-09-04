@@ -6,16 +6,16 @@
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" [routerLink]="['/page/dashboard']">Home</a>
+                    <a class="nav-link" (click)="navigateTo('/page/dashboard', 1)" [class.active]="setEl === 1">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/page/profile']">Profile</a>
+                <li class="nav-item" *ngIf="auth.isAuthenticated()">
+                    <a class="nav-link" (click)="navigateTo('/page/profile',  2)" [class.active]="setEl === 2">Profile</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/page/upload-paint']">Update Painting</a>
+                <li class="nav-item" *ngIf="auth.isAuthenticated()">
+                    <a class="nav-link" (click)="navigateTo('/page/upload-paint', 3)" [class.active]="setEl === 3">Update Painting</a>
                 </li>
-                <li class="nav-item" [routerLink]="['/auth/login']">
-                    <a class="nav-link" href="javascript:void(0)">Login</a>
+                <li *ngIf="!auth.isAuthenticated()" class="nav-item">
+                    <a class="nav-link" (click)="navigateTo('/auth/login', 4)" [class.active]="setEl === 4">Login</a>
                 </li>
             </ul>
             <form class="d-flex">

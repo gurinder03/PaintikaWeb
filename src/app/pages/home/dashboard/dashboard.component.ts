@@ -1,18 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { AuthencationService } from 'src/app/core/auth/authencation.service';
 import { ApiService } from 'src/app/core/services/api.service';
+import { FunctionService } from 'src/app/core/services/function.service';
+import { NavigationRouteService } from 'src/app/core/services/navigation-route.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
+
 export class DashboardComponent implements OnInit {
 
   data: any = []
   constructor(
     private api: ApiService,
-    public toast: ToastrService
+    public toast: ToastrService,
+    private auth: AuthencationService,
+    public navCtrl: NavigationRouteService,
+    private fun: FunctionService
   ){
 
   }
@@ -36,5 +43,16 @@ export class DashboardComponent implements OnInit {
         this.toast.error('Something went wrong');
       }
     });
+  }
+
+  getProduct(data:any){
+    if(this.auth.isAuthenticated()){
+      console.log('data', data);
+      this.navCtrl.goTo(`/page/add-to-cart/${data.category}`)
+    }else{
+      console.log('as', data);
+      this.fun.confirmBox('', 'Before Procceed you need to login', '/auth/login', 'Ok', 'Cancel')
+    }
+    
   }
 }

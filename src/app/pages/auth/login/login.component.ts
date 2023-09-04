@@ -31,7 +31,6 @@ export class LoginComponent {
     debugger
     this.loginForm.markAllAsTouched();
     if (this.loginForm.valid) {
-      console.log('this.loginForm => ', this.loginForm.value);
       this.auth.userLogin(this.loginForm.value)
     } else {
       console.log('Form is not valid');

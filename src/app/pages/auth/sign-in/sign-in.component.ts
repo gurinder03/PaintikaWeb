@@ -33,7 +33,6 @@ export class SignInComponent {
   onSubmit() {
     this.signUpForm.markAllAsTouched();
     if (this.signUpForm.valid) {
-      console.log('this.signUpForm => ', this.signUpForm.value);
       this.auth.userSignIn(this.signUpForm.value)
     } else {
       this.toast.error('Form is not valid')

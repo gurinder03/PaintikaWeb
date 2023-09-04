@@ -37,6 +37,11 @@ const api = {
             requestType: 'post',
             url: '/home/list',
             responseInterface: []
+        },
+        relatedData: {
+            requestType: 'post',
+            url: '/home/related/list',
+            responseInterface: []
         }
     },
     defaultDomain: environment.API_URL

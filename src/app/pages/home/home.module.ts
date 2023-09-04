@@ -10,6 +10,7 @@ import { DeliveryAddressComponent } from './delivery-address/delivery-address.co
 import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UploadPaintComponent } from './upload-paint/upload-paint.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,7 +26,9 @@ import { UploadPaintComponent } from './upload-paint/upload-paint.component';
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class HomeModule { }

@@ -34,7 +34,7 @@ const routes: Routes = [
         component: PaymentOptionsComponent
       },
       {
-        path: 'add-to-cart',
+        path: 'add-to-cart/:category',
         component: AddToCartComponent
       },
       {

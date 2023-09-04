@@ -1,107 +1,169 @@
-
-
 <div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
         <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                <img class="rounded-circle mt-5" width="150px"
+                    src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                <span class="font-weight-bold">Edogaru</span>
+                <span class="text-black-50">edogaru@mail.com.my</span>
+                <span>
+                </span>
+            </div>
         </div>
         <div class="col-md-5 border-right">
-            <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Profile Settings</h4>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name" value=""></div>
-                    <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" value="" placeholder="surname"></div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value=""></div>
-                    <div class="col-md-12 mt-2"><label class="labels">Age</label><input type="text" class="form-control" placeholder="enter age" value=""></div>
-                    <div class="col-md-12 mt-2"><label class="labels">Address</label><input type="text" class="form-control" placeholder="enter address " value=""></div>
-                    <div class="col-md-12 mt-2">
-                        <label for="gender" class="labels">Gender :</label><br>
-                        <input type="radio" name="gender" value="male"><span class="gender-label">Male</span> 
-                        <input type="radio" name="gender" value="female" style="margin-left: 10px;" class="female"><span class="gender-label">Female</span>
+            <form (ngSubmit)="onSubmit()" [formGroup]="profileForm">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Profile Settings</h4>
                     </div>
-                    
-                    <div class="col-md-12 mt-2"><label class="labels">Email ID</label><input type="text" class="form-control" placeholder="enter email id" value=""></div>
-                    <div class="col-md-12 mt-2"><label class="labels">Qualification</label><input type="text" class="form-control" placeholder="qualification" value=""></div>
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label class="labels">Name</label>
+                            <input type="text" formControlName="name" class="form-control" placeholder="First name">
+                            <div *ngIf="profileForm.controls['name'].invalid && (profileForm.controls['name'].dirty || profileForm.controls['name'].touched)"
+                                class="alert alert-danger" required>
+                                <div *ngIf="profileForm.controls['name'].errors?.required">
+                                    Name is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="labels">Surname</label>
+                            <input type="text" formControlName="surname" class="form-control" placeholder="Surname">
+                            <div *ngIf="profileForm.controls['surname'].invalid && (profileForm.controls['surname'].dirty || profileForm.controls['surname'].touched)"
+                                class="alert alert-danger" required>
+                                <div *ngIf="profileForm.controls['surname'].errors?.required">
+                                    Surname is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label class="labels">Mobile Number</label>
+                            <input type="text" formControlName="mobile_number" class="form-control"
+                                placeholder="Enter phone number">
+                            <div *ngIf="profileForm.controls['mobile_number'].invalid && (profileForm.controls['mobile_number'].dirty || profileForm.controls['mobile_number'].touched)"
+                                class="alert alert-danger" required>
+                                <div *ngIf="profileForm.controls['mobile_number'].errors?.required">
+                                    Mobile Number is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label class="labels">Age</label>
+                            <input type="text" formControlName="age" class="form-control" placeholder="Enter age">
+                            <div *ngIf="profileForm.controls['age'].invalid && (profileForm.controls['age'].dirty || profileForm.controls['age'].touched)"
+                                class="alert alert-danger" required>
+                                <div *ngIf="profileForm.controls['age'].errors?.required">
+                                    Age is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label class="labels">Address</label>
+                            <input type="text" formControlName="address" class="form-control"
+                                placeholder="Enter address ">
+                            <div *ngIf="profileForm.controls['address'].invalid && (profileForm.controls['address'].dirty || profileForm.controls['address'].touched)"
+                                class="alert alert-danger" required>
+                                <div *ngIf="profileForm.controls['address'].errors?.required">
+                                    Address is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label for="gender" class="labels">Gender :</label><br>
+                            <input type="radio" formControlName="male">
+                            <span class="gender-label">Male</span>
+                            <input type="radio" formControlName="female" style="margin-left: 10px;" class="female">
+                            <span class="gender-label">Female</span>
+                        </div>
+
+                        <div class="col-md-12 mt-2">
+                            <label class="labels">Email ID</label>
+                            <input type="text" formControlName="email" class="form-control"
+                                placeholder="Enter email id">
+                            <div *ngIf="profileForm.controls['email'].invalid && (profileForm.controls['email'].dirty || profileForm.controls['email'].touched)"
+                                class="alert alert-danger" required>
+                                <div *ngIf="profileForm.controls['email'].errors?.required">
+                                    Email is required.
+                                </div>
+                                <div *ngIf="profileForm.controls['email'].errors?.pattern">
+                                    Email format is not valid
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <label class="labels">Qualification</label>
+                            <input type="text" formControlName="qualification" class="form-control"
+                                placeholder="Qualification">
+                            <div *ngIf="profileForm.controls['qualification'].invalid && (profileForm.controls['qualification'].dirty || profileForm.controls['qualification'].touched)"
+                                class="alert alert-danger" required>
+                                <div *ngIf="profileForm.controls['qualification'].errors?.required">
+                                    Qualification is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6 mt-2">
+                            <label class="labels">Country</label>
+                            <input type="text" formControlName="country" class="form-control" placeholder="Country">
+                            <div *ngIf="profileForm.controls['country'].invalid && (profileForm.controls['country'].dirty || profileForm.controls['country'].touched)"
+                                class="alert alert-danger" required>
+                                <div *ngIf="profileForm.controls['country'].errors?.required">
+                                    Country is required.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <label class="labels">State/Region</label>
+                            <input type="text" formControlName="state" class="form-control" placeholder="State">
+                            <div *ngIf="profileForm.controls['state'].invalid && (profileForm.controls['state'].dirty || profileForm.controls['state'].touched)"
+                                class="alert alert-danger" required>
+                                <div *ngIf="profileForm.controls['state'].errors?.required">
+                                    State is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="professional col-md-12 mt-2 mb-2">
+                        <label for="professional" style="margin-bottom: 10px;" class="labels">Are you professional or
+                            freelancer :</label><br>
+                        <input type="checkbox" formControlName="professional" id="professional">
+                        <label for="professional" style="margin-left: 10px;" class="labels">Professional</label>
+                        <input type="checkbox" formControlName="freelancer" id="freelancer" style="margin-left: 10px;">
+                        <label for="freelancer" style="margin-left: 10px;" class="labels">Freelancer</label><br>
+                    </div>
+                    <div class="mt-5 text-center">
+                        <button class="btn btn-primary profile-button" type="submit">Save Profile</button>
+                    </div>
                 </div>
-                <div class="row mt-3">
-                    <div class="col-md-6 mt-2"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""></div>
-                    <div class="col-md-6 mt-2"><label class="labels">State/Region</label><input type="text" class="form-control" value="" placeholder="state"></div>
-                </div>
-                <div class="professional col-md-12 mt-2 mb-2">
-                    <label for="professional" style="margin-bottom: 10px;" class="labels">Are you professional or freelancer   :</label><br>
-                    <input type="checkbox" id="professional" name="professional" value="painter">
-                    <label for="professional" style="margin-left: 10px;" class="labels">Professional</label>
-                    <input type="checkbox" id="freelancer" name="freelancer" value="painter" style="margin-left: 10px;">
-                    <label for="freelancer" style="margin-left: 10px;" class="labels">Freelancer</label><br>
-                </div>
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
-            </div>
+            </form>
         </div>
         <div class="col-md-4">
             <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
-                <div class="col-md-12"><label class="labels">Experience in painting</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
-                <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
+                <div class="d-flex justify-content-between align-items-center experience">
+                    <span>Edit Experience</span>
+                    <span class="border px-3 p-1 add-experience" (click)="addExp()">
+                        <i class="fa fa-plus"></i>&nbsp;Experience
+                    </span>
+                </div>
+                <br>
+                <div *ngFor="let exp of expForm; let i = index">
+                    <h4>{{i + 1}}</h4>
+                    <form [formGroup]="exp">
+                        <div class="col-md-12">
+                            <label class="labels">Experience in painting</label>
+                            <input type="text" formControlName="experience" class="form-control" placeholder="Experience">
+                        </div> <br>
+                        <div class="col-md-12">
+                            <label class="labels">Additional Details</label>
+                            <input type="text" formControlName="additional_detail" class="form-control" placeholder="Additional details">
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-
-<!-- <div class="container ">
-    <h2 class="text-center">Profile</h2>
-        <div class="profile-pic">
-            <img src="./assets/images/profile.jpg">
-        </div>
-        <div class="row justify-content-between">
-            <div class="name-age col-md-6 col-sm-12">
-                <label for="name" class="">Name:</label><br>
-                <input type="text" id="name" name="name">
-            </div>
-            <div class="gender col-md-6 col-sm-12">
-                <label for="Gneder">Gender :</label><br>
-                <input type="radio" name="gender" value="male"> <span  class="male">Male</span>
-                <input type="radio" name="gender" value="female" style="margin-left: 10px;" class="female"> <span  class="male">Female</span>
-            </div>
-        </div>
-        <div class="row mt-2">
-            
-            <div class="birth-date col-md-6 col-sm-12">
-                <label for="Gneder">Date of birth  :</label><br>
-                <input type="date" id="birth-date" name="birthday" >
-            </div>
-            <div class="qualification col-md-6 col-sm-12">
-                <label for="qualification">Qualification :</label><br>
-                <select name="study" id="qualification">
-                    <option value="volvo">10th</option>
-                    <option value="saab">10+2</option>
-                    <option value="mercedes">Diploma</option>
-                    <option value="audi">Graduation</option>
-                  </select>
-            </div>
-        </div>
-        <div class="row mt-3">
-            
-            <div class="professional col-md-6 col-sm-12">
-                <label for="professional" style="margin-bottom: 10px;">Are you professional or freelancer   :</label><br>
-                <input type="checkbox" id="professional" name="professional" value="painter">
-                <label for="professional" style="margin-left: 10px;">Professional</label>
-                <input type="checkbox" id="freelancer" name="freelancer" value="painter" style="margin-left: 10px;">
-                <label for="freelancer" style="margin-left: 10px;">Freelancer</label><br>
-            </div>
-        </div>
-        <div class="row justify-content-between mt-3 mb-3">
-            <div class="experinece col-md-6 col-sm-12">
-                <label for="experience" class="">Experience :</label><br>
-                <input type="text" id="experience" name="experience">
-            </div>
-            <div class="email col-md-6 col-sm-12">
-                <label for="email">Email Id :</label><br>
-                <input type="text" id="email-id" name="email">
-            </div>
-        </div>
-</div> -->

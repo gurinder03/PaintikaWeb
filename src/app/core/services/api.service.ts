@@ -25,5 +25,19 @@ export class ApiService {
       this.request.send('homeList', data, success, null, true);
     });
   }
+  
+  relatedData(data:any){
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value);
+        }
+        else {
+          reject(value.statusText);
+        }
+      };
+      this.request.send('relatedData', data, success, null, true);
+    });
+  }
  
 }
