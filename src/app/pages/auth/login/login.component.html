@@ -1,39 +1,35 @@
 <div class="container">
-    <div class="login form">
-        <h4>
+    <mat-card class="login form">
+        <mat-card-title>
             Login
-        </h4>
+        </mat-card-title>
         <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
-            <input type="text" formControlName="email_or_mobile_number" placeholder="Email">
-            <div *ngIf="loginForm.controls['email_or_mobile_number'].invalid && (loginForm.controls['email_or_mobile_number'].dirty || loginForm.controls['email_or_mobile_number'].touched)"
-                class="alert alert-danger" required>
-                <div *ngIf="loginForm.controls['email_or_mobile_number'].errors?.required">
+            <mat-form-field class="full-w">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email_or_mobile_number" placeholder="Email">
+                <mat-error *ngIf="loginForm.controls['email_or_mobile_number'].hasError('required')">
                     Email is required.
-                </div>
-                <div *ngIf="loginForm.controls['email_or_mobile_number'].errors?.pattern">
-                    Email format is not valid
-                </div>
-            </div>
-            <input type="password" formControlName="password" placeholder="Password">
-             <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)"
-                class="alert alert-danger">
-                <div *ngIf="loginForm.controls['password'].errors?.required">
+                </mat-error>
+                <mat-error *ngIf="loginForm.controls['email_or_mobile_number'].hasError('pattern')">
+                    Email format is not valid.
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-w">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" formControlName="password" placeholder="Password">
+                <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
                     Password is required.
-                </div>
-                <div *ngIf="loginForm.controls['password'].errors?.minlength">
+                </mat-error>
+                <mat-error *ngIf="loginForm.controls['password'].hasError('minlength')">
                     Password must be at least 6 characters long.
-               </div> 
-            </div>
+                </mat-error>
+            </mat-form-field>
             <div class="forgot-password">
                 <a [routerLink]="['/auth/forgot']" class="forgt-pswrd">Forgot Your Password ?
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" width="2em" viewBox="0 0 512 512">
-                        <path
-                            d="M334.5 414c8.8 3.8 19 2 26-4.6l144-136c4.8-4.5 7.5-10.8 7.5-17.4s-2.7-12.9-7.5-17.4l-144-136c-7-6.6-17.2-8.4-26-4.6s-14.5 12.5-14.5 22l0 72L32 192c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l288 0 0 72c0 9.6 5.7 18.2 14.5 22z" />
-                    </svg>
+                    <mat-icon svgIcon="password_reset"></mat-icon>
                 </a>
             </div>
-            <button type="submit" class="button">Login</button>
-
+            <button type="submit" mat-raised-button color="primary">Login</button>
         </form>
         <div class="have-account">
             <span> Don't have an account ? <a (click)="goToSignUp()">Sign Up</a></span>
@@ -44,13 +40,12 @@
             </span>
             <div class="social-icons">
                 <span class="facebook-icon">
-                    <img src="./assets/images/facebook-icon.png">
+                    <mat-icon svgIcon="facebook"></mat-icon>
                 </span>
                 <span class="google-icon">
-                    <img src="./assets/images/google-icon.png">
+                    <mat-icon svgIcon="google"></mat-icon>
                 </span>
-
             </div>
         </div>
-    </div>
+    </mat-card>
 </div>

@@ -32,6 +32,11 @@ const api = {
             requestType: 'post',
             url: '/user/signup',
             responseInterface: []
+        },
+        homeList: {
+            requestType: 'post',
+            url: '/home/list',
+            responseInterface: []
         }
     },
     defaultDomain: environment.API_URL

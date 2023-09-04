@@ -28,6 +28,7 @@ export class LoginComponent {
 
 
   onSubmit() {
+    debugger
     this.loginForm.markAllAsTouched();
     if (this.loginForm.valid) {
       console.log('this.loginForm => ', this.loginForm.value);

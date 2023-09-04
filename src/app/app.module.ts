@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthInterceptor } from './core/auth/auth.interceptor';
 import { HeaderComponent } from './pages/shared/header/header.component';
 import { FooterComponent } from './pages/shared/footer/footer.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
@@ -18,6 +19,7 @@ import { FooterComponent } from './pages/shared/footer/footer.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatSlideToggleModule,
     ToastrModule.forRoot({
       positionClass :'toast-bottom-right'
     }),

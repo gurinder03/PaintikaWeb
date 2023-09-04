@@ -1,7 +1,8 @@
-<div class="header" *ngIf="show_header && auth.isAuthenticated()">
+<div class="header" *ngIf="show_header">
     <app-header></app-header>
 </div>
 <router-outlet></router-outlet>
-<div class="footer" *ngIf="show_header && auth.isAuthenticated()">
+<div class="footer" *ngIf="show_header">
     <app-footer></app-footer>
 </div>
+<!-- <mat-slide-toggle>Toggle me!</mat-slide-toggle> -->

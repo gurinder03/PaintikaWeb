@@ -1,42 +1,91 @@
-.container{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    max-width: 850px;
-    width: 100%;
-    background: #fff;
-    border-radius: 7px;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.3); 
-    padding: 15px;
-    background: #f0f0f0;
-  }
+body {
+    background: rgb(99, 39, 120)
+}
 
-.profile-pic {
-    text-align: center;
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
 }
-.profile-pic img{
-    border-radius: 50%;
+
+.profile-button {
+    background: #000000;
+    box-shadow: none;
+    border: none
 }
-input[type=text] {
-    width: 100%;
-    height: 40px;
-    border: 1pt solid #ddd;
+
+.profile-button:hover {
+    background: lightgray
 }
-input#birth-date {
-    width: 100%;
-    height: 36px;
-    border: 1pt solid #ddd;
+
+.profile-button:focus {
+    background: #000000;
+    box-shadow: none
 }
-select#qualification {
-    width: 100%;
-    height: 36px;
-    border: 1pt solid #ddd;
+
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
 }
-label{
-    font-size: 18px;
+
+.back:hover {
+    color: #682773;
+    cursor: pointer
 }
-span.male {
-    font-size: 18px;
-    margin-left: 10px;
+
+.labels {
+    font-size: 15px
 }
+
+.add-experience:hover {
+    background: #000000;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}
+span.gender-label {
+    font-size: 15px;
+    margin-left: 9px;
+    vertical-align: text-top;
+}
+// .container{
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%,-50%);
+//     max-width: 850px;
+//     width: 100%;
+//     background: #fff;
+//     border-radius: 7px;
+//     box-shadow: 0 5px 10px rgba(0,0,0,0.3); 
+//     padding: 15px;
+//     background: #f0f0f0;
+//   }
+
+// .profile-pic {
+//     text-align: center;
+// }
+// .profile-pic img{
+//     border-radius: 50%;
+// }
+// input[type=text] {
+//     width: 100%;
+//     height: 40px;
+//     border: 1pt solid #ddd;
+// }
+// input#birth-date {
+//     width: 100%;
+//     height: 36px;
+//     border: 1pt solid #ddd;
+// }
+// select#qualification {
+//     width: 100%;
+//     height: 36px;
+//     border: 1pt solid #ddd;
+// }
+// label{
+//     font-size: 18px;
+// }
+// span.male {
+//     font-size: 18px;
+//     margin-left: 10px;
+// }
