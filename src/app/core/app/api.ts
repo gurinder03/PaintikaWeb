@@ -35,12 +35,32 @@ const api = {
         },
         homeList: {
             requestType: 'post',
-            url: '/home/list',
+            url: '/home/category/list',
             responseInterface: []
         },
         relatedData: {
             requestType: 'post',
             url: '/home/related/list',
+            responseInterface: []
+        },
+        productList: {
+            requestType: 'post',
+            url: '/home/list',
+            responseInterface: []
+        },
+        addToCart: {
+            requestType: 'post',
+            url: '/cart/add',
+            responseInterface: []
+        },
+        cartListData: {
+            requestType: 'post',
+            url: '/cart/list',
+            responseInterface: []
+        },
+        removeToCart: {
+            requestType: 'post',
+            url: '/cart/remove',
             responseInterface: []
         }
     },

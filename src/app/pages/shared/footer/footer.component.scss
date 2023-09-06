@@ -10,7 +10,12 @@ button.btn.logout-button {
     color: white;
     text-align: center;
     height: 50px;
+    display: flex;
+    justify-content: center;
  }
  .footer p {
     margin-top: 13px;
+}
+.conatiner{
+    position: relative;
 }

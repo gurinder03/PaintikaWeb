@@ -8,6 +8,7 @@ import { PaymentOptionsComponent } from './payment-options/payment-options.compo
 import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UploadPaintComponent } from './upload-paint/upload-paint.component';
+import { ProductListComponent } from './product-list/product-list.component';
 
 const routes: Routes = [
   {
@@ -44,6 +45,10 @@ const routes: Routes = [
       {
         path: 'upload-paint',
         component: UploadPaintComponent
+      },
+      {
+        path: 'product-list/:productId',
+        component: ProductListComponent
       }
     ]
   },

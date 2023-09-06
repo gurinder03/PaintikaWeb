@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ToastrService } from 'ngx-toastr';
 import { AuthencationService } from 'src/app/core/auth/authencation.service';
 import { ApiService } from 'src/app/core/services/api.service';
@@ -12,6 +13,7 @@ import { NavigationRouteService } from 'src/app/core/services/navigation-route.s
 })
 
 export class DashboardComponent implements OnInit {
+
 
   data: any = []
   constructor(
@@ -48,11 +50,15 @@ export class DashboardComponent implements OnInit {
   getProduct(data:any){
     if(this.auth.isAuthenticated()){
       console.log('data', data);
-      this.navCtrl.goTo(`/page/add-to-cart/${data.category}`)
+      this.navCtrl.goTo(`/page/add-to-cart/${data._id}`)
     }else{
       console.log('as', data);
       this.fun.confirmBox('', 'Before Procceed you need to login', '/auth/login', 'Ok', 'Cancel')
     }
     
+  }
+
+  getMore(product:any){
+    this.navCtrl.goTo(`/page/product-list/${product._id}`)
   }
 }

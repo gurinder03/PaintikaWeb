@@ -38,7 +38,7 @@ export class AuthInterceptor implements HttpInterceptor {
             switchMap((token) => {
                 console.log('token => ', token);
                 // eslint-disable-next-line max-len
-                const headers = req.headers.set('Authorization', `${token}`);
+                const headers = req.headers.set('token', `Bearer ${token}`);
                 const requestClone = req.clone({ headers });
                 return next
                     .handle(requestClone)

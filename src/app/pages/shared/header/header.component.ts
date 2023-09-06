@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthencationService } from 'src/app/core/auth/authencation.service';
+import { FunctionService } from 'src/app/core/services/function.service';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,8 @@ export class HeaderComponent {
   setEl = 1
   constructor(
     public auth: AuthencationService,
-    private router: Router
+    private router: Router,
+    public fun: FunctionService
   ){
     
   }

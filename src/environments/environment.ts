@@ -6,6 +6,8 @@
 export const environment = {
   production: false,
   API_URL: 'http://52.66.72.115:5004/api/v1',
+  paymentKey: "rzp_test_jJJrfOKqYAvjcP",
+  currency: "INR"
 };
 
 /*

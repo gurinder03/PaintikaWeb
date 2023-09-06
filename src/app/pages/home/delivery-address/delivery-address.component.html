@@ -11,51 +11,67 @@
         <div class="field-section col-md-12 col-sm-12">
             <div class="name-code row" >
                 <div class="name col-md-4 col-sm-12 mt-3">
-                    <label for="fname"> Name: </label> <br>
-                    <input type="text" id="fname" name="fname"> <br>
-                    <label for="pcode" class="mt-3"> Pin Code: </label> <br>
-                    <input type="text" id="pcode" name="p-code">
-
+                    <mat-form-field class="example-full-width full-w">
+                        <mat-label>Name</mat-label>
+                        <input matInput placeholder="enter your name" value="">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width full-w">
+                        <mat-label>Pin Code</mat-label>
+                        <input matInput placeholder="enter pin code" value="">
+                    </mat-form-field>
                 </div>
                 <div class="code col-md-4 col-sm-12 mt-3">
-                    <label for="mob-number">10 digit mobile number: </label> <br>
-                    <input type="number" id="mob-number" name="number"> <br>
-                    <label for="locality" class="mt-3">Locality</label> <br>
-                    <input type="text" id="locality" name="local">
+                    <mat-form-field class="example-full-width full-w">
+                        <mat-label>10 digit mobile number</mat-label>
+                        <input matInput placeholder="enter mobile number" value="">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width full-w">
+                        <mat-label>Locality</mat-label>
+                        <input matInput placeholder="enter locality" value="">
+                    </mat-form-field>
                 </div>
             </div>
-                <div class="text-area col-md-8 col-sm-12 mt-3">
-                   <label for="address">Address (area and street) :</label> <br>
-                    <textarea id="address" name="address" rows="4" cols="50"></textarea>
+                <div class="text-area col-md-8 col-sm-12 mt-3 ">
+                    <mat-form-field class="example-full-width full-w">
+                        <mat-label>Address (area and street)</mat-label>
+                        <textarea matInput placeholder=""></textarea>
+                      </mat-form-field>
                 </div>
                 <div class="mark-location row">
                     <div class="city-mark col-md-4 col-sm-12 mt-3">
-                        <label for="city" > City/District/Town : </label> <br>
-                        <input type="text" id="city" name="city"> <br>
-                        <label for="landmark" class="mt-3"> Landmark(optional) : </label> <br>
-                        <input type="text" id="landmark" name="landmark"> <br>
+                        <mat-form-field class="example-full-width full-w">
+                            <mat-label>City/District/town</mat-label>
+                            <input matInput placeholder="enter city/district" value="">
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width full-w">
+                            <mat-label>Landmark (optional)</mat-label>
+                            <input matInput placeholder="enter landmark" value="">
+                        </mat-form-field>
                     </div>
                     <div class="state-alt col-md-4 col-sm-12 mt-3">
-                        <label for="state" >State:</label><br>
-                        <select name="state" id="state">
-                          <option value="punjab">Punjab</option>
-                          <option value="hp">Himachal Pradesh</option>
-                        </select><br>
-                        <label for="alternate" class="mt-3" style="white-space: nowrap;"> Alternate Phone (Optional) : </label> <br>
-                        <input type="text" id="altr-number" name="alternate"> <br>
+                        <mat-form-field class="full-w">
+                            <mat-label>State </mat-label>
+                            <mat-select formControlName="state">
+                                <mat-option [value]="1">1</mat-option>
+                                <mat-option [value]="2">2</mat-option>
+                                <mat-option [value]="3">3</mat-option>
+                                <mat-option [value]="4">4</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        <mat-form-field class="example-full-width full-w">
+                            <mat-label>Alternate Phone (Optional)</mat-label>
+                            <input matInput placeholder="enter phone" value="">
+                        </mat-form-field>
                     </div>
                     <div class="address-type col-md-8 col-sm-12 row mb-5">
                         <div class="home col-md-4 col-sm-12">
-                            <input type="radio" id="html" name="fav_language" value="HTML" class="mt-3">
-                            <label for="html" class="radio-level">Home (All day delivery)</label><br>
-                        </div>
-                        <div class="work col-md-6 col-sm-12">
-                            <input type="radio" id="css" name="fav_language" value="CSS" class="mt-3">
-                            <label for="css" class="radio-level">Work (Delivery between 10 AM to 5 PM)</label><br>
+                            <mat-radio-group aria-label="Select an option">
+                                <mat-radio-button value="1">Home (all day delivery)</mat-radio-button> <br>
+                                <mat-radio-button value="2">Work (Delivery between 10 AM to 5 PM)</mat-radio-button>
+                              </mat-radio-group>
                         </div>
                     </div>
                 </div>
-                
         </div>
     </div>
     

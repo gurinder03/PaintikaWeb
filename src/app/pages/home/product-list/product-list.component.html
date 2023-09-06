@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <div class="search-container">
+    <div class="select-filter">
+      <label for="city" class="city-label">Select City : </label>
+      <select name="pets" id="pet-select">
+        <option value="">--Please Select city--</option>
+        <option value="dog">Mohali</option>
+        <option value="cat">Kharar</option>
+        <option value="hamster">Patiala</option>
+        <option value="parrot">Jalandhar</option>
+      </select>
+    </div>
+    <form>
+      <div class="search-field">
+        <input type="search" placeholder="Search paintings or painter...">
+        <button type="submit">Search</button>
+      </div>
+    </form>
+  </div>
+  <div class="main-items-container">
+    <div class="row m-4 mb-5 main-paintings">
+      <ng-container *ngIf="allData && allData.length">
+        <div class="paintings col-md-3 col-sm-6 p-4 m-2" *ngFor="let data of allData">
+          <div class="hdng-button ">
+            <h3 class="text-cap">{{data.name}}</h3>
+            <button (click)="addToCart(data)" class="heart-button" mat-raised-button
+              aria-label="Example icon button with a heart icon">
+              <mat-icon [ngClass]="{'favourite': !data.isLiked, 'favourite text-danger': data.isLiked}"
+              class="favourite-icon">favorite</mat-icon>
+            </button>
+          </div>
+          <img [src]="data.image">
+          <p class="painting-detail">Set of three paintings</p>
+          <h3 class="product-rate">₹{{data.price}}</h3>
+          <div class="buy-cart-btn">
+            <div class="buy-btn">
+              <a href="javascript:void()">Buy Now</a>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="allData && !allData.length">
+        <div class="no_data">
+          <h4>Data not found!</h4>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

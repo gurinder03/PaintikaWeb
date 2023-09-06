@@ -23,6 +23,9 @@
     box-shadow: 0 5px 10px rgba(0,0,0,0.3);
     
   }
+  .full-w{
+    width: 100% !important;
+  }
   .form h4{
     font-size: 24px;
     font-weight: 500;
@@ -32,46 +35,33 @@
   .form h3{
       text-align: center;
   }
-  .form input{
-     height: 40px;
-     width: 100%;
-     padding: 0 15px;
-     font-size: 17px;
-     margin-bottom: 1.3rem;
-     border: 1px solid #ddd;
-     border-radius: 6px;
-     outline: none;
-   }
-  .button {
-      color: #fff;
-      background: #000000;
-      font-size: 1.2rem;
-      font-weight: 500;
-      letter-spacing: 1px;
-      cursor: pointer;
-      transition: 0.4s;
-      width: 100%;
-    padding: 4px 0;
+  button.send-btn {
+    width: 100%;
+    height: 38px;
+    color: #ffffff;
+    background: #000000;
+    font-size: 18px;
   }
   .back-to-login {
     margin-bottom: 4px;
-}
-.back-to-login a{
+  }
+  .back-to-login a{
     font-size: 20px;
-}
-input.email-field {
+  }
+  input.email-field {
     margin-top: 30px;
-}
-.button:hover{
+  }
+  button.send-btn:hover{
     background: lightgray;
-    // border: none;
-}
-label.email-label {
+    color:#000000;
+  }
+  label.email-label {
     font-size: 20px;
-}
-.fa-4x {
-  font-size: 3em !important;
-}
+    line-height: 1.7rem;
+  }
+  .fa-4x {
+    font-size: 3em !important;
+  }
 
 
 

@@ -11,6 +11,18 @@
   label.city-label {
     margin-bottom: 10px;
 }
+.hdng-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+button.heart-button {
+  border: none;
+  background: #ffffff;
+}
+mat-icon.favourite-icon {
+  color: #c2c2c2;
+}
   select {
      width: 100%;
       padding: 8px 4px;
@@ -28,7 +40,7 @@
     padding: 2px;
     border: 1px solid currentColor;
     border-radius: 5px;
-    margin: 32px 0 0;
+    margin: 10px 0 0;
     background-color: #ffffff;
     width: 35%;
   }
@@ -89,7 +101,7 @@
       max-height: 250px;
   }
   .paintings{
-      box-shadow: 3px 0px 2px rgba(0,0,0,0.2);
+    box-shadow: -5px -2px 17px rgba(0, 0, 0, 0.2);
       margin: 0 10px;
   }
   .paintings img{
@@ -98,16 +110,30 @@
       margin-bottom: 15px;
   }
   .col-md-3{
-      width: 23% !important;
-  }
+    width: calc(25% - 16px);
+}
   .paintings a{
       text-decoration: none !important;
-      color: #007185
+      color: #007185;
+      cursor:pointer
   }
   .paintings a:hover{
       text-decoration: underline !important;
       color: red ;
+      cursor:pointer
   }
+  .text-cap{
+    text-transform: capitalize;
+  }
+  // animation css begin
+  .paintings {
+    transition: transform .2s;
+}
+.paintings:hover {
+    transform: scale(1.1);
+}
+
+// animation css end
   @media screen and (max-width:1137px){
       input[type="search"]{
           width: 83%;
@@ -135,9 +161,6 @@
       input[type="search"]{
           width: 56%;
       }
-    //   select{
-    //       font-size: 10px;
-    //   }
     .search-container{
         max-height: 140px;
     }
@@ -161,15 +184,18 @@
         width: 80%;
     }
   }
+  @media screen and (max-width:350px){
+    .paintings img{
+      height: 186px;
+    }
+    .main-paintings{
+      margin: 0 !important;
+    }
+  }
   @media screen and (max-width:281px){
     input[type=search]{
         width: 70%;
     }
   }
-  .animate__animated.animate__bounceIn {
-    --animate-duration: 15s;
- 
-  }
-  .text-cap{
-    text-transform: capitalize;
-  }
+  
+  

@@ -1,15 +1,21 @@
 import { Injectable } from '@angular/core';
 import Swal from 'sweetalert2';
 import { NavigationRouteService } from './navigation-route.service';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FunctionService {
 
+  cartCount:any
+  getUserData:any = {}
   constructor(
     public navCtrl: NavigationRouteService
-  ) { }
+  ) { 
+    let userData: any = localStorage.getItem('data')
+    this.getUserData = JSON.parse(userData)
+  }
 
   confirmBox(title= '', message = '', route:any = '', okBtn = '', cancelBtn = ''){
     Swal.fire({
@@ -36,4 +42,6 @@ export class FunctionService {
       }
     })
   }
+
+ 
 }

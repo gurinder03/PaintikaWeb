@@ -9,6 +9,21 @@
     <div class="login form"> 
         <header>Verify OTP</header>
         <form (ngSubmit)="onSubmit()" [formGroup]="verifyForm">
+            <mat-form-field class="full-w">
+                <mat-label class="otp-label">Please Enter OTP</mat-label>
+                <input matInput formControlName="email_or_mobile_number" placeholder="Email">
+                <mat-error *ngIf="verifyForm.controls['OTP'].hasError('required')">
+                    Email is required.
+                </mat-error>
+                <mat-error *ngIf="verifyForm.controls['OTP'].hasError('pattern')">
+                    Email format is not valid.
+                </mat-error>
+            </mat-form-field>
+            <div class="resend-otp">
+                <a (click)="resendOtp()">Resend Otp</a>
+            </div>
+        </form>
+        <!-- <form (ngSubmit)="onSubmit()" [formGroup]="verifyForm">
           <label for="otp" class="otp-label">Please Enter OTP </label> <br>
           <input type="number" formControlName="OTP" placeholder="OTP" class="otp-field">
           <div *ngIf="verifyForm.controls['OTP'].invalid && (verifyForm.controls['OTP'].dirty || verifyForm.controls['OTP'].touched)"
@@ -21,6 +36,6 @@
           <div class="resend-otp">
             <a (click)="resendOtp()">Resend Otp</a>
           </div>
-        </form>
+        </form> -->
     </div>
 </div>

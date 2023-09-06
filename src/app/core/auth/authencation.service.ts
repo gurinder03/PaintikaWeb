@@ -22,6 +22,11 @@ export class AuthencationService {
     const success = (value:any) => {
       if (value && value.statusCode == 200) {
         this.setLoggedIn(value.data.token, value.data)
+        if(data && data.role == 'ADMIN'){
+          this.navCtrl.goTo('/admin/user-list', {}, 'root')
+        }else{
+          this.navCtrl.goTo('/page/dashboard', {}, 'root')
+        }
         this.toast.success(value.message)
       }else{
         this.toast.error(value.message)
@@ -111,7 +116,6 @@ export class AuthencationService {
       localStorage.setItem('token', token);
       localStorage.setItem('data', JSON.stringify(userData))
       localStorage.setItem(HAS_LOGGED_IN, 'true');
-      this.navCtrl.goTo('/page/dashboard', {}, 'root')
       this.authState.next(true);
       resolve(true);
     });

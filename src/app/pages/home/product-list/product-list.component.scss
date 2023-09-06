@@ -1,0 +1,231 @@
+.container{
+    background: #ffffff !important;
+}
+// search container css begin
+.search-container {
+  display: flex;
+  justify-content: space-between;
+ max-height: 99px;
+ padding: 8px 20px 14px;
+//     background: #000000; 
+ box-shadow: 3px 3px 19px rgba(0,0,0,0.2);
+}
+label.city-label {
+  margin-bottom: 10px;
+}
+select {
+  width: 100%;
+   padding: 8px 4px;
+   border-radius: 5px;
+ }
+ .select-filter{
+   width: 30%;
+}
+.search-field{
+   width: 100%;
+}
+form{
+ color: #555;
+ display: flex;
+ padding: 2px;
+ border: 1px solid currentColor;
+ border-radius: 5px;
+ margin: 32px 0 0;
+ background-color: #ffffff;
+ width: 35%;
+}
+
+input[type="search"] {
+ border: none;
+ background: transparent;
+ margin: 0;
+ padding: 5px 8px;
+ font-size: 14px;
+ color: inherit;
+ border: 1px solid transparent;
+ border-radius: inherit;
+ width: 88%;
+}
+
+input[type="search"]::placeholder {
+ color: #bbb;
+}
+
+button[type="submit"] {
+ text-indent: -999px;
+ overflow: hidden;
+ width: 40px;
+ padding: 0;
+ margin: 0;
+ border: 1px solid transparent;
+ border-radius: inherit;
+ background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat center;
+ cursor: pointer;
+ opacity: 0.7;
+}
+
+button[type="submit"]:hover {
+ opacity: 1;
+}
+
+button[type="submit"]:focus,
+input[type="search"]:focus {
+ box-shadow: 0 0 3px 0 #1183d6;
+ border-color: #1183d6;
+ outline: none;
+}
+
+form.nosubmit {
+border: none;
+padding: 0;
+}
+
+input.nosubmit {
+ border: 1px solid #555;
+ width: 100%;
+ padding: 9px 4px 9px 40px;
+  background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat 13px center;
+}
+
+// search container css end
+.hdng-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+  }
+  button.heart-button {
+    border: none;
+    background: #ffffff;
+  }
+  mat-icon.favourite-icon {
+    color: #c2c2c2;
+  }
+  .paintings{
+    box-shadow: -5px -2px 17px rgba(0, 0, 0, 0.2);
+      margin: 0 10px;
+  }
+  .paintings img{
+      width: 100%;
+      height: 200px;
+      margin-bottom: 15px;
+  }
+  .col-md-3{
+    width: calc(25% - 16px);
+}
+  .paintings a{
+      text-decoration: none !important;
+      color: #007185
+  }
+  h3.text-cap {
+    font-size: 20px;
+}
+  .buy-cart-btn {
+    text-align: end;
+}
+.go-cart-btn a {
+    background: #ff9f00;
+    padding: 9px;
+    font-size: 16px;
+    color: #ffffff;
+}
+.product-rate{
+    font-size: 20px;
+    font-weight: 500;
+    color: #212121;
+}
+.buy-btn a {
+    background: #fb641b;
+    padding: 9px;
+    font-size: 16px;
+    color: #ffffff;
+}
+p.painting-detail {
+    margin-bottom: 4px;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+
+
+// animation styling start 
+// .paintings img:hover {
+//     transform: scale(1.1);
+// }
+// .paintings img{
+//     transition: transform .2s;
+// }
+.paintings {
+    transition: transform .2s;
+}
+
+.paintings:hover {
+    transform: scale(1.1);
+}
+// animation styling end
+@media screen and (max-width:1200px){
+  input[type="search"]{
+      width: 83%;
+  }
+}
+  @media screen and (max-width:1000px){
+    .col-sm-6{
+        width: 47%  !important;
+    }
+    input[type="search"]{
+      width: 73%;
+  }
+}
+@media screen and (max-width:666px){
+    .col-sm-6{
+        width: 98%  !important;
+    }
+    .paintings img{
+      height: 275px;
+    }
+}
+@media screen and (max-width:549px){
+  input[type="search"]{
+      width: 56%;
+  }
+//   select{
+//       font-size: 10px;
+//   }
+.search-container{
+    max-height: 140px;
+}
+.search-container{
+  flex-direction: column;
+}
+.select-filter{
+  width: 95%;
+  margin-bottom: 10px;
+}
+form{
+  width: 95%;
+  margin-top: 0 !important;
+}
+input[type=search]{
+  width: 90%;
+}
+}
+@media screen and (max-width:500px){
+  input[type=search]{
+      width: 80%;
+  }
+}
+@media screen and (max-width:350px){
+    .paintings img{
+      height: 186px;
+    }
+    .main-paintings{
+      margin: 0 !important;
+    }
+  }
+@media screen and (max-width:281px){
+  input[type=search]{
+    width: 70%;
+}
+}
+  .text-danger {
+    color: red; /* Change the color to your desired color */
+  }

@@ -1,8 +1,11 @@
-<div class="header" *ngIf="show_header">
-    <app-header></app-header>
-</div>
+<ng-container *ngIf="appliedData()">
+    <div class="header" *ngIf="show_header">
+        <app-header></app-header>
+    </div>
+</ng-container>
 <router-outlet></router-outlet>
-<div class="footer" *ngIf="show_header">
-    <app-footer></app-footer>
-</div>
-<!-- <mat-slide-toggle>Toggle me!</mat-slide-toggle> -->
+<ng-container *ngIf="appliedData()">
+    <div class="footer" *ngIf="show_header">
+        <app-footer></app-footer>
+    </div>
+</ng-container>

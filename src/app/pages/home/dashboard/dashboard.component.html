@@ -1,16 +1,6 @@
 <div class="container-fluid">
-  <div class="search-container">
-    <div class="select-filter">
-      <label for="city" class="city-label">Select City : </label>
-      <select name="pets" id="pet-select">
-        <option value="">--Please Select city--</option>
-        <option value="dog">Mohali</option>
-        <option value="cat">Kharar</option>
-        <option value="hamster">Patiala</option>
-        <option value="parrot">Jalandhar</option>
-      </select>
-    </div>
-
+  <div class="search-container justify-content-end">
+    
     <form>
       <div class="search-field">
         <input type="search" placeholder="Search paintings or painter...">
@@ -18,7 +8,7 @@
       </div>
     </form>
   </div>
-  <div id="carouselExampleDark" class="carousel carousel-dark slide mt-2" data-bs-ride="carousel">
+ <div id="carouselExampleDark" class="carousel carousel-dark slide mt-2" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
         aria-current="true" aria-label="Slide 1"></button>
@@ -56,16 +46,23 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
-  </div>
+  </div> 
+  
   <div class="main-items-container">
-    <div class="row justify-content-between mt-4">
+    <div class="row m-4 mb-5 main-paintings">
       <ng-container *ngIf="data && data.length">
-        <div *ngFor="let product of data" class="paintings col-md-3 col-sm-6 p-4 ">
-          <h3 class="text-cap">{{product.name}}</h3>
-          <button type="button" (click)="getProduct(product)" mat-raised-button color="primary">Add To</button>
+        <div *ngFor="let product of data" class="paintings col-md-3 col-sm-6 p-4 m-2">
+          <div class="hdng-button ">
+            <h3 class="text-cap">{{product.name}}</h3>
+            <!-- <button class="heart-button" (click)="getProduct(product)"  mat-raised-button  aria-label="Example icon button with a heart icon">
+              <mat-icon class="favourite-icon">favorite</mat-icon>
+            </button> -->
+            <!-- <button type="button" (click)="getProduct(product)" mat-raised-button color="primary">Add To</button> -->
+          </div>
           <img [src]="product.image">
-          <a href="javascript:void(0);">See More</a>
+          <a (click)="getMore(product)">See More</a>
         </div>
+       
       </ng-container>
       <ng-container *ngIf="data && data.length == 0">
         <div class="paintings col-md-3 col-sm-6 p-4 ">
@@ -74,7 +71,10 @@
       </ng-container>
     </div>
   </div>
-</div>
-<div>
-  <p><br></p>
+  <mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+</mat-paginator>
+
 </div>

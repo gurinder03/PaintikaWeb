@@ -11,6 +11,18 @@ import { AddToCartComponent } from './add-to-cart/add-to-cart.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UploadPaintComponent } from './upload-paint/upload-paint.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {NgFor} from '@angular/common';
+import {MatSelectModule} from '@angular/material/select';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatCardModule} from '@angular/material/card';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { WindowRefService } from 'src/app/core/services/window-ref.service';
+import { ProductListComponent } from './product-list/product-list.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 @NgModule({
@@ -22,13 +34,27 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DeliveryAddressComponent,
     AddToCartComponent,
     ProfileComponent,
-    UploadPaintComponent
+    UploadPaintComponent,
+    ProductListComponent
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     FormsModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    MatIconModule,
+    MatInputModule,
+    MatFormFieldModule,
+    NgFor,
+    MatSelectModule,
+    MatRadioModule,
+    MatCheckboxModule,
+    MatCardModule,
+    MatPaginatorModule,
+    CarouselModule
+  ],
+  providers: [WindowRefService]
 })
-export class HomeModule { }
+export class HomeModule { 
+ 
+}

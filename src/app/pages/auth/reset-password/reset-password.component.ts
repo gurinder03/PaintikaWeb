@@ -45,9 +45,9 @@ export class ResetPasswordComponent {
   }
 
   onSubmit() {
-    this.resetPassForm.patchValue({ email_or_mobile_number: this.data.email_or_mobile_number});
-    this.resetPassForm.patchValue({ OTP: this.data.OTP });
-    this.resetPassForm.patchValue({ role: this.data.role });
+    this.resetPassForm.patchValue({ email_or_mobile_number: this.data?.email_or_mobile_number});
+    this.resetPassForm.patchValue({ OTP: this.data?.OTP });
+    this.resetPassForm.patchValue({ role: this.data?.role });
     console.log('this.loginForm => ', this.resetPassForm.value, this.data);
     this.resetPassForm.markAllAsTouched();
     if (this.resetPassForm.valid) {

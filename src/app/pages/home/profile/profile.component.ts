@@ -32,13 +32,14 @@ export class ProfileComponent implements OnInit {
       mobile_number: ['', [Validators.required, Validators.minLength(6)]],
       age: ['', [Validators.required]],
       address: ['', [Validators.required]],
-      male: ['', [Validators.required]],
-      female: ['', [Validators.required]],
+      gender: ['1', [Validators.required]],
       qualification: ['', [Validators.required]],
       country: ['', [Validators.required]],
       state: ['', [Validators.required]],
       professional: ['', [Validators.required]],
-      freelancer: ['', [Validators.required]]
+      freelancer: ['', [Validators.required]],
+      experience: ['', [Validators.required]],
+      additional_detail: ['', [Validators.required]]
     });
   }
 

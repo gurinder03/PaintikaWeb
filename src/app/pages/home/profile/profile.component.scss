@@ -6,13 +6,26 @@ body {
     box-shadow: none;
     border-color: #BA68C8
 }
-
+.full-w{
+    width: 100%;
+}
+mat-label.gender-label {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 17px;
+}
 .profile-button {
     background: #000000;
     box-shadow: none;
     border: none
 }
-
+h4.text-center.profile-heading {
+    font-size: 28px;
+    font-weight: 600;
+}
+span.exprnc-hdng {
+    font-size: 26px;
+    font-weight: 600;
+}
 .profile-button:hover {
     background: lightgray
 }
