@@ -1,6 +1,6 @@
 <div class="container">
     <div class="login form">
-        <div class="back-to-login">
+        <div class="back-to-login animate__animated animate__fadeInDownBig">
             <mat-icon svgIcon="password_reset" class="arrow-icon">
                 <a [routerLink]="['/auth/login']" clas="back-login">
                     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512">
@@ -10,27 +10,27 @@
             </mat-icon>
             
         </div>
-        <h4>
+        <h4 class="animate__animated animate__fadeInLeftBig">
            Sign Up
         </h4>
         <div class="toggle-switch">
-            <div class="painter-heading">
+            <div class="painter-heading animate__animated animate__fadeInRightBig">
                 <span class="hdng">Are You Painter?</span>
             </div>
-            <label class="switch">
+            <label class="switch animate__animated animate__fadeInLeftBig">
                 <input type="checkbox" checked>
                 <span class="slider round"></span>
               </label>
         </div>
         <form (ngSubmit)="onSubmit()" [formGroup]="signUpForm">
-            <mat-form-field class="example-full-width full-w">
+            <mat-form-field class="example-full-width full-w animate__animated animate__fadeInRightBig">
                 <mat-label>Name</mat-label>
                 <input matInput formControlName="name" placeholder="enter name" value="">
                 <mat-error *ngIf="signUpForm.controls['email_or_mobile_number'].hasError('required')">
                     Name is required.
                 </mat-error>
             </mat-form-field>
-            <mat-form-field class="full-w">
+            <mat-form-field class="full-w animate__animated animate__fadeInLeftBig">
                 <mat-label>Email</mat-label>
                 <input matInput formControlName="email_or_mobile_number" placeholder="Email">
                 <mat-error *ngIf="signUpForm.controls['email_or_mobile_number'].hasError('required')">
@@ -40,7 +40,7 @@
                     Email format is not valid.
                 </mat-error>
             </mat-form-field>
-            <mat-form-field class="full-w">
+            <mat-form-field class="full-w animate__animated animate__fadeInRightBig">
                 <mat-label>Password</mat-label>
                 <input matInput type="password" formControlName="password" placeholder="Password">
                 <mat-error *ngIf="signUpForm.controls['password'].hasError('required')">
@@ -50,43 +50,14 @@
                     Password must be at least 6 characters long.
                 </mat-error>
             </mat-form-field>
-            <button type="submit" mat-raised-button color="primary" class="sign-up-btn mt-2 mb-3">Login</button>
+            <button type="submit" mat-raised-button color="primary" class="sign-up-btn mt-2 mb-3 animate__animated animate__fadeInLeftBig">Login</button>
         </form>
-        <!-- <form (ngSubmit)="onSubmit()" [formGroup]="signUpForm">
-            <input formControlName="name" type="text" placeholder="Name">
-            <div *ngIf="signUpForm.controls['name'].invalid && (signUpForm.controls['name'].dirty || signUpForm.controls['name'].touched)"
-                class="alert alert-danger" required>
-                <div *ngIf="signUpForm.controls['name'].errors?.required">
-                    Name is required.
-                </div>
-            </div>
-            <input type="email" formControlName="email_or_mobile_number"  placeholder="Enter Email/Phone Number">
-            <div *ngIf="signUpForm.controls['email_or_mobile_number'].invalid && (signUpForm.controls['email_or_mobile_number'].dirty || signUpForm.controls['email_or_mobile_number'].touched)"
-                class="alert alert-danger" required>
-                <div *ngIf="signUpForm.controls['email_or_mobile_number'].errors?.required">
-                    Email is required.
-                </div>
-                <div *ngIf="signUpForm.controls['email_or_mobile_number'].errors?.pattern">
-                    Email format is not valid
-                </div>
-            </div>
-            <input type="password" formControlName="password" placeholder="Password">
-            <div *ngIf="signUpForm.controls['password'].invalid && (signUpForm.controls['password'].dirty || signUpForm.controls['password'].touched)"
-                class="alert alert-danger">
-                <div *ngIf="signUpForm.controls['password'].errors?.required">
-                    Password is required.
-                </div>
-                <div *ngIf="signUpForm.controls['password'].errors?.minlength">
-                    Password must be at least 6 characters long.
-               </div> 
-            </div>
-            <button type="submit" class="button">Signup</button>
-        </form> -->
-        <div class="social-account">
+      
+        <div class="social-account animate__animated animate__fadeInLeftBig">
             <span>
                 Or sign up with social account
             </span>
-            <div class="social-icons">
+            <div class="social-icons animate__animated animate__fadeInRightBig">
                     <span class="facebook-icon">
                         <mat-icon svgIcon="facebook">
                             <img src="./assets/images/facebook-icon.png">

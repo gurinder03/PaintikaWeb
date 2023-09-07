@@ -14,7 +14,31 @@ import { NavigationRouteService } from 'src/app/core/services/navigation-route.s
 
 export class DashboardComponent implements OnInit {
 
-
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: true,
+    dots: false,
+    navSpeed:700,
+    autoplay:true,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      },
+      940: {
+        items: 4
+      }
+    },
+    nav: true
+  }
   data: any = []
   constructor(
     private api: ApiService,

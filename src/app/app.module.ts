@@ -14,13 +14,17 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-
+import {MatButtonModule} from '@angular/material/button';
+import { AdminHeaderComponent } from './admin/shared/admin-header/admin-header.component';
+import { AdminFooterComponent } from './admin/shared/admin-footer/admin-footer.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
     AdminLoginComponent,
+    AdminHeaderComponent,
+    AdminFooterComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,8 @@ import { MatInputModule } from '@angular/material/input';
     BrowserAnimationsModule,
     MatCardModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

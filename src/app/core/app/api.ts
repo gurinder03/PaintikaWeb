@@ -62,6 +62,22 @@ const api = {
             requestType: 'post',
             url: '/cart/remove',
             responseInterface: []
+        },
+        // Call All admin api's
+        userList: {
+            requestType: 'post',
+            url: '/user/admin/list',
+            responseInterface: []
+        },
+        adminCategoryList: {
+            requestType: 'post',
+            url: '/category/list',
+            responseInterface: []
+        },
+        addCategroy: {
+            requestType: 'post',
+            url: '/category/add',
+            responseInterface: []
         }
     },
     defaultDomain: environment.API_URL

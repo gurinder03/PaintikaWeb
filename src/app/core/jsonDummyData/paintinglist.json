@@ -1,0 +1,7 @@
+[
+    { "position": 1, "name": "a", "frame" : "wooden" , "size" : 1212,  "price" : 123  , "medium" : "abdf" , "theme" : "abc","imageUrl":"./assets/images/bird.jpg" },
+    { "position": 2, "name": "b", "frame" : "steel" , "size" : 1212, "price" : 123  , "medium" : "abdf" , "theme" : "abc","imageUrl":"./assets/images/bird.jpg" },
+    { "position": 3, "name": "c", "frame" : "glass" , "size" : 1212,  "price" : 123  , "medium" : "abdf", "theme" : "abc" ,"imageUrl":"./assets/images/bird.jpg"  }
+  
+  ]
+  

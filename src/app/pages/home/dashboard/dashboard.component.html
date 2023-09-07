@@ -8,7 +8,15 @@
       </div>
     </form>
   </div>
- <div id="carouselExampleDark" class="carousel carousel-dark slide mt-2" data-bs-ride="carousel">
+  <owl-carousel-o [options]="customOptions">
+    <ng-template carouselSlide id="slide-1"><img src="./assets/images/bird.jpg" height="200"></ng-template>  
+    <ng-template carouselSlide id="slide-2"><img src="./assets/images/first.jpg" height="200"></ng-template>  
+    <ng-template carouselSlide id="slide-3"><img src="./assets/images/river.jpg" height="200"></ng-template>  
+    <ng-template carouselSlide id="slide-4"><img src="./assets/images/nature.jpg" height="200"></ng-template>  
+    <ng-template carouselSlide id="slide-5"><img src="./assets/images/vehicle.jpg" height="200"></ng-template>  
+    <ng-template carouselSlide id="slide-6"><img src="./assets/images/animal.jpg" height="200"></ng-template>  
+  </owl-carousel-o>
+ <!-- <div id="carouselExampleDark" class="carousel carousel-dark slide mt-2" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
         aria-current="true" aria-label="Slide 1"></button>
@@ -46,9 +54,9 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
-  </div> 
+  </div>  -->
   
-  <div class="main-items-container">
+  <div class="main-items-container animate__animated animate__fadeInLeft">
     <div class="row m-4 mb-5 main-paintings">
       <ng-container *ngIf="data && data.length">
         <div *ngFor="let product of data" class="paintings col-md-3 col-sm-6 p-4 m-2">
@@ -77,4 +85,8 @@
               aria-label="Select page">
 </mat-paginator>
 
+</div>
+<div>
+  <p><br></p>
+  <p><br></p>
 </div>

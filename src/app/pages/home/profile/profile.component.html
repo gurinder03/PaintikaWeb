@@ -1,6 +1,6 @@
 <div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
-        <div class="col-md-4 border-right">
+        <div class="col-md-4 border-right animate__animated animate__fadeInUpBig">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                 <img class="rounded-circle mt-5" width="150px"
                     src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
@@ -11,115 +11,110 @@
         </div>
         <div class="col-md-8 border-right">
             <form (ngSubmit)="onSubmit()" [formGroup]="profileForm">
-                <div class="p-3 py-5">
-                    <div class="text-center">
+                <div class="p-3 py-5 pb-0 ">
+                    <div class="text-center animate__animated animate__fadeInDownBig">
                         <h4 class="text-center profile-heading">Profile Settings</h4>
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-6">
-                            <mat-form-field class="example-full-width full-w">
+                            <mat-form-field class="example-full-width full-w animate__animated animate__fadeInLeftBig ">
                                 <mat-label>Name</mat-label>
                                 <input matInput formControlName="name" placeholder="First name" value="">
-                                <mat-error *ngIf="profileForm.controls['name'].errors?.required">
+                                <mat-error *ngIf="profileForm.controls['name'].errors?.['required']">
                                     Name is required.
                                 </mat-error>
                             </mat-form-field>
                         </div>
                         <div class="col-md-6">
-                            <mat-form-field class="example-full-width full-w">
+                            <mat-form-field class="example-full-width full-w animate__animated animate__fadeInRightBig">
                                 <mat-label>Surname</mat-label>
                                 <input matInput formControlName="surname" placeholder="Surname" value="">
-                                <mat-error *ngIf="profileForm.controls['surname'].errors?.required">
+                                <mat-error *ngIf="profileForm.controls['surname'].errors?.['required']">
                                     Surname is required.
                                 </mat-error>
                             </mat-form-field>
                         </div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-12 full-w">
-                            <mat-form-field class="example-full-width full-w">
+                        <div class="col-md-6 ">
+                            <mat-form-field class="example-full-width full-w animate__animated animate__fadeInLeftBig">
                                 <mat-label>Mobile Number</mat-label>
                                 <input matInput formControlName="mobile_number" placeholder="Enter phone number"
                                     value="">
-                                <mat-error *ngIf="profileForm.controls['mobile_number'].errors?.required">
+                                <mat-error *ngIf="profileForm.controls['mobile_number'].errors?.['required']">
                                     Mobile Number is required.
                                 </mat-error>
                             </mat-form-field>
                         </div>
-                        <div class="col-md-12 mt-2">
-                            <mat-form-field class="example-full-width full-w">
+                        <div class="col-md-6 ">
+                            <mat-form-field class="example-full-width full-w animate__animated animate__fadeInRightBig">
                                 <mat-label>Age</mat-label>
                                 <input matInput formControlName="age" placeholder="Enter age" value="">
-                                <mat-error *ngIf="profileForm.controls['age'].errors?.required">
+                                <mat-error *ngIf="profileForm.controls['age'].errors?.['required']">
                                     Age is required.
                                 </mat-error>
                             </mat-form-field>
                         </div>
-                        <div class="col-md-12 mt-2">
-                            <mat-form-field class="example-full-width full-w">
-                                <mat-label>Address</mat-label>
-                                <textarea matInput formControlName="address" placeholder="Enter address"
-                                    value=""></textarea>
-                                <mat-error *ngIf="profileForm.controls['address'].errors?.required">
-                                    Address is required.
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-md-12 mt-2">
+                    </div>
+                    <div class="row mt-3">
+
+                        <div class="col-md-6 mt-2 animate__animated animate__fadeInLeftBig">
                             <mat-label class="gender-label">Gender</mat-label> <br>
                             <mat-radio-group formControlName="gender" aria-label="Select an option">
                                 <mat-radio-button value="1">Male</mat-radio-button>
                                 <mat-radio-button value="2">Female</mat-radio-button>
                             </mat-radio-group>
-                            <mat-error *ngIf="profileForm.controls['gender'].errors?.required">
+                            <mat-error *ngIf="profileForm.controls['gender'].errors?.['required']">
                                 Gender is required.
                             </mat-error>
                         </div>
-
-                        <div class="col-md-12 mt-2">
+                        <div class="col-md-6 mt-2 animate__animated animate__fadeInRightBig">
                             <mat-form-field class="example-full-width full-w">
                                 <mat-label>Email ID</mat-label>
                                 <input matInput formControlName="email" placeholder="Enter email id" value="">
-                                <mat-error *ngIf="profileForm.controls['email'].errors?.required">
+                                <mat-error *ngIf="profileForm.controls['email'].errors?.['required']">
                                     Email is required.
                                 </mat-error>
-                                <mat-error *ngIf="profileForm.controls['email'].errors?.pattern">
+                                <mat-error *ngIf="profileForm.controls['email'].errors?.['pattern']">
                                     Email format is not valid
                                 </mat-error>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-md-12 mt-2">
-                            <mat-form-field class="example-full-width full-w">
-                                <mat-label>Qualification</mat-label>
-                                <input matInput formControlName="qualification" placeholder="Qualification" value="">
-                                <mat-error *ngIf="profileForm.controls['qualification'].errors?.required">
-                                    Qualification is required.
-                                </mat-error>
-
                             </mat-form-field>
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-6 mt-2">
+                            <mat-form-field class="example-full-width full-w animate__animated animate__fadeInLeftBig">
+                                <mat-label>Qualification</mat-label>
+                                <input matInput formControlName="qualification" placeholder="Qualification" value="">
+                                <mat-error *ngIf="profileForm.controls['qualification'].errors?.['required']">
+                                    Qualification is required.
+                                </mat-error>
+
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6 mt-2 animate__animated animate__fadeInRightBig">
                             <mat-form-field class="example-full-width full-w">
                                 <mat-label>Country</mat-label>
                                 <input matInput formControlName="country" placeholder="Country" value="">
-                                <mat-error *ngIf="profileForm.controls['country'].errors?.required">
+                                <mat-error *ngIf="profileForm.controls['country'].errors?.['required']">
                                     Country is required.
                                 </mat-error>
                             </mat-form-field>
                         </div>
-                        <div class="col-md-6 mt-2">
-                            <mat-form-field class="example-full-width full-w">
-                                <mat-label>State/Region</mat-label>
-                                <input matInput formControlName="state" placeholder="State" value="">
-                                <mat-error *ngIf="profileForm.controls['state'].errors?.required">
-                                    State is required.
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
                     </div>
-                    <div class="professional col-md-12 mt-2 mb-2">
+
+                </div>
+                <div class="row  p-3">
+                    <div class="col-md-6 mt-2 animate__animated animate__fadeInLeftBig">
+                        <mat-form-field class="example-full-width full-w">
+                            <mat-label>State/Region</mat-label>
+                            <input matInput formControlName="state" placeholder="State" value="">
+                            <mat-error *ngIf="profileForm.controls['state'].errors?.['required']">
+                                State is required.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="professional col-md-6 mt-2 mb-2 animate__animated animate__fadeInRightBig">
                         <label for="professional" style="margin-bottom: 10px;" class="labels">
                             Are you professional or
                             freelancer :
@@ -134,9 +129,8 @@
                         <label for="freelancer" style="margin-left: 10px;" class="labels">Freelancer</label>
                         <br>
                     </div>
-                    
                 </div>
-                <div class="p-3 py-3">
+                <div class="p-3 py-3 animate__animated animate__fadeInUpBig">
                     <div class="text-center">
                         <span class="exprnc-hdng">Edit Experience</span>
                     </div>
@@ -145,7 +139,7 @@
                         <mat-form-field class="example-full-width full-w">
                             <mat-label>Experience in painting</mat-label>
                             <input matInput formControlName="experience" placeholder="Experience">
-                            <mat-error *ngIf="profileForm.controls['experience'].errors?.required">
+                            <mat-error *ngIf="profileForm.controls['experience'].errors?.['required']">
                                 Experience is required.
                             </mat-error>
                         </mat-form-field>
@@ -154,23 +148,33 @@
                         <mat-form-field class="example-full-width full-w">
                             <mat-label>Additional Details</mat-label>
                             <input matInput formControlName="additional_detail" placeholder="Additional details">
-                            <mat-error *ngIf="profileForm.controls['additional_detail'].errors?.required">
+                            <mat-error *ngIf="profileForm.controls['additional_detail'].errors?.['required']">
                                 Additional Details is required.
                             </mat-error>
                         </mat-form-field>
                     </div>
-                    <div class="mt-5 text-center">
-                        <button type="submit" mat-raised-button color="primary"
-                            class="btn btn-primary profile-button">
-                            Save Profile
-                        </button>
-                    </div>
+                    
+                </div>
+
+                <div class="col-md-12 mt-2 p-3 animate__animated animate__fadeInDownBig">
+                    <mat-form-field class="example-full-width full-w">
+                        <mat-label>Address</mat-label>
+                        <textarea matInput formControlName="address" placeholder="Enter address" value=""></textarea>
+                        <mat-error *ngIf="profileForm.controls['address'].errors?.['required']">
+                            Address is required.
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="mt-5 mb-3 text-center animate__animated animate__fadeInLeftBig">
+                    <button type="submit" mat-raised-button color="primary" class="btn btn-primary profile-button">
+                        Save Profile
+                    </button>
                 </div>
             </form>
         </div>
-
+        <div>
+            <p><br></p>
+            <p><br></p>
+        </div>
     </div>
-</div>
-<div>
-    <p><br></p>
 </div>

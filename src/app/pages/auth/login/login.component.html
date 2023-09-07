@@ -1,10 +1,10 @@
 <div class="container" style="background-color: #f0f0f0 !important;">
     <mat-card class="login form">
-        <mat-card-title class="login-heading mb-4 text-center">
+        <mat-card-title class="login-heading mb-4 text-center animate__animated animate__fadeInRight">
             Login
         </mat-card-title>
         <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
-            <mat-form-field class="full-w">
+            <mat-form-field class="full-w animate__animated animate__fadeInLeft">
                 <mat-label>Email</mat-label>
                 <input matInput formControlName="email_or_mobile_number" placeholder="Email">
                 <mat-error *ngIf="loginForm.controls['email_or_mobile_number'].hasError('required')">
@@ -14,7 +14,7 @@
                     Email format is not valid.
                 </mat-error>
             </mat-form-field>
-            <mat-form-field class="full-w">
+            <mat-form-field class="full-w animate__animated animate__fadeInRight">
                 <mat-label>Password</mat-label>
                 <input matInput type="password" formControlName="password" placeholder="Password">
                 <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
@@ -24,32 +24,32 @@
                     Password must be at least 6 characters long.
                 </mat-error>
             </mat-form-field>
-            <div class="forgot-password mb-3">
+            <div class="forgot-password mb-3 animate__animated animate__fadeInLeft">
                 <a [routerLink]="['/auth/forgot']" class="forgt-pswrd">Forgot Your Password ?
                     <mat-icon svgIcon="password_reset" class="arrow-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M334.5 414c8.8 3.8 19 2 26-4.6l144-136c4.8-4.5 7.5-10.8 7.5-17.4s-2.7-12.9-7.5-17.4l-144-136c-7-6.6-17.2-8.4-26-4.6s-14.5 12.5-14.5 22l0 72L32 192c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l288 0 0 72c0 9.6 5.7 18.2 14.5 22z"/></svg>
                     </mat-icon>
                 </a>
             </div>
-            <button type="submit" mat-raised-button color="primary" class="login-btn mb-3">Login</button>
+            <button type="submit" mat-raised-button color="primary" class="login-btn mb-3 animate__animated animate__fadeInRight">Login</button>
         </form>
-        <div class="have-account">
+        <div class="have-account animate__animated animate__fadeInLeft">
             <span> Don't have an account ? <a (click)="goToSignUp()">Sign Up</a></span>
         </div>
-        <div class="social-account">
+        <div class="social-account animate__animated animate__fadeInRight">
             <span>
                 Or login with social account
             </span>
             <div class="social-icons">
-                <span class="facebook-icon">
-                    <mat-icon svgIcon="facebook">
+                <span class="facebook-icon ">
+                    <mat-icon svgIcon="facebook animate__animated animate__fadeInLeft">
                         <a href="javscript:void()">
                             <img src="./assets/images/facebook-icon.png">
                         </a>
                     </mat-icon>
                 </span>
-                <span class="google-icon">
-                    <mat-icon svgIcon="google">
+                <span class="google-icon ">
+                    <mat-icon svgIcon="google animate__animated animate__fadeInRight">
                         <a href="javscript:void()">
                             <img src="./assets/images/google-icon.png">
                         </a>

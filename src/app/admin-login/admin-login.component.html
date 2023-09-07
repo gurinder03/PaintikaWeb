@@ -1,32 +1,35 @@
-<div class="container">
-  <mat-card class="login-card">
-    <mat-card-header>
-      <mat-card-title>Login to Admin Panel</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <form (ngSubmit)="onSubmit()" [formGroup]="adminLoginForm">
-        <mat-form-field class="full-width">
-          <mat-label>Email</mat-label>
-          <input matInput formControlName="email_or_mobile_number" placeholder="Email">
-          <mat-error *ngIf="adminLoginForm.controls['email_or_mobile_number'].hasError('required')">
-            Email is required.
-          </mat-error>
-          <mat-error *ngIf="adminLoginForm.controls['email_or_mobile_number'].hasError('pattern')">
-            Email format is not valid.
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field class="full-width">
-          <mat-label>Password</mat-label>
-          <input matInput formControlName="password" type="password" placeholder="Password">
-          <mat-error *ngIf="adminLoginForm.controls['password'].hasError('required')">
-            Password is required.
-          </mat-error>
-          <mat-error *ngIf="adminLoginForm.controls['password'].hasError('minlength')">
-            Password must be at least 6 characters long.
-          </mat-error>
-        </mat-form-field>
-        <button mat-raised-button color="primary" type="submit" class="full-width">Login</button>
-      </form>
-    </mat-card-content>
-  </mat-card>
+
+<div class="row ">
+  <div class="container ">
+    <mat-card class="login-card">
+      
+        <mat-card-title class="text-center p-3 animate__animated animate__fadeInLeft" >Login to Admin Panel</mat-card-title>
+      
+      <mat-card-content>
+        <form (ngSubmit)="onSubmit()" [formGroup]="adminLoginForm">
+          <mat-form-field class="full-width animate__animated animate__fadeInLeft">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email_or_mobile_number" placeholder="Email">
+            <mat-error *ngIf="adminLoginForm.controls['email_or_mobile_number'].hasError('required')">
+              Email is required.
+            </mat-error>
+            <mat-error *ngIf="adminLoginForm.controls['email_or_mobile_number'].hasError('pattern')">
+              Email format is not valid.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width animate__animated animate__fadeInLeft">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" type="password" placeholder="Password">
+            <mat-error *ngIf="adminLoginForm.controls['password'].hasError('required')">
+              Password is required.
+            </mat-error>
+            <mat-error *ngIf="adminLoginForm.controls['password'].hasError('minlength')">
+              Password must be at least 6 characters long.
+            </mat-error>
+          </mat-form-field>
+          <button mat-raised-button color="primary" type="submit" class="full-width login-btn animate__animated animate__fadeInLeft">Login</button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

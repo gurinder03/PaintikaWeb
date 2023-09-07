@@ -1,1 +1,45 @@
-<p>order-list works!</p>
+<h2 class="text-center p-4">Order List</h2>
+<mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+  </mat-form-field>
+  
+  <table mat-table #empTbSort="matSort" [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+      <!-- Position Column -->
+        <ng-container matColumnDef="position">
+              <th *matHeaderCellDef mat-header-cell mat-sort-header> No.</th>
+              <td *matCellDef="let element" mat-cell> {{element.position}}</td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+              <th *matHeaderCellDef mat-header-cell mat-sort-header> Name </th>
+              <td *matCellDef="let element" mat-cell> {{element.name}}</td>
+        </ng-container>
+        <ng-container matColumnDef="quantity">
+              <th *matHeaderCellDef mat-header-cell mat-sort-header>Quantity</th>
+              <td *matCellDef="let element" mat-cell> {{element.quantity}}</td>
+        </ng-container>
+        <ng-container matColumnDef="email">
+              <th *matHeaderCellDef mat-header-cell mat-sort-header>email</th>
+              <td *matCellDef="let element" mat-cell> {{element.email}}</td>
+        </ng-container>
+        <ng-container matColumnDef="status">
+            <th *matHeaderCellDef mat-header-cell mat-sort-header>Status</th>
+            <td *matCellDef="let element" mat-cell> {{element.status}}</td>
+        </ng-container>
+        <ng-container matColumnDef="transectionid">
+            <th *matHeaderCellDef mat-header-cell mat-sort-header>Transection Id</th>
+            <td *matCellDef="let element" mat-cell> {{element.transectionid}}</td>
+        </ng-container>
+        <ng-container matColumnDef="orderdate">
+            <th *matHeaderCellDef mat-header-cell mat-sort-header>Order Date</th>
+            <td *matCellDef="let element" mat-cell> {{element.orderdate}}</td>
+        </ng-container>
+        <ng-container matColumnDef="imageUrl">
+          <th mat-header-cell *matHeaderCellDef> Image Url </th>
+          <td mat-cell *matCellDef="let element"> <img [src]="element.imageUrl" /> </td>
+        </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    
+    

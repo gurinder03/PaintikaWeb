@@ -25,6 +25,7 @@ export class AppComponent {
       && this.router.url !== '/admin/order-list'
       && this.router.url !== '/admin/user-list'
       && this.router.url !== '/admin/painting-list'
+      && this.router.url !== '/admin/add-category'
     ){
       return true
     }

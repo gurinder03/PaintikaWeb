@@ -17,7 +17,7 @@
       </div>
     </form>
   </div>
-  <div class="main-items-container">
+  <div class="main-items-container animate__animated animate__fadeInUp  infinite animate__delay-10s">
     <div class="row m-4 mb-5 main-paintings">
       <ng-container *ngIf="allData && allData.length">
         <div class="paintings col-md-3 col-sm-6 p-4 m-2" *ngFor="let data of allData">
@@ -39,11 +39,19 @@
           </div>
         </div>
       </ng-container>
+
       <ng-container *ngIf="allData && !allData.length">
         <div class="no_data">
           <h4>Data not found!</h4>
         </div>
       </ng-container>
     </div>
+        
+
+   
   </div>
+</div>
+<div>
+  <p><br></p>
+  
 </div>

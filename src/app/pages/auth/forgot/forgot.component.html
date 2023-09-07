@@ -10,9 +10,9 @@
         
     </div>
     <div class="login form">
-        <h3><i class="fa fa-lock fa-4x"></i></h3>
-        <h4>Forgot Password </h4>
-        <div class="toggle-switch">
+        <h3 class="animate__animated animate__fadeInRight"><i class="fa fa-lock fa-4x"></i></h3>
+        <h4 class="animate__animated animate__fadeInLeft">Forgot Password </h4>
+        <div class="toggle-switch animate__animated animate__fadeInRight">
             <div class="painter-heading">
                 <span class="hdng">Are You Painter?</span>
             </div>
@@ -22,8 +22,8 @@
               </label>
         </div>
         <form (ngSubmit)="onSubmit()" [formGroup]="forgotPassForm">
-            <label for="Email" class="email-label mb-2">Please Enter your email address. You Will receive a link to create a new password via email </label> <br>
-            <mat-form-field class="full-w">
+            <label for="Email" class="email-label mb-2  animate__animated animate__fadeInLeft">Please Enter your email address. You Will receive a link to create a new password via email </label> <br>
+            <mat-form-field class="full-w  animate__animated animate__fadeInRight">
                 
                 <mat-label>Email</mat-label>
                 <input matInput formControlName="email_or_mobile_number" placeholder="Email">
@@ -34,7 +34,7 @@
                     Email format is not valid.
                 </mat-error>
             </mat-form-field>
-            <button type="submit" mat-raised-button color="primary" class="send-btn mt-2 mb-3">Send</button>
+            <button type="submit" mat-raised-button color="primary" class="send-btn mt-2 mb-3 animate__animated animate__fadeInRight">Send</button>
         </form>
         <!-- <form (ngSubmit)="onSubmit()" [formGroup]="forgotPassForm">
           <label for="Email" class="email-label">Please Enter your email address. You Will receive a link to create a new password via email </label> <br>

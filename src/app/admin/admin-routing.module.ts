@@ -4,6 +4,7 @@ import { CategoryListComponent } from './category-list/category-list.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { PaintingListComponent } from './painting-list/painting-list.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
 
 const routes: Routes = [
   {
@@ -25,7 +26,10 @@ const routes: Routes = [
         path: 'painting-list',
         component: PaintingListComponent
       },
-      
+      {
+        path: 'add-category',
+        component:AddCategoryComponent
+      },
     ]
   },
 ];

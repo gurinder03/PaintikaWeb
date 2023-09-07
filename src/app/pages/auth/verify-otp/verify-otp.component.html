@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="back-to-login">
+    <div class="back-to-login animate__animated animate__fadeInDownBig">
         <a (click)="back()" class="back-login">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512">
                 <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/>
@@ -7,9 +7,9 @@
         </a>
     </div>
     <div class="login form"> 
-        <header>Verify OTP</header>
+        <h3 class="animate__animated animate__fadeInLeftBig">Verify OTP</h3>
         <form (ngSubmit)="onSubmit()" [formGroup]="verifyForm">
-            <mat-form-field class="full-w">
+            <mat-form-field class="full-w animate__animated animate__fadeInUpBig">
                 <mat-label class="otp-label">Please Enter OTP</mat-label>
                 <input matInput formControlName="email_or_mobile_number" placeholder="Email">
                 <mat-error *ngIf="verifyForm.controls['OTP'].hasError('required')">
@@ -19,7 +19,7 @@
                     Email format is not valid.
                 </mat-error>
             </mat-form-field>
-            <div class="resend-otp">
+            <div class="resend-otp animate__animated animate__fadeInRightBig">
                 <a (click)="resendOtp()">Resend Otp</a>
             </div>
         </form>

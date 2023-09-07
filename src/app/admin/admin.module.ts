@@ -6,13 +6,13 @@ import { CategoryListComponent } from './category-list/category-list.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { PaintingListComponent } from './painting-list/painting-list.component';
-import { HeaderComponent } from './shared/header/header.component';
-import { FooterComponent } from './shared/footer/footer.component';
 import {MatTableModule} from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddCategoryComponent } from './add-category/add-category.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -20,17 +20,19 @@ import { FormsModule } from '@angular/forms';
     OrderListComponent,
     UserListComponent,
     PaintingListComponent,
-    HeaderComponent,
-    FooterComponent
+    AddCategoryComponent,
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     MatTableModule,
     MatFormFieldModule,
+    ReactiveFormsModule,
     MatInputModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatCardModule,
+    MatSortModule,
   ]
 })
 export class AdminModule { }

@@ -3,9 +3,19 @@
         <app-header></app-header>
     </div>
 </ng-container>
+<ng-container *ngIf="!appliedData()">
+    <div class="header" *ngIf="show_header">
+        <app-admin-header></app-admin-header>
+    </div>
+</ng-container>
 <router-outlet></router-outlet>
 <ng-container *ngIf="appliedData()">
     <div class="footer" *ngIf="show_header">
         <app-footer></app-footer>
+    </div>
+</ng-container>
+<ng-container *ngIf="!appliedData() && router.url !== '/admin/add-category'">
+    <div class="footer" *ngIf="show_header">
+        <app-admin-footer></app-admin-footer>
     </div>
 </ng-container>

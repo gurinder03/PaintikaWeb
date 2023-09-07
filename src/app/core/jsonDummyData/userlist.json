@@ -1,0 +1,7 @@
+[
+    { "position": 1, "name": "a", "email": "a@gmail.com","phone" : 98765433221, "gender" : "male", "imageUrl" : "./assets/images/profile.jpg" },
+    { "position": 2, "name": "b", "email": "He@gmail.com","phone" : 98765433221, "gender" : "male","imageUrl" : "./assets/images/profile.jpg"},
+    { "position": 3, "name": "c", "email": "Li@gmail.com","phone" : 98765433221,"gender" : "male","imageUrl" : "./assets/images/profile.jpg" }
+  
+  ]
+  
