@@ -1,50 +1,65 @@
-<h2 class="text-center p-4">Users List</h2>
-<mat-form-field>
-  <mat-label>Filter</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
-</mat-form-field>
+<div class="container">
+<h2 class="text-center p-4 animate__animated animate__bounceInDown">Users List</h2>
+
+  <mat-form-field class="col-md-4 animate__animated animate__bounceInUp">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+  </mat-form-field>
+</div>
+
 
 <!-- #empTbSort="matSort" -->
-
-<table mat-table #empTbSort="matSort" [dataSource]="dataSource" class="mat-elevation-z8" matSort>
-  <!-- Position Column -->
-  <ng-container matColumnDef="serailNo">
-    <th *matHeaderCellDef mat-header-cell mat-sort-header> S.No.</th>
-    <td *matCellDef="let element" mat-cell> {{element.serialNumber}}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="name">
-    <th *matHeaderCellDef mat-header-cell mat-sort-header>Name</th>
-    <td *matCellDef="let element" mat-cell> {{element.name}}</td>
-  </ng-container>
-  <ng-container matColumnDef="email_or_mobile_number">
-    <th *matHeaderCellDef mat-header-cell mat-sort-header>Email/Phone</th>
-    <td *matCellDef="let element" mat-cell> {{element.email_or_mobile_number}}</td>
-  </ng-container>
-  <ng-container matColumnDef="role">
-    <th *matHeaderCellDef mat-header-cell mat-sort-header>Role</th>
-    <td *matCellDef="let element" mat-cell> {{element.role}}</td>
-  </ng-container>
-  <ng-container matColumnDef="createdAt">
-    <th *matHeaderCellDef mat-header-cell mat-sort-header>Created Date</th>
-    <td *matCellDef="let element" mat-cell> {{element.createdAt | date:'MMM, d, y'}}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="profile_image">
-    <th mat-header-cell *matHeaderCellDef> Image Url </th>
-    <td mat-cell *matCellDef="let element"> 
-      <ng-container *ngIf="element.profile_image">
-        <img [src]="element.profile_image" /> 
+<div class="table-dv">
+    <table mat-table #empTbSort="matSort" [dataSource]="dataSource" class="mat-elevation-z8 animate__animated animate__bounceInDown" matSort>
+      <!-- Position Column -->
+      <ng-container matColumnDef="serailNo">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header> S.No.</th>
+        <td *matCellDef="let element" mat-cell> {{element.serialNumber}}</td>
       </ng-container>
-      <ng-container *ngIf="!element.profile_image"> - </ng-container>
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="button">
-    <th *matHeaderCellDef mat-header-cell>Action</th>
-    <td *matCellDef="let element" mat-cell>
-      <button type="button" class="approve-btn">Approve</button>
-      <button type="button" class="reject-btn">Reject</button></td>
-  </ng-container>
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+
+      <ng-container matColumnDef="name">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Name</th>
+        <td *matCellDef="let element" mat-cell> {{element.name}}</td>
+      </ng-container>
+      <ng-container matColumnDef="email_or_mobile_number">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Email/Phone</th>
+        <td *matCellDef="let element" mat-cell> {{element.email_or_mobile_number}}</td>
+      </ng-container>
+      <ng-container matColumnDef="role">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Role</th>
+        <td *matCellDef="let element" mat-cell> {{element.role}}</td>
+      </ng-container>
+      <ng-container matColumnDef="createdAt">
+        <th *matHeaderCellDef mat-header-cell mat-sort-header>Created Date</th>
+        <td *matCellDef="let element" mat-cell> {{element.createdAt | date:'MMM, d, y'}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="profile_image">
+        <th mat-header-cell *matHeaderCellDef> Image Url </th>
+        <td mat-cell *matCellDef="let element"> 
+          <ng-container *ngIf="element.profile_image">
+            <img [src]="element.profile_image" /> 
+          </ng-container>
+          <ng-container *ngIf="!element.profile_image"> - </ng-container>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="button">
+        <th *matHeaderCellDef mat-header-cell>Action</th>
+        <td *matCellDef="let element" mat-cell>
+          <button type="button" class="block-btn">Block</button>
+        
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [length]="allData.length"
+    [pageSize]="setEvent.pageSize"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page" (page)="pageChanged($event)" #paginator>
+    </mat-paginator>
+</div>
+<div>
+  <p><br></p>
+  <p><br></p>
+  <p><br></p>
+</div>

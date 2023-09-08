@@ -30,3 +30,19 @@ input[type=text] {
 textarea#ptheme {
     width: 100%;
 }
+.cancel-btn{
+    color: #ffffff;
+    background: red;
+    font-size: 20px;
+    padding: 7px 4px;
+}
+.update-btn{
+    color: #ffffff;
+    background: green;
+    font-size: 20px;
+    padding: 7px 4px;
+}
+.image-preview-container.ng-star-inserted {
+    padding-top: 7px;
+    text-align: center;
+}

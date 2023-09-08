@@ -1,3 +1,9 @@
+.container{
+  background: #ffffff !important;
+}
+h2.text-center.p-4 {
+  font-size: 28px;
+}
 table {
     width: 100%;
   }
@@ -14,15 +20,30 @@ table {
     color: #ffffff;
 
   }
-  .edit-btn{
+  .update-btn{
     background: yellow;
     color: #000000;
+    margin-right: 5px;
+    color: #000000;
+
+  }
+  .edit-btn{
+    background: green;
+    color: #ffffff;
     margin-right: 5px;
   }
 
   img.img-inner.ng-star-inserted {
-    width: 8%;
+    width: 40%;
+    padding: 10px;
   }
   td.mat-mdc-cell.mdc-data-table__cell.cdk-cell.cdk-column-image.mat-column-image.ng-star-inserted {
     width: 29%;
+}
+.full-w{
+  width:100%;
+}
+.table-dv{
+  width: 91%;
+  margin: 0 auto;
 }

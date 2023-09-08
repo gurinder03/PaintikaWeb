@@ -1,6 +1,6 @@
 <div class="container rounded bg-white mt-5 mb-5">
-    <div class="row">
-        <div class="col-md-4 border-right animate__animated animate__fadeInUpBig">
+    <div class="row pb-5">
+        <div class="col-md-4 border-Up animate__animated animate__fadeInUpBig">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                 <img class="rounded-circle mt-5" width="150px"
                     src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
@@ -9,7 +9,7 @@
                 <span></span>
             </div>
         </div>
-        <div class="col-md-8 border-right">
+        <div class="col-md-8 border-Up">
             <form (ngSubmit)="onSubmit()" [formGroup]="profileForm">
                 <div class="p-3 py-5 pb-0 ">
                     <div class="text-center animate__animated animate__fadeInDownBig">
@@ -17,7 +17,7 @@
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-6">
-                            <mat-form-field class="example-full-width full-w animate__animated animate__fadeInLeftBig ">
+                            <mat-form-field class="example-full-width full-w animate__animated animate__fadeInDownBig ">
                                 <mat-label>Name</mat-label>
                                 <input matInput formControlName="name" placeholder="First name" value="">
                                 <mat-error *ngIf="profileForm.controls['name'].errors?.['required']">
@@ -26,7 +26,7 @@
                             </mat-form-field>
                         </div>
                         <div class="col-md-6">
-                            <mat-form-field class="example-full-width full-w animate__animated animate__fadeInRightBig">
+                            <mat-form-field class="example-full-width full-w animate__animated animate__fadeInUpBig">
                                 <mat-label>Surname</mat-label>
                                 <input matInput formControlName="surname" placeholder="Surname" value="">
                                 <mat-error *ngIf="profileForm.controls['surname'].errors?.['required']">
@@ -37,7 +37,7 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-6 ">
-                            <mat-form-field class="example-full-width full-w animate__animated animate__fadeInLeftBig">
+                            <mat-form-field class="example-full-width full-w animate__animated animate__fadeInDownBig">
                                 <mat-label>Mobile Number</mat-label>
                                 <input matInput formControlName="mobile_number" placeholder="Enter phone number"
                                     value="">
@@ -47,18 +47,20 @@
                             </mat-form-field>
                         </div>
                         <div class="col-md-6 ">
-                            <mat-form-field class="example-full-width full-w animate__animated animate__fadeInRightBig">
-                                <mat-label>Age</mat-label>
-                                <input matInput formControlName="age" placeholder="Enter age" value="">
+                            <mat-form-field class="example-full-width full-w animate__animated animate__fadeInUpBig">
+                                <mat-label>Date of birth</mat-label>
+                                <input matInput  [matDatepicker]="picker" formControlName="age" placeholder="Enter age" value="">
+                                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
                                 <mat-error *ngIf="profileForm.controls['age'].errors?.['required']">
-                                    Age is required.
+                                   Date of birth is required.
                                 </mat-error>
                             </mat-form-field>
                         </div>
                     </div>
                     <div class="row mt-3">
 
-                        <div class="col-md-6 mt-2 animate__animated animate__fadeInLeftBig">
+                        <div class="col-md-6 mt-2 animate__animated animate__fadeInDownBig">
                             <mat-label class="gender-label">Gender</mat-label> <br>
                             <mat-radio-group formControlName="gender" aria-label="Select an option">
                                 <mat-radio-button value="1">Male</mat-radio-button>
@@ -68,7 +70,7 @@
                                 Gender is required.
                             </mat-error>
                         </div>
-                        <div class="col-md-6 mt-2 animate__animated animate__fadeInRightBig">
+                        <div class="col-md-6 mt-2 animate__animated animate__fadeInUpBig">
                             <mat-form-field class="example-full-width full-w">
                                 <mat-label>Email ID</mat-label>
                                 <input matInput formControlName="email" placeholder="Enter email id" value="">
@@ -83,7 +85,7 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-6 mt-2">
-                            <mat-form-field class="example-full-width full-w animate__animated animate__fadeInLeftBig">
+                            <mat-form-field class="example-full-width full-w animate__animated animate__fadeInDownBig">
                                 <mat-label>Qualification</mat-label>
                                 <input matInput formControlName="qualification" placeholder="Qualification" value="">
                                 <mat-error *ngIf="profileForm.controls['qualification'].errors?.['required']">
@@ -92,7 +94,7 @@
 
                             </mat-form-field>
                         </div>
-                        <div class="col-md-6 mt-2 animate__animated animate__fadeInRightBig">
+                        <div class="col-md-6 mt-2 animate__animated animate__fadeInUpBig">
                             <mat-form-field class="example-full-width full-w">
                                 <mat-label>Country</mat-label>
                                 <input matInput formControlName="country" placeholder="Country" value="">
@@ -105,7 +107,7 @@
 
                 </div>
                 <div class="row  p-3">
-                    <div class="col-md-6 mt-2 animate__animated animate__fadeInLeftBig">
+                    <div class="col-md-6 mt-2 animate__animated animate__fadeInDownBig">
                         <mat-form-field class="example-full-width full-w">
                             <mat-label>State/Region</mat-label>
                             <input matInput formControlName="state" placeholder="State" value="">
@@ -114,19 +116,19 @@
                             </mat-error>
                         </mat-form-field>
                     </div>
-                    <div class="professional col-md-6 mt-2 mb-2 animate__animated animate__fadeInRightBig">
+                    <div class="professional col-md-6 mt-2 mb-2 animate__animated animate__fadeInUpBig">
                         <label for="professional" style="margin-bottom: 10px;" class="labels">
                             Are you professional or
                             freelancer :
                         </label>
                         <br>
                         <mat-checkbox formControlName="professional" id="professional"></mat-checkbox>
-                        <label for="professional" style="margin-left: 10px;" class="labels">
+                        <label for="professional" style="margin-Down: 10px;" class="labels">
                             Professional
                         </label>
                         <mat-checkbox formControlName="freelancer" id="freelancer"
-                            style="margin-left: 10px;"></mat-checkbox>
-                        <label for="freelancer" style="margin-left: 10px;" class="labels">Freelancer</label>
+                            style="margin-Down: 10px;"></mat-checkbox>
+                        <label for="freelancer" style="margin-Down: 10px;" class="labels">Freelancer</label>
                         <br>
                     </div>
                 </div>
@@ -165,16 +167,14 @@
                         </mat-error>
                     </mat-form-field>
                 </div>
-                <div class="mt-5 mb-3 text-center animate__animated animate__fadeInLeftBig">
+                <div class="mt-5 mb-3 text-center animate__animated animate__fadeInDownBig">
                     <button type="submit" mat-raised-button color="primary" class="btn btn-primary profile-button">
                         Save Profile
                     </button>
                 </div>
             </form>
         </div>
-        <div>
-            <p><br></p>
-            <p><br></p>
-        </div>
+        
     </div>
+    
 </div>

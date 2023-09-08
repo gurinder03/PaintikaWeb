@@ -52,4 +52,17 @@ export class AdminApiService {
       this.request.send('addCategroy', data, success, null, true);
     });
   }
+
+  async singleCategory(id: number) {
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value)
+        } else {
+          reject(value.statusText)
+        }
+      };
+      this.request.send("singleViewCategory",{id}, success, null, true);
+    });
+  }
 }

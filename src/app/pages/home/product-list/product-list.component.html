@@ -34,24 +34,22 @@
           <h3 class="product-rate">₹{{data.price}}</h3>
           <div class="buy-cart-btn">
             <div class="buy-btn">
-              <a href="javascript:void()">Buy Now</a>
+              <a (click)="buyNow(data)" href="javascript:void()">Buy Now</a>
             </div>
           </div>
         </div>
       </ng-container>
-
       <ng-container *ngIf="allData && !allData.length">
         <div class="no_data">
           <h4>Data not found!</h4>
         </div>
       </ng-container>
     </div>
-        
 
    
   </div>
 </div>
 <div>
-  <p><br></p>
+<p><br></p>
   
 </div>

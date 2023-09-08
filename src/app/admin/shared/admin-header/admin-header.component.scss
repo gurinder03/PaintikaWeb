@@ -6,3 +6,76 @@
 .navbar-custom .navbar-nav .nav-link {
     color: #fff;
 }
+ul.navbar-nav.ml-auto {
+    gap: 25px;
+}
+button.btn.logout-button {
+    color: #ffffff !important;
+}
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #000000;
+    color: white;
+    text-align: center;
+    height: 50px;
+ }
+ .footer p {
+    margin-top: 13px;
+}
+.cart-button{
+    color: #ffffff;
+}
+.cart-button {
+    position: relative;
+}
+
+span.counting_cart_items {
+    position: absolute;
+    left: 24%;
+    top: -10%;
+}
+
+// painter button css begin 
+li.nav-item.painter-btn a {
+    color: #000000 !important;
+    background: #ffffff;
+    cursor: pointer;
+}
+li.nav-item.painter-btn a:hover {
+    color: #ffffff !important;
+    background: #000000;
+}
+li.nav-item {
+    cursor: pointer;
+}
+// painter button css end
+.active{
+    color: #ffffff;
+    background: #000000;
+    font-weight: 500;
+}
+span.cart-hdng {
+    padding-left: 12px;
+}
+.navbar-expand-sm .navbar-nav {
+    gap: 20px;
+}
+@media screen and (max-width:576px){
+    form{
+        margin-top: 10px;
+    }
+    .navbar-expand-sm .navbar-nav{
+        gap: 0;
+    }
+}
+.active{
+    background: #000000;
+    color: #ffffff;
+    font-weight: 500;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: #ffffff;
+}

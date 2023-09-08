@@ -1,5 +1,10 @@
 [
-  { "position": 1, "name": "Hydrogen", "imageUrl": "./assets/images/animal.jpg"},
-  { "position": 2, "name": "Helium","imageUrl": "./assets/images/animal.jpg"  }
- 
+  {
+    "serialNo": "",
+    "name": "",
+    "image": "",
+    "createdAt": "",
+    "name_slug": "",
+    "status": ""
+  }
 ]

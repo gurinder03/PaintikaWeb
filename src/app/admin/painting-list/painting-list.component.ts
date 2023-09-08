@@ -20,7 +20,7 @@ export class PaintingListComponent implements OnInit {
       
   }
 
-  displayedColumns: string[] = ['position', 'name', 'frame','size',  'price' , 'medium','theme','imageUrl'];
+  displayedColumns: string[] = ['position', 'name', 'frame','size',  'price' , 'medium','theme','imageUrl','button'];
   dataSource = new MatTableDataSource(jsonData);
 
 

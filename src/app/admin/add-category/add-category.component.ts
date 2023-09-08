@@ -12,6 +12,7 @@ import { FunctionService } from 'src/app/core/services/function.service';
 export class AddCategoryComponent implements OnInit {
 
   addCateForm!: FormGroup;
+  updatedData:any;
   url:any = '';
   setImg: any;
   constructor(
@@ -23,7 +24,8 @@ export class AddCategoryComponent implements OnInit {
 
 
   ngOnInit(): void {
-      this.formData()
+    this.getSingleCategory(localStorage.getItem('cate_id'))
+    this.formData()
   }
 
   formData(){
@@ -32,19 +34,16 @@ export class AddCategoryComponent implements OnInit {
       role: ['ADMIN', [Validators.required]],
       creator_id: ['', [Validators.required]],
       status: ['active', [Validators.required]],
-      image: ['', [Validators.required]],
     });
   }
 
 
 
   onSubmit() {
-    console.log('Add => ', this.addCateForm);
     this.addCateForm.patchValue({ creator_id: this.fun.getUserData._id });
     this.addCateForm.markAllAsTouched();
     if (this.addCateForm.valid) {
       let dataVal = new FormData();
-      debugger
       dataVal.append('name', this.addCateForm.value.name);
       dataVal.append('role', this.addCateForm.value.role);
       dataVal.append('creator_id', this.fun.getUserData._id);
@@ -62,6 +61,28 @@ export class AddCategoryComponent implements OnInit {
     } else {
       console.log('Form is not valid');
     }
+  }
+
+
+  getSingleCategory(id:any){
+    this.adminApi.singleCategory(id).then((res:any)=>{
+      if (res && res.statusCode === 200) {
+        this.setDataValue(res.data)
+        console.log('res.data => ', res.data);
+      } else if (res.statusCode === 500) {
+        this.toast.error(res.message);
+      } else {
+        this.toast.error('Something went wrong');
+      }
+    })
+  }
+
+  setDataValue(data:any){
+    this.addCateForm.patchValue({ name: data.name });
+    this.addCateForm.patchValue({ creator_id: data.creator_id });
+    this.addCateForm.patchValue({ role: data.role });
+    this.addCateForm.patchValue({ status: data.status });
+    this.url = data.image;
   }
 
 

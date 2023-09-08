@@ -5,6 +5,8 @@ import { MatSort } from '@angular/material/sort';
 import { AdminApiService } from 'src/app/core/services/admin-api.service';
 import { ToastrService } from 'ngx-toastr';
 import { NavigationRouteService } from 'src/app/core/services/navigation-route.service';
+import { MatPaginator } from '@angular/material/paginator';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-category-list',
@@ -13,39 +15,144 @@ import { NavigationRouteService } from 'src/app/core/services/navigation-route.s
 })
 export class CategoryListComponent implements OnInit {
 
-  @ViewChild('empTbSort') empTbSort = new MatSort();
+  EmpData = [
+    {
+      serialNo: 1,
+      name: '',
+      image: '',
+      createdAt: '',
+      name_slug: '',
+      status: '',
+    },
+    {
+      serialNo: 2,
+      name: '',
+      image: '',
+      createdAt: '',
+      name_slug: '',
+      status: '',
+    },
+    {
+      serialNo: 3,
+      name: '',
+      image: '',
+      createdAt: '',
+      name_slug: '',
+      status: '',
+    },
+    {
+      serialNo: 4,
+      name: '',
+      image: '',
+      createdAt: '',
+      name_slug: '',
+      status: '',
+    },
+    {
+      serialNo: 5,
+      name: '',
+      image: "",
+      createdAt: '',
+      name_slug: '',
+      status: '',
+    },
+    {
+      serialNo: 6,
+      name: '',
+      image: '',
+      createdAt: '',
+      name_slug: '',
+      status: '',
+    },
+    {
+      serialNo: 7,
+      name: '',
+      image: '',
+      createdAt: '',
+      name_slug: '',
+      status: '',
+    },
+    {
+      serialNo: 8,
+      name: '',
+      image: '',
+      createdAt: '',
+      name_slug: '',
+      status: '',
+    },
+    {
+      serialNo: 9,
+      name: '',
+      image: '',
+      createdAt: '',
+      name_slug: '',
+      status: '',
+    },
+    {
+      serialNo: 10,
+      name: '',
+      image: '',
+      createdAt: '',
+      name_slug: '',
+      status: '',
+    },
+  ];
+
+  
 
   constructor(
     public adminApi: AdminApiService,
     public toast: ToastrService,
-    public navCtrl: NavigationRouteService
-  ){}
+    public navCtrl: NavigationRouteService,
+  ){
+    this.getCategoryList();
+  }
+
+  dataSource = new MatTableDataSource(this.EmpData);
+  dataSourceWithPageSize = new MatTableDataSource(this.EmpData);
+
+  @ViewChild('empTbSort') empTbSort = new MatSort();
+  @ViewChild('paginator') paginator!: MatPaginator;
 
   displayedColumns: string[] = ['serialNo', 'name','image', 'createdAt', 'name_slug', 'status', 'button'];
-  dataSource = new MatTableDataSource();
+  // dataSource = new MatTableDataSource();
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  ngOnInit(): void {
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
     this.getCategoryList()
+    this.empTbSort.disableClear = true;
+    this.dataSource.sort = this.empTbSort;
   }
 
 
+  ngOnInit(): void {
+  }
+
+  updateCate(data:any){
+    localStorage.setItem('cate_id', data._id)
+    this.navCtrl.goTo('/admin/add-category')
+  }
+
+  
   getCategoryList(){
     let data = {
-      "page":1,
-      "limit":10
+      "page": 1,
+      "limit": 10
     }
+    console.log('data => ', data);
     this.adminApi.getAdminCateList(data).then((res:any) =>{
-      debugger
       if (res && res.statusCode === 200) {
         res.data.forEach((item:any, index:any) => {
           item.serialNumber = index + 1;
         });
-        this.dataSource = new MatTableDataSource(res.data)
+        this.dataSource = new MatTableDataSource(res.data);
+        // this.dataSource.paginator = this.paginator;
         this.empTbSort.disableClear = true;
         this.dataSource.sort = this.empTbSort;
         console.log('res.data => ', res.data);
@@ -57,13 +164,13 @@ export class CategoryListComponent implements OnInit {
     })
   }
 
-  ngAfterViewInit() {
-		this.empTbSort.disableClear = true;
-		this.dataSource.sort = this.empTbSort;
-	}
-
   createCategory(){
     this.navCtrl.goTo('/admin/add-category')
+  }
+
+  pageChanged(event: any) {
+    this.paginator.pageIndex = event.pageIndex;
+    this.getCategoryList()
   }
 
 }

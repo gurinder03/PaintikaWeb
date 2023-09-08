@@ -13,7 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatSortModule } from '@angular/material/sort';
-
+import {MatPaginatorModule} from '@angular/material/paginator'; 
 @NgModule({
   declarations: [
     CategoryListComponent,
@@ -33,6 +33,9 @@ import { MatSortModule } from '@angular/material/sort';
     FormsModule,
     MatCardModule,
     MatSortModule,
+    MatPaginatorModule
   ]
 })
-export class AdminModule { }
+export class AdminModule { 
+  
+}

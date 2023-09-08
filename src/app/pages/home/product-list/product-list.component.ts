@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthencationService } from 'src/app/core/auth/authencation.service';
 import { ApiService } from 'src/app/core/services/api.service';
 import { FunctionService } from 'src/app/core/services/function.service';
+import { NavigationRouteService } from 'src/app/core/services/navigation-route.service';
 
 @Component({
   selector: 'app-product-list',
@@ -18,7 +19,8 @@ export class ProductListComponent implements OnInit {
     public api: ApiService,
     public toast: ToastrService,
     private fun: FunctionService,
-    public auth: AuthencationService
+    public auth: AuthencationService,
+    private navCtrl: NavigationRouteService
   ){
   }
   
@@ -106,6 +108,12 @@ export class ProductListComponent implements OnInit {
       const isLiked = array2?.some((item2) => item2.art_id === item1._id);
       item1.isLiked = isLiked;
     }
+  }
+
+  buyNow(id:any){
+    console.log('sd ', id);
+    
+    this.navCtrl.goTo(`/page/add-to-cart/${id.category}`)
   }
 }
 

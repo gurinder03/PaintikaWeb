@@ -10,15 +10,9 @@
             </mat-error>
         </mat-form-field>
         <div class="file-upload col-md-12 animate__animated animate__fadeInLeft">
-            <input #Image type="file" (change)="onSelectFile($event)" formControlName="image" accept="image/*" />
+            <input #Image type="file" (change)="onSelectFile($event)" accept="image/*" />
             <div>
                 <img [src]="url" height="200">
-            </div>
-            <div *ngIf="addCateForm.controls['image'].invalid && (addCateForm.controls['image'].dirty || addCateForm.controls['image'].touched)"
-                required>
-                <mat-error *ngIf="addCateForm.controls['image'].errors?.['required']">
-                    Image is required.
-                </mat-error>
             </div>
         </div>
         <div class="row justify-content-between">

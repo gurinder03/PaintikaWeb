@@ -23,7 +23,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { WindowRefService } from 'src/app/core/services/window-ref.service';
 import { ProductListComponent } from './product-list/product-list.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,9 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     MatCheckboxModule,
     MatCardModule,
     MatPaginatorModule,
-    CarouselModule
+    CarouselModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [WindowRefService]
 })

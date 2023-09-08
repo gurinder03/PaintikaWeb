@@ -1,15 +1,15 @@
 <div class="container">
     <div class="field-section p-5">
         <div class="row justify-content-center">
-            <div class="file-upload col-md-8">
+            <div class="file-upload col-md-8 animate__animated animate__bounceInDown">
                 <input #Image type="file" accept="image/*" multiple (change)="selectFiles($event)" />
-                <div *ngIf="previews.length">
+                <div *ngIf="previews.length" class="image-preview-container">
                     <img *ngFor="let preview of previews" [src]="preview" class="preview">
                 </div>
             </div>
             <div class="row pt-3  justify-content-center">
                 <div class="name col-md-4 col-sm-12 ">
-                    <mat-form-field class="example-full-width full-w">
+                    <mat-form-field class="example-full-width full-w animate__animated animate__bounceInLeft">
                         <mat-label>Name</mat-label>
                         <input matInput   placeholder="enter name" value="" >
                     </mat-form-field>
@@ -17,26 +17,26 @@
                     <input type="text" id="tname" name="tname"> -->
                 </div>
                 <div class="size col-md-4 col-sm-12">
-                    <mat-form-field class="example-full-width full-w">
+                    <mat-form-field class="example-full-width full-w animate__animated animate__bounceInRight">
                         <mat-label>Size</mat-label>
                         <input matInput   placeholder="enter size" value="">
                     </mat-form-field>
                 </div>
             </div>
             <div class="col-md-8 col-sm-12 pt-3 mx-auto">
-                <mat-form-field class="example-full-width full-w">
+                <mat-form-field class="example-full-width full-w animate__animated animate__bounceInLeft">
                     <mat-label>Painting Theme</mat-label>
                      <textarea matInput   value=""></textarea>
                 </mat-form-field>
             </div>
             <div class="row pt-3  justify-content-center">
                 <div class="medium col-md-4 col-sm-12">
-                    <mat-form-field class="example-full-width full-w">
+                    <mat-form-field class="example-full-width full-w animate__animated animate__bounceInRight">
                         <mat-label>Medium</mat-label>
                         <input matInput  value="" >
                     </mat-form-field>
                 </div>
-                <div class="framing-quality col-md-4 col-sm-12">
+                <div class="framing-quality col-md-4 col-sm-12 animate__animated animate__bounceInLeft">
                     <mat-form-field class="example-full-width full-w">
                         <mat-label>Framing Quality</mat-label>
                         <input matInput   value="" >
@@ -44,12 +44,24 @@
                 </div>
             </div>
             <div class="col-md-8 col-sm-12 pt-3 mx-auto mb-5">
-                <mat-form-field class="example-full-width full-w">
+                <mat-form-field class="example-full-width full-w animate__animated animate__bounceInRight">
                     <mat-label>Price</mat-label>
                     <input matInput   value="" >
                 </mat-form-field> 
+            </div> 
+            <div class="row mx-auto justify-content-center ">
+                <div class="col-md-4 text-center animate__animated animate__bounceInLeft">
+                    <button mat-button class="cancel-btn">Cancel</button>
+                </div>
+                <div class="col-md-4 text-center animate__animated animate__bounceInRight">
+                    <button mat-button class="update-btn">Update</button>
+                </div>
             </div>
         </div>
     </div>
+</div>
+<div>
+    <p><br></p>
+    <p><br></p>
 </div>
 

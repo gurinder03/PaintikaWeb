@@ -78,6 +78,11 @@ const api = {
             requestType: 'post',
             url: '/category/add',
             responseInterface: []
+        },
+        singleViewCategory: {
+            requestType: 'get',
+            url: '/category/view/{{id}}',
+            responseInterface: []
         }
     },
     defaultDomain: environment.API_URL
