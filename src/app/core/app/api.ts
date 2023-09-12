@@ -63,6 +63,11 @@ const api = {
             url: '/cart/remove',
             responseInterface: []
         },
+        uploadPainting: {
+            requestType: 'post',
+            url: '/art/add',
+            responseInterface: []
+        },
         // Call All admin api's
         userList: {
             requestType: 'post',

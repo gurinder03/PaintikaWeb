@@ -18,6 +18,12 @@ export class LoginComponent {
     this.formData()
   }
 
+  userTyppes = [
+    {id: 1, role: "USER", name: 'User'},
+    {id: 2, role: "ADMIN", name: 'Admin'},
+    {id: 3, role: "ARTIST", name: 'Artist'}
+  ]
+
   formData(){
     this.loginForm = this.fb.group({
       email_or_mobile_number: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}')]],

@@ -81,6 +81,20 @@ export class ApiService implements OnInit {
     });
   }
   
+  uploadPainting(data:any){
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value);
+        }
+        else {
+          reject(value.statusText);
+        }
+      };
+      this.request.send('uploadPainting', data, success, null, true);
+    });
+  }
+  
   cartListData(data:any){
     // return new Promise((resolve, reject) => {
       const success = (value:any) => {

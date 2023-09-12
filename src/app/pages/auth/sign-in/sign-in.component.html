@@ -26,7 +26,7 @@
             <mat-form-field class="example-full-width full-w animate__animated animate__fadeInRightBig">
                 <mat-label>Name</mat-label>
                 <input matInput formControlName="name" placeholder="enter name" value="">
-                <mat-error *ngIf="signUpForm.controls['email_or_mobile_number'].hasError('required')">
+                <mat-error *ngIf="signUpForm.controls['name'].hasError('required')">
                     Name is required.
                 </mat-error>
             </mat-form-field>
@@ -50,25 +50,7 @@
                     Password must be at least 6 characters long.
                 </mat-error>
             </mat-form-field>
-            <button type="submit" mat-raised-button color="primary" class="sign-up-btn mt-2 mb-3 animate__animated animate__fadeInLeftBig">Login</button>
+            <button type="submit" mat-raised-button color="primary" class="sign-up-btn mt-2 mb-3 animate__animated animate__fadeInLeftBig">Sign Up</button>
         </form>
-      
-        <div class="social-account animate__animated animate__fadeInLeftBig">
-            <span>
-                Or sign up with social account
-            </span>
-            <div class="social-icons animate__animated animate__fadeInRightBig">
-                    <span class="facebook-icon">
-                        <mat-icon svgIcon="facebook">
-                            <img src="./assets/images/facebook-icon.png">
-                        </mat-icon>
-                    </span>
-                    <span class="google-icon">
-                        <mat-icon svgIcon="google">
-                            <img src="./assets/images/google-icon.png">
-                        </mat-icon>
-                    </span>
-            </div>
-        </div>
     </div>
 </div>

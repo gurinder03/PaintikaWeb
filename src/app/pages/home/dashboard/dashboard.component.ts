@@ -3,7 +3,6 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ToastrService } from 'ngx-toastr';
 import { AuthencationService } from 'src/app/core/auth/authencation.service';
 import { ApiService } from 'src/app/core/services/api.service';
-import { FunctionService } from 'src/app/core/services/function.service';
 import { NavigationRouteService } from 'src/app/core/services/navigation-route.service';
 
 @Component({
@@ -14,6 +13,7 @@ import { NavigationRouteService } from 'src/app/core/services/navigation-route.s
 
 export class DashboardComponent implements OnInit {
 
+  pagesData:any = {}
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
@@ -45,9 +45,11 @@ export class DashboardComponent implements OnInit {
     public toast: ToastrService,
     private auth: AuthencationService,
     public navCtrl: NavigationRouteService,
-    private fun: FunctionService
   ){
-
+    let userData = this.auth.getUserData();
+    if( auth.isAuthenticated() && userData && userData.role === "ADMIN"){
+      this.navCtrl.goTo('/admin/user-list')
+    }
   }
 
   ngOnInit(): void {
@@ -55,9 +57,10 @@ export class DashboardComponent implements OnInit {
   }
 
   dataList(){
+    debugger
     let data = {
-      "page":1,
-      "limit":10
+      "page": this.pagesData && this.pagesData.pageIndex ? this.pagesData.pageIndex + 1: 1,
+      "limit": this.pagesData && this.pagesData.pageSize ? this.pagesData.pageSize: 10,
     }
     this.api.productList(data).then((res: any) => {
       if (res && res.statusCode === 200) {
@@ -71,18 +74,24 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  getProduct(data:any){
-    if(this.auth.isAuthenticated()){
-      console.log('data', data);
-      this.navCtrl.goTo(`/page/add-to-cart/${data._id}`)
-    }else{
-      console.log('as', data);
-      this.fun.confirmBox('', 'Before Procceed you need to login', '/auth/login', 'Ok', 'Cancel')
-    }
+  // getProduct(data:any){
+  //   if(this.auth.isAuthenticated()){
+  //     console.log('data', data);
+  //     this.navCtrl.goTo(`/page/add-to-cart/${data?._id}`)
+  //   }else{
+  //     console.log('as', data);
+  //     this.fun.confirmBox('', 'Before Procceed you need to login', '/auth/login', 'Ok', 'Cancel')
+  //   }
     
+  // }
+
+  onPageFired(ele:any){
+    this.pagesData = ele;
+    this.dataList();
+    debugger
   }
 
   getMore(product:any){
-    this.navCtrl.goTo(`/page/product-list/${product._id}`)
+    this.navCtrl.goTo(`/page/product-list/${product?._id}`)
   }
 }

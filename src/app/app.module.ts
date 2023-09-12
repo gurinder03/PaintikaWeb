@@ -17,6 +17,9 @@ import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { AdminHeaderComponent } from './admin/shared/admin-header/admin-header.component';
 import { AdminFooterComponent } from './admin/shared/admin-footer/admin-footer.component';
+import { DashboardComponent } from './pages/home/dashboard/dashboard.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { MatPaginatorModule } from '@angular/material/paginator';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,15 +27,18 @@ import { AdminFooterComponent } from './admin/shared/admin-footer/admin-footer.c
     FooterComponent,
     AdminLoginComponent,
     AdminHeaderComponent,
-    AdminFooterComponent
+    AdminFooterComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    MatPaginatorModule,
     HttpClientModule,
     MatSlideToggleModule,
+    CarouselModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
     }),

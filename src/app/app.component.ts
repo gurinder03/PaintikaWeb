@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthencationService } from './core/auth/authencation.service';
 import { Router } from '@angular/router';
+import { FunctionService } from './core/services/function.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ export class AppComponent {
 
   constructor(
     public auth: AuthencationService,
-    public router: Router
+    public router: Router,
+    public fun: FunctionService
   ){
     console.log('sdfsd => ', this.auth.isAuthenticated());
   }
@@ -21,7 +23,6 @@ export class AppComponent {
   appliedData(){
     if(
       this.router.url !== '/admin/category-list'
-      && this.router.url !== '/admin-login'
       && this.router.url !== '/admin/order-list'
       && this.router.url !== '/admin/user-list'
       && this.router.url !== '/admin/painting-list'

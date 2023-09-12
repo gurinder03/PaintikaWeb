@@ -81,7 +81,7 @@ export class ProductListComponent implements OnInit {
     let data = {
       "page":1,
       "limit":10,
-      "category": [cate]
+      "categories": [cate]
     }
     this.api.productDataList(data).then((res: any) => {
       if (res && res.statusCode === 200) {

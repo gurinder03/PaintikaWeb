@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { AdminApiService } from 'src/app/core/services/admin-api.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatPaginator } from '@angular/material/paginator';
+import { AuthencationService } from 'src/app/core/auth/authencation.service';
 
 @Component({
   selector: 'app-user-list',
@@ -19,7 +20,8 @@ export class UserListComponent implements OnInit {
   
   constructor(
     public adminApi: AdminApiService,
-    private toast: ToastrService
+    private toast: ToastrService,
+    public auth: AuthencationService
   ){ }
   
   displayedColumns: string[] = ['serailNo', 'name', 'email_or_mobile_number','role','createdAt','profile_image','button'];
@@ -34,7 +36,9 @@ export class UserListComponent implements OnInit {
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator;
     console.log('paginator => ', this.dataSource.paginator);
-    this.getUsers()
+    if(this.auth.isAuthenticated()){
+      this.getUsers()
+    }
   }
 
   getUsers(){

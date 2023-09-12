@@ -16,56 +16,12 @@
     <ng-template carouselSlide id="slide-5"><img src="./assets/images/vehicle.jpg" height="200"></ng-template>  
     <ng-template carouselSlide id="slide-6"><img src="./assets/images/animal.jpg" height="200"></ng-template>  
   </owl-carousel-o>
- <!-- <div id="carouselExampleDark" class="carousel carousel-dark slide mt-2" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
-        aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="10000">
-        <img src="./assets/images/flower.jpg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>First slide label</h5>
-          <p>Some representative placeholder content for the first slide.</p>
-        </div>
-      </div>
-      <div class="carousel-item" data-bs-interval="2000">
-        <img src="./assets/images/bird.jpg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Some representative placeholder content for the second slide.</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img src="./assets/images/nature.jpg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Some representative placeholder content for the third slide.</p>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>  -->
-  
   <div class="main-items-container animate__animated animate__fadeInLeft">
     <div class="row m-4 mb-5 main-paintings">
       <ng-container *ngIf="data && data.length">
         <div *ngFor="let product of data" class="paintings col-md-3 col-sm-6 p-4 m-2">
           <div class="hdng-button ">
             <h3 class="text-cap">{{product.name}}</h3>
-            <!-- <button class="heart-button" (click)="getProduct(product)"  mat-raised-button  aria-label="Example icon button with a heart icon">
-              <mat-icon class="favourite-icon">favorite</mat-icon>
-            </button> -->
-            <!-- <button type="button" (click)="getProduct(product)" mat-raised-button color="primary">Add To</button> -->
           </div>
           <img [src]="product.image">
           <a (click)="getMore(product)">See More</a>
@@ -79,10 +35,10 @@
       </ng-container>
     </div>
   </div>
-  <mat-paginator [length]="100"
-              [pageSize]="10"
+  <mat-paginator #paginator [length]="data.length"
+              [pageSize]="pagesData.pageSize"
               [pageSizeOptions]="[5, 10, 25, 100]"
-              aria-label="Select page">
+              aria-label="Select page" (page)="onPageFired($event)" multiTemplateDataRows>
 </mat-paginator>
 
 </div>

@@ -6,18 +6,18 @@
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" (click)="navigateTo('/page/dashboard', 1)" [class.active]="setEl === 1">Home</a>
+                    <a class="nav-link" (click)="navigateTo('/dashboard', 1)" [class.active]="setEl === 1">Home</a>
                 </li>
                 <li class="nav-item" *ngIf="auth.isAuthenticated()">
                     <a class="nav-link" (click)="navigateTo('/page/profile',  2)" [class.active]="setEl === 2">Profile</a>
                 </li>
-                <li class="nav-item" *ngIf="auth.isAuthenticated()">
-                    <a class="nav-link" (click)="navigateTo('/page/upload-paint', 3)" [class.active]="setEl === 3">Update Painting</a>
+                <li class="nav-item" *ngIf="auth.isAuthenticated() && auth.getUserData().role != 'USER'">
+                    <a class="nav-link" (click)="navigateTo('/page/upload-paint', 3)" [class.active]="setEl === 3">Upload Painting</a>
                 </li>
                 <li *ngIf="!auth.isAuthenticated()" class="nav-item">
                     <a class="nav-link" (click)="navigateTo('/auth/login', 4)" [class.active]="setEl === 4">Login</a>
                 </li>
-                <li  class="nav-item painter-btn">
+                <li  class="nav-item painter-btn" *ngIf="auth.isAuthenticated() && auth.getUserData().role == 'USER'">
                     <a (click)="navigateTo('/auth/sign-in', 4)" class="nav-link painter" >Join As Painter</a>
                 </li>
             </ul>

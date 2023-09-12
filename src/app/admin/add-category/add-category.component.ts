@@ -9,6 +9,7 @@ import { FunctionService } from 'src/app/core/services/function.service';
   templateUrl: './add-category.component.html',
   styleUrls: ['./add-category.component.scss']
 })
+
 export class AddCategoryComponent implements OnInit {
 
   addCateForm!: FormGroup;

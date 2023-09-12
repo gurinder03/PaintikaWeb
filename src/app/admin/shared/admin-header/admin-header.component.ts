@@ -13,6 +13,7 @@ export class AdminHeaderComponent {
   constructor(
     public router: Router,
     public auth: AuthencationService,
+    
   ){}
 
   userLogout(){
@@ -21,9 +22,6 @@ export class AdminHeaderComponent {
 
   navigateTo(route: string, ev:any) {
     this.setEl = ev;
-    debugger
-    console.log('this.setEl => ', this.setEl);
-    
     this.router.navigate([route]);
   }
  

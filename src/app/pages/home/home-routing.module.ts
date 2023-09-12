@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { DeliveryAddressComponent } from './delivery-address/delivery-address.component';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
@@ -14,10 +13,6 @@ const routes: Routes = [
   {
     path: '',   
     children:[
-      {
-        path: 'dashboard',
-        component: DashboardComponent
-      },
       {
         path: 'delivery-address',
         component: DeliveryAddressComponent

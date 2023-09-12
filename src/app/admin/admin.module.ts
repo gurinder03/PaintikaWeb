@@ -14,6 +14,8 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatSortModule } from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator'; 
+
+
 @NgModule({
   declarations: [
     CategoryListComponent,
@@ -33,7 +35,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     FormsModule,
     MatCardModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+ 
   ]
 })
 export class AdminModule { 

@@ -1,28 +1,36 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { CanLoad, Route, Router, UrlSegment, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthencationService } from '../auth/authencation.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class AdminGuard implements CanActivate {
-  
-  constructor(
-    private auth: AuthencationService, 
-    private router: Router
-  ){
-    
-  }
+export class AdminGuard implements CanLoad {
+  constructor(private auth: AuthencationService, private router: Router) {}
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.auth.isAuthenticated()) {
+  canLoad(
+    route: Route,
+    segments: UrlSegment[]
+  ):
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree>
+    | boolean
+    | UrlTree {
+    let user = this.auth.getUserData();
+    debugger;
+    if (this.auth.isAuthenticated() && user.role == 'ADMIN') {
       this.router.navigate(['/admin/user-list']);
+      return false;
+    }
+    if (this.auth.isAuthenticated() && user.role == 'USER') {
+      this.router.navigate(['/dashboard']);
+      return false;
+    }
+    if (this.auth.isAuthenticated() && user.role == 'ARTIST') {
+      this.router.navigate(['/page/upload-paint']);
       return false;
     }
     return true;
   }
-  
 }

@@ -24,6 +24,18 @@
                     Password must be at least 6 characters long.
                 </mat-error>
             </mat-form-field>
+            <mat-form-field class="full-w">
+                <mat-label>Select User Type</mat-label>
+                <mat-select formControlName="role" name="food">
+                  <mat-option>None</mat-option>
+                  <mat-option *ngFor="let type of userTyppes" [value]="type.role">
+                    {{type.name}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="loginForm.controls['role'].hasError('required')">
+                    User Type is required.
+                </mat-error>
+            </mat-form-field>
             <div class="forgot-password mb-3 animate__animated animate__fadeInLeft">
                 <a [routerLink]="['/auth/forgot']" class="forgt-pswrd">Forgot Your Password ?
                     <mat-icon svgIcon="password_reset" class="arrow-icon">

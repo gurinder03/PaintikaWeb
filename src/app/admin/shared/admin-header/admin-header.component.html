@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark" *ngIf="auth.isAuthenticated() && !auth.checkUserOrAdmin()">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
             <span class="navbar-toggler-icon"></span>
@@ -8,10 +8,10 @@
                 <li class="nav-item">
                     <a (click)="navigateTo('/admin/category-list', 1)" [class.active]="setEl === 1" class="nav-link" >Category-List</a>
                 </li>
-                <li class="nav-item" >
+                <li class="nav-item">
                     <a (click)="navigateTo('/admin/order-list', 2)" [class.active]="setEl === 2" class="nav-link" >Order-List</a>
                 </li>
-                <li class="nav-item" >
+                <li class="nav-item">
                     <a (click)="navigateTo('/admin/user-list', 3)" [class.active]="setEl === 3" class="nav-link">User-List</a>
                 </li>
                 <li  class="nav-item">

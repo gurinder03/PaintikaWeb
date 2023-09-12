@@ -26,6 +26,7 @@ export class AdminApiService {
 
 
   getAdminCateList(data:any){
+    debugger
     return new Promise((resolve, reject) => {
       const success = (value:any) => {
         if (value) {

@@ -10,13 +10,14 @@ import { FunctionService } from 'src/app/core/services/function.service';
 })
 export class HeaderComponent {
 
-  setEl = 1
+  setEl = 1;
+  userData: any = {}
   constructor(
     public auth: AuthencationService,
     private router: Router,
     public fun: FunctionService
   ){
-    
+    this.userData = this.auth.getUserData()
   }
   userLogout(){
     this.auth.logout()
@@ -24,9 +25,10 @@ export class HeaderComponent {
 
   navigateTo(route: string, ev:any) {
     this.setEl = ev;
-    debugger
-    console.log('this.setEl => ', this.setEl);
-    
     this.router.navigate([route]);
+    if(ev === 4){
+      this.auth.logout()
+      this.router.navigate([route]);
+    }
   }
 }

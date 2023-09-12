@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
 import { PaymentOptionsComponent } from './payment-options/payment-options.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
@@ -28,7 +27,6 @@ import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
-    DashboardComponent,
     OrderSummaryComponent,
     PaymentOptionsComponent,
     ProductDetailComponent,
