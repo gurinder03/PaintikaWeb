@@ -3,7 +3,7 @@
     
     <form>
       <div class="search-field">
-        <input type="search" placeholder="Search paintings or painter...">
+        <input type="search" matInput (keyup)="applyFilter($event)" placeholder="Search paintings or painter...">
         <button type="submit">Search</button>
       </div>
     </form>
@@ -35,10 +35,10 @@
       </ng-container>
     </div>
   </div>
-  <mat-paginator #paginator [length]="data.length"
-              [pageSize]="pagesData.pageSize"
+  <mat-paginator #paginator [length]="length"
+              [pageSize]="pageSize"
               [pageSizeOptions]="[5, 10, 25, 100]"
-              aria-label="Select page" (page)="onPageFired($event)" multiTemplateDataRows>
+              aria-label="Select page" (page)="getData($event)" showFirstLastButtons>
 </mat-paginator>
 
 </div>

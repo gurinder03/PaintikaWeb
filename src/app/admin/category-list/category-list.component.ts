@@ -1,12 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import jsonData from '../../core/jsonDummyData/cateList.json';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { AdminApiService } from 'src/app/core/services/admin-api.service';
 import { ToastrService } from 'ngx-toastr';
 import { NavigationRouteService } from 'src/app/core/services/navigation-route.service';
-import { MatPaginator } from '@angular/material/paginator';
-import { ActivatedRoute } from '@angular/router';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-category-list',
@@ -15,107 +13,23 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CategoryListComponent implements OnInit {
 
-  EmpData = [
-    {
-      serialNo: 1,
-      name: '',
-      image: '',
-      createdAt: '',
-      name_slug: '',
-      status: '',
-    },
-    {
-      serialNo: 2,
-      name: '',
-      image: '',
-      createdAt: '',
-      name_slug: '',
-      status: '',
-    },
-    {
-      serialNo: 3,
-      name: '',
-      image: '',
-      createdAt: '',
-      name_slug: '',
-      status: '',
-    },
-    {
-      serialNo: 4,
-      name: '',
-      image: '',
-      createdAt: '',
-      name_slug: '',
-      status: '',
-    },
-    {
-      serialNo: 5,
-      name: '',
-      image: "",
-      createdAt: '',
-      name_slug: '',
-      status: '',
-    },
-    {
-      serialNo: 6,
-      name: '',
-      image: '',
-      createdAt: '',
-      name_slug: '',
-      status: '',
-    },
-    {
-      serialNo: 7,
-      name: '',
-      image: '',
-      createdAt: '',
-      name_slug: '',
-      status: '',
-    },
-    {
-      serialNo: 8,
-      name: '',
-      image: '',
-      createdAt: '',
-      name_slug: '',
-      status: '',
-    },
-    {
-      serialNo: 9,
-      name: '',
-      image: '',
-      createdAt: '',
-      name_slug: '',
-      status: '',
-    },
-    {
-      serialNo: 10,
-      name: '',
-      image: '',
-      createdAt: '',
-      name_slug: '',
-      status: '',
-    },
-  ];
-
-  
+  pageIndex: number = 1;
+	pageSize: number = 10;
+	length: number = 10;
+  categoryList: any = []
+  displayedColumns: string[] = ['serialNo', 'name','image', 'createdAt', 'name_slug', 'status', 'button'];
 
   constructor(
     public adminApi: AdminApiService,
     public toast: ToastrService,
     public navCtrl: NavigationRouteService,
   ){
-    this.getCategoryList();
   }
 
-  dataSource = new MatTableDataSource(this.EmpData);
-  dataSourceWithPageSize = new MatTableDataSource(this.EmpData);
+  dataSource = new MatTableDataSource<any>();
 
   @ViewChild('empTbSort') empTbSort = new MatSort();
-  @ViewChild('paginator') paginator!: MatPaginator;
 
-  displayedColumns: string[] = ['serialNo', 'name','image', 'createdAt', 'name_slug', 'status', 'button'];
-  // dataSource = new MatTableDataSource();
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -124,14 +38,14 @@ export class CategoryListComponent implements OnInit {
 
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.getCategoryList()
+    this.getData()
     this.empTbSort.disableClear = true;
     this.dataSource.sort = this.empTbSort;
   }
 
 
   ngOnInit(): void {
+    this.getData();
   }
 
   updateCate(data:any){
@@ -139,39 +53,50 @@ export class CategoryListComponent implements OnInit {
     this.navCtrl.goTo('/admin/add-category')
   }
 
-  
-  getCategoryList(){
-    let data = {
-      "page": 1,
-      "limit": 10
-    }
-    console.log('data => ', data);
-    this.adminApi.getAdminCateList(data).then((res:any) =>{
+  createCategory(){
+    localStorage.removeItem('cate_id')
+    this.navCtrl.goTo('/admin/add-category')
+  }
+
+  getData(event?: PageEvent) {
+    this.pageIndex = event?.pageIndex ?? 0;
+		this.pageSize = event?.pageSize ?? 10;
+    let pageSize = event?.pageSize ?? 10;
+		let pageNumber = event?.pageIndex ? event.pageIndex + 1 : 1;
+
+    let resData = {
+			page: pageNumber,
+			limit: pageSize,
+		};
+
+    this.adminApi.getAdminCateList(resData).then((res:any) =>{
       if (res && res.statusCode === 200) {
         res.data.forEach((item:any, index:any) => {
           item.serialNumber = index + 1;
         });
         this.dataSource = new MatTableDataSource(res.data);
-        // this.dataSource.paginator = this.paginator;
         this.empTbSort.disableClear = true;
+        this.length = res.total;
         this.dataSource.sort = this.empTbSort;
-        console.log('res.data => ', res.data);
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
       } else {
         console.log('Something went wrong');
-        // this.toast.error('Something went wrong');
       }
     })
   }
 
-  createCategory(){
-    this.navCtrl.goTo('/admin/add-category')
+  removeCategory(data:any){
+    debugger
+    this.adminApi.removeCategory(data._id).then((res:any)=>{
+      if (res && res.statusCode === 200) {
+        this.getData()
+        this.toast.success(res.message);
+      } else if (res.statusCode === 500) {
+        this.toast.error(res.message);
+      } else {
+        console.log('Something went wrong');
+      }
+    })
   }
-
-  pageChanged(event: any) {
-    this.paginator.pageIndex = event.pageIndex;
-    this.getCategoryList()
-  }
-
 }

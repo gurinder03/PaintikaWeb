@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ToastrService } from 'ngx-toastr';
 import { AuthencationService } from 'src/app/core/auth/authencation.service';
@@ -13,6 +14,9 @@ import { NavigationRouteService } from 'src/app/core/services/navigation-route.s
 
 export class DashboardComponent implements OnInit {
 
+  pageIndex: number = 1;
+	pageSize: number = 10;
+	length: number = 10;
   pagesData:any = {}
   customOptions: OwlOptions = {
     loop: true,
@@ -53,18 +57,36 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dataList()
+    this.getData()
   }
 
-  dataList(){
+  applyFilter(event: Event){
     debugger
-    let data = {
-      "page": this.pagesData && this.pagesData.pageIndex ? this.pagesData.pageIndex + 1: 1,
-      "limit": this.pagesData && this.pagesData.pageSize ? this.pagesData.pageSize: 10,
-    }
-    this.api.productList(data).then((res: any) => {
+    this.getData()
+    const filterValue = (event.target as HTMLInputElement).value;
+    let filter = filterValue.trim().toLowerCase();
+    let filteredData = this.data.filter((item: any) => {
+      return item.name.toLowerCase().includes(filter);
+    });
+    this.data = filteredData;
+    debugger
+  }
+
+  getData(ele?: PageEvent){
+    this.pagesData = ele;
+    this.pageIndex = ele?.pageIndex ?? 0;
+		this.pageSize = ele?.pageSize ?? 10;
+
+		let pageSize = ele?.pageSize ?? 10;
+		let pageNumber = ele?.pageIndex ? ele.pageIndex + 1 : 1;
+    let resData = {
+			page: pageNumber,
+			limit: pageSize,
+		};
+    this.api.productList(resData).then((res: any) => {
       if (res && res.statusCode === 200) {
         this.data = res.data;
+        this.length = res.total;
         console.log('this.data => ', this.data);
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
@@ -72,23 +94,6 @@ export class DashboardComponent implements OnInit {
         this.toast.error('Something went wrong');
       }
     });
-  }
-
-  // getProduct(data:any){
-  //   if(this.auth.isAuthenticated()){
-  //     console.log('data', data);
-  //     this.navCtrl.goTo(`/page/add-to-cart/${data?._id}`)
-  //   }else{
-  //     console.log('as', data);
-  //     this.fun.confirmBox('', 'Before Procceed you need to login', '/auth/login', 'Ok', 'Cancel')
-  //   }
-    
-  // }
-
-  onPageFired(ele:any){
-    this.pagesData = ele;
-    this.dataList();
-    debugger
   }
 
   getMore(product:any){

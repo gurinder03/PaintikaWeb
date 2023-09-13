@@ -26,7 +26,6 @@ export class AdminApiService {
 
 
   getAdminCateList(data:any){
-    debugger
     return new Promise((resolve, reject) => {
       const success = (value:any) => {
         if (value) {
@@ -66,4 +65,19 @@ export class AdminApiService {
       this.request.send("singleViewCategory",{id}, success, null, true);
     });
   }
+
+  async removeCategory(id: number) {
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value)
+        } else {
+          reject(value.statusText)
+        }
+      };
+      this.request.send("removeCategory", id, success, null, true);
+    });
+  }
+
 }
+

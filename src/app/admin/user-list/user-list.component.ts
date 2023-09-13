@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import jsonData from '../../core/jsonDummyData/userlist.json';
 import { MatSort } from '@angular/material/sort';
 import { AdminApiService } from 'src/app/core/services/admin-api.service';
 import { ToastrService } from 'ngx-toastr';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { AuthencationService } from 'src/app/core/auth/authencation.service';
 
 @Component({
@@ -15,6 +14,9 @@ import { AuthencationService } from 'src/app/core/auth/authencation.service';
 export class UserListComponent implements OnInit {
 
   allData: any = []
+  pageIndex: number = 1;
+	pageSize: number = 10;
+	length: number = 10;
   @ViewChild('empTbSort') empTbSort = new MatSort();
   @ViewChild('paginator') paginator!: MatPaginator;
   
@@ -25,57 +27,52 @@ export class UserListComponent implements OnInit {
   ){ }
   
   displayedColumns: string[] = ['serailNo', 'name', 'email_or_mobile_number','role','createdAt','profile_image','button'];
-  dataSource = new MatTableDataSource();
+  dataSource = new MatTableDataSource<any>();
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   
-  setEvent:any = {};
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
-    console.log('paginator => ', this.dataSource.paginator);
     if(this.auth.isAuthenticated()){
-      this.getUsers()
+      this.getData()
     }
   }
 
-  getUsers(){
-    let data = {
-      "page":this.setEvent && this.setEvent.pageIndex ? this.setEvent.pageIndex + 1 : 1,
-      "limit": this.setEvent && this.setEvent.pageSize ? this.setEvent.pageSize : 10,
-      "role":"USER"
-    }
-    debugger
-    this.adminApi.getAllUser(data).then((res:any) =>{
+  ngAfterViewInit() {
+    this.getData();
+		this.dataSource.sort = this.empTbSort;
+	}
+
+  getData(event?: PageEvent) {
+    this.dataSource = new MatTableDataSource(this.allData);
+		this.pageIndex = event?.pageIndex ?? 0;
+		this.pageSize = event?.pageSize ?? 10;
+    let pageSize = event?.pageSize ?? 10;
+		let pageNumber = event?.pageIndex ? event.pageIndex + 1 : 1;
+
+    let resData = {
+			page: pageNumber,
+			limit: pageSize,
+      role: "USER"
+		};
+
+    this.adminApi.getAllUser(resData).then((res:any) =>{
       if (res && res.statusCode === 200) {
         res.data.forEach((item:any, index:any) => {
           item.serialNumber = index + 1;
         });
         this.allData = res.data
-        this.dataSource = new MatTableDataSource(res.data)
-        this.dataSource.data = res.data
-        this.dataSource.paginator = this.paginator;
+        this.length = res.total;
+        this.dataSource = new MatTableDataSource(this.allData);
         this.empTbSort.disableClear = true;
         this.dataSource.sort = this.empTbSort;
-        console.log('res.data => ', res.data);
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
       } else {
         this.toast.error('Something went wrong');
       }
     })
-  }
-
-  ngAfterViewInit() {
-		this.empTbSort.disableClear = true;
-		this.dataSource.sort = this.empTbSort;
-	}
-
-  pageChanged(event: any) {debugger
-    this.paginator.pageIndex = event.pageIndex;
-    this.setEvent = event
-    this.getUsers();
   }
 }

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AdminApiService } from 'src/app/core/services/admin-api.service';
 import { FunctionService } from 'src/app/core/services/function.service';
+import { NavigationRouteService } from 'src/app/core/services/navigation-route.service';
 
 @Component({
   selector: 'app-add-category',
@@ -20,12 +21,15 @@ export class AddCategoryComponent implements OnInit {
     public adminApi: AdminApiService,
     public fb: FormBuilder,
     private fun: FunctionService,
-    private toast: ToastrService
+    private toast: ToastrService,
+    public navCtrl: NavigationRouteService
   ){}
 
 
   ngOnInit(): void {
-    this.getSingleCategory(localStorage.getItem('cate_id'))
+    if(localStorage.getItem('cate_id')){
+      this.getSingleCategory(localStorage.getItem('cate_id'))
+    }
     this.formData()
   }
 
@@ -79,6 +83,7 @@ export class AddCategoryComponent implements OnInit {
   }
 
   setDataValue(data:any){
+    debugger
     this.addCateForm.patchValue({ name: data.name });
     this.addCateForm.patchValue({ creator_id: data.creator_id });
     this.addCateForm.patchValue({ role: data.role });
@@ -96,6 +101,11 @@ export class AddCategoryComponent implements OnInit {
         this.url = event.target.result;
       }
     }
+  }
+
+  cancel(){
+    localStorage.removeItem('cate_id')
+    this.navCtrl.goTo('/admin/category-list')
   }
 
   

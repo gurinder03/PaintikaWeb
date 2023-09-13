@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ToastrService } from 'ngx-toastr';
+import { AuthencationService } from 'src/app/core/auth/authencation.service';
+import { ApiService } from 'src/app/core/services/api.service';
 import { NavigationRouteService } from 'src/app/core/services/navigation-route.service';
 
 @Component({
@@ -11,29 +12,32 @@ import { NavigationRouteService } from 'src/app/core/services/navigation-route.s
  
 })
 export class ProfileComponent implements OnInit {
+  
   profileForm!: FormGroup;
-  expForm: Array<FormGroup>= [];
+  userData: any = {};
   constructor(
     private fb: FormBuilder,
     public navCtrl: NavigationRouteService,
-    public toast: ToastrService
+    public toast: ToastrService,
+    public api: ApiService,
+    public auth: AuthencationService
   ){}
 
   ngOnInit(): void {
       this.formData()
-      this.formData2()
+      this.getUserProfile();
   } 
 
   formData(){
     this.profileForm = this.fb.group({
-      email: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}')]],
+      email_or_mobile_number: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}')]],
       name: ['', [Validators.required]],
       surname: ['', [Validators.required]],
       mobile_number: ['', [Validators.required, Validators.minLength(6)]],
-      age: ['', [Validators.required]],
+      dob: ['', [Validators.required]],
       address: ['', [Validators.required]],
       gender: ['1', [Validators.required]],
-      qualification: ['', [Validators.required]],
+      qualifications: ['', [Validators.required]],
       country: ['', [Validators.required]],
       state: ['', [Validators.required]],
       professional: ['', [Validators.required]],
@@ -43,18 +47,34 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-
-  formData2(){
-    this.expForm.push(
-      this.fb.group({
-        additional_detail: ['', []],
-        experience: ['', []]
-      })
-    )
+  pacthValue(data:any){
+    this.profileForm.patchValue({ name: data.name });
+    this.profileForm.patchValue({ email_or_mobile_number: data.email_or_mobile_number });
+    this.profileForm.patchValue({ surname: data.surname });
+    this.profileForm.patchValue({ mobile_number: data.mobile_number });
+    this.profileForm.patchValue({ dob: data.dob });
+    this.profileForm.patchValue({ address: data.address });
+    this.profileForm.patchValue({ gender: data.gender });
+    this.profileForm.patchValue({ qualifications: data.qualifications });
+    this.profileForm.patchValue({ country: data.country });
+    this.profileForm.patchValue({ state: data.state });
+    this.profileForm.patchValue({ professional: data.professional });
+    this.profileForm.patchValue({ freelancer: data.freelancer });
+    this.profileForm.patchValue({ experience: data.experience });
+    this.profileForm.patchValue({ additional_detail: data.additional_detail });
   }
 
-  addExp() {
-    this.formData2();
+  getUserProfile(){
+    this.api.getSingleUser(this.auth.getUserData()._id).then((res:any)=>{
+      if (res && res.statusCode === 200) {
+        this.userData = res.data;
+        this.pacthValue(res.data);
+      } else if (res.statusCode === 500) {
+        this.toast.error(res.message);
+      } else {
+        this.toast.error('Something went wrong');
+      }
+    })
   }
 
   onSubmit() {

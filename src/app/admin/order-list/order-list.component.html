@@ -45,10 +45,10 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
-      <mat-paginator [length]="100" class="mt-1"
-                [pageSize]="10"
+      <mat-paginator [length]="length" class="mt-1"
+                [pageSize]="pageSize"
                 [pageSizeOptions]="[5, 10, 25, 100]"
-                aria-label="Select page">
+                aria-label="Select page" #paginator (page)="getData($event)" showFirstLastButtons>
   </mat-paginator>
 </div>
 <div>

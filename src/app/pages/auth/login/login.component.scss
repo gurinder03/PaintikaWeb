@@ -22,6 +22,7 @@ body{
 .container .form{
   padding: 2rem;
   padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 .login{
   background:#f0f0f0 ;}
@@ -44,6 +45,7 @@ button.login-btn {
   color: #ffffff;
   background: #000000;
   font-size: 18px;
+  margin-bottom: 4px !important;
 }
 .form input{
     //  height: 40px;
@@ -124,6 +126,14 @@ span.facebook-icon{
 }
 .full-w{
   width: 100% !important;
+}
+.mat-mdc-option.mdc-list-item {
+  align-items: center;
+  padding-left: 17px;
+  padding-right: 13px;
+}
+.mat-mdc-text-field-wrapper {
+  height: 50px;
 }
 @media screen and (max-width:1300px){
 

@@ -1,6 +1,6 @@
 <div class="container" style="background-color: #f0f0f0 !important;">
     <mat-card class="login form">
-        <mat-card-title class="login-heading mb-4 text-center animate__animated animate__fadeInRight">
+        <mat-card-title class="login-heading mb-2 text-center animate__animated animate__fadeInRight">
             Login
         </mat-card-title>
         <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
@@ -45,10 +45,10 @@
             </div>
             <button type="submit" mat-raised-button color="primary" class="login-btn mb-3 animate__animated animate__fadeInRight">Login</button>
         </form>
-        <div class="have-account animate__animated animate__fadeInLeft">
+        <div class="have-account animate__animated animate__fadeInLeft mt-2">
             <span> Don't have an account ? <a (click)="goToSignUp()">Sign Up</a></span>
         </div>
-        <div class="social-account animate__animated animate__fadeInRight">
+        <!-- <div class="social-account animate__animated animate__fadeInRight">
             <span>
                 Or login with social account
             </span>
@@ -68,6 +68,6 @@
                     </mat-icon>
                 </span>
             </div>
-        </div>
+        </div> -->
     </mat-card>
 </div>

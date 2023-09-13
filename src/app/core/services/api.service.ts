@@ -125,5 +125,18 @@ export class ApiService implements OnInit {
       this.request.send('removeToCart', data, success, null, true);
     });
   }
+
+  async getSingleUser(id: number) {
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value)
+        } else {
+          reject(value.statusText)
+        }
+      };
+      this.request.send("getSingleUser",{id}, success, null, true);
+    });
+  }
  
 }

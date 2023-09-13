@@ -36,7 +36,6 @@ export class AuthInterceptor implements HttpInterceptor {
     ): Observable<HttpEvent<any>> {
         return from(Promise.resolve(localStorage.getItem('token'))).pipe(
             switchMap((token) => {
-                console.log('token => ', token);
                 // eslint-disable-next-line max-len
                 const headers = req.headers.set('token', `Bearer ${token}`);
                 const requestClone = req.clone({ headers });

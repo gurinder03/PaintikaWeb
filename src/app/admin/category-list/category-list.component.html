@@ -49,13 +49,13 @@
       <th *matHeaderCellDef mat-header-cell mat-sort-header>Action</th>
       <td *matCellDef="let element" mat-cell>
         <button type="button" (click)="updateCate(element)" class="update-btn">Update</button>
-        <button type="button" class="delete-btn">Delete</button>
+        <button type="button" (click)="removeCategory(element)" class="delete-btn">Delete</button>
       </td>
   </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let emprow; columns: displayedColumns"></tr>
   </table>
-  <mat-paginator #paginator [pageSizeOptions]="[5, 10, 25, 100]" (page)="pageChanged($event)" showFirstLastButtons></mat-paginator>
+  <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]" (page)="getData($event)" showFirstLastButtons></mat-paginator>
 </div>
 
 <div>

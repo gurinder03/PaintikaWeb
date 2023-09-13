@@ -68,6 +68,11 @@ const api = {
             url: '/art/add',
             responseInterface: []
         },
+        getSingleUser: {
+            requestType: 'get',
+            url: '/user/view/{{id}}',
+            responseInterface: []
+        },
         // Call All admin api's
         userList: {
             requestType: 'post',
@@ -87,6 +92,11 @@ const api = {
         singleViewCategory: {
             requestType: 'get',
             url: '/category/view/{{id}}',
+            responseInterface: []
+        },
+        removeCategory: {
+            requestType: 'delete',
+            url: '/category/remove/{{id}}',
             responseInterface: []
         }
     },
