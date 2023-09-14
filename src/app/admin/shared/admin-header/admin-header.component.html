@@ -3,6 +3,9 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <a class="navbar-brand" href="javascript:void()">
+            <img src="./assets/images/Paintika.jpg" alt="Logo"  height="50" width="90">
+        </a>
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
@@ -20,6 +23,9 @@
                 
             </ul>
             <form class="d-flex">
+                <div class="login-name">
+                    <p>Welcome <span>Admin</span></p>
+                </div>
                 <ng-container *ngIf="auth.isAuthenticated()">
                     <button (click)="userLogout()" class="btn logout-button" type="button">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">

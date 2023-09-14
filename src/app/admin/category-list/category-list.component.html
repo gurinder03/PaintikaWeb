@@ -55,7 +55,7 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let emprow; columns: displayedColumns"></tr>
   </table>
-  <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]" (page)="getData($event)" showFirstLastButtons></mat-paginator>
+  <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]" (page)="getData($event)" showFirstLastButtons  class="mt-1"></mat-paginator>
 </div>
 
 <div>

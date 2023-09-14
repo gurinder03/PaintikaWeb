@@ -70,7 +70,8 @@ export class AddToCartComponent implements OnInit{
     this.options.amount = 1000;
     this.options.prefill.name = "Sk Test";
     this.options.prefill.email = "sk@gmail.com";
-    this.options.prefill.contact = "8755221144";
+    // this.options.prefill.contact = "8755221144";
+    this.options.prefill.contact = "9200020095";
     var rzp1 = new Razorpay(this.options)
     rzp1.open();
     rzp1.on('payment.failed', (response:any) =>{

@@ -77,10 +77,10 @@
                                 <mat-radio-button value="2">Female</mat-radio-button>
                             </mat-radio-group>
                             <div *ngIf="profileForm.controls['gender'].invalid && (profileForm.controls['gender'].dirty || profileForm.controls['gender'].touched)"
-                class="alert alert-danger" required>
-                            <mat-error *ngIf="profileForm.controls['gender'].errors?.['required']">
-                                Gender is required.
-                            </mat-error>
+                            class="alert " required>
+                                <mat-error *ngIf="profileForm.controls['gender'].errors?.['required']">
+                                    Gender is required.
+                                </mat-error>
                             </div>
                         </div>
                         <div class="col-md-6 mt-2 animate__animated animate__fadeInUpBig">
@@ -134,12 +134,16 @@
                             freelancer :
                         </label>
                         <br>
-                        <mat-checkbox formControlName="professional" id="professional"></mat-checkbox>
+                        <mat-radio-group aria-label="Select an option">
+                            <mat-radio-button value="1">Professional</mat-radio-button>
+                            <mat-radio-button value="2">Freelancer</mat-radio-button>
+                          </mat-radio-group>
+                        <!-- <mat-checkbox formControlName="professional" id="professional"></mat-checkbox>
                         <label for="professional" class="labels">
                             Professional
                         </label>
                         <mat-checkbox formControlName="freelancer" id="freelancer"></mat-checkbox>
-                        <label for="freelancer" class="labels">Freelancer</label>
+                        <label for="freelancer" class="labels">Freelancer</label> -->
                         <br>
                     </div>
                 </div>

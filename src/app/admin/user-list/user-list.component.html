@@ -47,6 +47,7 @@
         <th *matHeaderCellDef mat-header-cell>Action</th>
         <td *matCellDef="let element" mat-cell>
           <button type="button" class="block-btn">Block</button>
+          <button type="button" class="unblock-btn">Unblock</button>
         
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -55,7 +56,7 @@
     <mat-paginator [length]="length"
     [pageSize]="pageSize"
     [pageSizeOptions]="[5, 10, 25, 100]"
-    aria-label="Select page" (page)="getData($event)" #paginator showFirstLastButtons>
+    aria-label="Select page" (page)="getData($event)" #paginator showFirstLastButtons  class="mt-1">
     </mat-paginator>
 </div>
 <div>
