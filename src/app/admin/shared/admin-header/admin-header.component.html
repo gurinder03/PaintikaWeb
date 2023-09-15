@@ -23,8 +23,8 @@
                 
             </ul>
             <form class="d-flex">
-                <div class="login-name">
-                    <p>Welcome <span>Admin</span></p>
+                <div class="login-name" *ngIf="auth.getUserData() && auth.getUserData().name">
+                    <p>Welcome <span style="text-transform: capitalize;">{{auth.getUserData().name}}</span></p>
                 </div>
                 <ng-container *ngIf="auth.isAuthenticated()">
                     <button (click)="userLogout()" class="btn logout-button" type="button">

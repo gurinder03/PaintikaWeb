@@ -15,6 +15,7 @@ export class ProfileComponent implements OnInit {
   
   profileForm!: FormGroup;
   userData: any = {};
+  selectedFile:any;
   constructor(
     private fb: FormBuilder,
     public navCtrl: NavigationRouteService,
@@ -32,7 +33,7 @@ export class ProfileComponent implements OnInit {
     this.profileForm = this.fb.group({
       email_or_mobile_number: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}')]],
       name: ['', [Validators.required]],
-      surname: ['', [Validators.required]],
+      surname: [''],
       mobile_number: ['', [Validators.required, Validators.minLength(6)]],
       dob: ['', [Validators.required]],
       address: ['', [Validators.required]],
@@ -40,8 +41,7 @@ export class ProfileComponent implements OnInit {
       qualifications: ['', [Validators.required]],
       country: ['', [Validators.required]],
       state: ['', [Validators.required]],
-      professional: ['', [Validators.required]],
-      freelancer: ['', [Validators.required]],
+      professionalOrfreelancer: ['2', [Validators.required]],
       experience: ['', [Validators.required]],
       additional_detail: ['', [Validators.required]]
     });
@@ -77,6 +77,16 @@ export class ProfileComponent implements OnInit {
     })
   }
 
+  onFileSelect(event:any) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (event:any) => { 
+        this.selectedFile = event.target.result;
+      }
+    }
+  }
+
   onSubmit() {
     this.profileForm.markAllAsTouched();
     console.log('this.profileForm => ', this.profileForm);
@@ -85,4 +95,6 @@ export class ProfileComponent implements OnInit {
       this.toast.error('Form is not valid')
     }
   }
+
+  
 }

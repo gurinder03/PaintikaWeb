@@ -75,7 +75,7 @@ export class AdminApiService {
           reject(value.statusText)
         }
       };
-      this.request.send("removeCategory", id, success, null, true);
+      this.request.send("removeCategory", {id}, success, null, true);
     });
   }
 

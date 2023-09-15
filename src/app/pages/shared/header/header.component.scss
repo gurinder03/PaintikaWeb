@@ -79,6 +79,9 @@ ul.navbar-nav.me-auto {
     font-weight: 500;
     margin-top: 10px;
 }
+.btn:focus{
+    box-shadow: none;
+}
 @media screen and (max-width:832px){
     ul.navbar-nav.me-auto {
         margin-left: 4%;

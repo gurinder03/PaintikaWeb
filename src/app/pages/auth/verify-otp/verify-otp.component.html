@@ -13,10 +13,10 @@
                 <mat-label class="otp-label">Please Enter OTP</mat-label>
                 <input matInput formControlName="email_or_mobile_number" placeholder="Email">
                 <mat-error *ngIf="verifyForm.controls['OTP'].hasError('required')">
-                    Email is required.
+                  OTP required.
                 </mat-error>
                 <mat-error *ngIf="verifyForm.controls['OTP'].hasError('pattern')">
-                    Email format is not valid.
+                   OTP is not valid.
                 </mat-error>
             </mat-form-field>
             <div class="resend-otp animate__animated animate__fadeInRightBig">

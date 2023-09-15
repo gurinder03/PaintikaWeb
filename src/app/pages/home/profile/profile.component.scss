@@ -72,6 +72,12 @@ span.gender-label {
 .camera-img {
     cursor: pointer !important;
 }
+.img-upload{
+    display: none;
+}
+.btn:focus{
+    box-shadow: none;
+}
 
 // .container{
 //     position: absolute;

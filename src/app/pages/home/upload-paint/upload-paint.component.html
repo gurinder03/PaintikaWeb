@@ -19,7 +19,7 @@
                     <div class="name col-md-4 col-sm-12 ">
                         <mat-form-field class="example-full-width full-w animate__animated animate__bounceInUp">
                             <mat-label>Name</mat-label>
-                            <input formControlName="name" matInput placeholder="enter name">
+                            <input style="text-transform: capitalize;" formControlName="name" matInput placeholder="enter name">
                             <mat-error *ngIf="uploadPaintForm.controls['name'].hasError('required')">
                                 Name is required.
                             </mat-error>
@@ -38,7 +38,7 @@
                 <div class="col-md-8 col-sm-12 pt-3 mx-auto">
                     <mat-form-field class="example-full-width full-w animate__animated animate__bounceInUp">
                         <mat-label>Painting Theme</mat-label>
-                        <textarea formControlName="theme" matInput></textarea>
+                        <textarea style="text-transform: capitalize;" formControlName="theme" matInput></textarea>
                         <mat-error *ngIf="uploadPaintForm.controls['theme'].hasError('required')">
                             Painting Theme is required.
                         </mat-error>
@@ -48,7 +48,7 @@
                     <div class="medium col-md-4 col-sm-12">
                         <mat-form-field class="example-full-width full-w animate__animated animate__bounceInDown">
                             <mat-label>Medium</mat-label>
-                            <input formControlName="medium" matInput>
+                            <input style="text-transform: capitalize;"  formControlName="medium" matInput>
                             <mat-error *ngIf="uploadPaintForm.controls['medium'].hasError('required')">
                                 Medium is required.
                             </mat-error>
@@ -57,7 +57,7 @@
                     <div class="framing-quality col-md-4 col-sm-12 animate__animated animate__bounceInUp">
                         <mat-form-field class="example-full-width full-w">
                             <mat-label>Framing Quality</mat-label>
-                            <input formControlName="frame_quality" matInput>
+                            <input style="text-transform: capitalize;" formControlName="frame_quality" matInput>
                             <mat-error *ngIf="uploadPaintForm.controls['frame_quality'].hasError('required')">
                                 Framing Quality is required.
                             </mat-error>
@@ -67,7 +67,7 @@
                 <div class="col-md-8 col-sm-12 pt-3 mx-auto mb-2">
                     <mat-form-field class="example-full-width full-w animate__animated animate__bounceInDown">
                         <mat-label>Price</mat-label>
-                        <input matInput formControlName="price">
+                        <input style="text-transform: capitalize;" matInput formControlName="price">
                         <mat-error *ngIf="uploadPaintForm.controls['price'].hasError('required')">
                             Price is required.
                         </mat-error>

@@ -88,6 +88,7 @@ export class CategoryListComponent implements OnInit {
 
   removeCategory(data:any){
     debugger
+    console.log('data dd=> ', data);
     this.adminApi.removeCategory(data._id).then((res:any)=>{
       if (res && res.statusCode === 200) {
         this.getData()

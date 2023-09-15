@@ -113,7 +113,7 @@ export class ProductListComponent implements OnInit {
   buyNow(id:any){
     console.log('sd ', id);
     
-    this.navCtrl.goTo(`/page/add-to-cart/${id.category}`)
+    this.navCtrl.goTo(`/page/add-to-cart`)
   }
 }
 

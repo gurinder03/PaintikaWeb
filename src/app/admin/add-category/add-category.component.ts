@@ -16,6 +16,7 @@ export class AddCategoryComponent implements OnInit {
   addCateForm!: FormGroup;
   updatedData:any;
   url:any = '';
+  setCateId:any
   setImg: any;
   constructor(
     public adminApi: AdminApiService,
@@ -27,7 +28,8 @@ export class AddCategoryComponent implements OnInit {
 
 
   ngOnInit(): void {
-    if(localStorage.getItem('cate_id')){
+    this.setCateId = localStorage.getItem('cate_id')
+    if(this.setCateId){
       this.getSingleCategory(localStorage.getItem('cate_id'))
     }
     this.formData()
@@ -53,10 +55,14 @@ export class AddCategoryComponent implements OnInit {
       dataVal.append('role', this.addCateForm.value.role);
       dataVal.append('creator_id', this.fun.getUserData._id);
       dataVal.append('status', this.addCateForm.value.status);
-      dataVal.append('image', this.setImg[0]);
+      if(this.setImg && this.setImg.length){
+        dataVal.append('image', this.setImg[0]);
+      }
       this.adminApi.addCategoryData(dataVal).then((res:any)=>{
         if (res && res.statusCode === 200) {
           console.log('res.data => ', res.data);
+          this.toast.success(res.message)
+          this.navCtrl.goTo('/admin/category-list')
         } else if (res.statusCode === 500) {
           this.toast.error(res.message);
         } else {

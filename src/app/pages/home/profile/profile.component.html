@@ -3,18 +3,23 @@
         <div class="col-md-4 border-Up animate__animated animate__fadeInUpBig">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                 <div class="image-section">
-                    <img class="rounded-circle mt-5" width="150px"
-                    src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                    <ng-container *ngIf="selectedFile">
+                        <img class="rounded-circle mt-5" width="150px" height="150px" [src]="selectedFile">
+                    </ng-container>
+                    <ng-container *ngIf="!selectedFile">
+                        <img class="rounded-circle mt-5" width="150px" height="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                    </ng-container>
                     <div class="camera-img">
-                        <a href="javascript:void()">
+                        <input class="img-upload" type="file" (change)="onFileSelect($event)" #hiddenfileinput>
+                        <button (click)="hiddenfileinput.click()"  class="waves-effect waves-light btn">
                             <svg xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 512 512">
                                 <path d="M149.1 64.8L138.7 96H64C28.7 96 0 124.7 0 160V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V160c0-35.3-28.7-64-64-64H373.3L362.9 64.8C356.4 45.2 338.1 32 317.4 32H194.6c-20.7 0-39 13.2-45.5 32.8zM256 192a96 96 0 1 1 0 192 96 96 0 1 1 0-192z"/>
                             </svg>
-                        </a>
+                        </button>
                     </div>
                 </div>
                
-                <span class="font-weight-bold">{{userData?.name}}</span>
+                <span class="font-weight-bold" style="text-transform: capitalize;">{{userData?.name}}</span>
                 <span class="text-black-50">{{userData?.email_or_mobile_number}}</span>
                 <span></span>
             </div>
@@ -28,8 +33,8 @@
                     <div class="row mt-2">
                         <div class="col-md-6">
                             <mat-form-field class="example-full-width full-w animate__animated animate__fadeInDownBig ">
-                                <mat-label>Name</mat-label>
-                                <input matInput formControlName="name" placeholder="First name" value="">
+                                <mat-label >Name</mat-label>
+                                <input matInput formControlName="name" placeholder="First name" value="" style="text-transform: capitalize;">
                                 <mat-error *ngIf="profileForm.controls['name'].errors?.['required']">
                                     Name is required.
                                 </mat-error>
@@ -38,10 +43,7 @@
                         <div class="col-md-6">
                             <mat-form-field class="example-full-width full-w animate__animated animate__fadeInUpBig">
                                 <mat-label>Surname</mat-label>
-                                <input matInput formControlName="surname" placeholder="Surname" value="">
-                                <mat-error *ngIf="profileForm.controls['surname'].errors?.['required']">
-                                    Surname is required.
-                                </mat-error>
+                                <input style="text-transform: capitalize;" matInput formControlName="surname" placeholder="Surname" value="">
                             </mat-form-field>
                         </div>
                     </div>
@@ -100,7 +102,7 @@
                         <div class="col-md-6 mt-2">
                             <mat-form-field class="example-full-width full-w animate__animated animate__fadeInDownBig">
                                 <mat-label>Qualification</mat-label>
-                                <input matInput formControlName="qualifications" placeholder="Qualification">
+                                <input style="text-transform: capitalize;" matInput formControlName="qualifications" placeholder="Qualification">
                                 <mat-error *ngIf="profileForm.controls['qualifications'].errors?.['required']">
                                     Qualification is required.
                                 </mat-error>
@@ -110,7 +112,7 @@
                         <div class="col-md-6 mt-2 animate__animated animate__fadeInUpBig">
                             <mat-form-field class="example-full-width full-w">
                                 <mat-label>Country</mat-label>
-                                <input matInput formControlName="country" placeholder="Country">
+                                <input  style="text-transform: capitalize;" matInput formControlName="country" placeholder="Country">
                                 <mat-error *ngIf="profileForm.controls['country'].errors?.['required']">
                                     Country is required.
                                 </mat-error>
@@ -122,7 +124,7 @@
                     <div class="col-md-6 mt-2 animate__animated animate__fadeInDownBig">
                         <mat-form-field class="example-full-width full-w">
                             <mat-label>State/Region</mat-label>
-                            <input matInput formControlName="state" placeholder="State" value="">
+                            <input style="text-transform: capitalize;" matInput formControlName="state" placeholder="State" value="">
                             <mat-error *ngIf="profileForm.controls['state'].errors?.['required']">
                                 State is required.
                             </mat-error>
@@ -134,20 +136,14 @@
                             freelancer :
                         </label>
                         <br>
-                        <mat-radio-group aria-label="Select an option">
+                        <mat-radio-group aria-label="Select an option" formControlName="professionalOrfreelancer">
                             <mat-radio-button value="1">Professional</mat-radio-button>
                             <mat-radio-button value="2">Freelancer</mat-radio-button>
-                          </mat-radio-group>
-                        <!-- <mat-checkbox formControlName="professional" id="professional"></mat-checkbox>
-                        <label for="professional" class="labels">
-                            Professional
-                        </label>
-                        <mat-checkbox formControlName="freelancer" id="freelancer"></mat-checkbox>
-                        <label for="freelancer" class="labels">Freelancer</label> -->
+                          </mat-radio-group>                      
                         <br>
                     </div>
                 </div>
-                <div class="p-3 py-3 animate__animated animate__fadeInUpBig">
+                <div *ngIf="profileForm && profileForm.value && profileForm.value.professionalOrfreelancer == '1'" class="p-3 py-3 animate__animated animate__fadeInUpBig">
                     <div class="text-center">
                         <span class="exprnc-hdng">Edit Experience</span>
                     </div>
@@ -175,7 +171,7 @@
                 <div class="col-md-12 mt-2 p-3 animate__animated animate__fadeInDownBig">
                     <mat-form-field class="example-full-width full-w">
                         <mat-label>Address</mat-label>
-                        <textarea matInput formControlName="address" placeholder="Enter address" value=""></textarea>
+                        <textarea style="text-transform: capitalize;"  matInput formControlName="address" placeholder="Enter address" value=""></textarea>
                         <mat-error *ngIf="profileForm.controls['address'].errors?.['required']">
                             Address is required.
                         </mat-error>
