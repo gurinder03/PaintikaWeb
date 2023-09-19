@@ -26,7 +26,7 @@ export class HeaderComponent {
   navigateTo(route: string, ev:any) {
     this.setEl = ev;
     this.router.navigate([route]);
-    if(ev === 4){
+    if(ev === 6){
       this.auth.logout()
       this.router.navigate([route]);
     }

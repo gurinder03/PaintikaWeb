@@ -70,4 +70,8 @@ export class LoginComponent implements OnInit {
       this.toast.error(err)
     });
   }
+
+  googleLogin(){
+    console.log('Google Login');
+  }
 }

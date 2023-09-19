@@ -22,8 +22,11 @@
                 <li *ngIf="!auth.isAuthenticated()" class="nav-item">
                     <a class="nav-link" (click)="navigateTo('/auth/login', 4)" [class.active]="setEl === 4">Login</a>
                 </li>
+                <li *ngIf="auth.isAuthenticated() && auth.getUserData().role == 'USER'" class="nav-item">
+                    <a class="nav-link" (click)="navigateTo('/page/requirment-paint', 5)" [class.active]="setEl === 5">Requirment Painting</a>
+                </li>
                 <li  class="nav-item painter-btn" *ngIf="auth.isAuthenticated() && auth.getUserData().role == 'USER'">
-                    <a (click)="navigateTo('/auth/sign-in', 4)" class="nav-link painter" >Join As Painter</a>
+                    <a (click)="navigateTo('/auth/sign-in', 6)" class="nav-link painter" >Join As Painter</a>
                 </li>
             </ul>
             <form class="d-flex">

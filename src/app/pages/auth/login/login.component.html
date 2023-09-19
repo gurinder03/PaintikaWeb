@@ -60,13 +60,13 @@
                         </a>
                     </mat-icon>
                 </span>               
-                <!-- <span class="google-icon ">
+                <span class="google-icon ">
                     <mat-icon svgIcon="google animate__animated animate__fadeInRight">
-                        <a href="javscript:void()">
+                        <a href="javascript:void(0);" (click)="googleLogin()">
                             <img src="./assets/images/google-icon.png">
                         </a>
                     </mat-icon>
-                </span> -->
+                </span>
             </div>
             <br>
             <img class="profile-set" [src]="fbUser?.response?.picture?.data?.url">
