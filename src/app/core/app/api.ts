@@ -73,6 +73,11 @@ const api = {
             url: '/user/view/{{id}}',
             responseInterface: []
         },
+        updateUser: {
+            requestType: 'put',
+            url: '/user/update/{{id}}',
+            responseInterface: []
+        },
         // Call All admin api's
         userList: {
             requestType: 'post',

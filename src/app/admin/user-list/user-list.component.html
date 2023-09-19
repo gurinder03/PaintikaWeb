@@ -5,6 +5,14 @@
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
   </mat-form-field>
+
+  <mat-form-field class="list-data">
+    <mat-label>Select List Type</mat-label>
+    <select matNativeControl (change)="changeUserType($event)" [(ngModel)]="listType">
+      <option value="USER">Users</option>
+      <option value="ARTIST">Artist</option>
+    </select>
+  </mat-form-field>
 </div>
 
 

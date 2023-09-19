@@ -91,6 +91,7 @@ export class ProfileComponent implements OnInit {
     this.profileForm.markAllAsTouched();
     console.log('this.profileForm => ', this.profileForm);
     if (this.profileForm.valid) {
+      // this.api.updateUserProfile()
     } else {
       this.toast.error('Form is not valid')
     }

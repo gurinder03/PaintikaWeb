@@ -48,27 +48,32 @@
         <div class="have-account animate__animated animate__fadeInLeft mt-2">
             <span> Don't have an account ? <a (click)="goToSignUp()">Sign Up</a></span>
         </div>
-        <!-- <div class="social-account animate__animated animate__fadeInRight">
+        <div class="social-account animate__animated animate__fadeInRight">
             <span>
                 Or login with social account
             </span>
             <div class="social-icons">
                 <span class="facebook-icon ">
                     <mat-icon svgIcon="facebook animate__animated animate__fadeInLeft">
-                        <a href="javscript:void()">
+                        <a href="javascript:void(0);" (click)="facebookLogin()">
                             <img src="./assets/images/facebook-icon.png">
                         </a>
                     </mat-icon>
-                </span>
-                <span class="google-icon ">
+                </span>               
+                <!-- <span class="google-icon ">
                     <mat-icon svgIcon="google animate__animated animate__fadeInRight">
                         <a href="javscript:void()">
                             <img src="./assets/images/google-icon.png">
                         </a>
                     </mat-icon>
-                </span>
+                </span> -->
             </div>
-        </div> -->
+            <br>
+            <img class="profile-set" [src]="fbUser?.response?.picture?.data?.url">
+            <br>
+            <h3>{{fbUser?.name}}</h3>
+            <h3>{{fbUser?.email}}</h3>
+        </div>
     </mat-card>
 </div>
 <div>

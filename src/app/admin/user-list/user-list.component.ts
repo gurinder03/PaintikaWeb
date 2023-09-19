@@ -13,6 +13,7 @@ import { AuthencationService } from 'src/app/core/auth/authencation.service';
 })
 export class UserListComponent implements OnInit {
 
+  listType: string = 'USER';
   allData: any = []
   pageIndex: number = 1;
 	pageSize: number = 10;
@@ -55,7 +56,7 @@ export class UserListComponent implements OnInit {
     let resData = {
 			page: pageNumber,
 			limit: pageSize,
-      role: "USER"
+      role: this.listType
 		};
 
     this.adminApi.getAllUser(resData).then((res:any) =>{
@@ -74,5 +75,10 @@ export class UserListComponent implements OnInit {
         this.toast.error('Something went wrong');
       }
     })
+  }
+
+  changeUserType(ele:any){
+    this.listType = ele.target.value;
+    this.getData();
   }
 }
