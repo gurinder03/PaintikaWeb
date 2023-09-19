@@ -77,6 +77,20 @@ export class UserListComponent implements OnInit {
     })
   }
 
+  updateStatus(status:any, data:any){
+    this.adminApi.userStatusUpdate(status, data._id).then((res:any)=>{
+      console.log('res => ', res);
+      if (res && res.statusCode === 200) {
+        this.toast.success('Status ' + res.message);
+        this.getData();
+      } else if (res.statusCode === 500) {
+        this.toast.error(res.message);
+      } else {
+        this.toast.error('Something went wrong');
+      }
+    })
+  }
+
   changeUserType(ele:any){
     this.listType = ele.target.value;
     this.getData();

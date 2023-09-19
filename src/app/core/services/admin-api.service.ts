@@ -39,6 +39,20 @@ export class AdminApiService {
     });
   }
 
+  adminArtList(data:any){
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value);
+        }
+        else {
+          reject(value.statusText);
+        }
+      };
+      this.request.send('adminArtList', data, success, null, true);
+    });
+  }
+
   addCategoryData(data:any){
     return new Promise((resolve, reject) => {
       const success = (value:any) => {
@@ -76,6 +90,19 @@ export class AdminApiService {
         }
       };
       this.request.send("removeCategory", {id}, success, null, true);
+    });
+  }
+
+  async userStatusUpdate(status: any, id:any) {
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value)
+        } else {
+          reject(value.statusText)
+        }
+      };
+      this.request.send("userStatusUpdate", { id, status }, success, null, true);
     });
   }
 

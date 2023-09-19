@@ -46,6 +46,26 @@ export class AuthencationService {
     this.request.send('login', data, success, null, true);
   }
 
+
+  socialLogin(data: any) {
+    const success = (value: any) => {
+      if (value && value.statusCode == 200) {
+        this.setLoggedIn(data.authToken, value.data);
+        let userData = this.getUserData();
+        this.fun.getUserData = userData
+        if (data && data.role == 'ADMIN') {
+          this.navCtrl.goTo('/admin/user-list', {}, 'root');
+        } else {
+          this.navCtrl.goTo('/dashboard', {}, 'root');
+        }
+        this.toast.success(value.message);
+      } else {
+        this.toast.error(value.message);
+      }
+    };
+    this.request.send('socialLogin', data, success, null, true);
+  }
+
   sendOptForgotPasswrd(data: any) {
     return new Promise((resolve, reject) => {
       const success = (value: any) => {

@@ -8,6 +8,11 @@ const api = {
             url: '/user/login',
             responseInterface: []
         },
+        socialLogin: {
+            requestType: 'post',
+            url: '/user/social/login',
+            responseInterface: []
+        },
         sendOtp: {
             requestType: 'post',
             url: '/user/forgot/password',
@@ -73,6 +78,11 @@ const api = {
             url: '/user/view/{{id}}',
             responseInterface: []
         },
+        userStatusUpdate: {
+            requestType: 'put',
+            url: '/user/admin/update/status/{{id}}',
+            responseInterface: []
+        },
         updateUser: {
             requestType: 'put',
             url: '/user/update/{{id}}',
@@ -87,6 +97,11 @@ const api = {
         adminCategoryList: {
             requestType: 'post',
             url: '/category/list',
+            responseInterface: []
+        },
+        adminArtList: {
+            requestType: 'post',
+            url: '/art/admin/list',
             responseInterface: []
         },
         addCategroy: {

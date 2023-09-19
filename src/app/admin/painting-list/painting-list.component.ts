@@ -1,7 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import jsonData from '../../core/jsonDummyData/paintinglist.json';
 import { MatSort } from '@angular/material/sort';
+import { AdminApiService } from 'src/app/core/services/admin-api.service';
+import { PageEvent } from '@angular/material/paginator';
+import { ToastrService } from 'ngx-toastr';
+import { AuthencationService } from 'src/app/core/auth/authencation.service';
 @Component({
   selector: 'app-painting-list',
   templateUrl: './painting-list.component.html',
@@ -9,19 +12,27 @@ import { MatSort } from '@angular/material/sort';
 })
 export class PaintingListComponent implements OnInit {
 
+  listType: string = 'USER';
+  allData: any = []
+  pageIndex: number = 1;
+	pageSize: number = 10;
+	length: number = 10;
   @ViewChild('empTbSort') empTbSort = new MatSort();
 
-  constructor(){
-    console.log('dataSource => ', jsonData);
-    
-  }
+  constructor(
+    public adminApi: AdminApiService,
+    public toast: ToastrService,
+    public auth: AuthencationService
+  ){ }
 
   ngOnInit(): void {
-      
+    if(this.auth.isAuthenticated()){
+      this.artList()
+    }
   }
 
-  displayedColumns: string[] = ['position', 'name', 'frame','size',  'price' , 'medium','theme','imageUrl','button'];
-  dataSource = new MatTableDataSource(jsonData);
+  displayedColumns: string[] = ['srNo', 'name', 'status','size',  'price' , 'medium','theme','image','button'];
+  dataSource =  new MatTableDataSource<any>();;
 
 
   applyFilter(event: Event) {
@@ -30,7 +41,38 @@ export class PaintingListComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-		this.empTbSort.disableClear = true;
+    this.artList()
 		this.dataSource.sort = this.empTbSort;
 	}
+
+  artList(event?: PageEvent) {
+    this.dataSource = new MatTableDataSource(this.allData);
+		this.pageIndex = event?.pageIndex ?? 0;
+		this.pageSize = event?.pageSize ?? 10;
+    let pageSize = event?.pageSize ?? 10;
+		let pageNumber = event?.pageIndex ? event.pageIndex + 1 : 1;
+
+    let resData = {
+			page: pageNumber,
+			limit: pageSize,
+      role: this.auth.getUserData().role
+		};
+
+    this.adminApi.adminArtList(resData).then((res:any) =>{
+      if (res && res.statusCode === 200) {
+        res.data.forEach((item:any, index:any) => {
+          item.serialNumber = index + 1;
+        });
+        this.allData = res.data
+        this.length = res.total;
+        this.dataSource = new MatTableDataSource(this.allData);
+        this.empTbSort.disableClear = true;
+        this.dataSource.sort = this.empTbSort;
+      } else if (res.statusCode === 500) {
+        this.toast.error(res.message);
+      } else {
+        this.toast.error('Something went wrong');
+      }
+    })
+  }
 }

@@ -138,7 +138,7 @@ export class ApiService implements OnInit {
       this.request.send("getSingleUser",{id}, success, null, true);
     });
   }
-
+  
   async updateUserProfile(id: number) {
     return new Promise((resolve, reject) => {
       const success = (value:any) => {

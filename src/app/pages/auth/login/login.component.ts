@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthencationService } from 'src/app/core/auth/authencation.service';
-import { SocialAuthService } from "@abacritt/angularx-social-login";
+import { GoogleLoginProvider, SocialAuthService } from "@abacritt/angularx-social-login";
 import { FacebookLoginProvider } from "@abacritt/angularx-social-login";
 import { ToastrService } from 'ngx-toastr';
 
@@ -65,6 +65,18 @@ export class LoginComponent implements OnInit {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then((res:any)=>{
       console.log('res=> ', res);
       debugger
+      if(res){
+        let data = {
+          "facebook_id": res.response.id,
+          "google_id":"",
+          "authToken": res.authToken,
+          "email_or_mobile_number": res.response.email,
+          "name":  res.response.name,
+          "role": 'USER',
+          "profile_image": res.response.picture.data.url
+        }
+        this.auth.socialLogin(data)
+      }
       this.fbUser = res
     }).catch((err:any)=>{
       this.toast.error(err)
@@ -72,6 +84,12 @@ export class LoginComponent implements OnInit {
   }
 
   googleLogin(){
-    console.log('Google Login');
+    debugger
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((res:any) => {
+      console.log('Google Login', res);
+    }).catch((err:any)=>{
+      debugger
+      this.toast.error(err)
+    });;
   }
 }

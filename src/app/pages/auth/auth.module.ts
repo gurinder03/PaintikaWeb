@@ -16,6 +16,8 @@ import {
   FacebookLoginProvider, 
   GoogleLoginProvider, 
   SocialAuthServiceConfig, 
+  GoogleSigninButtonDirective,
+  GoogleSigninButtonModule,
   SocialLoginModule
 } from '@abacritt/angularx-social-login';
 
@@ -37,7 +39,8 @@ import {
     MatFormFieldModule,
     MatIconModule,
     SocialLoginModule,
-    MatInputModule
+    MatInputModule,
+    GoogleSigninButtonModule
   ],
   providers: [
     {
@@ -45,16 +48,15 @@ import {
       useValue: {
         autoLogin: true,
         providers: [
-          // {
-          //   id: GoogleLoginProvider.PROVIDER_ID,
-            
-          //   provider: new GoogleLoginProvider('654230831370-a114u4r22ehgpfrods4irbj91eoerq9a.apps.googleusercontent.com',
-          //   {
-          //    // scopes : environment.auth.scopes,
-          //     prompt : 'none'   // '' | 'none' | 'consent' |  'select_account'
-          //   }),
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider('556612457106-647s4aqhudlestrudr00bkl36ucva1jo.apps.googleusercontent.com',
+            {
+             // scopes : environment.auth.scopes,
+              prompt : 'none'   // '' | 'none' | 'consent' |  'select_account'
+            }),
 
-          // },
+          },
           {
             id: FacebookLoginProvider.PROVIDER_ID,
             provider: new FacebookLoginProvider('320674645067714')
@@ -64,7 +66,8 @@ import {
           console.error('Auth Error => ', err);
         }
       } as SocialAuthServiceConfig,
-    }
+    },
+    GoogleSigninButtonDirective
   ],
   
 })

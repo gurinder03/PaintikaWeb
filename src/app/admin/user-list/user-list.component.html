@@ -54,9 +54,8 @@
       <ng-container matColumnDef="button">
         <th *matHeaderCellDef mat-header-cell>Action</th>
         <td *matCellDef="let element" mat-cell>
-          <button type="button" class="block-btn">Block</button>
-          <button type="button" class="unblock-btn">Unblock</button>
-        
+        <button type="button" (click)="updateStatus('unblocked', element)" *ngIf="element.status == 'blocked'" class="block-btn">Blocked</button>
+        <button type="button" (click)="updateStatus('blocked', element)" *ngIf="element.status == 'unblocked'" class="unblock-btn">Unblock</button>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

@@ -62,9 +62,10 @@
                 </span>               
                 <span class="google-icon ">
                     <mat-icon svgIcon="google animate__animated animate__fadeInRight">
-                        <a href="javascript:void(0);" (click)="googleLogin()">
+                        <!-- <a href="javascript:void(0);" (click)="googleLogin()">
                             <img src="./assets/images/google-icon.png">
-                        </a>
+                        </a> -->
+                        <asl-google-signin-button (click)="googleLogin()" type='icon' size='medium'></asl-google-signin-button>
                     </mat-icon>
                 </span>
             </div>
