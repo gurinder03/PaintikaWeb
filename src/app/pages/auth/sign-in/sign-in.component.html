@@ -4,25 +4,26 @@
             <mat-icon svgIcon="password_reset" class="arrow-icon">
                 <a [routerLink]="['/auth/login']" clas="back-login">
                     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512">
-                        <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"/>
-                    </svg>    
+                        <path
+                            d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
+                    </svg>
                 </a>
             </mat-icon>
-            
+
         </div>
         <h4 class="animate__animated animate__fadeInLeftBig">
-           Sign Up
+            Sign Up
         </h4>
-        <div class="toggle-switch">
-            <div class="painter-heading animate__animated animate__fadeInRightBig">
-                <span class="hdng">Are You Painter?</span>
-            </div>
-            <label class="switch animate__animated animate__fadeInLeftBig">
-                <input type="checkbox" checked>
-                <span class="slider round"></span>
-              </label>
-        </div>
         <form (ngSubmit)="onSubmit()" [formGroup]="signUpForm">
+            <div class="toggle-switch">
+                <div class="painter-heading animate__animated animate__fadeInRightBig">
+                    <span class="hdng">Are You Painter?</span>
+                </div>
+                <label class="switch animate__animated animate__fadeInLeftBig">
+                    <input type="checkbox" formControlName="userType" checked>
+                    <span class="slider round"></span>
+                </label>
+            </div>
             <mat-form-field class="example-full-width full-w animate__animated animate__fadeInRightBig">
                 <mat-label>Name</mat-label>
                 <input matInput formControlName="name" placeholder="enter name" value="">
@@ -50,7 +51,8 @@
                     Password must be at least 6 characters long.
                 </mat-error>
             </mat-form-field>
-            <button type="submit" mat-raised-button color="primary" class="sign-up-btn mt-2 mb-3 animate__animated animate__fadeInLeftBig">Sign Up</button>
+            <button type="submit" mat-raised-button color="primary"
+                class="sign-up-btn mt-2 mb-3 animate__animated animate__fadeInLeftBig">Sign Up</button>
         </form>
     </div>
 </div>

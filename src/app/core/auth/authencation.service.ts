@@ -29,6 +29,7 @@ export class AuthencationService {
 
   userLogin(data: any) {
     const success = (value: any) => {
+      debugger
       if (value && value.statusCode == 200) {
         this.setLoggedIn(value.data.token, value.data);
         let userData = this.getUserData();
@@ -120,7 +121,7 @@ export class AuthencationService {
       const success = (value: any) => {
         if (value && value.statusCode == 200) {
           resolve(value);
-          this.toast.success(value.message);
+          // this.toast.success(value.message);
         } else {
           resolve(false);
           this.toast.error(value.message);

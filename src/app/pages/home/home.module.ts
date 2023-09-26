@@ -25,6 +25,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { RequirmentPaintComponent } from './requirment-paint/requirment-paint.component';
+import { AddAddressComponent } from './add-address/add-address.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { RequirmentPaintComponent } from './requirment-paint/requirment-paint.co
     ProfileComponent,
     UploadPaintComponent,
     ProductListComponent,
-    RequirmentPaintComponent
+    RequirmentPaintComponent,
+    AddAddressComponent
   ],
   imports: [
     CommonModule,

@@ -5,7 +5,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand" href="javascript:void()">
-            <img src="./assets/images/Paintika.jpg" alt="Logo" height="50" width="90">
+            <img src="./assets/images/paintika.jpg" alt="Logo" height="50" width="70">
         </a>
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
@@ -23,7 +23,7 @@
                     <a class="nav-link" (click)="navigateTo('/auth/login', 4)" [class.active]="setEl === 4">Login</a>
                 </li>
                 <li *ngIf="auth.isAuthenticated() && auth.getUserData().role == 'USER'" class="nav-item">
-                    <a class="nav-link" (click)="navigateTo('/page/requirment-paint', 5)" [class.active]="setEl === 5">Requirment Painting</a>
+                    <a class="nav-link" (click)="navigateTo('/page/requirment-paint', 5)" [class.active]="setEl === 5">Pre-Order</a>
                 </li>
                 <li  class="nav-item painter-btn" *ngIf="auth.isAuthenticated() && auth.getUserData().role == 'USER'">
                     <a (click)="navigateTo('/auth/sign-in', 6)" class="nav-link painter" >Join As Painter</a>

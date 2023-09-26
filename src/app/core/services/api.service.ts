@@ -16,9 +16,7 @@ export class ApiService implements OnInit {
     public auth: AuthencationService,
     public toast: ToastrService
   ) {
-    if(this.auth.isAuthenticated()){
-      this.cartListData({user_id: this.fun.getUserData._id})
-    }
+   
   }
   
   ngOnInit(): void {
@@ -96,20 +94,35 @@ export class ApiService implements OnInit {
   }
   
   cartListData(data:any){
-    // return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       const success = (value:any) => {
         if (value && value.statusCode == 200) {
           this.cartList = value.data;
           this.fun.cartCount = value.data.carts.length;
-          // resolve(value);
+          resolve(value);
         }
         else {
           this.toast.error(value.statusText)
-          // reject(value.statusText);
+          reject(value.statusText);
         }
       };
       this.request.send('cartListData', data, success, null, true);
-    // });
+    });
+  }
+
+  delAddressList(data:any){
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value && value.statusCode == 200) {
+          resolve(value);
+        }
+        else {
+          this.toast.error(value.statusText)
+          reject(value.statusText);
+        }
+      };
+      this.request.send('delAddressList', data, success, null, true);
+    });
   }
 
   removeToCart(data:any){
@@ -126,7 +139,7 @@ export class ApiService implements OnInit {
     });
   }
 
-  async getSingleUser(id: number) {
+  async getSingleUser(id:any) {
     return new Promise((resolve, reject) => {
       const success = (value:any) => {
         if (value) {
@@ -139,7 +152,7 @@ export class ApiService implements OnInit {
     });
   }
   
-  async updateUserProfile(id: number) {
+  async updateUserProfile(data: any) {
     return new Promise((resolve, reject) => {
       const success = (value:any) => {
         if (value) {
@@ -148,7 +161,36 @@ export class ApiService implements OnInit {
           reject(value.statusText)
         }
       };
-      this.request.send("updateUser",{id}, success, null, true);
+      this.request.send("updateUser", data, success, null, true);
+    });
+  }
+
+  async delveryAddress(data: any) {
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value)
+        } else {
+          reject(value.statusText)
+        }
+      };
+      this.request.send("delAddress", data, success, null, true);
+    });
+  }
+
+
+  async updateUserAddress(data: any, id:any) {
+    let cateId = data.category;
+    let status = data.status;
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value)
+        } else {
+          reject(value.statusText)
+        }
+      };
+      this.request.send("delAddressUpdate", { id, cateId, status }, success, null, true);
     });
   }
  

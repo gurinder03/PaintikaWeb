@@ -45,6 +45,26 @@ export class PaintingListComponent implements OnInit {
 		this.dataSource.sort = this.empTbSort;
 	}
 
+  approve(data:any, status:any){
+      console.log('Test => ', data);
+      let dataVal = {
+        "status": status, 
+        "category":data.category
+      }
+      this.adminApi.updateArtStatus(dataVal, data._id).then((res:any)=>{
+        console.log('res => ', res);
+        if (res && res.statusCode === 200) {
+          this.toast.success('Status ' + res.message);
+          this.artList();
+        } else if (res.statusCode === 500) {
+          this.toast.error(res.message);
+        } else {
+          this.toast.error('Something went wrong');
+        }
+      })
+  }
+
+
   artList(event?: PageEvent) {
     this.dataSource = new MatTableDataSource(this.allData);
 		this.pageIndex = event?.pageIndex ?? 0;
@@ -57,12 +77,21 @@ export class PaintingListComponent implements OnInit {
 			limit: pageSize,
       role: this.auth.getUserData().role
 		};
-
+   
     this.adminApi.adminArtList(resData).then((res:any) =>{
       if (res && res.statusCode === 200) {
         res.data.forEach((item:any, index:any) => {
           item.serialNumber = index + 1;
+          item.btnDisabled = false
+          if(item.status == "rejected"){
+            item.btnDisabled = true
+          }
+          if(item.status == "approved"){
+            item.btnDisabled = true
+          }
         });
+        console.log('ss => ', res.data);
+        
         this.allData = res.data
         this.length = res.total;
         this.dataSource = new MatTableDataSource(this.allData);

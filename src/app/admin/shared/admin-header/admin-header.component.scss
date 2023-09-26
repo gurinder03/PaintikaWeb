@@ -95,6 +95,14 @@ ul.navbar-nav.me-auto{
     font-weight: 500;
     margin-top: 10px;
 }
+@media screen and (max-width:810px){
+    .navbar-expand-sm .navbar-nav{
+        gap: 2px;
+    }
+    ul.navbar-nav.me-auto{
+        margin-left: 0;
+    }
+}
 @media screen and (max-width:576px){
     form{
         margin-top: 10px;

@@ -5,17 +5,13 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-requirment-paint',
   templateUrl: './requirment-paint.component.html',
-  styleUrls: ['./requirment-paint.component.scss']
+  styleUrls: ['./requirment-paint.component.scss'],
 })
-
 export class RequirmentPaintComponent {
-  uploadPaintForm!: FormGroup;
+  uploadPaint!: FormGroup;
   previews: string[] = [];
   selectedFiles?: any;
-  constructor(
-    public toast: ToastrService,
-    private fb: FormBuilder,
-  ) {
+  constructor(public toast: ToastrService, private fb: FormBuilder) {
     this.formData();
   }
 
@@ -47,9 +43,18 @@ export class RequirmentPaintComponent {
     }
   }
   formData() {
-    this.uploadPaintForm = this.fb.group({
-      image: ['', [Validators.required]],
+    this.uploadPaint = this.fb.group({
+      image: ['', [Validators.required]],  
+      description: ['', [Validators.required]],  
     });
+  }
 
-}
+  onSubmit() {
+    this.uploadPaint.markAllAsTouched();
+    if (this.uploadPaint.valid) {
+     
+    } else {
+      this.toast.error('Form is not valid');
+    }
+  }
 }

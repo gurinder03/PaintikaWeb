@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
           "role": 'USER',
           "profile_image": res.response.picture.data.url
         }
-        this.auth.socialLogin(data)
+        // this.auth.socialLogin(data)
       }
       this.fbUser = res
     }).catch((err:any)=>{

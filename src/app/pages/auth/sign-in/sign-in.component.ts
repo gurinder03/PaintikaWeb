@@ -24,13 +24,20 @@ export class SignInComponent {
   formData(){
     this.signUpForm = this.fb.group({
       email_or_mobile_number: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}')]],
-      role: ['USER', [Validators.required]],
+      role: ['', [Validators.required]],
+      userType: [true],
       name: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
   onSubmit() {
+    if(this.signUpForm && this.signUpForm.value && this.signUpForm.value.userType == true){
+      this.signUpForm.patchValue({role: 'ARTIST'})
+    } else{
+      this.signUpForm.patchValue({role: 'USER'})
+    }
+    console.log(this.signUpForm );
     this.signUpForm.markAllAsTouched();
     if (this.signUpForm.valid) {
       this.auth.userSignIn(this.signUpForm.value)

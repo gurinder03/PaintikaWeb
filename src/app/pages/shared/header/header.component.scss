@@ -32,6 +32,8 @@ li.nav-item.painter-btn a {
     color: #000000 !important;
     background: #ffffff;
     cursor: pointer;
+    border: 3px solid #000000;
+    border-radius: 19px;
 }
 li.nav-item.painter-btn a:hover {
     color: #ffffff !important;
@@ -46,6 +48,17 @@ li.nav-item {
     background: #000000;
     font-weight: 500;
 }
+a.nav-link:hover {
+    background: #ffffff;
+    color: #000000 !important;
+    border-radius: 50px;
+}
+// .active {
+//     color: #000000 !important;
+//     background: #ffffff;
+//     font-weight: 500;
+//     border-radius: 9px;
+// }
 span.cart-hdng {
     padding-left: 12px;
 }
@@ -69,7 +82,7 @@ nav ul li a, .nav form button {
     position: relative;
 }
 ul.navbar-nav.me-auto {
-    margin-left: 9%;
+    margin-left: 3%;
 }
 .login-name {
     color: #ffffff;
@@ -82,36 +95,54 @@ ul.navbar-nav.me-auto {
 .btn:focus{
     box-shadow: none;
 }
-@media screen and (max-width:832px){
+@media screen and (max-width:1006px){
     ul.navbar-nav.me-auto {
-        margin-left: 4%;
+        margin-left: 0%;
+    }
+    .navbar-expand-sm .navbar-nav{
+        gap: 18px;
+    }
+}
+@media screen and (max-width:890px){
+    .navbar-expand-sm .navbar-nav{
+        gap: 0px;
+    }
+    .login-name{
+        margin-right: 0;
+        font-size: 10px;
+    }
+    a.nav-link {
+        font-size: 10px;
+    }
+    button{
+        font-size: 10px;
     }
 }
 @media screen and (max-width:796px){
     .navbar-expand-sm .navbar-nav {
-        gap: 20px;
+        gap: 0px;
     } 
 }
 @media screen and (max-width:734px){
     .navbar-expand-sm .navbar-nav {
-        gap: 10px;
+        gap: 0px;
     } 
     ul.navbar-nav.me-auto {
-        margin-left: 1%;
+        margin-left: 0%;
     }
     li{
-        font-size: 11px;
+        font-size: 10px;
     }
     .login-name p{
-        font-size: 11px;
+        font-size: 10px;
     }
     button{
-        font-size: 11px;
+        font-size: 10px;
     }
 }
-@media screen and (max-width:630px){
+@media screen and (max-width:648px){
     .navbar-expand-sm .navbar-nav {
-        gap: 10px;
+        gap: 0px;
     } 
     li{
         font-size: 8px;
@@ -126,16 +157,7 @@ ul.navbar-nav.me-auto {
         margin-top: 2px;
     }
 }
-@media screen and (max-width:605px){
-    .navbar-expand-sm .navbar-nav {
-        gap: 5px;
-    } 
-}
-@media screen and (max-width:585px){
-    .navbar-expand-sm .navbar-nav {
-        gap: 5px;
-    } 
-}
+
 @media screen and (max-width:575px){
     form{
         margin-top: 10px;
@@ -143,9 +165,7 @@ ul.navbar-nav.me-auto {
     .navbar-expand-sm .navbar-nav{
         gap: 0;
     }
-    li{
-        font-size: 15px;
-    }
+   
     .login-name p{
         font-size: 15px;
     }
@@ -154,5 +174,8 @@ ul.navbar-nav.me-auto {
     }
     button.btn.logout-button {
         margin-top: 0px;
+    }
+    a.nav-link{
+        font-size: 15px;
     }
 }

@@ -1,5 +1,5 @@
-<div class="container rounded bg-white mt-5 mb-5">
-    <div class="row pb-5">
+<div class="container rounded bg-white mt-5 mb-3">
+    <div class="row ">
         <div class="col-md-4 border-Up animate__animated animate__fadeInUpBig">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                 <div class="image-section">
@@ -26,9 +26,9 @@
         </div>
         <div class="col-md-8 border-Up">
             <form (ngSubmit)="onSubmit()" [formGroup]="profileForm">
-                <div class="p-3 py-5 pb-0 ">
-                    <div class="text-center animate__animated animate__fadeInDownBig">
-                        <h4 class="text-center profile-heading">Profile Settings</h4>
+                <div class="p-3 py-3 pb-0 ">
+                    <div class="text-center mb-4 animate__animated animate__fadeInDownBig">
+                        <h4 class="text-center profile-heading ">Profile Settings</h4>
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-6">
@@ -152,18 +152,18 @@
                         <mat-form-field class="example-full-width full-w">
                             <mat-label>Experience in painting</mat-label>
                             <input matInput formControlName="experience" placeholder="Experience">
-                            <mat-error *ngIf="profileForm.controls['experience'].errors?.['required']">
+                            <!-- <mat-error *ngIf="profileForm.controls['experience'].errors?.['required']">
                                 Experience is required.
-                            </mat-error>
+                            </mat-error> -->
                         </mat-form-field>
                     </div> <br>
                     <div class="col-md-12">
                         <mat-form-field class="example-full-width full-w">
                             <mat-label>Additional Details</mat-label>
                             <input matInput formControlName="additional_detail" placeholder="Additional details">
-                            <mat-error *ngIf="profileForm.controls['additional_detail'].errors?.['required']">
+                            <!-- <mat-error *ngIf="profileForm.controls['additional_detail'].errors?.['required']">
                                 Additional Details is required.
-                            </mat-error>
+                            </mat-error> -->
                         </mat-form-field>
                     </div>
                 </div>
@@ -171,13 +171,13 @@
                 <div class="col-md-12 mt-2 p-3 animate__animated animate__fadeInDownBig">
                     <mat-form-field class="example-full-width full-w">
                         <mat-label>Address</mat-label>
-                        <textarea style="text-transform: capitalize;"  matInput formControlName="address" placeholder="Enter address" value=""></textarea>
-                        <mat-error *ngIf="profileForm.controls['address'].errors?.['required']">
+                        <textarea style="text-transform: capitalize;"  matInput formControlName="address" placeholder="Enter address"></textarea>
+                        <!-- <mat-error *ngIf="profileForm.controls['address'].errors?.['required']">
                             Address is required.
-                        </mat-error>
+                        </mat-error> -->
                     </mat-form-field>
                 </div>
-                <div class="mt-5 mb-3 text-center animate__animated animate__fadeInDownBig">
+                <div class="mt-2 mb-3 text-center animate__animated animate__fadeInDownBig">
                     <button type="submit" mat-raised-button color="primary" class="btn btn-primary profile-button">
                         Save Profile
                     </button>
@@ -187,4 +187,8 @@
         
     </div>
     
+</div>
+<div>
+    <p><br></p>
+    <p><br></p>
 </div>

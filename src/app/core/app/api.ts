@@ -58,6 +58,21 @@ const api = {
             url: '/cart/add',
             responseInterface: []
         },
+        delAddress: {
+            requestType: 'post',
+            url: '/address/add',
+            responseInterface: []
+        },
+        delAddressList: {
+            requestType: 'post',
+            url: '/address/list',
+            responseInterface: []
+        },
+        delAddressUpdate: {
+            requestType: 'put',
+            url: '/address/update/{{id}}',
+            responseInterface: []
+        },
         cartListData: {
             requestType: 'post',
             url: '/cart/list',
@@ -84,14 +99,19 @@ const api = {
             responseInterface: []
         },
         updateUser: {
-            requestType: 'put',
-            url: '/user/update/{{id}}',
+            requestType: 'post',
+            url: '/user/update',
             responseInterface: []
         },
         // Call All admin api's
         userList: {
             requestType: 'post',
             url: '/user/admin/list',
+            responseInterface: []
+        },
+        updateArtStatus: {
+            requestType: 'put',
+            url: '/art/admin/update/status/{{id}}',
             responseInterface: []
         },
         adminCategoryList: {
@@ -107,6 +127,11 @@ const api = {
         addCategroy: {
             requestType: 'post',
             url: '/category/add',
+            responseInterface: []
+        },
+        updateCategroy: {
+            requestType: 'post',
+            url: '/category/update',
             responseInterface: []
         },
         singleViewCategory: {

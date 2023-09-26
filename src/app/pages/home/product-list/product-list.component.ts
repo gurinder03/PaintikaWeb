@@ -13,6 +13,7 @@ import { NavigationRouteService } from 'src/app/core/services/navigation-route.s
 })
 export class ProductListComponent implements OnInit {
   allData:any = []
+  cartData: any = []
   cart: any[] = [];
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -22,40 +23,44 @@ export class ProductListComponent implements OnInit {
     public auth: AuthencationService,
     private navCtrl: NavigationRouteService
   ){
+    this.getCartData()
   }
   
   addToCart(item:any) {
     console.log(item);
+    debugger
     if(this.auth.isAuthenticated()){
       item.isLiked = !item.isLiked;
-      const index = this.api.cartList.carts.findIndex((cartItem:any) => cartItem.art_id === item._id);
+      const index = this.cartData?.findIndex((cartItem:any) => cartItem.art_id === item._id);
       if (index !== -1) {
         debugger
-        this.api.cartList.carts.splice(index, 1);
+        this.cartData?.splice(index, 1);
         this.api.removeToCart({id:item._id}).then((res: any) => {
           debugger
           if (res && res.statusCode === 200) {
             this.toast.error(res.message);
-            this.fun.cartCount = this.api.cartList.carts.length
+            this.fun.cartCount = this.cartData?.length
           }
           else{
             this.toast.error('Something went wrong');
           }
-          console.log('this.api.cartList => ', this.api.cartList);
+          console.log('this.api.cartList => ', this.cartData);
         });
       } else {
+        debugger
         let data = {
-          "user_id":this.fun.getUserData._id,
+          "user_id":this.auth.getUserData()._id,
           "art_id":item._id,
-          "quantity":1
+          "quantity":1, 
+          "creator_id": item.creator_id
         }
         this.api.addToCartData(data).then((res: any) => {
           console.log('res => ', res);
           if (res && res.statusCode === 200) {
             // this.cart.push(res.data);
             this.toast.success(res.message);
-            this.api.cartListData({user_id:this.fun.getUserData._id})
-            console.log('this.cart => ', this.api.cartList.carts, this.fun.cartCount);
+            this.api.cartListData({user_id: this.auth.getUserData()._id})
+            console.log('this.cart => ', this.cartData, this.fun.cartCount);
           } else if (res.statusCode === 500) {
             this.toast.error(res.message);
           } else {
@@ -69,11 +74,27 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((event: any) => {
-      if (event) {
-        this.productData(event.productId);
+    
+  }
+
+  getCartData(){
+    let data = {user_id: this.auth.getUserData()._id}
+    this.api.cartListData(data).then((res:any)=>{
+      if (res && res.statusCode === 200) {
+        debugger
+        this.cartData = res.data.carts;
+        console.log('cart => ',  this.cartData);
+        this.activatedRoute.params.subscribe((event: any) => {
+          if (event) {
+            this.productData(event.productId);
+          }
+        });
+      } else if (res.statusCode === 500) {
+        this.toast.error(res.message);
+      } else {
+        this.toast.error('Something went wrong');
       }
-    });
+    })
   }
 
 
@@ -84,6 +105,7 @@ export class ProductListComponent implements OnInit {
       "categories": [cate]
     }
     this.api.productDataList(data).then((res: any) => {
+      debugger
       if (res && res.statusCode === 200) {
         if(res && res.data && res.data.length){
           for (let index = 0; index < res.data.length; index++) {
@@ -91,10 +113,10 @@ export class ProductListComponent implements OnInit {
             element.isLiked = false
           }
           this.allData = res.data;
-          this.updateIsLikedStatus(this.allData, this.api.cartList.carts)
+          this.updateIsLikedStatus(this.allData, this.cartData)
         }
         console.log('this.allData => ', this.allData);
-        console.log('this. this.api.cartList => ',  this.api.cartList);
+        console.log('this. this.api.cartList => ',  this.cartData);
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
       } else {
@@ -104,6 +126,7 @@ export class ProductListComponent implements OnInit {
   }
 
   updateIsLikedStatus(array1: any[], array2: any[]) {
+    debugger
     for (const item1 of array1) {
       const isLiked = array2?.some((item2) => item2.art_id === item1._id);
       item1.isLiked = isLiked;

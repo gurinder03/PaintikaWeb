@@ -67,6 +67,20 @@ export class AdminApiService {
     });
   }
 
+  updateCategroy(data:any){
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value);
+        }
+        else {
+          reject(value.statusText);
+        }
+      };
+      this.request.send('updateCategroy', data, success, null, true);
+    });
+  }
+
   async singleCategory(id: number) {
     return new Promise((resolve, reject) => {
       const success = (value:any) => {
@@ -103,6 +117,21 @@ export class AdminApiService {
         }
       };
       this.request.send("userStatusUpdate", { id, status }, success, null, true);
+    });
+  }
+
+  async updateArtStatus(data: any, id:any) {
+    let cateId = data.category;
+    let status = data.status;
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value)
+        } else {
+          reject(value.statusText)
+        }
+      };
+      this.request.send("updateArtStatus", { id, cateId, status }, success, null, true);
     });
   }
 

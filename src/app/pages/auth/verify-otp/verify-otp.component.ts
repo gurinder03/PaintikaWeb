@@ -26,7 +26,7 @@ export class VerifyOtpComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((event:any) => {
       if(event){
-        this.navData = JSON.parse(event.data)
+        this.navData = JSON.parse(event.data);
         console.log(this.navData);
       }
     });
@@ -61,7 +61,7 @@ export class VerifyOtpComponent implements OnInit {
         else if(res.statusCode === 500){
           this.toast.error(res.message);
         } else {
-          this.toast.error('Something went wrong');
+          console.log('Something went wrong', res);
         }
       });
     } else {

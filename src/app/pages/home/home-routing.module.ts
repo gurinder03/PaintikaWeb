@@ -9,6 +9,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { UploadPaintComponent } from './upload-paint/upload-paint.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { RequirmentPaintComponent } from './requirment-paint/requirment-paint.component';
+import { AddAddressComponent } from './add-address/add-address.component';
 
 const routes: Routes = [
   {
@@ -49,6 +50,10 @@ const routes: Routes = [
       {
         path: 'requirment-paint',
         component: RequirmentPaintComponent
+      },
+      {
+        path: 'add-address',
+        component: AddAddressComponent
       }
     ]
   },

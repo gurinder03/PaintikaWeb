@@ -31,14 +31,17 @@ export class DashboardComponent implements OnInit {
       0: {
         items: 1
       },
-      400: {
+      200: {
         items: 2
       },
-      740: {
+      440: {
         items: 3
       },
-      940: {
+      740: {
         items: 4
+      },
+      940: {
+        items: 5
       }
     },
     nav: true

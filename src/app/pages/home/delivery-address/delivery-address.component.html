@@ -1,51 +1,72 @@
 <div class="container">
     <div class="delivery-address p-3">
-        <h5>Delivery Address</h5>
+        <h3 class="mb-0">Delivery Address</h3>
     </div>
-    <div class="current-location col-md-12 col-sm-12 p-5">
-        <a href="javascript:void()">
-            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
-                <path d="M256 0c17.7 0 32 14.3 32 32V66.7C368.4 80.1 431.9 143.6 445.3 224H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H445.3C431.9 368.4 368.4 431.9 288 445.3V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V445.3C143.6 431.9 80.1 368.4 66.7 288H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H66.7C80.1 143.6 143.6 80.1 224 66.7V32c0-17.7 14.3-32 32-32zM128 256a128 128 0 1 0 256 0 128 128 0 1 0 -256 0zm128-80a80 80 0 1 1 0 160 80 80 0 1 1 0-160z" fill="#ffffff"/>
-            </svg>
-        Use My Current Location</a>
-        <div class="field-section col-md-12 col-sm-12">
-            <div class="name-code row" >
-                <div class="name col-md-4 col-sm-12 mt-3">
-                    <mat-form-field class="example-full-width full-w">
-                        <mat-label>Name</mat-label>
-                        <input matInput placeholder="enter your name" value="">
-                    </mat-form-field>
-                    <mat-form-field class="example-full-width full-w">
-                        <mat-label>Pin Code</mat-label>
-                        <input matInput placeholder="enter pin code" value="">
-                    </mat-form-field>
+    <div class="current-location col-md-12 col-sm-12 p-5 pt-4">
+        <!-- <div class="location-button mb-4">
+            <a href="javascript:void()">
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+                    <path
+                        d="M256 0c17.7 0 32 14.3 32 32V66.7C368.4 80.1 431.9 143.6 445.3 224H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H445.3C431.9 368.4 368.4 431.9 288 445.3V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V445.3C143.6 431.9 80.1 368.4 66.7 288H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H66.7C80.1 143.6 143.6 80.1 224 66.7V32c0-17.7 14.3-32 32-32zM128 256a128 128 0 1 0 256 0 128 128 0 1 0 -256 0zm128-80a80 80 0 1 1 0 160 80 80 0 1 1 0-160z"
+                        fill="#ffffff" />
+                </svg>
+                Use My Current Location</a>
+        </div> -->
+        
+        <form (ngSubmit)="onSubmit()" [formGroup]="addressForm">
+            <div class="field-section col-md-12 col-sm-12">
+                <div class="name-code row">
+                    <div class="name col-md-4 col-sm-12 mt-3">
+                        <mat-form-field class="example-full-width full-w">
+                            <mat-label>Name</mat-label>
+                            <input matInput formControlName="name" placeholder="Enter your name">
+                            <mat-error *ngIf="addressForm.controls['name'].errors?.['required']">
+                                Field is required.
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width full-w">
+                            <mat-label>Pin Code</mat-label>
+                            <input matInput formControlName="pincode" placeholder="Enter pin code">
+                            <mat-error *ngIf="addressForm.controls['pincode'].errors?.['required']">
+                                Field is required.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="code col-md-4 col-sm-12 mt-3">
+                        <mat-form-field class="example-full-width full-w">
+                            <mat-label>10 digit mobile number</mat-label>
+                            <input matInput formControlName="phoneNumber" placeholder="Enter mobile number">
+                            <mat-error *ngIf="addressForm.controls['phoneNumber'].errors?.['required']">
+                                Field is required.
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="example-full-width full-w">
+                            <mat-label>Locality</mat-label>
+                            <input formControlName="locality" matInput placeholder="Enter locality">
+                            <mat-error *ngIf="addressForm.controls['locality'].errors?.['required']">
+                                Field is required.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
                 </div>
-                <div class="code col-md-4 col-sm-12 mt-3">
-                    <mat-form-field class="example-full-width full-w">
-                        <mat-label>10 digit mobile number</mat-label>
-                        <input matInput placeholder="enter mobile number" value="">
-                    </mat-form-field>
-                    <mat-form-field class="example-full-width full-w">
-                        <mat-label>Locality</mat-label>
-                        <input matInput placeholder="enter locality" value="">
-                    </mat-form-field>
-                </div>
-            </div>
                 <div class="text-area col-md-8 col-sm-12 mt-3 ">
                     <mat-form-field class="example-full-width full-w">
                         <mat-label>Address (area and street)</mat-label>
-                        <textarea matInput placeholder=""></textarea>
-                      </mat-form-field>
+                        <textarea matInput formControlName="address" placeholder=""></textarea>
+                        <mat-error *ngIf="addressForm.controls['address'].errors?.['required']">
+                            Field is required.
+                        </mat-error>
+                    </mat-form-field>
                 </div>
                 <div class="mark-location row">
                     <div class="city-mark col-md-4 col-sm-12 mt-3">
                         <mat-form-field class="example-full-width full-w">
                             <mat-label>City/District/town</mat-label>
-                            <input matInput placeholder="enter city/district" value="">
+                            <input matInput formControlName="city" placeholder="Enter city/district">
                         </mat-form-field>
                         <mat-form-field class="example-full-width full-w">
                             <mat-label>Landmark (optional)</mat-label>
-                            <input matInput placeholder="enter landmark" value="">
+                            <input matInput formControlName="landmark"  placeholder="Enter landmark">
                         </mat-form-field>
                     </div>
                     <div class="state-alt col-md-4 col-sm-12 mt-3">
@@ -57,29 +78,37 @@
                                 <mat-option [value]="3">3</mat-option>
                                 <mat-option [value]="4">4</mat-option>
                             </mat-select>
-                          </mat-form-field>
+                            <mat-error *ngIf="addressForm.controls['state'].errors?.['required']">
+                                Field is required.
+                            </mat-error>
+                        </mat-form-field>
                         <mat-form-field class="example-full-width full-w">
                             <mat-label>Alternate Phone (Optional)</mat-label>
-                            <input matInput placeholder="enter phone" value="">
+                            <input matInput formControlName="allternatePhone" placeholder="Enter Alternate Phone">
                         </mat-form-field>
                     </div>
                     <div class="address-type col-md-8 col-sm-12 row mb-5">
                         <div class="home col-md-4 col-sm-12">
-                            <mat-radio-group aria-label="Select an option">
+                            <mat-radio-group formControlName="delveryType" aria-label="Select an option">
                                 <mat-radio-button value="1">Home (all day delivery)</mat-radio-button> <br>
                                 <mat-radio-button value="2">Work (Delivery between 10 AM to 5 PM)</mat-radio-button>
-                              </mat-radio-group>
+                            </mat-radio-group>
+                            <div *ngIf="addressForm.controls['delveryType'].invalid && (addressForm.controls['delveryType'].dirty || addressForm.controls['delveryType'].touched)"
+                            class="alert " required>
+                             <mat-error *ngIf="addressForm.controls['delveryType'].errors?.['required']">
+                                Field is required.
+                            </mat-error>
+                            </div>
                         </div>
                     </div>
-                    
-                   
                 </div>
                 <div class="button col-md-3">
-                    <button type="button" class="continue">Continue</button>
+                    <button type="submit" class="continue">Continue</button>
                 </div>
-        </div>
+            </div>
+        </form>
     </div>
-    
+
 </div>
 <div>
     <p><br></p>

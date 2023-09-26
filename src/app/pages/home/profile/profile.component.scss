@@ -78,7 +78,11 @@ span.gender-label {
 .btn:focus{
     box-shadow: none;
 }
-
+.container{
+   
+    background: #ffffff !important;
+    box-shadow: -2px 0px 8px #888888;
+}
 // .container{
 //     position: absolute;
 //     top: 50%;

@@ -11,7 +11,7 @@
         <form (ngSubmit)="onSubmit()" [formGroup]="verifyForm">
             <mat-form-field class="full-w animate__animated animate__fadeInUpBig">
                 <mat-label class="otp-label">Please Enter OTP</mat-label>
-                <input matInput formControlName="email_or_mobile_number" placeholder="Email">
+                <input matInput formControlName="OTP" placeholder="enter otp">
                 <mat-error *ngIf="verifyForm.controls['OTP'].hasError('required')">
                   OTP required.
                 </mat-error>
@@ -19,23 +19,10 @@
                    OTP is not valid.
                 </mat-error>
             </mat-form-field>
+            <button type="submit" class="button animate__animated animate__fadeInLeftBig">Submit</button>
             <div class="resend-otp animate__animated animate__fadeInRightBig">
                 <a (click)="resendOtp()">Resend Otp</a>
             </div>
         </form>
-        <!-- <form (ngSubmit)="onSubmit()" [formGroup]="verifyForm">
-          <label for="otp" class="otp-label">Please Enter OTP </label> <br>
-          <input type="number" formControlName="OTP" placeholder="OTP" class="otp-field">
-          <div *ngIf="verifyForm.controls['OTP'].invalid && (verifyForm.controls['OTP'].dirty || verifyForm.controls['OTP'].touched)"
-                class="alert alert-danger" required>
-                <div *ngIf="verifyForm.controls['OTP'].errors?.required">
-                    Otp is required.
-                </div>
-            </div>
-          <button type="submit" class="button">SUBMIT</button>
-          <div class="resend-otp">
-            <a (click)="resendOtp()">Resend Otp</a>
-          </div>
-        </form> -->
     </div>
 </div>

@@ -15,6 +15,7 @@ export class AddCategoryComponent implements OnInit {
 
   addCateForm!: FormGroup;
   updatedData:any;
+  getData: any = {}
   url:any = '';
   setCateId:any
   setImg: any;
@@ -53,22 +54,38 @@ export class AddCategoryComponent implements OnInit {
       let dataVal = new FormData();
       dataVal.append('name', this.addCateForm.value.name);
       dataVal.append('role', this.addCateForm.value.role);
-      dataVal.append('creator_id', this.fun.getUserData._id);
+      dataVal.append('creator_id', this.getData.creator_id);
       dataVal.append('status', this.addCateForm.value.status);
       if(this.setImg && this.setImg.length){
         dataVal.append('image', this.setImg[0]);
       }
-      this.adminApi.addCategoryData(dataVal).then((res:any)=>{
-        if (res && res.statusCode === 200) {
-          console.log('res.data => ', res.data);
-          this.toast.success(res.message)
-          this.navCtrl.goTo('/admin/category-list')
-        } else if (res.statusCode === 500) {
-          this.toast.error(res.message);
-        } else {
-          this.toast.error('Something went wrong');
-        }
-      })
+      if(this.setCateId){
+        debugger
+        dataVal.append('id', this.getData._id);
+        this.adminApi.updateCategroy(dataVal).then((res:any)=>{
+          if (res && res.statusCode === 200) {
+            console.log('res.data => ', res.data);
+            this.toast.success(res.message)
+            this.navCtrl.goTo('/admin/category-list')
+          } else if (res.statusCode === 500) {
+            this.toast.error(res.message);
+          } else {
+            this.toast.error('Something went wrong');
+          }
+        })
+      } else{
+        this.adminApi.addCategoryData(dataVal).then((res:any)=>{
+          if (res && res.statusCode === 200) {
+            console.log('res.data => ', res.data);
+            this.toast.success(res.message)
+            this.navCtrl.goTo('/admin/category-list')
+          } else if (res.statusCode === 500) {
+            this.toast.error(res.message);
+          } else {
+            this.toast.error('Something went wrong');
+          }
+        })
+      }
     } else {
       console.log('Form is not valid');
     }
@@ -78,6 +95,7 @@ export class AddCategoryComponent implements OnInit {
   getSingleCategory(id:any){
     this.adminApi.singleCategory(id).then((res:any)=>{
       if (res && res.statusCode === 200) {
+        this.getData = res.data;
         this.setDataValue(res.data)
         console.log('res.data => ', res.data);
       } else if (res.statusCode === 500) {

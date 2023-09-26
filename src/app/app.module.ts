@@ -20,6 +20,7 @@ import { AdminFooterComponent } from './admin/shared/admin-footer/admin-footer.c
 import { DashboardComponent } from './pages/home/dashboard/dashboard.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     AdminLoginComponent,
     AdminHeaderComponent,
     AdminFooterComponent,
-    DashboardComponent
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +51,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    DatePipe
   ],
   bootstrap: [AppComponent],
 })
