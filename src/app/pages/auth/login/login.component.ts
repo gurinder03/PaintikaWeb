@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
 
   formData(){
     this.loginForm = this.fb.group({
-      email_or_mobile_number: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}')]],
+      email_or_mobile_number: ['', [Validators.required, Validators.pattern(/^(?:\d{10}|\w+@\w+\.\w{2,4})$/)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       role: ['USER', [Validators.required]],
     });

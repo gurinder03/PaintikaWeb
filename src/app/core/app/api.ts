@@ -73,6 +73,16 @@ const api = {
             url: '/address/update/{{id}}',
             responseInterface: []
         },
+        deleteAddress: {
+            requestType: 'delete',
+            url: '/address/remove/{{id}}',
+            responseInterface: []
+        },
+        getSingleAddress: {
+            requestType: 'get',
+            url: '/address/view/{{id}}',
+            responseInterface: []
+        },
         cartListData: {
             requestType: 'post',
             url: '/cart/list',
@@ -102,7 +112,7 @@ const api = {
             requestType: 'post',
             url: '/user/update',
             responseInterface: []
-        },
+        },      
         // Call All admin api's
         userList: {
             requestType: 'post',

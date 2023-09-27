@@ -25,10 +25,10 @@
             <label for="Email" class="email-label mb-2  animate__animated animate__fadeInLeft">Please Enter your email address. You Will receive a link to create a new password via email </label> <br>
             <mat-form-field class="full-w  animate__animated animate__fadeInRight">
                 
-                <mat-label>Email</mat-label>
-                <input matInput formControlName="email_or_mobile_number" placeholder="Email">
+                <mat-label>Email or Mobile number</mat-label>
+                <input matInput formControlName="email_or_mobile_number" placeholder="Email or Mobile number">
                 <mat-error *ngIf="forgotPassForm.controls['email_or_mobile_number'].hasError('required')">
-                    Email is required.
+                    Email or Mobile Number is required.
                 </mat-error>
                 <mat-error *ngIf="forgotPassForm.controls['email_or_mobile_number'].hasError('pattern')">
                     Email format is not valid.

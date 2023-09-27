@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthencationService } from 'src/app/core/auth/authencation.service';
 import { ApiService } from 'src/app/core/services/api.service';
+import { FunctionService } from 'src/app/core/services/function.service';
+import { NavigationRouteService } from 'src/app/core/services/navigation-route.service';
 import { WindowRefService } from 'src/app/core/services/window-ref.service';
 import { environment } from 'src/environments/environment';
 
@@ -58,6 +60,8 @@ export class AddToCartComponent implements OnInit{
     public api: ApiService,
     public toast: ToastrService,
     private winRef: WindowRefService,
+    public fun: FunctionService,
+    public navCtrl: NavigationRouteService,
     public auth: AuthencationService
   ){
 
@@ -138,4 +142,50 @@ export class AddToCartComponent implements OnInit{
       }
     })
   }
+
+  editAddress(address:any){
+    console.log(address);
+    this.navCtrl.goTo(`/page/delivery-address/${address._id}`)
+  }
+
+  removeFromCart(cart:any){
+    this.api.removeToCart({id: cart._id}).then((res:any)=>{
+      console.log('res => ',  res);
+      debugger
+      if (res && res.statusCode === 200) {
+        this.toast.error(res.message);
+        const indexToRemove = this.cartData.findIndex((item:any) => item._id === cart._id);
+        if (indexToRemove !== -1) {
+          this.cartData.splice(indexToRemove, 1); // Remove one item at the found index
+          this.fun.cartCount = this.cartData.length
+        } else {
+          console.log('No Find data');
+        }
+      } else if (res.statusCode === 500) {
+        this.toast.error(res.message);
+      } else {
+        this.toast.error('Something went wrong');
+      }
+    })
+  }
+
+  deleteAddress(del:any){
+    console.log('Test => ', del);
+    this.api.deleteAddress({id: del._id}).then((res:any)=>{
+      if (res && res.statusCode === 200) {
+        this.toast.error(res.message);
+        const indexToRemove = this.addressList.findIndex((item:any) => item._id === del._id);
+        if (indexToRemove !== -1) {
+          this.addressList.splice(indexToRemove, 1); // Remove one item at the found index
+        } else {
+          console.log('No Find data');
+        }
+      } else if (res.statusCode === 500) {
+        this.toast.error(res.message);
+      } else {
+        this.toast.error('Something went wrong');
+      }
+    })
+  }
+
 }

@@ -13,10 +13,12 @@ export class ResetPasswordComponent {
   resetPassForm!: FormGroup;
   data:any
   password = new FormControl(null, [
-    (c: AbstractControl) => Validators.required(c)
+    (c: AbstractControl) => Validators.required(c),
+    this.passwordLengthValidator(6, 20)
   ]);
   confirmPassword = new FormControl(null, [
-    (c: AbstractControl) => Validators.required(c)
+    (c: AbstractControl) => Validators.required(c),
+    this.passwordLengthValidator(6, 20)
   ]);
 
 
@@ -48,7 +50,7 @@ export class ResetPasswordComponent {
     this.resetPassForm.patchValue({ email_or_mobile_number: this.data?.email_or_mobile_number});
     this.resetPassForm.patchValue({ OTP: this.data?.OTP });
     this.resetPassForm.patchValue({ role: this.data?.role });
-    console.log('this.loginForm => ', this.resetPassForm.value, this.data);
+    console.log('this.loginForm => ', this.resetPassForm, this.data);
     this.resetPassForm.markAllAsTouched();
     if (this.resetPassForm.valid) {
       this.auth.passwordReset(this.resetPassForm.value)
@@ -72,6 +74,16 @@ export class ResetPasswordComponent {
       } else {
         matchingControl.setErrors(null);
       }
+    };
+  }
+
+  passwordLengthValidator(minLength: number, maxLength: number) {
+    return (control: AbstractControl): { [key: string]: boolean } | null => {
+      const password = control.value;
+      if (password && (password.length < minLength || password.length > maxLength)) {
+        return { 'passwordLength': true };
+      }
+      return null;
     };
   }
 

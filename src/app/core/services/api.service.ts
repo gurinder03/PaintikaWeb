@@ -178,6 +178,19 @@ export class ApiService implements OnInit {
     });
   }
 
+  async deleteAddress(data: any) {
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value)
+        } else {
+          reject(value.statusText)
+        }
+      };
+      this.request.send("deleteAddress", data, success, null, true);
+    });
+  }
+
 
   async updateUserAddress(data: any, id:any) {
     let cateId = data.category;
@@ -191,6 +204,19 @@ export class ApiService implements OnInit {
         }
       };
       this.request.send("delAddressUpdate", { id, cateId, status }, success, null, true);
+    });
+  }
+
+  async getAddress(id:any) {
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value)
+        } else {
+          reject(value.statusText)
+        }
+      };
+      this.request.send("getSingleAddress", { id }, success, null, true);
     });
   }
  

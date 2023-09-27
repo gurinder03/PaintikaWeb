@@ -26,6 +26,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { RequirmentPaintComponent } from './requirment-paint/requirment-paint.component';
 import { AddAddressComponent } from './add-address/add-address.component';
+import { OrderStatusComponent } from './order-status/order-status.component';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { AddAddressComponent } from './add-address/add-address.component';
     UploadPaintComponent,
     ProductListComponent,
     RequirmentPaintComponent,
-    AddAddressComponent
+    AddAddressComponent,
+    OrderStatusComponent
+   
   ],
   imports: [
     CommonModule,

@@ -134,10 +134,13 @@ input.nosubmit {
     color: #212121;
 }
 .buy-btn a {
-    background: #fb641b;
+    background: #000000;
     padding: 9px;
     font-size: 16px;
     color: #ffffff;
+}
+.buy-btn a:hover{
+  background-color: lightgray;
 }
 p.painting-detail {
     margin-bottom: 4px;

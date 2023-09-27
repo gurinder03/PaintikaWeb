@@ -13,15 +13,21 @@ img{
   margin: 0 auto;
 }
 .reject-btn{
-  background: red;
+  background: #000000;
   color: #ffffff;
   margin-left: 5px;
 }
 .approve-btn{
-  background:green;
+  background:#000000;
   color: #ffffff;
   margin-left: 5px;
 }
 .approve-btn-app{
-  color: green;
+  color: #000000;
+}
+button[disabled]:hover {
+  cursor:not-allowed;
+}
+button[disabled]{
+  background: lightgray;
 }

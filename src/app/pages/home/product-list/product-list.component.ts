@@ -31,35 +31,35 @@ export class ProductListComponent implements OnInit {
     debugger
     if(this.auth.isAuthenticated()){
       item.isLiked = !item.isLiked;
-      const index = this.cartData?.findIndex((cartItem:any) => cartItem.art_id === item._id);
+      const index = this.cartData?.findIndex((cartItem:any) => cartItem.art_id === item?._id);
       if (index !== -1) {
         debugger
-        this.cartData?.splice(index, 1);
-        this.api.removeToCart({id:item._id}).then((res: any) => {
-          debugger
-          if (res && res.statusCode === 200) {
-            this.toast.error(res.message);
-            this.fun.cartCount = this.cartData?.length
-          }
-          else{
-            this.toast.error('Something went wrong');
-          }
-          console.log('this.api.cartList => ', this.cartData);
-        });
+        // this.cartData?.splice(index, 1);
+        // this.api.removeToCart({id:item?._id}).then((res: any) => {
+        //   debugger
+        //   if (res && res.statusCode === 200) {
+        //     this.toast.error(res.message);
+        //     this.fun.cartCount = this.cartData?.length
+        //   }
+        //   else{
+        //     this.toast.error('Something went wrong');
+        //   }
+        //   console.log('this.api.cartList => ', this.cartData);
+        // });
       } else {
         debugger
         let data = {
-          "user_id":this.auth.getUserData()._id,
-          "art_id":item._id,
+          "user_id":this.auth.getUserData()?._id,
+          "art_id":item?._id,
           "quantity":1, 
-          "creator_id": item.creator_id
+          "creator_id": item?.creator_id
         }
         this.api.addToCartData(data).then((res: any) => {
           console.log('res => ', res);
           if (res && res.statusCode === 200) {
             // this.cart.push(res.data);
             this.toast.success(res.message);
-            this.api.cartListData({user_id: this.auth.getUserData()._id})
+            this.api.cartListData({user_id: this.auth.getUserData()?._id})
             console.log('this.cart => ', this.cartData, this.fun.cartCount);
           } else if (res.statusCode === 500) {
             this.toast.error(res.message);
@@ -74,31 +74,38 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    this.activatedRoute.params.subscribe((event: any) => {
+      if (event) {
+        this.productData(event.productId);
+      }
+    });
   }
 
   getCartData(){
-    let data = {user_id: this.auth.getUserData()._id}
-    this.api.cartListData(data).then((res:any)=>{
-      if (res && res.statusCode === 200) {
-        debugger
-        this.cartData = res.data.carts;
-        console.log('cart => ',  this.cartData);
-        this.activatedRoute.params.subscribe((event: any) => {
-          if (event) {
-            this.productData(event.productId);
-          }
-        });
-      } else if (res.statusCode === 500) {
-        this.toast.error(res.message);
-      } else {
-        this.toast.error('Something went wrong');
-      }
-    })
+    if(this.auth.isAuthenticated()){
+      let data = {user_id: this.auth.getUserData()?._id}
+      this.api.cartListData(data).then((res:any)=>{
+        if (res && res.statusCode === 200) {
+          debugger
+          this.cartData = res.data.carts;
+          console.log('cart => ',  this.cartData);
+          this.activatedRoute.params.subscribe((event: any) => {
+            if (event) {
+              this.productData(event.productId);
+            }
+          });
+        } else if (res.statusCode === 500) {
+          this.toast.error(res.message);
+        } else {
+          this.toast.error('Something went wrong');
+        }
+      })
+    }
   }
 
 
   productData(cate:any){
+    debugger
     let data = {
       "page":1,
       "limit":10,
@@ -134,8 +141,6 @@ export class ProductListComponent implements OnInit {
   }
 
   buyNow(id:any){
-    console.log('sd ', id);
-    
     this.navCtrl.goTo(`/page/add-to-cart`)
   }
 }

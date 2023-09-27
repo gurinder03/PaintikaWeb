@@ -32,13 +32,13 @@
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="full-w animate__animated animate__fadeInLeftBig">
-                <mat-label>Email</mat-label>
-                <input matInput formControlName="email_or_mobile_number" placeholder="Email">
+                <mat-label>Email or Mobile Number</mat-label>
+                <input matInput formControlName="email_or_mobile_number" placeholder="Email or Mobile number">
                 <mat-error *ngIf="signUpForm.controls['email_or_mobile_number'].hasError('required')">
-                    Email is required.
+                    Email Or Mobile Number is required.
                 </mat-error>
                 <mat-error *ngIf="signUpForm.controls['email_or_mobile_number'].hasError('pattern')">
-                    Email format is not valid.
+                    Email/Phone format is not valid.
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="full-w animate__animated animate__fadeInRightBig">

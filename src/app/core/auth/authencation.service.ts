@@ -29,17 +29,21 @@ export class AuthencationService {
 
   userLogin(data: any) {
     const success = (value: any) => {
-      debugger
       if (value && value.statusCode == 200) {
-        this.setLoggedIn(value.data.token, value.data);
-        let userData = this.getUserData();
-        this.fun.getUserData = userData
-        if (data && data.role == 'ADMIN') {
-          this.navCtrl.goTo('/admin/user-list', {}, 'root');
-        } else {
-          this.navCtrl.goTo('/dashboard', {}, 'root');
+        if(value.data && value.data.status === 'unblocked'){
+          this.setLoggedIn(value.data.token, value.data);
+          let userData = this.getUserData();
+          this.fun.getUserData = userData
+          if (data && data.role == 'ADMIN') {
+            this.navCtrl.goTo('/admin/user-list', {}, 'root');
+          } else {
+            this.navCtrl.goTo('/dashboard', {}, 'root');
+          }
+          this.toast.success(value.message);
         }
-        this.toast.success(value.message);
+        else{
+          this.toast.error('You are temporary blocked please contact with admin');
+        }
       } else {
         this.toast.error(value.message);
       }

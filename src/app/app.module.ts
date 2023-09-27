@@ -21,6 +21,7 @@ import { DashboardComponent } from './pages/home/dashboard/dashboard.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DatePipe } from '@angular/common';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { DatePipe } from '@angular/common';
     AdminHeaderComponent,
     AdminFooterComponent,
     DashboardComponent,
+  
   ],
   imports: [
     BrowserModule,

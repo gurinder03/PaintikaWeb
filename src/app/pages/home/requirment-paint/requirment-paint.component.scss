@@ -19,11 +19,14 @@ input[type=file] {
   margin: 2% auto 5%;
 }
 button.requirement-btn {
-    background: green;
+    background: #000000;
     color: #ffffff;
     font-weight: 500;
     padding: 9px 18px;
     font-size: 17px;
+}
+button.requirement-btn:hover{
+    background-color: lightgray;
 }
 img{
     max-width:180px;

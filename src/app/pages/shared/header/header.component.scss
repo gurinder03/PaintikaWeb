@@ -90,10 +90,20 @@ ul.navbar-nav.me-auto {
     align-items: end;
     margin-right: 29px;
     font-weight: 500;
-    margin-top: 10px;
+    // margin-top: 10px;
 }
 .btn:focus{
     box-shadow: none;
+}
+.dropdown-item:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #000000;
+}
+.dropdown-item:active {
+    color: #fff;
+    text-decoration: none;
+    background-color: #000000;
 }
 @media screen and (max-width:1006px){
     ul.navbar-nav.me-auto {

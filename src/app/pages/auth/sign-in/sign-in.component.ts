@@ -23,7 +23,7 @@ export class SignInComponent {
 
   formData(){
     this.signUpForm = this.fb.group({
-      email_or_mobile_number: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}')]],
+      email_or_mobile_number: ['', [Validators.required, Validators.pattern(/^(?:\d{10}|\w+@\w+\.\w{2,4})$/)]],
       role: ['', [Validators.required]],
       userType: [true],
       name: ['', [Validators.required]],

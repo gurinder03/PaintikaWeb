@@ -23,7 +23,7 @@
         <div class="paintings col-md-3 col-sm-6 p-4 m-2" *ngFor="let data of allData">
           <div class="hdng-button ">
             <h3 class="text-cap">{{data.name}}</h3>
-            <button (click)="addToCart(data)" class="heart-button" mat-raised-button
+            <button (click)="addToCart(data)" [disabled]="data && data.isLiked == true ? true : false " class="heart-button" mat-raised-button
               aria-label="Example icon button with a heart icon">
               <mat-icon [ngClass]="{'favourite': !data.isLiked, 'favourite text-danger': data.isLiked}"
               class="favourite-icon">favorite</mat-icon>

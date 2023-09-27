@@ -100,6 +100,11 @@ export class DashboardComponent implements OnInit {
   }
 
   getMore(product:any){
-    this.navCtrl.goTo(`/page/product-list/${product?._id}`)
+    debugger
+    if(this.auth.isAuthenticated()){
+      this.navCtrl.goTo(`/page/product-list/${product?._id}`)
+    }else{
+      this.navCtrl.goTo(`/product-list/${product?._id}`)
+    }
   }
 }

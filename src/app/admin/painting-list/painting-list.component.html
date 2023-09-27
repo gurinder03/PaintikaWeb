@@ -2,8 +2,8 @@
     <h2 class="text-center p-4 animate__animated animate__bounceInDown">Paintings List</h2>
 
     <mat-form-field class="col-md-4  animate__animated animate__bounceInUp">
-        <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+        <mat-label>Search Paintings</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Search Paintings" #input>
     </mat-form-field>
 </div>
 
@@ -52,7 +52,7 @@
         <ng-container matColumnDef="button">
             <th mat-header-cell *matHeaderCellDef style="width: 200px;"> Button </th>
             <td mat-cell *matCellDef="let element" style="white-space: nowrap;">
-                <button type="button" [disabled]="element.btnDisabled" (click)="approve(element, 'approved')" class="approve-btn">Approve</button>
+                <button type="button" [disabled]="element.btnDisabled" (click)="approve(element, 'approved')" class="approve-btn" >Accept</button>
                 <button type="button" [disabled]="element.btnDisabled" (click)="approve(element, 'rejected')" class="reject-btn">Reject</button>
             </td>
         </ng-container>
@@ -67,5 +67,4 @@
     <p><br></p>
     <p><br></p>
     <p><br></p>
-</div>
-     -->
+</div>-->

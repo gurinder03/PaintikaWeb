@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './pages/home/dashboard/dashboard.component';
 import { AuthGuard } from './core/guard/auth.guard';
 import { AdminGuard } from './core/guard/admin.guard';
+import { ProductListComponent } from './pages/home/product-list/product-list.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,11 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canLoad: [AuthGuard]
+  },
+  {
+    path: 'product-list/:productId',
+    component: ProductListComponent,
     canLoad: [AuthGuard]
   },
 ];

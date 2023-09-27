@@ -5,7 +5,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand" href="javascript:void()">
-            <img src="./assets/images/paintika.jpg" alt="Logo" height="50" width="70">
+            <img src="./assets/images/logo.png" alt="Logo" height="50" width="60">
         </a>
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
@@ -30,9 +30,19 @@
                 </li>
             </ul>
             <form class="d-flex">
-                <div class="login-name" *ngIf="auth.getUserData() && auth.getUserData().name">
+                <div class="dropdown login-name" *ngIf="auth.getUserData() && auth.getUserData().name">
+                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="color: #ffffff;">
+                        Welcome <span style="text-transform: capitalize;">{{auth.getUserData().name}}</span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li><a class="dropdown-item" [routerLink]="['/page/order-status']">Order Status</a></li>
+                      <li><a class="dropdown-item" href="javascript:void()">Change Password</a></li>
+                    
+                    </ul>
+                  </div>
+                <!-- <div class="login-name" *ngIf="auth.getUserData() && auth.getUserData().name">
                     <p>Welcome <span style="text-transform: capitalize;">{{auth.getUserData().name}}</span></p>
-                </div>
+                </div> -->
                 <div class="cart-button" *ngIf="auth.isAuthenticated()">
                     <button class="btn cart-button" type="button" (click)="navigateTo('/page/add-to-cart', 1)">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">

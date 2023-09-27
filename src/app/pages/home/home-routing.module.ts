@@ -10,13 +10,14 @@ import { UploadPaintComponent } from './upload-paint/upload-paint.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { RequirmentPaintComponent } from './requirment-paint/requirment-paint.component';
 import { AddAddressComponent } from './add-address/add-address.component';
+import { OrderStatusComponent } from './order-status/order-status.component';
 
 const routes: Routes = [
   {
     path: '',   
     children:[
       {
-        path: 'delivery-address',
+        path: 'delivery-address/:id',
         component: DeliveryAddressComponent
       },
       {
@@ -54,6 +55,10 @@ const routes: Routes = [
       {
         path: 'add-address',
         component: AddAddressComponent
+      },
+      {
+        path: 'order-status',
+        component: OrderStatusComponent
       }
     ]
   },

@@ -1,11 +1,14 @@
 .block-btn{
-    background-color:red;
+    background-color:#000000;
     color: #ffffff;
     margin-right: 5px;
 }
 .reject-btn{
-    background: red;
+    background: #000000;
     color: #ffffff;
+}
+.unblock-btn:hover,.reject-btn:hover,.block-btn:hover{
+    background-color: lightgray;
 }
 img{
     width: 10%;
@@ -21,11 +24,15 @@ h2.text-center.p-4 {
     margin: 0 auto;
 }
 .unblock-btn{
-    background-color:green;
+    background-color:#000000;
     color: #ffffff;
 }
 
 .list-data {
     float: right;
     width: 30%;
+}
+img{
+    width: 40%;
+    padding: 10px;
 }

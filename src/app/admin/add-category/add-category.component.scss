@@ -17,23 +17,26 @@ input[type="file"] {
     width: 100%;
 }
 button.cancel-btn {
-    background: red;
+    background: #000000;
     color: #ffffff;
     width: 106px;
     font-size: 18px;
     padding: 6px 0;
 }
 .update-btn{
-    background: yellow;
+    background: #000000;
     color: #000000;
     width: 106px;
     font-size: 18px;
     padding: 6px 0;
 }
 .add-btn{
-    background: green;
+    background: #000000;
     color: #ffffff;
     width: 106px;
     font-size: 18px;
     padding: 6px 0;
+}
+.add-btn:hover,.update-btn:hover,button.cancel-btn:hover{
+    background-color: lightgray;
 }
