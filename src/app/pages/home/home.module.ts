@@ -27,6 +27,8 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { RequirmentPaintComponent } from './requirment-paint/requirment-paint.component';
 import { AddAddressComponent } from './add-address/add-address.component';
 import { OrderStatusComponent } from './order-status/order-status.component';
+import { ViewOrderComponent } from './view-order/view-order.component';
+import { ArtistOrderListComponent } from './artist-order-list/artist-order-list.component';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { OrderStatusComponent } from './order-status/order-status.component';
     ProductListComponent,
     RequirmentPaintComponent,
     AddAddressComponent,
-    OrderStatusComponent
+    OrderStatusComponent,
+    ViewOrderComponent,
+    ArtistOrderListComponent
    
   ],
   imports: [

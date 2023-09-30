@@ -20,7 +20,7 @@
                   <div class="address-txt row col-md-6 col-sm-12">
                      <div class="radio-main col-md-2">
                         <span>
-                           <mat-radio-group aria-label="Select an option">
+                           <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedRadioValue">
                               <mat-radio-button [value]="address._id"></mat-radio-button>
                             </mat-radio-group>
                         </span>

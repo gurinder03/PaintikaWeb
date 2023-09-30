@@ -123,6 +123,11 @@ const api = {
             url: '/user/admin/update/status/{{id}}',
             responseInterface: []
         },
+        orderView: {
+            requestType: 'get',
+            url: '/order/view/{{id}}',
+            responseInterface: []
+        },
         updateUser: {
             requestType: 'post',
             url: '/user/update',
@@ -142,6 +147,16 @@ const api = {
         adminCategoryList: {
             requestType: 'post',
             url: '/category/list',
+            responseInterface: []
+        },
+        adminOrderList: {
+            requestType: 'post',
+            url: '/order/admin/user/list',
+            responseInterface: []
+        },
+        artistOrderList: {
+            requestType: 'post',
+            url: '/order/admin/artist/list',
             responseInterface: []
         },
         adminArtList: {

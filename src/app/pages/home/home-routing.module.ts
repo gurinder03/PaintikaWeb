@@ -11,6 +11,8 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { RequirmentPaintComponent } from './requirment-paint/requirment-paint.component';
 import { AddAddressComponent } from './add-address/add-address.component';
 import { OrderStatusComponent } from './order-status/order-status.component';
+import { ViewOrderComponent } from './view-order/view-order.component';
+import { ArtistOrderListComponent } from './artist-order-list/artist-order-list.component';
 
 const routes: Routes = [
   {
@@ -59,6 +61,14 @@ const routes: Routes = [
       {
         path: 'order-status',
         component: OrderStatusComponent
+      },
+      {
+        path: 'order-view/:id',
+        component: ViewOrderComponent
+      },
+      {
+        path: 'artist-order-list',
+        component: ArtistOrderListComponent
       }
     ]
   },

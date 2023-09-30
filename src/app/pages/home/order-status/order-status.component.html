@@ -6,124 +6,82 @@
           <div class="card-header px-4 py-5">
             <h5 class="text-muted mb-0">Thanks for your Order, <span style="color: #000000;">{{auth.getUserData().name}}</span>!</h5>
           </div>
-          <ng-container *ngIf="orders && orders.length > 0">
-            <div class="card-body p-4">
+          <ng-container *ngIf="orders && orders.data && orders.data.length > 0">
+            <div class="card-body p-4" >
               <div class="d-flex justify-content-between align-items-center mb-4">
                 <p class="lead fw-normal mb-0" style="color: #000000;">Receipt</p>
               </div>
-              <div class="card shadow-0 border mb-4">
+              <div class="card shadow-0 border mb-4" *ngFor="let order of orders.data">
                 <div class="card-body">
-                  <div class="row">
-                    <div class="col-md-2">
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/13.webp"
-                        class="img-fluid" alt="Phone">
-                    </div>
-                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                      <p class="text-muted mb-0">Mountain Painting</p>
-                    </div>
-                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                      <p class="text-muted mb-0 small">Wooden Frame</p>
-                    </div>
-                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                      <p class="text-muted mb-0 small">size:12*12</p>
-                    </div>
-                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                      <p class="text-muted mb-0 small">Qty: 1</p>
-                    </div>
-                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                      <p class="text-muted mb-0 small">&#8377;499</p>
-                    </div>
+                  <div class="">
+                    {{order.order_number}}
                   </div>
-                  <hr class="mb-4" style="background-color: #e0e0e0; opacity: 1;">
+                  <div class="row" *ngFor="let item of order.items">
+                    <div class="col-md-2">
+                      <img [src]="item.image"  class="img-fluid" alt="Phone">
+                    </div>
+                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                      <p class="text-muted mb-0">{{item.name}}</p>
+                    </div>
+                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                      <p class="text-muted mb-0 small">{{item.theme}}</p>
+                    </div>
+                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                      <p class="text-muted mb-0 small">size: {{item.size}}</p>
+                    </div>
+                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                      <p class="text-muted mb-0 small">Qty: {{item.quantity}}</p>
+                    </div>
+                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                      <p class="text-muted mb-0 small">&#8377;{{item.price}}</p>
+                    </div>
+                    <hr class="mb-4" style="background-color: #e0e0e0; opacity: 1;">
+                  </div>
                   <div class="row d-flex align-items-center">
                     <div class="col-md-2">
                       <p class="track text-muted mb-0 small">Track Order</p>
                     </div>
                     <div class="col-md-10">
-                      <div class="progress" style="height: 6px; border-radius: 16px;">
+                      <!-- <div class="progress" style="height: 6px; border-radius: 16px;">
                         <div class="progress-bar" role="progressbar"
                           style="width: 65%; border-radius: 16px; background-color: #000000;" aria-valuenow="65"
                           aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
+                      </div> -->
                       <div class="d-flex justify-content-around mb-1">
-                        
-                        <p class="text-muted mt-1 mb-0 small ms-xl-5 mt-3 mb-2"><a href="javascript:void(0)">Out for delivary</a></p>
-                        <p class="text-muted mt-1 mb-0 small ms-xl-5 mt-3 mb-2"><a href="javascript:void(0)">Delivered</a></p>
+                        <p class="text-muted mt-1 mb-0 small ms-xl-5 mt-3 mb-2"><a href="javascript:void(0)">{{order.status}}</a></p>
+                        <p class="text-muted mt-1 mb-0 small ms-xl-5 mt-3 mb-2"><a (click)="orderView(order)" href="javascript:void(0)">View</a></p>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="card shadow-0 border mb-4">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-md-2">
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/1.webp"
-                        class="img-fluid" alt="Phone">
-                    </div>
-                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                      <p class="text-muted mb-0">River Painting</p>
-                    </div>
-                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                      <p class="text-muted mb-0 small">Iron frame</p>
-                    </div>
-                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                      <p class="text-muted mb-0 small">Size : 5*5</p>
-                    </div>
-                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                      <p class="text-muted mb-0 small">Qty: 1</p>
-                    </div>
-                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                      <p class="text-muted mb-0 small">&#8377;399</p>
-                    </div>
-                  </div>
-                  <hr class="mb-4" style="background-color: #e0e0e0; opacity: 1;">
-                  <div class="row d-flex align-items-center">
-                    <div class="col-md-2">
-                      <p class="track text-muted mb-0 small">Track Order</p>
-                    </div>
-                    <div class="col-md-10">
-                      <div class="progress" style="height: 6px; border-radius: 16px;">
-                        <div class="progress-bar" role="progressbar"
-                          style="width: 20%; border-radius: 16px; background-color: #000000;" aria-valuenow="20"
-                          aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <div class="d-flex justify-content-around mb-1">
-                        <p class="text-muted mt-1 mb-0 small ms-xl-5 mt-3 mb-2"><a href="javascript:void(0)">Out for delivary</a></p>
-                        <p class="text-muted mt-1 mb-0 small ms-xl-5 mt-3 mb-2"><a href="javascript:void(0)">Delivered</a></p>
-                      </div>
-                    </div>
-                  </div>
+                <div class="d-flex justify-content-between pt-2">
+                  <p class="fw-bold mb-0">Order Details</p>
+                  <p class="text-muted mb-0"><span class="fw-bold me-4">Total</span> &#8377;{{order.order_total}}</p>
                 </div>
-              </div>
-  
-              <div class="d-flex justify-content-between pt-2">
-                <p class="fw-bold mb-0">Order Details</p>
-                <p class="text-muted mb-0"><span class="fw-bold me-4">Total</span> &#8377;898.00</p>
-              </div>
-  
-              <div class="d-flex justify-content-between pt-2">
-                <p class="text-muted mb-0">Invoice Number : 788152</p>
-                <!-- <p class="text-muted mb-0"><span class="fw-bold me-4">Discount</span> &#8377;19.00</p> -->
-              </div>
-  
-              <div class="d-flex justify-content-between">
-                <p class="text-muted mb-0">Invoice Date : 22 Dec,2019</p>
-                <p class="text-muted mb-0"><span class="fw-bold me-4">GST 18%</span> 123</p>
-              </div>
-  
-              <div class="d-flex justify-content-between mb-5">
-                <p class="text-muted mb-0"></p>
-                <p class="text-muted mb-0"><span class="fw-bold me-4">Delivery Charges</span> &#8377;40</p>
+    
+                <div class="d-flex justify-content-between pt-2">
+                  <p class="text-muted mb-0">Invoice Number : 788152</p>
+                  <!-- <p class="text-muted mb-0"><span class="fw-bold me-4">Discount</span> &#8377;19.00</p> -->
+                </div>
+    
+                <div class="d-flex justify-content-between">
+                  <p class="text-muted mb-0">Invoice Date : 22 Dec,2019</p>
+                  <p class="text-muted mb-0"><span class="fw-bold me-4">GST 18%</span> 123</p>
+                </div>
+    
+                <div class="d-flex justify-content-between mb-5">
+                  <p class="text-muted mb-0"></p>
+                  <p class="text-muted mb-0"><span class="fw-bold me-4">Delivery Charges</span> &#8377;40</p>
+                </div>
               </div>
             </div>
-            <div class="card-footer border-0 px-4 py-5"
+            <!-- <div class="card-footer border-0 px-4 py-5"
               style="background-color: #000000; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
               <h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">Total
                 paid: <span class="h2 mb-0 ms-2">&#8377;1040</span></h5>
-            </div>
+            </div> -->
           </ng-container>
-          <div *ngIf="orders && !orders.length">
+          <div *ngIf="orders && orders.data && !orders.data.length">
             <h1 class="no-found">Order not found!</h1>
           </div>
         </div>

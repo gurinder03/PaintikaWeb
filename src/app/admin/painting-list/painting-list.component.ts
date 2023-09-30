@@ -5,6 +5,7 @@ import { AdminApiService } from 'src/app/core/services/admin-api.service';
 import { PageEvent } from '@angular/material/paginator';
 import { ToastrService } from 'ngx-toastr';
 import { AuthencationService } from 'src/app/core/auth/authencation.service';
+import { NavigationRouteService } from 'src/app/core/services/navigation-route.service';
 @Component({
   selector: 'app-painting-list',
   templateUrl: './painting-list.component.html',
@@ -22,6 +23,7 @@ export class PaintingListComponent implements OnInit {
   constructor(
     public adminApi: AdminApiService,
     public toast: ToastrService,
+    public navCtrl: NavigationRouteService,
     public auth: AuthencationService
   ){ }
 
@@ -32,7 +34,7 @@ export class PaintingListComponent implements OnInit {
   }
 
   displayedColumns: string[] = ['srNo', 'name', 'status','size',  'price' , 'medium','theme','image','button'];
-  dataSource =  new MatTableDataSource<any>();;
+  dataSource =  new MatTableDataSource<any>();
 
 
   applyFilter(event: Event) {
@@ -44,6 +46,10 @@ export class PaintingListComponent implements OnInit {
     this.artList()
 		this.dataSource.sort = this.empTbSort;
 	}
+
+  paintView(){
+    this.navCtrl.goTo('/admin/painting-view')
+  }
 
   approve(data:any, status:any){
       console.log('Test => ', data);

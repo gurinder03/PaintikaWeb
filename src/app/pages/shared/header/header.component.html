@@ -19,14 +19,17 @@
                 <li class="nav-item" *ngIf="auth.isAuthenticated() && auth.getUserData().role != 'USER'">
                     <a class="nav-link" (click)="navigateTo('/page/upload-paint', 3)" [class.active]="setEl === 3">Upload Painting</a>
                 </li>
+                <li class="nav-item" *ngIf="auth.isAuthenticated() && auth.getUserData().role != 'USER'">
+                    <a class="nav-link" (click)="navigateTo('/page/artist-order-list', 4)" [class.active]="setEl === 4">Artist Order List</a>
+                </li>
                 <li *ngIf="!auth.isAuthenticated()" class="nav-item">
-                    <a class="nav-link" (click)="navigateTo('/auth/login', 4)" [class.active]="setEl === 4">Login</a>
+                    <a class="nav-link" (click)="navigateTo('/auth/login', 5)" [class.active]="setEl === 5">Login</a>
                 </li>
                 <li *ngIf="auth.isAuthenticated() && auth.getUserData().role == 'USER'" class="nav-item">
-                    <a class="nav-link" (click)="navigateTo('/page/requirment-paint', 5)" [class.active]="setEl === 5">Pre-Order</a>
+                    <a class="nav-link" (click)="navigateTo('/page/requirment-paint', 6)" [class.active]="setEl === 6">Pre-Order</a>
                 </li>
                 <li  class="nav-item painter-btn" *ngIf="auth.isAuthenticated() && auth.getUserData().role == 'USER'">
-                    <a (click)="navigateTo('/auth/sign-in', 6)" class="nav-link painter" >Join As Painter</a>
+                    <a (click)="navigateTo('/auth/sign-in', 7)" class="nav-link painter" >Join As Painter</a>
                 </li>
             </ul>
             <form class="d-flex">
@@ -35,7 +38,7 @@
                         Welcome <span style="text-transform: capitalize;">{{auth.getUserData().name}}</span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><a class="dropdown-item" [routerLink]="['/page/order-status']">Order Status</a></li>
+                      <li><a class="dropdown-item" *ngIf="auth.getUserData().role != 'ARTIST'" [routerLink]="['/page/order-status']">Order Status</a></li>
                       <li><a class="dropdown-item" href="javascript:void(0)">Change Password</a></li>
                     
                     </ul>
@@ -43,8 +46,8 @@
                 <!-- <div class="login-name" *ngIf="auth.getUserData() && auth.getUserData().name">
                     <p>Welcome <span style="text-transform: capitalize;">{{auth.getUserData().name}}</span></p>
                 </div> -->
-                <div class="cart-button" *ngIf="auth.isAuthenticated()">
-                    <button class="btn cart-button" type="button" (click)="navigateTo('/page/add-to-cart', 1)">
+                <div class="cart-button" *ngIf="auth.isAuthenticated() && auth.getUserData().role != 'ARTIST'">
+                    <button class="btn cart-button" type="button" (click)="navigateTo('/page/add-to-cart', 8)">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
                             <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
                           </svg>

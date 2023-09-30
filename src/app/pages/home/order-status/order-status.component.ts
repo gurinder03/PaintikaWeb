@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { AuthencationService } from 'src/app/core/auth/authencation.service';
 import { ApiService } from 'src/app/core/services/api.service';
+import { NavigationRouteService } from 'src/app/core/services/navigation-route.service';
 
 @Component({
   selector: 'app-order-status',
@@ -10,12 +11,13 @@ import { ApiService } from 'src/app/core/services/api.service';
 })
 export class OrderStatusComponent implements OnInit {
   
-  orders: any = []
+  orders: any = {}
 
   constructor(
     public auth: AuthencationService,
     public api: ApiService,
-    public toast: ToastrService
+    public toast: ToastrService,
+    public navCtrl: NavigationRouteService
   ){
   }
 
@@ -33,7 +35,7 @@ export class OrderStatusComponent implements OnInit {
     this.api.orderList(data).then((res:any)=>{
       console.log('res => ', res);
       if (res && res.statusCode === 200) {
-        this.orders = res.data
+        this.orders = res
         // this.toast.success(res.message);
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
@@ -41,5 +43,10 @@ export class OrderStatusComponent implements OnInit {
         this.toast.error('Something went wrong');
       }
     })
+  }
+
+  orderView(order:any){
+    console.log(order);
+    this.navCtrl.goTo('/page/order-view/'+ order._id)
   }
 }

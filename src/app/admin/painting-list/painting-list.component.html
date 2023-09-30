@@ -54,6 +54,7 @@
             <td mat-cell *matCellDef="let element" style="white-space: nowrap;">
                 <button type="button" [disabled]="element.btnDisabled" (click)="approve(element, 'approved')" class="approve-btn" >Accept</button>
                 <button type="button" [disabled]="element.btnDisabled" (click)="approve(element, 'rejected')" class="reject-btn">Reject</button>
+                <button type="button" (click)="paintView()" class="approve-btn" >View</button>
             </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

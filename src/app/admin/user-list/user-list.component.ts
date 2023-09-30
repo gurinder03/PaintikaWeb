@@ -5,6 +5,7 @@ import { AdminApiService } from 'src/app/core/services/admin-api.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { AuthencationService } from 'src/app/core/auth/authencation.service';
+import { NavigationRouteService } from 'src/app/core/services/navigation-route.service';
 
 @Component({
   selector: 'app-user-list',
@@ -24,7 +25,8 @@ export class UserListComponent implements OnInit {
   constructor(
     public adminApi: AdminApiService,
     private toast: ToastrService,
-    public auth: AuthencationService
+    public auth: AuthencationService,
+    public navCtrl: NavigationRouteService
   ){ }
   
   displayedColumns: string[] = ['serailNo', 'name', 'email_or_mobile_number','role','createdAt','profile_image','button'];
@@ -45,6 +47,10 @@ export class UserListComponent implements OnInit {
     this.getData();
 		this.dataSource.sort = this.empTbSort;
 	}
+
+  userView(){
+    this.navCtrl.goTo('/admin/user-view')
+  }
 
   getData(event?: PageEvent) {
     this.dataSource = new MatTableDataSource(this.allData);

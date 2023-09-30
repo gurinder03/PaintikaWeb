@@ -5,6 +5,8 @@ import { OrderListComponent } from './order-list/order-list.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { PaintingListComponent } from './painting-list/painting-list.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
+import { PaintingVeiwComponent } from './painting-veiw/painting-veiw.component';
+import { UserViewComponent } from './user-view/user-view.component';
 
 const routes: Routes = [
   {
@@ -29,6 +31,14 @@ const routes: Routes = [
       {
         path: 'add-category',
         component:AddCategoryComponent
+      },
+      {
+        path: 'painting-view',
+        component:PaintingVeiwComponent
+      },
+      {
+        path: 'user-view',
+        component:UserViewComponent
       },
     ]
   },

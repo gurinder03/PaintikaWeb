@@ -13,7 +13,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatSortModule } from '@angular/material/sort';
-import {MatPaginatorModule} from '@angular/material/paginator'; 
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { PaintingVeiwComponent } from './painting-veiw/painting-veiw.component';
+import { UserViewComponent } from './user-view/user-view.component'; 
 
 
 @NgModule({
@@ -23,6 +25,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     UserListComponent,
     PaintingListComponent,
     AddCategoryComponent,
+    PaintingVeiwComponent,
+    UserViewComponent,
   ],
   imports: [
     CommonModule,

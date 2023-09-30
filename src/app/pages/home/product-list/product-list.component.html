@@ -23,17 +23,19 @@
         <div class="paintings col-md-3 col-sm-6 p-4 m-2" *ngFor="let data of allData">
           <div class="hdng-button ">
             <h3 class="text-cap">{{data.name}}</h3>
-            <button (click)="addToCart(data)" [disabled]="data && data.isLiked == true ? true : false " class="heart-button" mat-raised-button
-              aria-label="Example icon button with a heart icon">
-              <mat-icon [ngClass]="{'favourite': !data.isLiked, 'favourite text-danger': data.isLiked}"
-              class="favourite-icon">favorite</mat-icon>
-            </button>
+            <ng-container *ngIf="auth.getUserData().role != 'ARTIST'">
+              <button (click)="addToCart(data)" [disabled]="data && data.isLiked == true ? true : false " class="heart-button" mat-raised-button
+                aria-label="Example icon button with a heart icon">
+                <mat-icon [ngClass]="{'favourite': !data.isLiked, 'favourite text-danger': data.isLiked}"
+                class="favourite-icon">favorite</mat-icon>
+              </button>
+            </ng-container>
           </div>
           <img [src]="data.image">
           <p class="painting-detail">Set of three paintings</p>
           <h3 class="product-rate">₹{{data.price}}</h3>
           <div class="buy-cart-btn">
-            <div class="buy-btn">
+            <div class="buy-btn" *ngIf="auth.getUserData().role != 'ARTIST'">
               <a (click)="buyNow(data)" href="javascript:void(0)">Buy Now</a>
             </div>
           </div>
@@ -50,6 +52,7 @@
   </div>
 </div>
 <div>
-<p><br></p>
-  
+  <p>
+    <br>
+  </p>
 </div>

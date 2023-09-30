@@ -39,6 +39,20 @@ export class AdminApiService {
     });
   }
 
+  adminOrderList(data:any){
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value);
+        }
+        else {
+          reject(value.statusText);
+        }
+      };
+      this.request.send('adminOrderList', data, success, null, true);
+    });
+  }
+
   adminArtList(data:any){
     return new Promise((resolve, reject) => {
       const success = (value:any) => {

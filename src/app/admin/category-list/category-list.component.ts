@@ -38,7 +38,7 @@ export class CategoryListComponent implements OnInit {
 
 
   ngAfterViewInit() {
-    this.getData()
+    // this.getData()
     this.empTbSort.disableClear = true;
     this.dataSource.sort = this.empTbSort;
   }

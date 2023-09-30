@@ -112,6 +112,7 @@ export class ApiService implements OnInit {
     debugger
     return new Promise((resolve, reject) => {
       const success = (value:any) => {
+        debugger
         if (value) {
           resolve(value);
         }
@@ -154,6 +155,21 @@ export class ApiService implements OnInit {
     });
   }
 
+  artistOrderList(data:any){
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value && value.statusCode == 200) {
+          resolve(value);
+        }
+        else {
+          this.toast.error(value.statusText)
+          reject(value.statusText);
+        }
+      };
+      this.request.send('artistOrderList', data, success, null, true);
+    });
+  }
+
   delAddressList(data:any){
     return new Promise((resolve, reject) => {
       const success = (value:any) => {
@@ -193,6 +209,19 @@ export class ApiService implements OnInit {
         }
       };
       this.request.send("getSingleUser",{id}, success, null, true);
+    });
+  }
+
+  orderView(id:any) {
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value)
+        } else {
+          reject(value.statusText)
+        }
+      };
+      this.request.send("orderView",{id}, success, null, true);
     });
   }
   
