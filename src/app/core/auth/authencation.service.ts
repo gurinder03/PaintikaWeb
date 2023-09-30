@@ -29,6 +29,7 @@ export class AuthencationService {
 
   userLogin(data: any) {
     const success = (value: any) => {
+      debugger
       if (value && value.statusCode == 200) {
         if(value.data && value.data.status === 'unblocked'){
           this.setLoggedIn(value.data.token, value.data);

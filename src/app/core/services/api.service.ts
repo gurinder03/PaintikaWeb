@@ -78,6 +78,50 @@ export class ApiService implements OnInit {
       this.request.send('addToCart', data, success, null, true);
     });
   }
+
+  checkOut(data:any){
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value);
+        }
+        else {
+          reject(value.statusText);
+        }
+      };
+      this.request.send('checkoutOrder', data, success, null, true);
+    });
+  }
+
+  orderList(data:any){
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value);
+        }
+        else {
+          reject(value.statusText);
+        }
+      };
+      this.request.send('orderList', data, success, null, true);
+    });
+  }
+
+  
+  addOrder(data:any){
+    debugger
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value);
+        }
+        else {
+          reject(value.statusText);
+        }
+      };
+      this.request.send('addOrder', data, success, null, true);
+    });
+  }
   
   uploadPainting(data:any){
     return new Promise((resolve, reject) => {

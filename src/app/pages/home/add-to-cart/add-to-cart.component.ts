@@ -21,40 +21,10 @@ export class AddToCartComponent implements OnInit{
   // quantity: number = 1;
   addressList: any = []
   paymentId = "";
-  cartData: any = []
+  cartData: any = {}
   message:any ="";
   error = "";
 
-  options = {
-    "key": environment.paymentKey,
-    "amount": 200,
-    "currency": environment.currency,
-    "name": "Paintika",
-    "description": "Web Developer",
-    "image": "https://paintika.s3.ap-south-1.amazonaws.com/1692028765688_image_4312740.jpg",
-    "order_id": "",
-    "handler": function (response:any){
-      var event = new CustomEvent("payment.success",
-        {
-          detail: response,
-          bubbles: true,
-          cancelable: true
-        }
-      );
-      window.dispatchEvent(event);
-    },
-    "prefill":{
-      "name":"",
-      "email":"",
-      "contact":""
-    },
-    "notes":{
-      "address":""
-    },
-    "theme": {
-      "color": "#0c238a"
-    }
-  };
   constructor(
     public activatedRoute: ActivatedRoute,
     public api: ApiService,
@@ -73,26 +43,105 @@ export class AddToCartComponent implements OnInit{
 
   increment(data:any) {
     data.quantity++;
+    console.log(data);
+    this.updateCartData(data, 1)
   }
 
   decrement(data: any) {
     if (data.quantity > 1) {
       data.quantity--;
+      this.updateCartData(data, -1)
     }
   }
 
-  getTopayment(){
+  updateCartData(item:any, quentity: number){
+    let data = {
+      user_id: item.user_id,
+      art_id: item.art_id,
+      creator_id: item.creator_id,
+      quantity: quentity
+    }
+    debugger
+    this.api.addToCartData(data).then((res:any)=>{
+      if (res && res.statusCode === 200) {
+        console.log('cart => ',  res);
+      } else if (res.statusCode === 500) {
+        this.toast.error(res.message);
+      } else {
+        this.toast.error('Something went wrong');
+      }
+    })
+  }
+
+  addOrder(pay:any){
+    let data = {
+
+    }
+    debugger
+    this.api.addOrder(data).then((res:any)=>{
+      console.log('res => ', res);
+      debugger
+      if (res && res.statusCode === 200) {
+        this.payNow(res.data)
+        this.toast.success(res.message);
+      } else if (res.statusCode === 500) {
+        this.toast.error(res.message);
+      } else {
+        this.toast.error('Something went wrong');
+      }
+    })
+  }
+
+  handlePayment(response:any) {
+    debugger
+    console.log('payment_id:', response.razorpay_payment_id)
+  }
+
+  payNow(order: any) {
     console.log('Test => ');
-    this.paymentId = '',
-    this.error = '',
-    this.options.amount = 1000;
-    this.options.prefill.name = "Sk Test";
-    this.options.prefill.email = "sk@gmail.com";
-    // this.options.prefill.contact = "8755221144";
-    this.options.prefill.contact = "9200020095";
-    var rzp1 = new Razorpay(this.options)
-    rzp1.open();
-    rzp1.on('payment.failed', (response:any) =>{
+   let options:any = {
+      "key": environment.paymentKey,
+      "amount": 200,
+      "currency": environment.currency,
+      "name":  this.auth.getUserData().name,
+      "description": "Web Developer",
+      "image": this.auth.getUserData() && this.auth.getUserData().profile_image ? this.auth.getUserData().profile_image: "https://paintika.s3.ap-south-1.amazonaws.com/1692028765688_image_4312740.jpg",
+      "order_id": "",
+      "handler": (response:any) => {
+        this.addOrder(response);
+        var event = new CustomEvent("payment.success",
+          {
+            detail: response,
+            bubbles: true,
+            cancelable: true
+          }
+        );
+        window.dispatchEvent(event);
+      },
+      "prefill":{
+        "name":"",
+        "email":"",
+        "contact":""
+      },
+      "notes":{
+        "address":""
+      },
+      "theme": {
+        "color": "#0c238a"
+      }
+    };
+
+    this.paymentId = '';
+    this.error = '';
+    options.amount = order.order_total * 100;
+    options.prefill.name = this.auth.getUserData().name;
+    options.prefill.email = this.auth.getUserData().email_or_mobile_number;
+    options.prefill.contact = "9200020095";
+    var rzp1 = new Razorpay(options);
+
+    rzp1.on('payment.failed', (response: any) => {
+      console.log('-payment response => ', response);
+  
       this.message = "Payment Failed"
       console.log(response.error.code);
       console.log(response.error.description);
@@ -102,6 +151,34 @@ export class AddToCartComponent implements OnInit{
       console.log(response.error.metadata.order_id);
       console.log(response.error.metadata.payment_id);
     });
+    rzp1.open();
+  }
+
+  getTopayment(){
+    debugger
+    const newData = this.cartData.carts.reduce((acc:any, element:any) => {
+      acc.items.push(element._id);
+      acc.user_id = element.user_id,
+      acc.price = this.cartData.order_total
+      return acc;
+    }, {
+      user_id: "",
+      price: "",
+      items: []
+    });
+    
+    console.log('cart sd => ',  newData);
+    this.api.checkOut(newData).then((res:any)=>{
+      console.log('res => ', res);
+      if (res && res.statusCode === 200) {
+        this.payNow(res.data)
+        this.toast.success(res.message);
+      } else if (res.statusCode === 500) {
+        this.toast.error(res.message);
+      } else {
+        this.toast.error('Something went wrong');
+      }
+    })
   }
 
   @HostListener('window:payment.success', ['$event'])
@@ -115,8 +192,7 @@ export class AddToCartComponent implements OnInit{
     this.api.cartListData(data).then((res:any)=>{
       if (res && res.statusCode === 200) {
         this.getAddressList()
-        this.cartData = res.data.carts
-        console.log('cart => ',  this.cartData);
+        this.cartData = res.data;      
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
       } else {
@@ -154,10 +230,10 @@ export class AddToCartComponent implements OnInit{
       debugger
       if (res && res.statusCode === 200) {
         this.toast.error(res.message);
-        const indexToRemove = this.cartData.findIndex((item:any) => item._id === cart._id);
+        const indexToRemove = this.cartData.carts.findIndex((item:any) => item._id === cart._id);
         if (indexToRemove !== -1) {
-          this.cartData.splice(indexToRemove, 1); // Remove one item at the found index
-          this.fun.cartCount = this.cartData.length
+          this.cartData.carts.splice(indexToRemove, 1); // Remove one item at the found index
+          this.fun.cartCount = this.cartData.carts.length
         } else {
           console.log('No Find data');
         }

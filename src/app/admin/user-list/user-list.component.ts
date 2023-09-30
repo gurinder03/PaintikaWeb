@@ -95,4 +95,5 @@ export class UserListComponent implements OnInit {
     this.listType = ele.target.value;
     this.getData();
   }
+  
 }

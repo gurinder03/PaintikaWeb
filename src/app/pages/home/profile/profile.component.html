@@ -87,13 +87,13 @@
                         </div>
                         <div class="col-md-6 mt-2 animate__animated animate__fadeInUpBig">
                             <mat-form-field class="example-full-width full-w">
-                                <mat-label>Email ID</mat-label>
+                                <mat-label>Email ID / Phone</mat-label>
                                 <input matInput formControlName="email_or_mobile_number" placeholder="Enter email id" value="">
                                 <mat-error *ngIf="profileForm.controls['email_or_mobile_number'].errors?.['required']">
-                                    Email is required.
+                                    Email/Phone is required.
                                 </mat-error>
                                 <mat-error *ngIf="profileForm.controls['email_or_mobile_number'].errors?.['pattern']">
-                                    Email format is not valid
+                                    Email/Phone format is not valid
                                 </mat-error>
                             </mat-form-field>
                         </div>

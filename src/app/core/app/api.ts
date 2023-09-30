@@ -58,6 +58,21 @@ const api = {
             url: '/cart/add',
             responseInterface: []
         },
+        checkoutOrder: {
+            requestType: 'post',
+            url: '/order/checkout',
+            responseInterface: []
+        },
+        orderList: {
+            requestType: 'post',
+            url: '/order/user/list',
+            responseInterface: []
+        },
+        addOrder: {
+            requestType: 'post',
+            url: '/order/add',
+            responseInterface: []
+        },
         delAddress: {
             requestType: 'post',
             url: '/address/add',

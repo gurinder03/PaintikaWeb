@@ -1,3 +1,7 @@
+
+html, body {
+  height: 100%;
+}
 p.text-muted a {
     text-decoration: none;
     background: #000000;
@@ -7,4 +11,15 @@ p.text-muted a {
 }
 p.text-muted a:hover{
   background-color: lightgray;
+}
+.container{
+  background: #ffffff !important;
+  }
+  p.track {
+    margin-left: 24px;
+}
+
+h1.no-found {
+  text-align: center;
+  padding: 10px;
 }
