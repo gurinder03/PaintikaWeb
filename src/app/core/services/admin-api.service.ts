@@ -108,6 +108,32 @@ export class AdminApiService {
     });
   }
 
+  async adminArtView(id: any) {
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value)
+        } else {
+          reject(value.statusText)
+        }
+      };
+      this.request.send("adminArtView",{id}, success, null, true);
+    });
+  }
+
+  async getAdminUserView(id: any) {
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value)
+        } else {
+          reject(value.statusText)
+        }
+      };
+      this.request.send("adminUserView",{id}, success, null, true);
+    });
+  }
+
   async removeCategory(id: number) {
     return new Promise((resolve, reject) => {
       const success = (value:any) => {

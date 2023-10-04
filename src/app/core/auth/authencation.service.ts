@@ -11,6 +11,7 @@ const HAS_LOGGED_IN: any = 'hasLoggedIn';
   providedIn: 'root',
 })
 export class AuthencationService {
+  
   authState = new BehaviorSubject(false);
   constructor(
     private request: RequestService,

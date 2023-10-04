@@ -22,13 +22,8 @@ export class AppComponent {
 
   appliedData(){
     if(
-      this.router.url !== '/admin/category-list'
-      && this.router.url !== '/admin/order-list'
-      && this.router.url !== '/admin/user-list'
-      && this.router.url !== '/admin/painting-list'
-      && this.router.url !== '/admin/add-category'
-      && this.router.url !== '/admin/user-view'
-      && this.router.url !== '/admin/painting-view'
+      this.auth 
+      && this.auth?.getUserData()?.role !== 'ADMIN'
     ){
       return true
     }

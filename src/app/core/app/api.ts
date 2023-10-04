@@ -164,6 +164,16 @@ const api = {
             url: '/art/admin/list',
             responseInterface: []
         },
+        adminArtView: {
+            requestType: 'get',
+            url: '/art/admin/view/{{id}}',
+            responseInterface: []
+        },
+        adminUserView: {
+            requestType: 'get',
+            url: '/user/view/{{id}}',
+            responseInterface: []
+        },
         addCategroy: {
             requestType: 'post',
             url: '/category/add',

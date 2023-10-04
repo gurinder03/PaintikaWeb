@@ -55,7 +55,7 @@
         <th *matHeaderCellDef mat-header-cell>Action</th>
         <td *matCellDef="let element" mat-cell>
           <button type="button" *ngIf="element.role != 'USER'" mat-button class="unblock-btn" style="margin-right: 5px;"> Set Comission</button>
-          <button type="button" (click)="userView()" mat-button class="unblock-btn" style="margin-right: 5px;"> View</button>
+          <button type="button" (click)="userView(element)" mat-button class="unblock-btn" style="margin-right: 5px;"> View</button>
         <button type="button" (click)="updateStatus('unblocked', element)" *ngIf="element.status == 'blocked'" class="block-btn">Unblock</button>
         <button type="button" (click)="updateStatus('blocked', element)" *ngIf="element.status == 'unblocked'" class="unblock-btn">Block</button>
       </ng-container>
