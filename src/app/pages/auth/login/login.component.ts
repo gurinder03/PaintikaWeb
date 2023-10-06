@@ -47,7 +47,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    debugger
     this.loginForm.markAllAsTouched();
     if (this.loginForm.valid) {
       this.auth.userLogin(this.loginForm.value)
@@ -63,8 +62,6 @@ export class LoginComponent implements OnInit {
   facebookLogin(){
     console.log('FB Login');
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then((res:any)=>{
-      console.log('res=> ', res);
-      debugger
       if(res){
         let data = {
           "facebook_id": res.response.id,
@@ -84,11 +81,9 @@ export class LoginComponent implements OnInit {
   }
 
   googleLogin(){
-    debugger
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((res:any) => {
       console.log('Google Login', res);
     }).catch((err:any)=>{
-      debugger
       this.toast.error(err)
     });;
   }

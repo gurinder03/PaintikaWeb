@@ -59,10 +59,8 @@ export class AddToCartComponent implements OnInit {
       creator_id: item.creator_id,
       quantity: quentity,
     };
-    debugger;
     this.api.addToCartData(data).then((res: any) => {
       if (res && res.statusCode === 200) {
-        console.log('cart => ', res);
         this.getCartList()
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
@@ -88,11 +86,7 @@ export class AddToCartComponent implements OnInit {
         address_id: this.selectedRadioValue,
       }
     );
-    
-    debugger;
     this.api.addOrder(newData).then((res: any) => {
-      console.log('res => ', res);
-      debugger;
       if (res && res.statusCode === 200) {
         this.toast.success(res.message);
         this.navCtrl.goTo('/page/order-status')
@@ -104,13 +98,7 @@ export class AddToCartComponent implements OnInit {
     });
   }
 
-  handlePayment(response: any) {
-    debugger;
-    console.log('payment_id:', response.razorpay_payment_id);
-  }
-
   payNow(order: any) {
-    console.log('Test => ');
     let options: any = {
       key: environment.paymentKey,
       amount: 200,
@@ -153,8 +141,7 @@ export class AddToCartComponent implements OnInit {
     var rzp1 = new Razorpay(options);
 
     rzp1.on('payment.failed', (response: any) => {
-      console.log('-payment response => ', response);
-
+      console.log(response);
       this.message = 'Payment Failed';
       console.log(response.error.code);
       console.log(response.error.description);
@@ -168,7 +155,6 @@ export class AddToCartComponent implements OnInit {
   }
 
   getTopayment() {
-    debugger;
     if(this.selectedRadioValue){
       const newData = this.cartData.carts.reduce(
         (acc: any, element: any) => {
@@ -184,13 +170,10 @@ export class AddToCartComponent implements OnInit {
         }
       );
   
-      console.log('cart sd => ', newData);
       this.api.checkOut(newData).then((res: any) => {
-        console.log('res => ', res);
         if (res && res.statusCode === 200) {
           this.payNow(res.data);
           this.checkoutRes = res.data
-          debugger
           this.toast.success(res.message);
         } else if (res.statusCode === 500) {
           this.toast.error(res.message);
@@ -231,7 +214,6 @@ export class AddToCartComponent implements OnInit {
     this.api.delAddressList(data).then((res: any) => {
       if (res && res.statusCode === 200) {
         this.addressList = res.data;
-        console.log('Addrwess => ', this.addressList);
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
       } else {
@@ -241,14 +223,11 @@ export class AddToCartComponent implements OnInit {
   }
 
   editAddress(address: any) {
-    console.log(address);
     this.navCtrl.goTo(`/page/delivery-address/${address._id}`);
   }
 
   removeFromCart(cart: any) {
     this.api.removeToCart({ id: cart._id }).then((res: any) => {
-      console.log('res => ', res);
-      debugger;
       if (res && res.statusCode === 200) {
         this.toast.error(res.message);
         this.getCartList();
@@ -270,7 +249,6 @@ export class AddToCartComponent implements OnInit {
   }
 
   deleteAddress(del: any) {
-    console.log('Test => ', del);
     this.api.deleteAddress({ id: del._id }).then((res: any) => {
       if (res && res.statusCode === 200) {
         this.toast.error(res.message);

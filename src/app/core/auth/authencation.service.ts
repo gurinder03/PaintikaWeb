@@ -30,7 +30,6 @@ export class AuthencationService {
 
   userLogin(data: any) {
     const success = (value: any) => {
-      debugger
       if (value && value.statusCode == 200) {
         if(value.data && value.data.status === 'unblocked'){
           this.setLoggedIn(value.data.token, value.data);
@@ -127,7 +126,6 @@ export class AuthencationService {
       const success = (value: any) => {
         if (value && value.statusCode == 200) {
           resolve(value);
-          // this.toast.success(value.message);
         } else {
           resolve(false);
           this.toast.error(value.message);
@@ -139,7 +137,6 @@ export class AuthencationService {
 
   passwordReset(data: any) {
     const success = (value: any) => {
-      debugger;
       if (value && value.statusCode == 200) {
         this.navCtrl.goTo('/auth/login', {}, 'root');
         this.toast.success(value.message);

@@ -112,10 +112,8 @@ export class ProfileComponent implements OnInit {
       dataVal.append('image', this.setImg[0]);
     }
     this.profileForm.markAllAsTouched();
-    console.log('this.profileForm => ', this.profileForm);
     if (this.profileForm.valid) {
       this.api.updateUserProfile(dataVal).then((res:any)=>{
-        console.log('res => ', res);
         if (res && res.statusCode === 200) {
           this.toast.success(res.message)
         } else if (res.statusCode === 500) {
@@ -129,5 +127,4 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  
 }

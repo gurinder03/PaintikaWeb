@@ -91,7 +91,6 @@ export class UserListComponent implements OnInit {
 
   updateStatus(status:any, data:any){
     this.adminApi.userStatusUpdate(status, data._id).then((res:any)=>{
-      console.log('res => ', res);
       if (res && res.statusCode === 200) {
         this.toast.success('Status ' + res.message);
         this.getData();

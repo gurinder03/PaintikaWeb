@@ -22,9 +22,7 @@ export class OrderListComponent implements OnInit {
   constructor(
     public adminApi: AdminApiService,
     public toast: ToastrService
-  ){
-    console.log('dataSource => ', jsonData);
-  }
+  ){ }
 
   ngOnInit(): void {
     this.orderList()
@@ -56,13 +54,10 @@ export class OrderListComponent implements OnInit {
 		};
    
     this.adminApi.adminOrderList(resData).then((res:any) =>{
-      debugger
       if (res && res.statusCode === 200) {
         res.data.forEach((item:any, index:any) => {
           item.serialNumber = index + 1;
         });
-        console.log('ss => ', res.data);
-        
         this.allData = res.data
         this.length = res.total;
         this.dataSource = new MatTableDataSource(this.allData);

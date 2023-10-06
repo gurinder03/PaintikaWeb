@@ -18,7 +18,6 @@ export class AdminGuard implements CanLoad {
     | boolean
     | UrlTree {
     let user = this.auth.getUserData();
-    debugger;
     if (this.auth.isAuthenticated() && user.role == 'ADMIN') {
       this.router.navigate(['/admin/user-list']);
       return false;

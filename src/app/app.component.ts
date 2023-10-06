@@ -16,9 +16,7 @@ export class AppComponent {
     public auth: AuthencationService,
     public router: Router,
     public fun: FunctionService
-  ){
-    console.log('sdfsd => ', this.auth.isAuthenticated());
-  }
+  ){  }
 
   appliedData(){
     if(

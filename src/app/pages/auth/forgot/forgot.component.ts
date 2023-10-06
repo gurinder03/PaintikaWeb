@@ -35,18 +35,14 @@ export class ForgotComponent {
         if (res && res.statusCode === 200) {
           this.toast.success(res.message)
           this.navCtrl.goTo(`/auth/verify-otp/${JSON.stringify(res.data)}`, {}, 'root');
-          // this.forgotPassForm.reset()
         }
         else if(res.statusCode === 500){
           this.toast.error(res.message);
-          // this.forgotPassForm.reset()
         } else {
           this.toast.error('Something went wrong');
-          // this.forgotPassForm.reset()
         }
       });
     } else {
-      console.log('this.loginForm => ', this.forgotPassForm.value);
       console.log('Form is not valid');
     }
   }

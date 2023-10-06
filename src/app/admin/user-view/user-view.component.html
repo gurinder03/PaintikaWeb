@@ -1,1 +1,28 @@
-<p>user-view works!</p>
+<div class="main container">
+    <div class="text-center user-main">
+        <h1 class="mt-3">User Details</h1>
+    </div>  
+    <div *ngIf="getData" class="section1">
+        <div class="row">
+            <div class="order-section p-2 text-left col">
+                <ng-container *ngIf="getData && getData.profile_image">
+                    <img [src]="getData.profile_image" class="user-img" alt="">
+                </ng-container>
+                <ng-container *ngIf="getData && !getData.profile_image">
+                    <img class="user-img" src="https://paintika.s3.ap-south-1.amazonaws.com/1692028765688_image_4312740.jpg" alt="">
+                </ng-container>
+            </div>
+            <div class="order-section p-2 text-left col-7">
+                <h5 class="labels"> <b>Name: </b>{{getData.name}}</h5>
+                <h5 class="labels"><b>Email/Phone: </b> {{getData.email_or_mobile_number}}</h5>
+                <h5 class="labels"> <b>User Experience: </b>{{getData.experience}}</h5>
+                <h5 class="labels"> <b>User Job Type: </b>{{getData.job_type}}</h5>
+                <h5 class="labels"> <b>User Status: </b>{{getData.status}}</h5>
+                <h5 class="labels"> <b>Role: </b>{{getData.role}}</h5>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!getData" class="text-center p-1">
+       <h2 class=""> Record Not Found! </h2>
+    </div>
+</div>

@@ -1,1 +1,64 @@
-<p>view-order works!</p>
+<div class="main container">
+    <div class="text-center">
+        <h1 class="mt-3"> Details</h1>
+    </div>  
+    <div *ngIf="data" class="section1">
+        <div class="row">
+            <div class="order-section p-2 text-left col-9">
+                <h1>Order Detail</h1>
+                <h5 class="labels"><b>Order Number: </b> {{data.order_number}}</h5>
+                <h5 class="labels"> <b>CreatedAt: </b>{{data.created_at | date:'MMM dd, yyyy'}}</h5>
+                <h5 class="labels"> <b>Payment Id: </b>{{data.payment_id}}</h5>
+                <h5 class="labels"> <b>Payment Method: </b>{{data.payment_method}}</h5>
+                <h5 class="labels"> <b>Payment Status: </b>{{data.payment_status}}</h5>
+                <h5 class="labels"> <b>Order Status: </b>{{data.status}}</h5>
+                <h5 class="labels"> <b>Order Sub Total: </b>{{data.order_sub_total}}</h5>
+                <h5 class="labels"> <b>Order Total: </b>{{data.order_total}}</h5>
+            </div>
+            <div class="order-section p-2 text-right col">
+                <h1>User Detail</h1>
+                <img [src]="data?.user_detail?.profile_image" class="user-img" alt="user">
+                <h5 class="labels"> <b>Name: </b>{{data?.user_detail?.name}}</h5>
+                <h5 class="labels"> <b>Email/Phone: </b>{{data?.user_detail?.email_or_mobile_number}}</h5>
+                <h5 class="labels"> <b>Role: </b>{{data?.user_detail?.role}}</h5>
+                <h5 class="labels"> <b>Timezone: </b>{{data?.timezone}}</h5>
+            </div>
+        </div>
+        <div class="second-section">
+            <div class="order-section p-2">
+                <div class="order-label text-center">
+                    <h1>Order Items</h1>
+                </div>
+               <div class="item-section" *ngIf="data && data.items && data.items.length">
+                    <div class="card-body p-4">
+                        <div class="row item" *ngFor="let item of data.items; let i = index;">
+                            <h5 class="labels"> <b>Item {{i+1}}</b></h5>
+                            <div class="col-md-2">
+                                <img [src]="item.image"  class="img-fluid" alt="Phone">
+                            </div>
+                            <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                <p class="text-muted mb-0"><b>item Name: </b>{{item.name}}</p>
+                            </div>
+                            <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                <p class="text-muted mb-0 small"><b>Item Theme: </b>{{item.theme}}</p>
+                            </div>
+                            <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                <p class="text-muted mb-0 small"><b>Size:</b> {{item.size}}</p>
+                            </div>
+                            <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                <p class="text-muted mb-0 small"><b>Qty:</b> {{item.quantity}}</p>
+                            </div>
+                            <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                                <p class="text-muted mb-0 small">&#8377;<b>Price : </b>{{item.price}}</p>
+                            </div>
+                            <hr class="mb-4" style="background-color: #e0e0e0; opacity: 1;">
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!data" class="text-center p-1">
+       <h2 class=""> Record Not Found! </h2>
+    </div>
+</div>

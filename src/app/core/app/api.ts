@@ -58,6 +58,11 @@ const api = {
             url: '/cart/add',
             responseInterface: []
         },
+        addPreorder: {
+            requestType: 'post',
+            url: '/preorder/add',
+            responseInterface: []
+        },
         checkoutOrder: {
             requestType: 'post',
             url: '/order/checkout',

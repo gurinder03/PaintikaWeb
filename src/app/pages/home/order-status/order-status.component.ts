@@ -33,10 +33,8 @@ export class OrderStatusComponent implements OnInit {
       "limit":10
     }
     this.api.orderList(data).then((res:any)=>{
-      console.log('res => ', res);
       if (res && res.statusCode === 200) {
         this.orders = res
-        // this.toast.success(res.message);
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
       } else {
@@ -46,7 +44,6 @@ export class OrderStatusComponent implements OnInit {
   }
 
   orderView(order:any){
-    console.log(order);
     this.navCtrl.goTo('/page/order-view/'+ order._id)
   }
 }

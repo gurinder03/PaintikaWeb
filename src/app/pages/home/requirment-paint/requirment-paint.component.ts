@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { AuthencationService } from 'src/app/core/auth/authencation.service';
+import { ApiService } from 'src/app/core/services/api.service';
 
 @Component({
   selector: 'app-requirment-paint',
@@ -11,9 +13,16 @@ export class RequirmentPaintComponent {
   uploadPaint!: FormGroup;
   previews: string[] = [];
   selectedFiles?: any;
-  constructor(public toast: ToastrService, private fb: FormBuilder) {
+  constructor(
+    public toast: ToastrService, 
+    private fb: FormBuilder,
+    public api: ApiService,
+    public auth: AuthencationService
+    ) {
     this.formData();
   }
+
+
 
   selectFiles(event: any): void {
     debugger;
@@ -42,6 +51,8 @@ export class RequirmentPaintComponent {
       }
     }
   }
+
+
   formData() {
     this.uploadPaint = this.fb.group({
       image: ['', [Validators.required]],  
@@ -52,7 +63,21 @@ export class RequirmentPaintComponent {
   onSubmit() {
     this.uploadPaint.markAllAsTouched();
     if (this.uploadPaint.valid) {
-     
+      let dataVal = new FormData();
+      dataVal.append('user_id', this.auth.getUserData()._id);
+      if(this.selectedFiles && this.selectedFiles.length){
+        dataVal.append('image', this.selectedFiles[0]);
+      }
+      dataVal.append('description', this.uploadPaint.value.description ? this.uploadPaint.value.description : '');
+      this.api.addPreorder(dataVal).then((res:any) =>{
+        if (res && res.statusCode === 200) {
+          this.toast.success(res.message)
+        } else if (res.statusCode === 500) {
+          this.toast.error(res.message);
+        } else {
+          this.toast.error(res.message);
+        }
+      })
     } else {
       this.toast.error('Form is not valid');
     }

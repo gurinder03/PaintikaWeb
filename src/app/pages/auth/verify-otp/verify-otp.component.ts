@@ -27,7 +27,6 @@ export class VerifyOtpComponent implements OnInit {
     this.activatedRoute.params.subscribe((event:any) => {
       if(event){
         this.navData = JSON.parse(event.data);
-        console.log(this.navData);
       }
     });
   }
@@ -44,7 +43,6 @@ export class VerifyOtpComponent implements OnInit {
     this.verifyForm.patchValue({ email_or_mobile_number: this.navData.email_or_mobile_number});
     this.verifyForm.patchValue({ role: this.navData.role });
     this.verifyForm.markAllAsTouched();
-    console.log('this.verifyForm => ', this.verifyForm);
     if (this.verifyForm.valid) {
       this.auth.verifyOtp(this.verifyForm.value).then((res:any) => {
         if (res && res.statusCode === 200) {

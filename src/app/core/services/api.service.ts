@@ -79,6 +79,20 @@ export class ApiService implements OnInit {
     });
   }
 
+  addPreorder(data:any){
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value);
+        }
+        else {
+          reject(value.statusText);
+        }
+      };
+      this.request.send('addPreorder', data, success, null, true);
+    });
+  }
+
   checkOut(data:any){
     return new Promise((resolve, reject) => {
       const success = (value:any) => {
@@ -109,10 +123,8 @@ export class ApiService implements OnInit {
 
   
   addOrder(data:any){
-    debugger
     return new Promise((resolve, reject) => {
       const success = (value:any) => {
-        debugger
         if (value) {
           resolve(value);
         }

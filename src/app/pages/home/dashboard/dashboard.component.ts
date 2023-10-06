@@ -64,7 +64,6 @@ export class DashboardComponent implements OnInit {
   }
 
   applyFilter(event: Event){
-    debugger
     this.getData()
     const filterValue = (event.target as HTMLInputElement).value;
     let filter = filterValue.trim().toLowerCase();
@@ -72,7 +71,6 @@ export class DashboardComponent implements OnInit {
       return item.name.toLowerCase().includes(filter);
     });
     this.data = filteredData;
-    debugger
   }
 
   getData(ele?: PageEvent){
@@ -90,7 +88,6 @@ export class DashboardComponent implements OnInit {
       if (res && res.statusCode === 200) {
         this.data = res.data;
         this.length = res.total;
-        console.log('this.data => ', this.data);
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
       } else {
@@ -100,7 +97,6 @@ export class DashboardComponent implements OnInit {
   }
 
   getMore(product:any){
-    debugger
     if(this.auth.isAuthenticated()){
       this.navCtrl.goTo(`/page/product-list/${product?._id}`)
     }else{

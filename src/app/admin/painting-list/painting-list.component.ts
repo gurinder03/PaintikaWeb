@@ -66,13 +66,11 @@ export class PaintingListComponent implements OnInit {
   }
 
   approve(data: any, status: any) {
-    console.log('Test => ', data);
     let dataVal = {
       status: status,
       category: data.category,
     };
     this.adminApi.updateArtStatus(dataVal, data._id).then((res: any) => {
-      console.log('res => ', res);
       if (res && res.statusCode === 200) {
         this.toast.success('Status ' + res.message);
         this.artList();
@@ -109,8 +107,6 @@ export class PaintingListComponent implements OnInit {
             item.btnDisabled = true;
           }
         });
-        console.log('ss => ', res.data);
-
         this.allData = res.data;
         this.length = res.total;
         this.dataSource = new MatTableDataSource(this.allData);

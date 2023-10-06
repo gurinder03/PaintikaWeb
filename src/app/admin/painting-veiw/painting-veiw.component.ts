@@ -18,7 +18,6 @@ export class PaintingVeiwComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.queryParamMap.subscribe((queryParams) => {
-      debugger
       const viewId = queryParams.get('viewId');
       this.getArtView(viewId)
     });
@@ -27,9 +26,8 @@ export class PaintingVeiwComponent implements OnInit {
 
   getArtView(id:any){
     this.adminApi.adminArtView(id).then((res:any)=>{
-      console.log('res  => ', res);
       if (res && res.statusCode === 200) {
-        this.getData = res;
+        this.getData = res.data;
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
       } else {

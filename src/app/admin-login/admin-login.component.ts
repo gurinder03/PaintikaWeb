@@ -26,7 +26,6 @@ export class AdminLoginComponent {
   }
 
   onSubmit() {
-    debugger
     this.adminLoginForm.markAllAsTouched();
     if (this.adminLoginForm.valid) {
       this.auth.userLogin(this.adminLoginForm.value)

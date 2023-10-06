@@ -60,11 +60,9 @@ export class AddCategoryComponent implements OnInit {
         dataVal.append('image', this.setImg[0]);
       }
       if(this.setCateId){
-        debugger
         dataVal.append('id', this.getData._id);
         this.adminApi.updateCategroy(dataVal).then((res:any)=>{
           if (res && res.statusCode === 200) {
-            console.log('res.data => ', res.data);
             this.toast.success(res.message)
             this.navCtrl.goTo('/admin/category-list')
           } else if (res.statusCode === 500) {
@@ -76,7 +74,6 @@ export class AddCategoryComponent implements OnInit {
       } else{
         this.adminApi.addCategoryData(dataVal).then((res:any)=>{
           if (res && res.statusCode === 200) {
-            console.log('res.data => ', res.data);
             this.toast.success(res.message)
             this.navCtrl.goTo('/admin/category-list')
           } else if (res.statusCode === 500) {
@@ -97,7 +94,6 @@ export class AddCategoryComponent implements OnInit {
       if (res && res.statusCode === 200) {
         this.getData = res.data;
         this.setDataValue(res.data)
-        console.log('res.data => ', res.data);
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
       } else {
@@ -107,7 +103,6 @@ export class AddCategoryComponent implements OnInit {
   }
 
   setDataValue(data:any){
-    debugger
     this.addCateForm.patchValue({ name: data.name });
     this.addCateForm.patchValue({ creator_id: data.creator_id });
     this.addCateForm.patchValue({ role: data.role });

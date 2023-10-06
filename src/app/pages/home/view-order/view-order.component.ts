@@ -9,6 +9,7 @@ import { ApiService } from 'src/app/core/services/api.service';
   styleUrls: ['./view-order.component.scss']
 })
 export class ViewOrderComponent {
+  data: any = {}
   constructor(
     public activatedRoute: ActivatedRoute,
     public api: ApiService,
@@ -23,8 +24,8 @@ export class ViewOrderComponent {
 
   getOrder(id: any){
     this.api.orderView(id).then((res:any)=>{
-      console.log('res => ', res);
       if (res && res.statusCode === 200) {
+        this.data = res.data
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
       } else {

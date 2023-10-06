@@ -37,7 +37,6 @@ export class SignInComponent {
     } else{
       this.signUpForm.patchValue({role: 'USER'})
     }
-    console.log(this.signUpForm );
     this.signUpForm.markAllAsTouched();
     if (this.signUpForm.valid) {
       this.auth.userSignIn(this.signUpForm.value)

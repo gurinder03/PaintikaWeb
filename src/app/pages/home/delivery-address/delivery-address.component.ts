@@ -51,7 +51,6 @@ export class DeliveryAddressComponent {
   onSubmit() {
     this.addressForm.patchValue({user_id: this.auth.getUserData()._id})
     this.addressForm.markAllAsTouched();
-    console.log('this.addressForm => ', this.addressForm);
     if (this.addressForm.valid) {
       let data = {
         user_id: this.auth.getUserData()._id,
@@ -71,7 +70,6 @@ export class DeliveryAddressComponent {
         lng: this.addressForm.value.lng
       }
       this.api.delveryAddress(data).then((res: any) => {
-        console.log('res => ', res);
         if (res && res.statusCode === 200) {
           this.navCtrl.goTo('/page/add-to-cart');
           this.toast.success(res.message);
@@ -87,7 +85,6 @@ export class DeliveryAddressComponent {
   }
 
   setAddressValue(data:any){
-    console.log('data => ', data);
     this.addressForm.patchValue({user_id: data.user_id})
     this.addressForm.patchValue({id: data._id})
     this.addressForm.patchValue({name: data.name})

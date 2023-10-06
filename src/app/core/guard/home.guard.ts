@@ -16,7 +16,6 @@ export class HomeGuard implements CanLoad {
     route: Route,
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       const isProfile   = this.auth.getUserData()
-      debugger
       if(this.auth.isAuthenticated() && isProfile.role == "ADMIN") {
         this.router.navigate(['/admin/user-list']);
         return false;

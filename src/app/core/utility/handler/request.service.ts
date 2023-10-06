@@ -73,7 +73,6 @@ export class RequestService {
 
     //@ts-expect-error
     if( API.endpoints[requestName].requestType === 'delete') {
-      debugger
       subscriber =  requestor.delete( this.url(requestName, data), {body: null});
     }
 

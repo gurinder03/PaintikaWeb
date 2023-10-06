@@ -28,9 +28,8 @@ export class UserViewComponent implements OnInit {
 
   getUserView(id: any){
     this.adminApi.getAdminUserView(id).then((res:any)=>{
-      console.log('res  => ', res);
       if (res && res.statusCode === 200) {
-        this.getData = res;
+        this.getData = res.data;
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
       } else {

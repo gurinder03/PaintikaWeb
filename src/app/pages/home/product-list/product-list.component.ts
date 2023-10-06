@@ -55,12 +55,9 @@ export class ProductListComponent implements OnInit {
           "creator_id": item?.creator_id
         }
         this.api.addToCartData(data).then((res: any) => {
-          console.log('res => ', res);
           if (res && res.statusCode === 200) {
-            // this.cart.push(res.data);
             this.toast.success(res.message);
             this.api.cartListData({user_id: this.auth.getUserData()?._id})
-            console.log('this.cart => ', this.cartData, this.fun.cartCount);
           } else if (res.statusCode === 500) {
             this.toast.error(res.message);
           } else {
@@ -88,7 +85,6 @@ export class ProductListComponent implements OnInit {
         if (res && res.statusCode === 200) {
           debugger
           this.cartData = res.data.carts;
-          console.log('cart => ',  this.cartData);
           this.activatedRoute.params.subscribe((event: any) => {
             if (event) {
               this.productData(event.productId);
@@ -122,8 +118,6 @@ export class ProductListComponent implements OnInit {
           this.allData = res.data;
           this.updateIsLikedStatus(this.allData, this.cartData)
         }
-        console.log('this.allData => ', this.allData);
-        console.log('this. this.api.cartList => ',  this.cartData);
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
       } else {
