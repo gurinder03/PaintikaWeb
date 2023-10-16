@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import jsonData from '../../core/jsonDummyData/orderlist.json';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { AdminApiService } from 'src/app/core/services/admin-api.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order-list',
@@ -21,14 +21,15 @@ export class OrderListComponent implements OnInit {
   @ViewChild('paginator') paginator!: MatPaginator;
   constructor(
     public adminApi: AdminApiService,
-    public toast: ToastrService
+    public toast: ToastrService,
+    public router: Router
   ){ }
 
   ngOnInit(): void {
     this.orderList()
   }
 
-  displayedColumns: string[] = ['srNo', 'payment_method', 'created_at', 'status','payment_status','payment_id','order_total'];
+  displayedColumns: string[] = ['srNo', 'payment_method', 'created_at', 'status','payment_status','payment_id','order_total', 'action'];
   dataSource =  new MatTableDataSource<any>();
 
   applyFilter(event: Event) {
@@ -69,5 +70,14 @@ export class OrderListComponent implements OnInit {
         this.toast.error('Something went wrong');
       }
     })
+  }
+
+  dataView(data:any){
+    console.log(data);
+    this.router.navigate(['/admin/order-list-view'], {
+      queryParams: {
+        orderId: data._id,
+      },
+    });
   }
 }

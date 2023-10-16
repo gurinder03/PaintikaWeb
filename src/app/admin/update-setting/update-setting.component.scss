@@ -1,0 +1,15 @@
+.inner-section {
+    width: 100%;
+}
+button.cancel.button.btn {
+   background: #000000;
+   color: #ffffff;
+}
+button.btn.submit{
+    background: #000000;
+    color: #ffffff;
+    margin: 0 10px 0 0;
+}
+button.cancel.button.btn:hover,button.btn.submit:hover{
+    background: lightgray;
+}

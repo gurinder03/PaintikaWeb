@@ -1,50 +1,54 @@
 <div class="container">
-<h2 class="text-center p-4 animate__animated animate__fadeInDown">Order List</h2>
- 
+  <h2 class="text-center p-4 animate__animated animate__fadeInDown">Order List</h2>
+
   <mat-form-field class="col-md-4  animate__animated animate__fadeInUp">
     <mat-label>Search Orders</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Search orders" #input>
   </mat-form-field>
 </div>
 
-  <div class="table-dv animate__animated animate__fadeInDown">
-    <table mat-table #empTbSort="matSort" [dataSource]="dataSource" class="mat-elevation-z8" matSort>
-        <!-- Position Column -->
-          <ng-container matColumnDef="srNo">
-                <th *matHeaderCellDef mat-header-cell mat-sort-header> No.</th>
-                <td *matCellDef="let element" mat-cell> {{element.serialNumber}}</td>
-          </ng-container>
-          <ng-container matColumnDef="payment_method">
-                <th *matHeaderCellDef mat-header-cell mat-sort-header> Payment Method </th>
-                <td *matCellDef="let element" mat-cell> {{element.payment_method}}</td>
-          </ng-container>
-          <ng-container matColumnDef="created_at">
-                <th *matHeaderCellDef mat-header-cell mat-sort-header>CreatedAt</th>
-                <td *matCellDef="let element" mat-cell> {{element.created_at | date:'MMM dd, yyyy'}}</td>
-          </ng-container>
-          <ng-container matColumnDef="status">
-                <th *matHeaderCellDef mat-header-cell mat-sort-header>Status</th>
-                <td *matCellDef="let element" mat-cell> {{element.status}}</td>
-          </ng-container>
-          <ng-container matColumnDef="payment_status">
-              <th *matHeaderCellDef mat-header-cell mat-sort-header>Payment Status</th>
-              <td *matCellDef="let element" mat-cell> {{element.payment_status}}</td>
-          </ng-container>
-          <ng-container matColumnDef="payment_id">
-              <th *matHeaderCellDef mat-header-cell mat-sort-header>Payment Id</th>
-              <td *matCellDef="let element" mat-cell> {{element.payment_id}}</td>
-          </ng-container>
-          <ng-container matColumnDef="order_total">
-              <th *matHeaderCellDef mat-header-cell mat-sort-header>Order Total</th>
-              <td *matCellDef="let element" mat-cell> {{element.order_total}}</td>
-          </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-      <mat-paginator [length]="length" class="mt-1"
-                [pageSize]="pageSize"
-                [pageSizeOptions]="[5, 10, 25, 100]"
-                aria-label="Select page" #paginator (page)="orderList($event)" showFirstLastButtons>
+<div class="table-dv animate__animated animate__fadeInDown">
+  <table mat-table #empTbSort="matSort" [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+    <!-- Position Column -->
+    <ng-container matColumnDef="srNo">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header> No.</th>
+      <td *matCellDef="let element" mat-cell> {{element.serialNumber}}</td>
+    </ng-container>
+    <ng-container matColumnDef="payment_method">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header> Payment Method </th>
+      <td *matCellDef="let element" mat-cell> {{element.payment_method}}</td>
+    </ng-container>
+    <ng-container matColumnDef="created_at">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>CreatedAt</th>
+      <td *matCellDef="let element" mat-cell> {{element.created_at | date:'MMM dd, yyyy'}}</td>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>Status</th>
+      <td *matCellDef="let element" mat-cell> {{element.status}}</td>
+    </ng-container>
+    <ng-container matColumnDef="payment_status">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>Payment Status</th>
+      <td *matCellDef="let element" mat-cell> {{element.payment_status}}</td>
+    </ng-container>
+    <ng-container matColumnDef="payment_id">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>Payment Id</th>
+      <td *matCellDef="let element" mat-cell> {{element.payment_id}}</td>
+    </ng-container>
+    <ng-container matColumnDef="order_total">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>Order Total</th>
+      <td *matCellDef="let element" mat-cell> {{element.order_total}}</td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>Action</th>
+      <td *matCellDef="let element" mat-cell>
+        <button type="button" (click)="dataView(element)" class="view-btn">View</button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [length]="length" class="mt-1" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page" #paginator (page)="orderList($event)" showFirstLastButtons>
   </mat-paginator>
 </div>
 <div>
@@ -52,4 +56,3 @@
   <p><br></p>
   <p><br></p>
 </div>
-    

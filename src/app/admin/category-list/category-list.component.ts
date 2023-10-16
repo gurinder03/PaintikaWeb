@@ -5,6 +5,7 @@ import { AdminApiService } from 'src/app/core/services/admin-api.service';
 import { ToastrService } from 'ngx-toastr';
 import { NavigationRouteService } from 'src/app/core/services/navigation-route.service';
 import { PageEvent } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-category-list',
@@ -23,6 +24,7 @@ export class CategoryListComponent implements OnInit {
     public adminApi: AdminApiService,
     public toast: ToastrService,
     public navCtrl: NavigationRouteService,
+    public router: Router
   ){
   }
 
@@ -95,7 +97,17 @@ export class CategoryListComponent implements OnInit {
         this.toast.error(res.message);
       } else {
         console.log('Something went wrong');
+        this.toast.error(res.message);
       }
     })
+  }
+
+  viewCategory(data:any){
+    console.log(data);
+    this.router.navigate(['/admin/category-view'], {
+      queryParams: {
+        cateId: data._id,
+      },
+    });
   }
 }

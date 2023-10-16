@@ -1,0 +1,24 @@
+<div class="main container">
+    <div class="text-center user-main">
+        <h1 class="mt-3">Setting</h1>
+    </div>  
+    <div *ngIf="dataObj" class="section1">
+        <div class="main-section">
+            <div class="order-section p-2 text-left col-12">
+                <h5 class="labels"><b>App Mode: </b> {{dataObj.app_mode}}</h5>
+                <h5 class="labels"> <b>Passcode: </b>{{dataObj.passcode}}</h5>
+                <h5 class="labels"> <b>Tax: </b>{{dataObj.tax}}</h5>
+                <h5 class="labels"><b>Created At: </b> {{dataObj.createdAt | date:'MMM dd, yyyy'}}</h5>
+                <h5 class="labels"> <b>Updated At: </b>{{dataObj.updatedAt | date:'MMM dd, yyyy'}}</h5>
+            </div>
+            <div class="btn-section text-center col-12">
+                <button type="button" (click)="updateSetting(dataObj)" class="update-btn">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <p><br></p>
+    <p><br></p>
+    <p><br></p>
+</div>

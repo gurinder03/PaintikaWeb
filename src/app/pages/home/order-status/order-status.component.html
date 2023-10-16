@@ -3,14 +3,14 @@
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-lg-10 col-xl-8">
         <div class="card" style="border-radius: 10px;">
-          <div class="card-header px-4 py-5">
+          <!-- <div class="card-header px-4 py-5">
             <h5 class="text-muted mb-0">Thanks for your Order, <span style="color: #000000;">{{auth.getUserData().name}}</span>!</h5>
-          </div>
+          </div> -->
           <ng-container *ngIf="orders && orders.data && orders.data.length > 0">
             <div class="card-body p-4" >
-              <div class="d-flex justify-content-between align-items-center mb-4">
+              <!-- <div class="d-flex justify-content-between align-items-center mb-4">
                 <p class="lead fw-normal mb-0" style="color: #000000;">Receipt</p>
-              </div>
+              </div> -->
               <div class="card shadow-0 border mb-4" *ngFor="let order of orders.data">
                 <div class="card-body">
                   <div class="">
@@ -54,17 +54,16 @@
                     </div>
                   </div>
                 </div>
-                <div class="d-flex justify-content-between pt-2">
+                <div class="d-flex justify-content-between p-2">
                   <p class="fw-bold mb-0">Order Details</p>
                   <p class="text-muted mb-0"><span class="fw-bold me-4">Total</span> &#8377;{{order.order_total}}</p>
                 </div>
-    
-                <div class="d-flex justify-content-between pt-2">
+                <div class="d-flex justify-content-between px-2">
                   <p class="text-muted mb-0">Invoice Number : 788152</p>
                   <!-- <p class="text-muted mb-0"><span class="fw-bold me-4">Discount</span> &#8377;19.00</p> -->
                 </div>
     
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between px-2">
                   <p class="text-muted mb-0">Invoice Date : 22 Dec,2019</p>
                   <p class="text-muted mb-0"><span class="fw-bold me-4">GST 18%</span> 123</p>
                 </div>

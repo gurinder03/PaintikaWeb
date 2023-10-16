@@ -29,6 +29,10 @@ import { AddAddressComponent } from './add-address/add-address.component';
 import { OrderStatusComponent } from './order-status/order-status.component';
 import { ViewOrderComponent } from './view-order/view-order.component';
 import { ArtistOrderListComponent } from './artist-order-list/artist-order-list.component';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { ViewOrderListComponent } from './view-order-list/view-order-list.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 @NgModule({
@@ -45,7 +49,9 @@ import { ArtistOrderListComponent } from './artist-order-list/artist-order-list.
     AddAddressComponent,
     OrderStatusComponent,
     ViewOrderComponent,
-    ArtistOrderListComponent
+    ArtistOrderListComponent,
+    ViewOrderListComponent,
+    ChangePasswordComponent
    
   ],
   imports: [
@@ -64,7 +70,9 @@ import { ArtistOrderListComponent } from './artist-order-list/artist-order-list.
     MatPaginatorModule,
     CarouselModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatSortModule,
+    MatNativeDateModule,
+    MatTableModule
   ],
   providers: [WindowRefService]
 })

@@ -108,6 +108,46 @@ export class AdminApiService {
     });
   }
 
+  listDataPreorder(data:any){
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value);
+        }
+        else {
+          reject(value.statusText);
+        }
+      };
+      this.request.send('listPreorder', data, success, null, true);
+    });
+  }
+
+  async adminLogin(id: number) {
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value)
+        } else {
+          reject(value.statusText)
+        }
+      };
+      this.request.send("adminLogin", {id}, success, null, true);
+    });
+  }
+
+  async orderArtView(id: number) {
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value)
+        } else {
+          reject(value.statusText)
+        }
+      };
+      this.request.send("orderArtView", {id}, success, null, true);
+    });
+  }
+
   async adminArtView(id: any) {
     return new Promise((resolve, reject) => {
       const success = (value:any) => {
@@ -134,13 +174,41 @@ export class AdminApiService {
     });
   }
 
-  async removeCategory(id: number) {
+  async getAdminSetting() {
     return new Promise((resolve, reject) => {
       const success = (value:any) => {
         if (value) {
           resolve(value)
         } else {
           reject(value.statusText)
+        }
+      };
+      this.request.send("adminSetting", {} , success, null, true);
+    });
+  }
+
+
+  updateSetting(data:any){
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value);
+        }
+        else {
+          reject(value.statusText);
+        }
+      };
+      this.request.send('updateAdminSetting', data, success, null, true);
+    });
+  }
+
+  async removeCategory(id: number) {
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value)
+        } else {
+          reject(value)
         }
       };
       this.request.send("removeCategory", {id}, success, null, true);

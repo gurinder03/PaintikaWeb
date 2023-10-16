@@ -1,7 +1,9 @@
 .navbar-custom {
     background-color: #333;
 }
-
+.dropdown-toggle::after{
+    vertical-align: middle;
+}
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-nav .nav-link {
     color: #fff;
@@ -95,12 +97,28 @@ ul.navbar-nav.me-auto{
     font-weight: 500;
     margin-top: 10px;
 }
+@media screen and (max-width:900px){
+    ul.navbar-nav.me-auto{
+        margin: 0;
+    }
+}
+@media screen and (max-width:852px){
+    .navbar-expand-sm .navbar-nav {
+        gap: 0px;
+    }
+}
 @media screen and (max-width:810px){
     .navbar-expand-sm .navbar-nav{
         gap: 2px;
     }
     ul.navbar-nav.me-auto{
         margin-left: 0;
+    }
+    .nav-item a{
+        font-size: 10px;
+    }
+    button{
+        font-size: 10px;
     }
 }
 @media screen and (max-width:576px){
@@ -118,4 +136,14 @@ ul.navbar-nav.me-auto{
 }
 .navbar-dark .navbar-nav .nav-link {
     color: #ffffff;
+}
+.dropdown-item:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #000000;
+}
+.dropdown-item:active {
+    color: #fff;
+    text-decoration: none;
+    background-color: #000000;
 }

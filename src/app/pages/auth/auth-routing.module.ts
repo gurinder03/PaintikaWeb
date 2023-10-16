@@ -14,6 +14,10 @@ const routes: Routes = [
         path: 'login',
         component: LoginComponent
       },
+      // {
+      //   path: 'login/:auth',
+      //   component: LoginComponent
+      // },
       {
         path: 'sign-in',
         component: SignInComponent

@@ -48,10 +48,11 @@
     <ng-container matColumnDef="button">
       <th *matHeaderCellDef mat-header-cell mat-sort-header>Action</th>
       <td *matCellDef="let element" mat-cell>
+        <button type="button" (click)="viewCategory(element)" class="update-btn">View</button>
         <button type="button" (click)="updateCate(element)" class="update-btn">Update</button>
         <button type="button" (click)="removeCategory(element)" class="delete-btn">Delete</button>
       </td>
-  </ng-container>
+    </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let emprow; columns: displayedColumns"></tr>
   </table>

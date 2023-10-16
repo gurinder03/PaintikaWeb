@@ -37,7 +37,6 @@ export class ProfileComponent implements OnInit {
       email_or_mobile_number: ['', [Validators.required, Validators.pattern(/^(?:\d{10}|\w+@\w+\.\w{2,4})$/)]],
       name: ['', [Validators.required]],
       surname: [''],
-      mobile_number: ['', [Validators.required, Validators.minLength(6)]],
       dob: ['', [Validators.required]],
       address: [''],
       gender: ['1', [Validators.required]],
@@ -54,7 +53,6 @@ export class ProfileComponent implements OnInit {
     this.profileForm.patchValue({ name: data.name });
     this.profileForm.patchValue({ email_or_mobile_number: data.email_or_mobile_number });
     this.profileForm.patchValue({ surname: data.surname });
-    this.profileForm.patchValue({ mobile_number: data.mobile_number });
     this.profileForm.patchValue({ dob: data.dob });
     this.profileForm.patchValue({ address: data.address });
     this.profileForm.patchValue({ gender: data.gender });
@@ -97,7 +95,6 @@ export class ProfileComponent implements OnInit {
     dataVal.append('email_or_mobile_number', this.profileForm.value.email_or_mobile_number);
     dataVal.append('name', this.profileForm.value.name);
     dataVal.append('surname', this.profileForm.value.surname ? this.profileForm.value.surname : '');
-    dataVal.append('mobile_number', this.profileForm.value.mobile_number);
     this.profileForm.value.dob = this.fun.transformDate(this.profileForm.value.dob, 'y-MM-dd');
     dataVal.append('dob', this.profileForm.value.dob);
     dataVal.append('address', this.profileForm.value.address ? this.profileForm.value.address : '');

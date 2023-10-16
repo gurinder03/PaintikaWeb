@@ -13,6 +13,8 @@ import { AddAddressComponent } from './add-address/add-address.component';
 import { OrderStatusComponent } from './order-status/order-status.component';
 import { ViewOrderComponent } from './view-order/view-order.component';
 import { ArtistOrderListComponent } from './artist-order-list/artist-order-list.component';
+import { ViewOrderListComponent } from './view-order-list/view-order-list.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 const routes: Routes = [
   {
@@ -69,6 +71,14 @@ const routes: Routes = [
       {
         path: 'artist-order-list',
         component: ArtistOrderListComponent
+      },
+      {
+        path: 'view-order-list',
+        component: ViewOrderListComponent
+      },
+      {
+        path: 'change-password',
+        component: ChangePasswordComponent
       }
     ]
   },

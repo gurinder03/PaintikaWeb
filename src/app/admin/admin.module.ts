@@ -15,8 +15,14 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSortModule } from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { PaintingVeiwComponent } from './painting-veiw/painting-veiw.component';
-import { UserViewComponent } from './user-view/user-view.component'; 
-
+import { UserViewComponent } from './user-view/user-view.component';
+import { SettingComponent } from './setting/setting.component';
+import { UpdateSettingComponent } from './update-setting/update-setting.component'; 
+import { MatDialogModule } from '@angular/material/dialog';
+import { OrderListViewComponent } from './order-list-view/order-list-view.component';
+import { CategoryViewComponent } from './category-view/category-view.component';
+import { PreOrderListComponent } from './pre-order-list/pre-order-list.component';
+import { PreOrderViewComponent } from './pre-order-view/pre-order-view.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +33,12 @@ import { UserViewComponent } from './user-view/user-view.component';
     AddCategoryComponent,
     PaintingVeiwComponent,
     UserViewComponent,
+    SettingComponent,
+    UpdateSettingComponent,
+    OrderListViewComponent,
+    CategoryViewComponent,
+    PreOrderListComponent,
+    PreOrderViewComponent,
   ],
   imports: [
     CommonModule,
@@ -39,8 +51,8 @@ import { UserViewComponent } from './user-view/user-view.component';
     FormsModule,
     MatCardModule,
     MatSortModule,
-    MatPaginatorModule,
- 
+    MatDialogModule,
+    MatPaginatorModule, 
   ]
 })
 export class AdminModule { 

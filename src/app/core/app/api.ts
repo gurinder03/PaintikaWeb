@@ -63,6 +63,11 @@ const api = {
             url: '/preorder/add',
             responseInterface: []
         },
+        listPreorder: {
+            requestType: 'post',
+            url: '/preorder/list',
+            responseInterface: []
+        },
         checkoutOrder: {
             requestType: 'post',
             url: '/order/checkout',
@@ -138,10 +143,20 @@ const api = {
             url: '/user/update',
             responseInterface: []
         },      
+        userPassChange: {
+            requestType: 'post',
+            url: '/user/change/password',
+            responseInterface: []
+        },      
         // Call All admin api's
         userList: {
             requestType: 'post',
             url: '/user/admin/list',
+            responseInterface: []
+        },
+        adminLogin: {
+            requestType: 'get',
+            url: '/user/admin/login?passcode={{id}}',
             responseInterface: []
         },
         updateArtStatus: {
@@ -154,6 +169,16 @@ const api = {
             url: '/category/list',
             responseInterface: []
         },
+        adminSetting: {
+            requestType: 'get',
+            url: '/setting/view',
+            responseInterface: []
+        },
+        updateAdminSetting: {
+            requestType: 'post',
+            url: '/setting/update',
+            responseInterface: []
+        },
         adminOrderList: {
             requestType: 'post',
             url: '/order/admin/user/list',
@@ -162,6 +187,11 @@ const api = {
         artistOrderList: {
             requestType: 'post',
             url: '/order/admin/artist/list',
+            responseInterface: []
+        },
+        orderArtView: {
+            requestType: 'get',
+            url: '/order/view/artist/{{id}}',
             responseInterface: []
         },
         adminArtList: {

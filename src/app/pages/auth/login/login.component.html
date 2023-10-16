@@ -4,7 +4,7 @@
             Login
         </mat-card-title>
         <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
-            <mat-form-field class="full-w animate__animated animate__fadeInLeft">
+            <mat-form-field class="full-w ">
                 <mat-label>Email or Mobile Number</mat-label>
                 <input matInput formControlName="email_or_mobile_number" placeholder="Email or Mobile Number">
                 <mat-error *ngIf="loginForm.controls['email_or_mobile_number'].hasError('required')">
@@ -24,7 +24,8 @@
                     Password must be at least 6 characters long.
                 </mat-error>
             </mat-form-field>
-            <mat-form-field class="full-w">
+            <!-- {{this.adminValue | json}} -->
+            <mat-form-field class="full-w" *ngIf="!this.adminValue">
                 <mat-label>Select User Type</mat-label>
                 <mat-select formControlName="role" name="food">
                   <mat-option>None</mat-option>

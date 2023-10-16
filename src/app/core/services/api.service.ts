@@ -16,11 +16,14 @@ export class ApiService implements OnInit {
     public auth: AuthencationService,
     public toast: ToastrService
   ) {
-   
+    if(this.auth.isAuthenticated()){
+      let data = { user_id: this.auth.getUserData()._id };
+      this.cartListData(data)
+    }
   }
   
   ngOnInit(): void {
-      
+   
   }
 
   productList(data:any){
@@ -247,6 +250,19 @@ export class ApiService implements OnInit {
         }
       };
       this.request.send("updateUser", data, success, null, true);
+    });
+  }
+
+  async userPassChange(data: any) {
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value)
+        } else {
+          reject(value.statusText)
+        }
+      };
+      this.request.send("userPassChange", data, success, null, true);
     });
   }
 

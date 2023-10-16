@@ -7,6 +7,11 @@ import { PaintingListComponent } from './painting-list/painting-list.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { PaintingVeiwComponent } from './painting-veiw/painting-veiw.component';
 import { UserViewComponent } from './user-view/user-view.component';
+import { SettingComponent } from './setting/setting.component';
+import { OrderListViewComponent } from './order-list-view/order-list-view.component';
+import { CategoryViewComponent } from './category-view/category-view.component';
+import { PreOrderListComponent } from './pre-order-list/pre-order-list.component';
+import { PreOrderViewComponent } from './pre-order-view/pre-order-view.component';
 
 const routes: Routes = [
   {
@@ -39,6 +44,26 @@ const routes: Routes = [
       {
         path: 'user-view',
         component:UserViewComponent
+      },
+      {
+        path: 'setting',
+        component: SettingComponent
+      },
+      {
+        path: 'order-list-view',
+        component: OrderListViewComponent
+      },
+      {
+        path: 'category-view',
+        component: CategoryViewComponent
+      },
+      {
+        path: 'pre-order-list',
+        component: PreOrderListComponent
+      },
+      {
+        path: 'pre-order-view',
+        component: PreOrderViewComponent
       },
     ]
   },

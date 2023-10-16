@@ -1,0 +1,32 @@
+<div class="container">
+  <h1 mat-dialog-title>Update Admin Setting </h1>
+  <form (ngSubmit)="onSubmit()" [formGroup]="settingForm">
+    <div mat-dialog-content>
+      <mat-form-field class="inner-section">
+        <mat-label>App Mode</mat-label>
+        <input formControlName="app_mode" matInput placeholder="Enter App Mode">
+        <mat-error *ngIf="settingForm.controls['app_mode'].hasError('required')">
+          Field is required.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="inner-section">
+        <mat-label>Tax</mat-label>
+        <input type="number" formControlName="tax"  matInput placeholder="Enter Tax">
+        <mat-error *ngIf="settingForm.controls['tax'].hasError('required')">
+          Field is required.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="inner-section">
+        <mat-label>Passcode</mat-label>
+        <input matInput formControlName="passcode"  placeholder="Enter Passcode">
+        <mat-error *ngIf="settingForm.controls['passcode'].hasError('required')">
+          Field is required.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+      <button type="submit" class="btn submit" mat-button cdkFocusInitial>Submit</button>
+      <button type="reset" class="cancel button btn" mat-button (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>

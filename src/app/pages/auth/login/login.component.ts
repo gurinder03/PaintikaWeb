@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthencationService } from 'src/app/core/auth/authencation.service';
 import { GoogleLoginProvider, SocialAuthService } from "@abacritt/angularx-social-login";
 import { FacebookLoginProvider } from "@abacritt/angularx-social-login";
 import { ToastrService } from 'ngx-toastr';
+import { AdminApiService } from 'src/app/core/services/admin-api.service';
 
 @Component({
   selector: 'app-login',
@@ -13,29 +14,30 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+  adminValue:any
   fbUser: any
   constructor(
     private fb: FormBuilder,
     private auth: AuthencationService,
     private router: Router,
     private authService: SocialAuthService,
-    public toast: ToastrService
+    public adminApi: AdminApiService,
+    public toast: ToastrService,
+    public activatedRoute: ActivatedRoute
    ){
     this.formData()
   }
 
   userTyppes = [
     {id: 1, role: "USER", name: 'User'},
-    {id: 2, role: "ADMIN", name: 'Admin'},
-    {id: 3, role: "ARTIST", name: 'Artist'}
+    {id: 2, role: "ARTIST", name: 'Artist'},
   ]
 
   ngOnInit(): void {
-    // this.authService.authState.subscribe((user)=>{
-    //   this.fbUser = user
-    //   debugger
-    //   console.log("Login User = ", this.fbUser);
-    // });
+    this.activatedRoute.queryParamMap.subscribe((queryParams) => {
+      let params = queryParams.get('passcode');
+      this.checkAdminLogin(params)
+    });
   }
 
   formData(){
@@ -46,13 +48,29 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  checkAdminLogin(data:any){
+    this.adminApi.adminLogin(data).then((res:any) =>{
+      if(res && res.statusCode == 200){
+        if(res.data && res.data.isAdmin == true){
+          this.adminValue = res.data.isAdmin
+          this.loginForm.patchValue({role: "ADMIN"})
+        }else{
+          this.router.navigate(['/auth/login'])
+        }
+      }
+      else{
+        this.toast.error(res.message)
+      }
+    })    
+  }
+
   onSubmit() {
     this.loginForm.markAllAsTouched();
     if (this.loginForm.valid) {
-      this.auth.userLogin(this.loginForm.value)
+      this.auth.userLogin(this.loginForm.value) 
     } else {
       console.log('Form is not valid');
-    }
+    }    
   }
 
   goToSignUp(){
