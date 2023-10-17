@@ -6,6 +6,7 @@ import { GoogleLoginProvider, SocialAuthService } from "@abacritt/angularx-socia
 import { FacebookLoginProvider } from "@abacritt/angularx-social-login";
 import { ToastrService } from 'ngx-toastr';
 import { AdminApiService } from 'src/app/core/services/admin-api.service';
+import { FunctionService } from 'src/app/core/services/function.service';
 
 @Component({
   selector: 'app-login',
@@ -14,11 +15,11 @@ import { AdminApiService } from 'src/app/core/services/admin-api.service';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
-  adminValue:any
   fbUser: any
   constructor(
     private fb: FormBuilder,
     private auth: AuthencationService,
+    public fun: FunctionService,
     private router: Router,
     private authService: SocialAuthService,
     public adminApi: AdminApiService,
@@ -52,8 +53,7 @@ export class LoginComponent implements OnInit {
     this.adminApi.adminLogin(data).then((res:any) =>{
       if(res && res.statusCode == 200){
         if(res.data && res.data.isAdmin == true){
-          this.adminValue = res.data.isAdmin
-          this.loginForm.patchValue({role: "ADMIN"})
+          this.fun.getAdminVal = res.data.isAdmin
         }else{
           this.router.navigate(['/auth/login'])
         }
@@ -66,6 +66,9 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.loginForm.markAllAsTouched();
+    if(this.fun.getAdminVal == true){
+      this.loginForm.patchValue({role: "ADMIN"})
+    }
     if (this.loginForm.valid) {
       this.auth.userLogin(this.loginForm.value) 
     } else {

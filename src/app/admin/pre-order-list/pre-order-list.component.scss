@@ -1,0 +1,33 @@
+img{
+    width: 28%;
+    padding: 10px;
+  }
+  .container{
+    background: #ffffff !important;
+  }
+  h2.text-center.p-4 {
+    font-size: 28px;
+}
+.table-dv {
+  width: 91%;
+  margin: 0 auto;
+}
+.reject-btn{
+  background: #000000;
+  color: #ffffff;
+  margin-left: 5px;
+}
+.approve-btn{
+  background:#000000;
+  color: #ffffff;
+  margin-left: 5px;
+}
+.approve-btn-app{
+  color: #000000;
+}
+button[disabled]:hover {
+  cursor:not-allowed;
+}
+button[disabled]{
+  background: lightgray;
+}

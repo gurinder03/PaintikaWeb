@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject } from 'rxjs';
 import { NavigationRouteService } from '../services/navigation-route.service';
 import { FunctionService } from '../services/function.service';
+import { Router } from '@angular/router';
 
 const HAS_LOGGED_IN: any = 'hasLoggedIn';
 
@@ -17,7 +18,8 @@ export class AuthencationService {
     private request: RequestService,
     private toast: ToastrService,
     public navCtrl: NavigationRouteService,
-    public fun: FunctionService
+    public fun: FunctionService,
+    public router: Router
   ) {}
 
 
@@ -197,7 +199,15 @@ export class AuthencationService {
       this.navCtrl.goTo('/dashboard', {}, 'root');
       this.authState.next(false);
     }
+    if(this.fun.getAdminVal){
+       this.router.navigate(['/auth/login'], {
+        queryParams: {
+          passcode: 123456,
+        },
+      });
+    }
     localStorage.removeItem('data');
+    localStorage.removeItem('cate_id');
   }
 
   getToken(): Promise<string> {

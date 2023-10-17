@@ -107,7 +107,7 @@ export class UploadPaintComponent implements OnInit {
   getCategoryList() {
     let data = {
       page: 1,
-      limit: 10,
+      limit: 100,
     };
     this.adminApi.getAdminCateList(data).then((res: any) => {
       if (res && res.statusCode === 200) {

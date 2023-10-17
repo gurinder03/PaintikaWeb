@@ -65,6 +65,7 @@ export class AddCategoryComponent implements OnInit {
           if (res && res.statusCode === 200) {
             this.toast.success(res.message)
             this.navCtrl.goTo('/admin/category-list')
+            localStorage.removeItem('cate_id');
           } else if (res.statusCode === 500) {
             this.toast.error(res.message);
           } else {

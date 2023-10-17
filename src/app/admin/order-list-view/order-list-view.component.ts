@@ -25,7 +25,7 @@ export class OrderListViewComponent {
     this.api.orderView(orderId).then((res:any)=>{
       if (res && res.statusCode === 200) {
         console.log('List View', res);
-        res.data
+       this.orders = res.data
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
       } else {

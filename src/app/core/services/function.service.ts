@@ -9,7 +9,8 @@ import { DatePipe } from '@angular/common';
 })
 export class FunctionService {
 
-  cartCount:any
+  cartCount:any;
+  getAdminVal: boolean = false
   getUserData:any = {}
   constructor(
     public navCtrl: NavigationRouteService,

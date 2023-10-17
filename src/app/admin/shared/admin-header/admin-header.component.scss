@@ -86,9 +86,9 @@ nav ul li a:hover::after {
 nav ul li a, .nav form button {
     position: relative;
 }
-ul.navbar-nav.me-auto{
-    margin-left: 6%;
-}
+// ul.navbar-nav.me-auto{
+//     margin-left: 6%;
+// }
 .login-name {
     color: #ffffff;
     display: flex;
@@ -97,6 +97,10 @@ ul.navbar-nav.me-auto{
     font-weight: 500;
     margin-top: 10px;
 }
+// .btn-check:focus+.btn, .btn:focus {
+//     outline: 0;
+//     box-shadow: none;
+// }
 @media screen and (max-width:900px){
     ul.navbar-nav.me-auto{
         margin: 0;

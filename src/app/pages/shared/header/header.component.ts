@@ -30,5 +30,9 @@ export class HeaderComponent {
       this.auth.logout()
       this.router.navigate([route]);
     }
+    if(ev == 5){
+      this.fun.getAdminVal = false
+    }
+
   }
 }
