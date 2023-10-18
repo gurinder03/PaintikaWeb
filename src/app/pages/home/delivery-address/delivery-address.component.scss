@@ -1,5 +1,5 @@
 .delivery-address {
-    background: #000000;
+    background: #212529;
     color: #ffffff;
 }
 .current-location a {
@@ -37,7 +37,14 @@ button.continue{
     padding: 10px 10px;
     color: #ffffff;
 }
-button.continue:hover {
+.update-btn{
+    background: #000000;
+    font-size: 20px;
+    padding: 10px 10px;
+    color: #ffffff;
+    margin-left: 5px;
+}
+button.continue:hover,.update-btn:hover {
     background: lightgray;
     color: #000000;
 }

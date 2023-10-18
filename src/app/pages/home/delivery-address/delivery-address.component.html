@@ -73,10 +73,10 @@
                         <mat-form-field class="full-w">
                             <mat-label>State </mat-label>
                             <mat-select formControlName="state">
-                                <mat-option [value]="1">1</mat-option>
-                                <mat-option [value]="2">2</mat-option>
-                                <mat-option [value]="3">3</mat-option>
-                                <mat-option [value]="4">4</mat-option>
+                                <mat-option value="punjab">Punjab</mat-option>
+                                <mat-option value="uttar_pardesh">Uttar Pardesh (Up)</mat-option>
+                                <mat-option value="haryana">Haryana</mat-option>
+                                <mat-option value="himachal">Himachal</mat-option>
                             </mat-select>
                             <mat-error *ngIf="addressForm.controls['state'].errors?.['required']">
                                 Field is required.
@@ -103,7 +103,8 @@
                     </div>
                 </div>
                 <div class="button col-md-3">
-                    <button type="submit" class="continue">Continue</button>
+                    <button type="submit" *ngIf="!addressData" class="continue">Continue</button>
+                    <button *ngIf="addressData" type="submit" class="update-btn" >Update</button>
                 </div>
             </div>
         </form>

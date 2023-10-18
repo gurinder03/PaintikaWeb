@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
   pageIndex: number = 1;
 	pageSize: number = 10;
 	length: number = 10;
+  filterData: any = '';
   pagesData:any = {}
   customOptions: OwlOptions = {
     loop: true,
@@ -64,13 +65,15 @@ export class DashboardComponent implements OnInit {
   }
 
   applyFilter(event: Event){
-    this.getData()
+    debugger
     const filterValue = (event.target as HTMLInputElement).value;
     let filter = filterValue.trim().toLowerCase();
-    let filteredData = this.data.filter((item: any) => {
-      return item.name.toLowerCase().includes(filter);
-    });
-    this.data = filteredData;
+    // let filteredData = this.data.filter((item: any) => {
+    //   return item.name.toLowerCase().includes(filter);
+    // });
+    this.filterData = filter;
+    this.getData()
+    console.log('this.data => ',  this.filterData);
   }
 
   getData(ele?: PageEvent){
@@ -83,6 +86,7 @@ export class DashboardComponent implements OnInit {
     let resData = {
 			page: pageNumber,
 			limit: pageSize,
+      filter: this.filterData
 		};
     this.api.productList(resData).then((res: any) => {
       if (res && res.statusCode === 200) {

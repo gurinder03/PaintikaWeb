@@ -1,7 +1,7 @@
 <div class="container" style="background-color: #f0f0f0 !important;">
     <mat-card class="login form">
-        <mat-card-title class="login-heading mb-2 text-center animate__animated animate__fadeInRight">
-            Login
+        <mat-card-title class="login-heading mb-2 text-center ">
+           <p *ngIf="fun.getAdminVal">Admin</p> Login
         </mat-card-title>
         <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
             <mat-form-field class="full-w ">
@@ -14,7 +14,7 @@
                     Email/Phone format is not valid.
                 </mat-error>
             </mat-form-field>
-            <mat-form-field class="full-w animate__animated animate__fadeInRight">
+            <mat-form-field class="full-w ">
                 <mat-label>Password</mat-label>
                 <input matInput type="password" formControlName="password" placeholder="Password">
                 <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
@@ -37,32 +37,32 @@
                     User Type is required.
                 </mat-error>
             </mat-form-field>
-            <div class="forgot-password mb-3 animate__animated animate__fadeInLeft">
+            <div class="forgot-password mb-3 " *ngIf="!fun.getAdminVal">
                 <a [routerLink]="['/auth/forgot']" class="forgt-pswrd">Forgot Your Password ?
                     <mat-icon svgIcon="password_reset" class="arrow-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M334.5 414c8.8 3.8 19 2 26-4.6l144-136c4.8-4.5 7.5-10.8 7.5-17.4s-2.7-12.9-7.5-17.4l-144-136c-7-6.6-17.2-8.4-26-4.6s-14.5 12.5-14.5 22l0 72L32 192c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l288 0 0 72c0 9.6 5.7 18.2 14.5 22z"/></svg>
                     </mat-icon>
                 </a>
             </div>
-            <button type="submit" mat-raised-button color="primary" class="login-btn mb-3 animate__animated animate__fadeInRight">Login</button>
+            <button type="submit" mat-raised-button color="primary" class="login-btn mb-3 ">Login</button>
         </form>
-        <div class="have-account animate__animated animate__fadeInLeft mt-2">
+        <div class="have-account  mt-2" *ngIf="!fun.getAdminVal">
             <span> Don't have an account ? <a (click)="goToSignUp()">Sign Up</a></span>
         </div>
-        <div class="social-account animate__animated animate__fadeInRight">
+        <div class="social-account " *ngIf="!fun.getAdminVal">
             <span>
                 Or login with social account
             </span>
             <div class="social-icons">
                 <span class="facebook-icon ">
-                    <mat-icon svgIcon="facebook animate__animated animate__fadeInLeft">
+                    <mat-icon svgIcon="facebook ">
                         <a href="javascript:void(0);" (click)="facebookLogin()">
                             <img src="./assets/images/facebook-icon.png">
                         </a>
                     </mat-icon>
                 </span>               
                 <span class="google-icon ">
-                    <mat-icon svgIcon="google animate__animated animate__fadeInRight">
+                    <mat-icon svgIcon="google ">
                         <!-- <a href="javascript:void(0);" (click)="googleLogin()">
                             <img src="./assets/images/google-icon.png">
                         </a> -->

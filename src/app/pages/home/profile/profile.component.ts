@@ -50,6 +50,8 @@ export class ProfileComponent implements OnInit {
   }
 
   pacthValue(data:any){
+    console.log('data => ', data);
+    
     this.profileForm.patchValue({ name: data.name });
     this.profileForm.patchValue({ email_or_mobile_number: data.email_or_mobile_number });
     this.profileForm.patchValue({ surname: data.surname });
@@ -63,6 +65,11 @@ export class ProfileComponent implements OnInit {
     this.profileForm.patchValue({ freelancer: data.freelancer });
     this.profileForm.patchValue({ experience: data.experience });
     this.profileForm.patchValue({ additional_detail: data.additional_detail });
+    if(data && data.job_type == "professional"){
+      this.profileForm.patchValue({professionalOrfreelancer: '1' })
+    }else{
+      this.profileForm.patchValue({professionalOrfreelancer: '2' })
+    }
   }
 
   getUserProfile(){    
@@ -105,6 +112,13 @@ export class ProfileComponent implements OnInit {
     dataVal.append('experience', this.profileForm.value.experience);
     dataVal.append('additional_detail', this.profileForm.value.additional_detail ? this.profileForm.value.additional_detail: ''); 
     dataVal.append('id', this.auth.getUserData()._id); 
+    console.log(this.profileForm);
+    
+    if(this.profileForm.value && this.profileForm.value.professionalOrfreelancer == '1'){
+      dataVal.append('job_type', 'professional'); 
+    }else{
+      dataVal.append('job_type', 'freelancer')
+    }
     if(this.setImg && this.setImg.length){
       dataVal.append('image', this.setImg[0]);
     }

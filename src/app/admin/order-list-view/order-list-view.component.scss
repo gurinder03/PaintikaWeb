@@ -1,14 +1,24 @@
+h5.labels {
+  margin-bottom: 5px;
+}
+.order-section.p-2.text-left.col-9 {
+  padding-left: 8em !important;
+}
+
 img.user-img {
-  width: 88%;
-  margin-left: 24px;
-  margin-bottom: 15px;
+  width: 16%;
+  height: 15%;
+}
+.item-section {
+  margin-bottom: 3em;
+}
+.row.item {
+  margin-top: 14px;
 }
 
-.main.container {
-  width: 48%;
+h5.labels.total-font {
+  font-size: 17px;
 }
-
-.text-center.user-main {
-  padding-top: 8px !important;
-  margin-top: 13px;
+.main-container{
+  width: 85%;
 }

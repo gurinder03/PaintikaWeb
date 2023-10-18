@@ -7,6 +7,8 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { AuthencationService } from 'src/app/core/auth/authencation.service';
 import { NavigationRouteService } from 'src/app/core/services/navigation-route.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { SetCommisionComponent } from '../set-commision/set-commision.component';
 
 @Component({
   selector: 'app-user-list',
@@ -28,7 +30,8 @@ export class UserListComponent implements OnInit {
     private toast: ToastrService,
     public auth: AuthencationService,
     public navCtrl: NavigationRouteService,
-    public router: Router
+    public router: Router,
+    public dialog: MatDialog
   ){ }
   
   displayedColumns: string[] = ['serailNo', 'name', 'email_or_mobile_number','role','createdAt','profile_image','button'];
@@ -49,6 +52,17 @@ export class UserListComponent implements OnInit {
     this.getData();
 		this.dataSource.sort = this.empTbSort;
 	}
+
+  openSetCommisionPopup(data:any){
+    const dialogRef = this.dialog.open(SetCommisionComponent, {
+      data: data,
+      hasBackdrop: false,
+      width: '650px',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result );
+    });
+  }
 
   userView(userId: any){
     this.router.navigate(['/admin/user-view'], {

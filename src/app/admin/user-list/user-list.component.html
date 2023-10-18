@@ -1,7 +1,7 @@
 <div class="container">
-<h2 class="text-center p-4 animate__animated animate__bounceInDown">Users List</h2>
+<h2 class="text-center p-4 ">Users List</h2>
 
-  <mat-form-field class="col-md-4 animate__animated animate__bounceInUp">
+  <mat-form-field class="col-md-4 ">
     <mat-label>Search Users</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Search Users" #input>
   </mat-form-field>
@@ -52,9 +52,9 @@
         </td>
       </ng-container>
       <ng-container matColumnDef="button">
-        <th *matHeaderCellDef mat-header-cell>Action</th>
+        <th *matHeaderCellDef mat-header-cell class="buttons-list">Action</th>
         <td *matCellDef="let element" mat-cell>
-          <button type="button" *ngIf="element.role != 'USER'" mat-button class="unblock-btn" style="margin-right: 5px;"> Set Comission</button>
+          <button type="button" *ngIf="element.role != 'USER'" (click)="openSetCommisionPopup(element)"  mat-button class="unblock-btn" style="margin-right: 5px;"> Set Commission</button>
           <button type="button" (click)="userView(element)" mat-button class="unblock-btn" style="margin-right: 5px;"> View</button>
         <button type="button" (click)="updateStatus('unblocked', element)" *ngIf="element.status == 'blocked'" class="block-btn">Unblock</button>
         <button type="button" (click)="updateStatus('blocked', element)" *ngIf="element.status == 'unblocked'" class="unblock-btn">Block</button>

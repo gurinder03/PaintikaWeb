@@ -1,30 +1,30 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="addCateForm">
     <mat-card class="login-card">
-        <mat-card-title class="text-center p-3 animate__animated animate__fadeInLeft">Add
+        <mat-card-title class="text-center p-3 ">Add
             category</mat-card-title>
-        <mat-form-field class="animate__animated animate__fadeInRight">
+        <mat-form-field class="">
             <mat-label>Category Name</mat-label>
             <input matInput formControlName="name" placeholder="Enter category name">
             <mat-error *ngIf="addCateForm.controls['name'].hasError('required')">
                 Name is required.
             </mat-error>
         </mat-form-field>
-        <div class="file-upload col-md-12 animate__animated animate__fadeInLeft">
+        <div class="file-upload col-md-12">
             <input #Image type="file" (change)="onSelectFile($event)" accept="image/*" />
             <div class="text-center pt-1 pb-2">
                 <img [src]="url" height="200">
             </div>
         </div>
         <div class="row justify-content-between">
-            <div class="col-md-4  animate__animated animate__fadeInLeft">
+            <div class="col-md-4  ">
                 <button mat-button type="button" (click)="cancel()" class="cancel-btn">Cancel</button>
             </div>
             
-            <div *ngIf="setCateId" class="col-md-4 text-end animate__animated animate__fadeInRight">
+            <div *ngIf="setCateId" class="col-md-4 text-end ">
                 <button mat-button type="submit" class="update-btn">Update</button>
             </div>
             
-            <div *ngIf="!setCateId" class="col-md-4  text-end animate__animated animate__fadeInRight">
+            <div *ngIf="!setCateId" class="col-md-4  text-end ">
                 <button mat-button type="submit" class="add-btn">Add</button>
             </div>
         </div>

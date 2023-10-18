@@ -12,6 +12,8 @@ import { OrderListViewComponent } from './order-list-view/order-list-view.compon
 import { CategoryViewComponent } from './category-view/category-view.component';
 import { PreOrderListComponent } from './pre-order-list/pre-order-list.component';
 import { PreOrderViewComponent } from './pre-order-view/pre-order-view.component';
+import { PainterOrderListComponent } from './painter-order-list/painter-order-list.component';
+import { PainterOrderListViewComponent } from './painter-order-list-view/painter-order-list-view.component';
 
 const routes: Routes = [
   {
@@ -64,6 +66,14 @@ const routes: Routes = [
       {
         path: 'pre-order-view',
         component: PreOrderViewComponent
+      },
+      {
+        path: 'painter-order-list',
+        component: PainterOrderListComponent
+      },
+      {
+        path: 'painter-order-list-view',
+        component: PainterOrderListViewComponent
       },
     ]
   },

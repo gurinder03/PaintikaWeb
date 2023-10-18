@@ -13,6 +13,7 @@ import { NavigationRouteService } from 'src/app/core/services/navigation-route.s
 })
 export class DeliveryAddressComponent {
   addressForm!: FormGroup;
+  addressAddUpdate: any = ''
   addressData:any = {}
   constructor(
     public fb: FormBuilder,
@@ -25,6 +26,7 @@ export class DeliveryAddressComponent {
     this.formData();
     this.activatedRoute.params.subscribe((event: any) => {
       if (event && event.id !== "addAddress") {
+        this.addressAddUpdate = event.id;
         this.getSingleAddress(event?.id);
       }
     });
@@ -66,6 +68,7 @@ export class DeliveryAddressComponent {
           city: this.addressForm.value.city,
           phoneNumber: this.addressForm.value.phoneNumber,
         },
+        type: this.addressForm.value.delveryType,
         lat: this.addressForm.value.lat,
         lng: this.addressForm.value.lng
       }

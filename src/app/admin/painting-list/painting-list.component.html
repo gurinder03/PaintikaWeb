@@ -1,14 +1,14 @@
 <div class="container">
-    <h2 class="text-center p-4 animate__animated animate__bounceInDown">Paintings List</h2>
+    <h2 class="text-center p-4 ">Paintings List</h2>
 
-    <mat-form-field class="col-md-4  animate__animated animate__bounceInUp">
+    <mat-form-field class="col-md-4">
         <mat-label>Search Paintings</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Search Paintings" #input>
     </mat-form-field>
 </div>
 
 <!-- #empTbSort="matSort" -->
-<div class="table-dv  animate__animated animate__bounceInUp pb-5">
+<div class="table-dv ">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" #empTbSort="matSort" matSort>
         <!-- Position Column -->
         <ng-container matColumnDef="srNo">
@@ -64,8 +64,8 @@
         [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page" showFirstLastButtons>
     </mat-paginator>
 </div>
-<!-- <div>
+<div>
     <p><br></p>
     <p><br></p>
     <p><br></p>
-</div>-->
+</div>

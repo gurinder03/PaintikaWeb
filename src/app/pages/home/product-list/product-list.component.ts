@@ -13,7 +13,10 @@ import { NavigationRouteService } from 'src/app/core/services/navigation-route.s
 })
 export class ProductListComponent implements OnInit {
   allData:any = []
-  cartData: any = []
+  cartData: any = [];
+  selectedValue: any = ''
+  filterData: any = '';
+  productId: any;
   cart: any[] = [];
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -23,17 +26,14 @@ export class ProductListComponent implements OnInit {
     public auth: AuthencationService,
     private navCtrl: NavigationRouteService
   ){
-    this.getCartData()
+    // this.getCartData()
   }
   
   addToCart(item:any) {
-    console.log(item);
-    debugger
     if(this.auth.isAuthenticated()){
       item.isLiked = !item.isLiked;
       const index = this.cartData?.findIndex((cartItem:any) => cartItem.art_id === item?._id);
       if (index !== -1) {
-        debugger
         // this.cartData?.splice(index, 1);
         // this.api.removeToCart({id:item?._id}).then((res: any) => {
         //   debugger
@@ -47,7 +47,6 @@ export class ProductListComponent implements OnInit {
         //   console.log('this.api.cartList => ', this.cartData);
         // });
       } else {
-        debugger
         let data = {
           "user_id":this.auth.getUserData()?._id,
           "art_id":item?._id,
@@ -73,51 +72,63 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((event: any) => {
       if (event) {
-        this.productData(event.productId);
+        this.productId = event.productId
+        this.productData(this.productId, this.filterData);
       }
     });
   }
 
-  getCartData(){
-    if(this.auth.isAuthenticated()){
-      let data = {user_id: this.auth.getUserData()?._id}
-      this.api.cartListData(data).then((res:any)=>{
-        if (res && res.statusCode === 200) {
-          debugger
-          this.cartData = res.data.carts;
-          this.activatedRoute.params.subscribe((event: any) => {
-            if (event) {
-              this.productData(event.productId);
-            }
-          });
-        } else if (res.statusCode === 500) {
-          this.toast.error(res.message);
-        } else {
-          this.toast.error('Something went wrong');
-        }
-      })
-    }
+
+ 
+
+  // getCartData(){
+  //   if(this.auth.isAuthenticated()){
+  //     let data = {user_id: this.auth.getUserData()?._id}
+  //     this.api.cartListData(data).then((res:any)=>{
+  //       if (res && res.statusCode === 200) {
+  //         this.cartData = res.data.carts;
+  //         this.activatedRoute.params.subscribe((event: any) => {
+  //           if (event) {
+  //             this.productData(event.productId);
+  //           }
+  //         });
+  //       } else if (res.statusCode === 500) {
+  //         this.toast.error(res.message);
+  //       } else {
+  //         this.toast.error('Something went wrong');
+  //       }
+  //     })
+  //   }
+  // }
+
+  applyFilter(event: Event){
+    const filterValue = (event.target as HTMLInputElement).value;
+    let filter = filterValue.trim().toLowerCase();
+    this.filterData = filter;
+    this.productData(this.productId, this.filterData)
+    console.log('this.data => ',  this.filterData);
   }
 
-
-  productData(cate:any){
-    debugger
+  productData(cate:any, filterKey: any){
     let data = {
       "page":1,
       "limit":10,
-      "categories": [cate]
+      "categories": [cate],
+      "filter": filterKey,
+      "city": this.selectedValue
     }
     this.api.productDataList(data).then((res: any) => {
-      debugger
       if (res && res.statusCode === 200) {
-        if(res && res.data && res.data.length){
+        // if(res && res.data && res.data.length){
           for (let index = 0; index < res.data.length; index++) {
             const element = res.data[index];
             element.isLiked = false
           }
           this.allData = res.data;
+          console.log('this.allData => ', this.allData);
+          
           this.updateIsLikedStatus(this.allData, this.cartData)
-        }
+        // }
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
       } else {
@@ -127,7 +138,6 @@ export class ProductListComponent implements OnInit {
   }
 
   updateIsLikedStatus(array1: any[], array2: any[]) {
-    debugger
     for (const item1 of array1) {
       const isLiked = array2?.some((item2) => item2.art_id === item1._id);
       item1.isLiked = isLiked;

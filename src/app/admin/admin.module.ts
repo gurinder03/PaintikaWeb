@@ -23,6 +23,9 @@ import { OrderListViewComponent } from './order-list-view/order-list-view.compon
 import { CategoryViewComponent } from './category-view/category-view.component';
 import { PreOrderListComponent } from './pre-order-list/pre-order-list.component';
 import { PreOrderViewComponent } from './pre-order-view/pre-order-view.component';
+import { SetCommisionComponent } from './set-commision/set-commision.component';
+import { PainterOrderListComponent } from './painter-order-list/painter-order-list.component';
+import { PainterOrderListViewComponent } from './painter-order-list-view/painter-order-list-view.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,9 @@ import { PreOrderViewComponent } from './pre-order-view/pre-order-view.component
     CategoryViewComponent,
     PreOrderListComponent,
     PreOrderViewComponent,
+    SetCommisionComponent,
+    PainterOrderListComponent,
+    PainterOrderListViewComponent,
   ],
   imports: [
     CommonModule,

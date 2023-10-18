@@ -2,17 +2,17 @@
   <div class="search-container">
     <div class="select-filter">
       <label for="city" class="city-label">Select City : </label>
-      <select name="pets" id="pet-select">
+      <select [(ngModel)]="selectedValue" id="pet-select">
         <option value="">--Please Select city--</option>
-        <option value="dog">Mohali</option>
-        <option value="cat">Kharar</option>
-        <option value="hamster">Patiala</option>
-        <option value="parrot">Jalandhar</option>
+        <option value="mohali">Mohali</option>
+        <option value="kharar">Kharar</option>
+        <option value="patiala">Patiala</option>
+        <option value="jalandhar">Jalandhar</option>
       </select>
     </div>
     <form>
       <div class="search-field">
-        <input type="search" placeholder="Search paintings or painter...">
+        <input type="search"  matInput (keyup)="applyFilter($event)" placeholder="Search paintings or painter...">
         <button type="submit">Search</button>
       </div>
     </form>
@@ -24,21 +24,26 @@
           <div class="hdng-button ">
             <h3 class="text-cap">{{data.name}}</h3>
             <ng-container *ngIf="auth.getUserData()?.role != 'ARTIST'">
-              <button (click)="addToCart(data)" [disabled]="data && data.isLiked == true ? true : false "
+              <!-- <button (click)="addToCart(data)" [disabled]="data && data.isLiked == true ? true : false "
                 class="heart-button" mat-raised-button aria-label="Example icon button with a heart icon">
                 <mat-icon [ngClass]="{'favourite': !data.isLiked, 'favourite text-danger': data.isLiked}"
                   class="favourite-icon">favorite</mat-icon>
-              </button>
+              </button> -->
             </ng-container>
           </div>
           <img [src]="data.image">
           <p class="painting-detail">Set of three paintings</p>
           <h3 class="product-rate">₹{{data.price}}</h3>
-          <div class="buy-cart-btn">
-            <div class="buy-btn" *ngIf="auth.getUserData()?.role != 'ARTIST'">
-              <a (click)="buyNow(data)" href="javascript:void(0)">Buy Now</a>
+          <ng-container *ngIf="auth.getUserData()?.role != 'ARTIST'">
+            <div class="buy-cart-btn">
+              <div class="add-to-cart">
+                <button (click)="addToCart(data)"  [disabled]="data && data.isLiked == true ? true : false " type="button">Add to cart</button>
+              </div>
+              <!-- <div class="buy-btn" *ngIf="auth.getUserData()?.role != 'ARTIST'">
+                <a (click)="buyNow(data)" href="javascript:void(0)">Buy Now</a>
+              </div> -->
             </div>
-          </div>
+          </ng-container>
         </div>
       </ng-container>
       <ng-container *ngIf="allData && !allData.length">
