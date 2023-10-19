@@ -18,7 +18,7 @@ export class SignInComponent {
     public navCtrl: NavigationRouteService,
     public toast: ToastrService
    ){
-    this.formData()
+    this.formData();
   }
 
   formData(){
@@ -28,14 +28,25 @@ export class SignInComponent {
       userType: [true],
       name: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
+      state: [{ value: '', disabled: this.signUpForm?.value?.userType ? true : false }, [Validators.required]],
+      city: [{ value: '', disabled: this.signUpForm?.value?.userType ? true : false }, [Validators.required]],
     });
   }
 
   onSubmit() {
-    if(this.signUpForm && this.signUpForm.value && this.signUpForm.value.userType == true){
-      this.signUpForm.patchValue({role: 'ARTIST'})
-    } else{
-      this.signUpForm.patchValue({role: 'USER'})
+    console.log('this.signUpForm  => ', this.signUpForm );
+    if (this.signUpForm.value.userType == true) {
+      this.signUpForm.patchValue({ role: 'ARTIST' });
+      // @ts-expect-error
+      this.signUpForm.get('state').enable();
+       // @ts-expect-error
+      this.signUpForm.get('city').enable();
+    } else {
+      this.signUpForm.patchValue({ role: 'USER' });
+       // @ts-expect-error
+      this.signUpForm.get('state').disable();
+       // @ts-expect-error
+      this.signUpForm.get('city').disable();
     }
     this.signUpForm.markAllAsTouched();
     if (this.signUpForm.valid) {

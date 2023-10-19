@@ -3,7 +3,7 @@
         <form (ngSubmit)="onSubmit()" [formGroup]="uploadPaintForm">
             <div class="row justify-content-center">
                 <div class="file-upload col-md-8 animate__animated animate__bounceInDown">
-                    <input #Image type="file" formControlName="image" accept="image/*" multiple
+                    <input #Image type="file" formControlName="image"  accept="image/png, image/jpeg" multiple
                         (change)="selectFiles($event)" />
                     <div *ngIf="uploadPaintForm.controls['image'].invalid && (uploadPaintForm.controls['image'].dirty || uploadPaintForm.controls['image'].touched)"
                         class="alert " required>

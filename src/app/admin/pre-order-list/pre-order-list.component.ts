@@ -23,7 +23,7 @@ export class PreOrderListComponent implements OnInit {
   ){}
 
   @ViewChild('empTbSort') empTbSort = new MatSort();
-  displayedColumns: string[] = ['srNo', 'createdAt', 'description', 'image', 'updatedAt', 'action'];
+  displayedColumns: string[] = ['srNo', 'createdAt', 'description', 'image', 'updatedAt'];
   dataSource = new MatTableDataSource<any>();
 
   applyFilter(event: Event) {

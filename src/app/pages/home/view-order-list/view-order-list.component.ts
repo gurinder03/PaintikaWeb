@@ -26,6 +26,7 @@ export class ViewOrderListComponent {
     this.adminApi.orderArtView(listId).then((res:any) =>{
       console.log('res => ', res);
       if (res && res.statusCode === 200) {
+        this.orders = res.data
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
       } else {

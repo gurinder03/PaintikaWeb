@@ -1,0 +1,63 @@
+.container{
+    background: #ffffff !important;
+  }
+  .main-table-container{
+    width: 91%;
+    margin: 0 auto;
+  }
+  h2.text-center.p-4 {
+    font-size: 28px;
+  }
+  table {
+      width: 100%;
+    }
+    .create-btn{
+      background: #000000;
+      color: #ffffff;
+      margin-right: 5px;
+      padding: 11px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+    .delete-btn{
+      background: #000000;
+      color: #ffffff;
+  
+    }
+    .update-btn{
+      background: #000000;
+      color: #000000;
+      margin-right: 5px;
+      color: #ffffff;
+  
+    }
+    .edit-btn{
+      background: #000000;
+      color: #ffffff;
+      margin-right: 5px;
+    }
+    .edit-btn:hover,.update-btn:hover, .delete-btn:hover, .create-btn:hover{
+      background-color: lightgray;
+    }
+    img.img-inner.ng-star-inserted {
+      width: 40%;
+      padding: 10px;
+    }
+    td.mat-mdc-cell.mdc-data-table__cell.cdk-cell.cdk-column-image.mat-column-image.ng-star-inserted {
+      width: 29%;
+  }
+  .full-w{
+    width:100%;
+  }
+  .table-dv{
+    width: 91%;
+    margin: 0 auto;
+  }
+  .view-btn{
+    background-color: #000000;
+    color: #ffffff;
+    padding: 4px 7px;
+  }
+  .view-btn:hover{
+    background-color: lightgray;
+  }

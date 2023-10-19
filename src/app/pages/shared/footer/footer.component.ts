@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
   fullyear: any;
-  applicationName = 'PaindIka Web'
+  applicationName = 'Paintika'
 
 
   ngOnInit() {

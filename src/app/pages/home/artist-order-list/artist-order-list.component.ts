@@ -53,10 +53,12 @@ export class ArtistOrderListComponent implements OnInit {
     let resData = {
 			page: pageNumber,
 			limit: pageSize,
-			user_id: this.auth.getUserData()._id,
+			artist_id: this.auth.getUserData()._id,
 		};
     
-    this.api.artistOrderList(resData).then((res: any) => {
+    this.api.artistList(resData).then((res: any) => {
+      console.log('res => ', res);
+      
       if (res && res.statusCode === 200) {
         res.data.forEach((item:any, index:any) => {
           item.serialNumber = index + 1;

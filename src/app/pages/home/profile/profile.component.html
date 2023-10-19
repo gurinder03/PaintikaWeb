@@ -1,6 +1,6 @@
 <div class="container rounded bg-white mt-5 mb-3">
     <div class="row ">
-        <div class="col-md-4 border-Up animate__animated animate__fadeInUpBig">
+        <div class="col-md-4 border-Up">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                 <div class="image-section">
                     <ng-container *ngIf="selectedFile">
@@ -27,12 +27,12 @@
         <div class="col-md-8 border-Up">
             <form (ngSubmit)="onSubmit()" [formGroup]="profileForm">
                 <div class="p-3 py-3 pb-0 ">
-                    <div class="text-center mb-4 animate__animated animate__fadeInDownBig">
+                    <div class="text-center mb-4 ">
                         <h4 class="text-center profile-heading ">Profile Settings</h4>
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-6">
-                            <mat-form-field class="example-full-width full-w animate__animated animate__fadeInDownBig ">
+                            <mat-form-field class="example-full-width full-w  ">
                                 <mat-label >Name</mat-label>
                                 <input matInput formControlName="name" placeholder="First name" value="" style="text-transform: capitalize;">
                                 <mat-error *ngIf="profileForm.controls['name'].errors?.['required']">
@@ -41,7 +41,7 @@
                             </mat-form-field>
                         </div>
                         <div class="col-md-6">
-                            <mat-form-field class="example-full-width full-w animate__animated animate__fadeInUpBig">
+                            <mat-form-field class="example-full-width full-w ">
                                 <mat-label>Surname</mat-label>
                                 <input style="text-transform: capitalize;" matInput formControlName="surname" placeholder="Surname" value="">
                             </mat-form-field>
@@ -49,7 +49,7 @@
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-6 ">
-                            <mat-form-field class="example-full-width full-w animate__animated animate__fadeInUpBig">
+                            <mat-form-field class="example-full-width full-w ">
                                 <mat-label>Date of birth</mat-label>
                                 <input matInput  [matDatepicker]="picker" formControlName="dob" placeholder="Enter Date of birth">
                                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -59,7 +59,7 @@
                                 </mat-error>
                             </mat-form-field>
                         </div>
-                        <div class="col-md-6 mt-2 animate__animated animate__fadeInDownBig">
+                        <div class="col-md-6 mt-2 ">
                             <mat-label class="gender-label">Gender</mat-label> <br>
                             <mat-radio-group formControlName="gender" aria-label="Select an option">
                                 <mat-radio-button value="1">Male</mat-radio-button>
@@ -74,7 +74,7 @@
                         </div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-6 mt-2 animate__animated animate__fadeInUpBig">
+                        <div class="col-md-6 mt-2 ">
                             <mat-form-field class="example-full-width full-w">
                                 <mat-label>Email ID / Phone</mat-label>
                                 <input matInput formControlName="email_or_mobile_number" placeholder="Enter email id" readonly>
@@ -87,7 +87,7 @@
                             </mat-form-field>
                         </div>
                         <div class="col-md-6 mt-2">
-                            <mat-form-field class="example-full-width full-w animate__animated animate__fadeInDownBig">
+                            <mat-form-field class="example-full-width full-w ">
                                 <mat-label>Qualification</mat-label>
                                 <input style="text-transform: capitalize;" matInput formControlName="qualifications" placeholder="Qualification">
                                 <mat-error *ngIf="profileForm.controls['qualifications'].errors?.['required']">
@@ -97,7 +97,7 @@
                         </div>
                     </div>
                     <div class="row mt-3">                       
-                        <div class="col-md-6 mt-2 animate__animated animate__fadeInUpBig">
+                        <div class="col-md-6 mt-2 ">
                             <mat-form-field class="example-full-width full-w">
                                 <mat-label>Country</mat-label>
                                 <input  style="text-transform: capitalize;" matInput formControlName="country" placeholder="Country">
@@ -106,7 +106,7 @@
                                 </mat-error>
                             </mat-form-field>
                         </div>
-                        <div class="col-md-6 mt-2 animate__animated animate__fadeInDownBig">
+                        <div class="col-md-6 mt-2">
                             <mat-form-field class="example-full-width full-w">
                                 <mat-label>State/Region</mat-label>
                                 <input style="text-transform: capitalize;" matInput formControlName="state" placeholder="State" value="">
@@ -117,8 +117,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="row  p-3">                    
-                    <div class="professional col-md-6 mt-2 mb-2 animate__animated animate__fadeInUpBig">
+                <div class="row  p-3">     
+                    <div class="col-md-6 mt-2">
+                        <mat-form-field class="w-100">
+                            <mat-label>Select City</mat-label>
+                            <select matNativeControl required>
+                              <option value="">Mohali</option>
+                              <option value="">Kharar</option>
+                              <option value="">Panchkula</option>
+                              <option value="">Ropar</option>
+                            </select>
+                        </mat-form-field>
+                    </div>               
+                    <div class="professional col-md-6 mt-2 mb-2">
                         <label for="professional" style="margin-bottom: 10px;" class="labels">
                             Are you professional or
                             freelancer :
@@ -131,7 +142,7 @@
                         <br>
                     </div>
                 </div>
-                <div *ngIf="profileForm && profileForm.value && profileForm.value.professionalOrfreelancer == '1'" class="p-3 py-3 animate__animated animate__fadeInUpBig">
+                <div *ngIf="profileForm && profileForm.value && profileForm.value.professionalOrfreelancer == '1'" class="p-3 py-3 ">
                     <div class="text-center">
                         <span class="exprnc-hdng">Edit Experience</span>
                     </div>
@@ -156,7 +167,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-12 mt-2 p-3 animate__animated animate__fadeInDownBig">
+                <div class="col-md-12 mt-2 p-3 ">
                     <mat-form-field class="example-full-width full-w">
                         <mat-label>Address</mat-label>
                         <textarea style="text-transform: capitalize;"  matInput formControlName="address" placeholder="Enter address"></textarea>
@@ -165,7 +176,7 @@
                         </mat-error> -->
                     </mat-form-field>
                 </div>
-                <div class="mt-2 mb-3 text-center animate__animated animate__fadeInDownBig">
+                <div class="mt-2 mb-3 text-center ">
                     <button type="submit" mat-raised-button color="primary" class="btn btn-primary profile-button">
                         Save Profile
                     </button>

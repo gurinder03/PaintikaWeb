@@ -1,1 +1,18 @@
-<p>set-commision works!</p>
+<div class="container p-4">
+    <div class="login form"> 
+        <h3 class="text-center">Set Commission</h3>
+        <form (ngSubmit)="onSubmit()" [formGroup]="commisionForm">
+            <mat-form-field class="full-w ">
+                <mat-label class="otp-label">Please Set Commission</mat-label>
+                <input matInput formControlName="artist_comission" placeholder="enter commission">
+                <mat-error *ngIf="commisionForm.controls['artist_comission'].hasError('required')">
+                    Field is required.
+                </mat-error>
+            </mat-form-field>
+            <div class="buttons d-flex text-center">
+                <button type="submit" class="button submit">Submit</button>
+                <button type="button" (click)="cancel()" class="button cancel">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

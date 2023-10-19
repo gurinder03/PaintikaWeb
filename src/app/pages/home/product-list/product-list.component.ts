@@ -14,7 +14,8 @@ import { NavigationRouteService } from 'src/app/core/services/navigation-route.s
 export class ProductListComponent implements OnInit {
   allData:any = []
   cartData: any = [];
-  selectedValue: any = ''
+  selectedValue: any = '';
+  getAllCity: any = [];
   filterData: any = '';
   productId: any;
   cart: any[] = [];
@@ -73,9 +74,10 @@ export class ProductListComponent implements OnInit {
     this.activatedRoute.params.subscribe((event: any) => {
       if (event) {
         this.productId = event.productId
-        this.productData(this.productId, this.filterData);
+        this.productData(this.productId, this.filterData, this.selectedValue);
       }
     });
+    this.getCities();
   }
 
 
@@ -105,17 +107,17 @@ export class ProductListComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     let filter = filterValue.trim().toLowerCase();
     this.filterData = filter;
-    this.productData(this.productId, this.filterData)
+    this.productData(this.productId, this.filterData, this.selectedValue)
     console.log('this.data => ',  this.filterData);
   }
 
-  productData(cate:any, filterKey: any){
+  productData(cate:any, filterKey: any, cityVal:any){
     let data = {
       "page":1,
       "limit":10,
       "categories": [cate],
       "filter": filterKey,
-      "city": this.selectedValue
+      "city": cityVal
     }
     this.api.productDataList(data).then((res: any) => {
       if (res && res.statusCode === 200) {
@@ -135,6 +137,24 @@ export class ProductListComponent implements OnInit {
         this.toast.error('Something went wrong');
       }
     });
+  }
+
+  getCities(){
+    this.api.getCityData().then((res: any) => {
+      if (res && res.statusCode === 200) {
+        this.getAllCity = res.data;
+        console.log('res', this.getAllCity);
+      } else if (res.statusCode === 500) {
+        this.toast.error(res.message);
+      } else {
+        this.toast.error('Something went wrong');
+      }
+    });
+  }
+
+  selectCity(ele:any){
+    this.selectedValue = ele;
+    this.productData(this.productId, this.filterData, this.selectedValue)
   }
 
   updateIsLikedStatus(array1: any[], array2: any[]) {

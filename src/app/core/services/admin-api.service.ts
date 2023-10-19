@@ -39,6 +39,35 @@ export class AdminApiService {
     });
   }
 
+  updateOrderStatus(data:any){
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value);
+        }
+        else {
+          reject(value.statusText);
+        }
+      };
+      this.request.send('updateOrderStatus', data, success, null, true);
+    });
+  }
+
+
+  updateSetCommision(data:any){
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value);
+        }
+        else {
+          reject(value.statusText);
+        }
+      };
+      this.request.send('updateSetCommision', data, success, null, true);
+    });
+  }
+
   adminOrderList(data:any){
     return new Promise((resolve, reject) => {
       const success = (value:any) => {

@@ -1,7 +1,7 @@
 <div class="container" style="background-color: #f0f0f0 !important;">
     <mat-card class="login form">
-        <mat-card-title class="login-heading mb-2 text-center ">
-           <p *ngIf="fun.getAdminVal">Admin</p> Login
+        <mat-card-title class="login-heading mb-2 justify-content-center d-flex">
+           <p *ngIf="fun.getAdminVal">Admin</p>&nbsp;<p class="text-center">Login</p> 
         </mat-card-title>
         <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
             <mat-form-field class="full-w ">

@@ -82,6 +82,34 @@ export class ApiService implements OnInit {
     });
   }
 
+  getCityData(){
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value);
+        }
+        else {
+          reject(value.statusText);
+        }
+      };
+      this.request.send('getAllCityData', {}, success, null, true);
+    });
+  }
+
+  artistList(data:any){
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value);
+        }
+        else {
+          reject(value.statusText);
+        }
+      };
+      this.request.send('artistList', data, success, null, true);
+    });
+  }
+
   addPreorder(data:any){
     return new Promise((resolve, reject) => {
       const success = (value:any) => {

@@ -1,7 +1,7 @@
 <div class="container">
     <h2 class="text-center p-4 animate__animated  animate__bounceInDown">Artist Order List</h2>
 
-    <div class="row justify-content-between">
+    <div class="row justify-content-between" *ngIf="length">
         <div class="serach-filed col-md-4   animate__animated  animate__bounceInUp">
           <mat-form-field class="full-w">
             <mat-label>Search Order</mat-label>
@@ -10,7 +10,7 @@
         </div>
     </div>
 </div>
-<div class="table-dv  animate__animated  animate__bounceInDown" *ngIf="dataSource">
+<div class="table-dv  animate__animated  animate__bounceInDown" *ngIf="length">
     <table mat-table #empTbSort="matSort" [dataSource]="dataSource" class="mat-elevation-z8" matSort>
         <ng-container matColumnDef="serialNo">
             <th *matHeaderCellDef mat-header-cell mat-sort-header>Sr. No.</th>
@@ -60,6 +60,7 @@
     </table>
     <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]" (page)="getArtistList($event)" showFirstLastButtons  class="mt-1"></mat-paginator>
 </div>
+<div *ngIf="length == 0">Not Record Found! </div>
 <div>
     <p><br></p>
     <p><br></p>

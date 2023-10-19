@@ -147,7 +147,13 @@ const api = {
             requestType: 'post',
             url: '/user/change/password',
             responseInterface: []
-        },      
+        },   
+        artistList: {
+            requestType: 'post',
+            url: '/order/artist/list',
+            responseInterface: []
+        },
+
         // Call All admin api's
         userList: {
             requestType: 'post',
@@ -179,6 +185,16 @@ const api = {
             url: '/setting/update',
             responseInterface: []
         },
+        updateOrderStatus: {
+            requestType: 'post',
+            url: '/order/update',
+            responseInterface: []
+        },
+        updateSetCommision: {
+            requestType: 'post',
+            url: '/user/admin/update/commission',
+            responseInterface: []
+        },
         adminOrderList: {
             requestType: 'post',
             url: '/order/admin/user/list',
@@ -192,6 +208,11 @@ const api = {
         orderArtView: {
             requestType: 'get',
             url: '/order/view/artist/{{id}}',
+            responseInterface: []
+        },
+        getAllCityData: {
+            requestType: 'get',
+            url: '/setting/cities',
             responseInterface: []
         },
         adminArtList: {

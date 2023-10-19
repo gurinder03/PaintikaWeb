@@ -1,1 +1,70 @@
-<p (click)="viewOrderList()">painter-order-list works!</p>
+<!-- <p (click)="viewOrderList()">painter-order-list works!</p> -->
+<div class="container">
+    <h2 class="text-center p-4 ">Artist Order List</h2>
+
+  <mat-form-field class="col-md-4  ">
+    <mat-label>Search Orders</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search orders" #input>
+  </mat-form-field>
+</div>
+<div class="mat-elevation-z8 main-table-container">
+    <table mat-table [dataSource]="dataSource" #empTbSort="matSort" matSort>
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="serialNo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Sr No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.serialNumber}} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="order_number">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Order Number </th>
+        <td mat-cell *matCellDef="let element"> {{element.order_number}} </td>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="order_total">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Order Total </th>
+        <td mat-cell *matCellDef="let element"> {{element.order_total}} </td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="payment_status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Payment Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.payment_status}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="created_at">
+        <th mat-header-cell *matHeaderCellDef> CreatedAt </th>
+        <td mat-cell *matCellDef="let element"> {{element.created_at | date: 'MMM, d, y'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="payment_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Payment Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.payment_id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="payment_method">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Payment Method </th>
+        <td mat-cell *matCellDef="let element"> {{element.payment_method}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element">
+            <button type="button" (click)="viewOrderList(element)" class="view-btn">View</button> 
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]" (page)="getArtistList($event)" showFirstLastButtons  class="mt-1"></mat-paginator>
+  </div>
+
+  <div>
+    <p><br></p>
+    <p><br></p>
+    <p><br></p>
+  </div>

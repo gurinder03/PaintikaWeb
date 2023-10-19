@@ -57,7 +57,7 @@ export class UserListComponent implements OnInit {
     const dialogRef = this.dialog.open(SetCommisionComponent, {
       data: data,
       hasBackdrop: false,
-      width: '650px',
+      width: '650px',  
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result );

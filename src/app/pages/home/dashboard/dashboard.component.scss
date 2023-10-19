@@ -47,7 +47,7 @@ mat-icon.favourite-icon {
     width: 35%;
   }
   
-  input[type="search"] {
+  input[type="text"] {
     border: none;
     background: transparent;
     margin: 0;
@@ -59,7 +59,7 @@ mat-icon.favourite-icon {
     width: 88%;
   }
   
-  input[type="search"]::placeholder {
+  input[type="text"]::placeholder {
     color: #bbb;
   }
   
@@ -81,9 +81,10 @@ mat-icon.favourite-icon {
   }
   
   button[type="submit"]:focus,
-  input[type="search"]:focus {
-    box-shadow: 0 0 3px 0 #1183d6;
-    border-color: #1183d6;
+  input[type="text"]
+   {
+    box-shadow: none;
+    border-color: #ffffff;
     outline: none;
   }
   
@@ -137,7 +138,7 @@ mat-icon.favourite-icon {
 
 // animation css end
   @media screen and (max-width:1137px){
-      input[type="search"]{
+      input[type="text"]{
           width: 83%;
       }
   }
@@ -147,7 +148,7 @@ mat-icon.favourite-icon {
       }
   }
   @media screen and (max-width:826px){
-      input[type="search"]{
+      input[type="text"]{
           width: 73%;
       }
   }
@@ -160,7 +161,7 @@ mat-icon.favourite-icon {
       }
   }
   @media screen and (max-width:549px){
-      input[type="search"]{
+      input[type="text"]{
           width: 56%;
       }
     .search-container{
@@ -177,12 +178,12 @@ mat-icon.favourite-icon {
         width: 95%;
         margin-top: 0 !important;
     }
-    input[type=search]{
+    input[type=text]{
         width: 90%;
     }
   }
   @media screen and (max-width:500px){
-    input[type=search]{
+    input[type=text]{
         width: 80%;
     }
   }
@@ -195,7 +196,7 @@ mat-icon.favourite-icon {
     }
   }
   @media screen and (max-width:281px){
-    input[type=search]{
+    input[type=text]{
         width: 70%;
     }
   }

@@ -51,8 +51,31 @@
                     Password must be at least 6 characters long.
                 </mat-error>
             </mat-form-field>
-            <button type="submit" mat-raised-button color="primary"
-                class="sign-up-btn mt-2 mb-3 ">Sign Up</button>
+            <mat-form-field class="w-100" *ngIf="signUpForm.value.userType == true">
+                <mat-label>Select State</mat-label>
+                <select formControlName="state" matNativeControl required>
+                  <option value="Himachal Pradesh">Himachal Pradesh</option>
+                  <option value="Punjab">Punjab</option>
+                  <option value="Haryana">Haryana</option>
+                  <option value="Uttar Pradesh">Uttar Pradesh</option>
+                </select>
+                <mat-error *ngIf="signUpForm.controls['state'].hasError('required')">
+                    Field is required
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="w-100" *ngIf="signUpForm.value.userType == true">
+                <mat-label>Select City</mat-label>
+                <select formControlName="city" matNativeControl required>
+                  <option value="Mohali">Mohali</option>
+                  <option value="Kharar">Kharar</option>
+                  <option value="Panchkula">Panchkula</option>
+                  <option value="Ropar">Ropar</option>
+                </select>
+                <mat-error *ngIf="signUpForm.controls['city'].hasError('required')">
+                    Field is required
+                </mat-error>
+            </mat-form-field>
+            <button type="submit" mat-raised-button color="primary" class="sign-up-btn mt-2 mb-3 ">Sign Up</button>
         </form>
     </div>
 </div>

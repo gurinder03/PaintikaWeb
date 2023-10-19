@@ -26,6 +26,7 @@ import { PreOrderViewComponent } from './pre-order-view/pre-order-view.component
 import { SetCommisionComponent } from './set-commision/set-commision.component';
 import { PainterOrderListComponent } from './painter-order-list/painter-order-list.component';
 import { PainterOrderListViewComponent } from './painter-order-list-view/painter-order-list-view.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { PainterOrderListViewComponent } from './painter-order-list-view/painter
     MatSortModule,
     MatDialogModule,
     MatPaginatorModule, 
+    MatSelectModule,
   ]
 })
 export class AdminModule { 

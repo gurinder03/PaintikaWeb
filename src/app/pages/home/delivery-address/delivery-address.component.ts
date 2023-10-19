@@ -14,7 +14,7 @@ import { NavigationRouteService } from 'src/app/core/services/navigation-route.s
 export class DeliveryAddressComponent {
   addressForm!: FormGroup;
   addressAddUpdate: any = ''
-  addressData:any = {}
+  addressData:any
   constructor(
     public fb: FormBuilder,
     public api: ApiService,
@@ -88,6 +88,8 @@ export class DeliveryAddressComponent {
   }
 
   setAddressValue(data:any){
+    console.log('data => ', data);
+    
     this.addressForm.patchValue({user_id: data.user_id})
     this.addressForm.patchValue({id: data._id})
     this.addressForm.patchValue({name: data.name})
@@ -103,6 +105,7 @@ export class DeliveryAddressComponent {
   }
 
   getSingleAddress(id: any) {
+    debugger
     this.api.getAddress(id).then((res: any) => {
       if (res && res.statusCode === 200) {
         this.addressData = res.data

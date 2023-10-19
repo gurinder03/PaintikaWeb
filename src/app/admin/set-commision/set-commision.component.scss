@@ -1,0 +1,64 @@
+.cdk-overlay-pane {
+    min-height: 200px !important;
+}
+.container{
+    max-width: 100%;
+    width: 100%;
+    background: #f0f0f0;
+    border-radius: 7px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+  }
+.form h4{
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.button {
+    color: #fff;
+    background: #000000;
+    letter-spacing: 1px;
+    cursor: pointer;
+    padding: 4px 5px;
+ }
+ button:hover{
+    background: lightgrey;
+  }
+ .back-to-login {
+   margin-bottom: 20px;
+}
+.back-to-login a{
+    font-size: 27px;
+}
+label.otp-label {
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+.resend-otp {
+    text-align: end;
+    margin-top: 18px;
+}
+
+.resend-otp a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 17px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.resend-otp a:hover{
+    text-decoration: underline;
+    color: #0d6efd;
+    cursor: pointer;
+}
+.full-w{
+    width: 100%;
+}
+h3 {
+    font-size: 22px !important;
+    font-weight: 500 !important;
+}
+.cancel{
+    margin-left: 5px;
+}

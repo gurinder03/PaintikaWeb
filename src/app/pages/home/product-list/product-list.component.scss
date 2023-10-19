@@ -35,7 +35,7 @@ form{
  width: 35%;
 }
 
-input[type="search"] {
+input[type="text"] {
  border: none;
  background: transparent;
  margin: 0;
@@ -47,7 +47,7 @@ input[type="search"] {
  width: 88%;
 }
 
-input[type="search"]::placeholder {
+input[type="text"]::placeholder {
  color: #bbb;
 }
 
@@ -69,9 +69,9 @@ button[type="submit"]:hover {
 }
 
 button[type="submit"]:focus,
-input[type="search"]:focus {
- box-shadow: 0 0 3px 0 #1183d6;
- border-color: #1183d6;
+input[type="text"]:focus {
+ box-shadow: none;
+ border-color: #ffffff;
  outline: none;
 }
 
@@ -79,7 +79,14 @@ form.nosubmit {
 border: none;
 padding: 0;
 }
-
+button.add-to-cart {
+  background: #000000;
+  color: #ffffff;
+  padding: 4px 7px;
+}
+button.add-to-cart:hover{
+  background-color: lightgray;
+}
 input.nosubmit {
  border: 1px solid #555;
  width: 100%;
@@ -167,7 +174,7 @@ p.painting-detail {
 }
 // animation styling end
 @media screen and (max-width:1200px){
-  input[type="search"]{
+  input[type="text"]{
       width: 83%;
   }
 }
@@ -175,7 +182,7 @@ p.painting-detail {
     .col-sm-6{
         width: 47%  !important;
     }
-    input[type="search"]{
+    input[type="text"]{
       width: 73%;
   }
 }
@@ -188,7 +195,7 @@ p.painting-detail {
     }
 }
 @media screen and (max-width:549px){
-  input[type="search"]{
+  input[type="text"]{
       width: 56%;
   }
 //   select{
@@ -208,12 +215,12 @@ form{
   width: 95%;
   margin-top: 0 !important;
 }
-input[type=search]{
+input[type=text]{
   width: 90%;
 }
 }
 @media screen and (max-width:500px){
-  input[type=search]{
+  input[type=text]{
       width: 80%;
   }
 }
@@ -226,7 +233,7 @@ input[type=search]{
     }
   }
 @media screen and (max-width:281px){
-  input[type=search]{
+  input[type=text]{
     width: 70%;
 }
 }

@@ -2,17 +2,14 @@
   <div class="search-container">
     <div class="select-filter">
       <label for="city" class="city-label">Select City : </label>
-      <select [(ngModel)]="selectedValue" id="pet-select">
+      <select  (change)="selectCity($event)"  id="pet-select">
         <option value="">--Please Select city--</option>
-        <option value="mohali">Mohali</option>
-        <option value="kharar">Kharar</option>
-        <option value="patiala">Patiala</option>
-        <option value="jalandhar">Jalandhar</option>
+        <option *ngFor="let city of getAllCity.cities" [value]="city">{{city}}</option>
       </select>
     </div>
     <form>
       <div class="search-field">
-        <input type="search"  matInput (keyup)="applyFilter($event)" placeholder="Search paintings or painter...">
+        <input type="text"  matInput (keyup)="applyFilter($event)" placeholder="Search paintings or painter...">
         <button type="submit">Search</button>
       </div>
     </form>
@@ -37,7 +34,7 @@
           <ng-container *ngIf="auth.getUserData()?.role != 'ARTIST'">
             <div class="buy-cart-btn">
               <div class="add-to-cart">
-                <button (click)="addToCart(data)"  [disabled]="data && data.isLiked == true ? true : false " type="button">Add to cart</button>
+                <button (click)="addToCart(data)"  [disabled]="data && data.isLiked == true ? true : false " type="button" class="add-to-cart">Add to cart</button>
               </div>
               <!-- <div class="buy-btn" *ngIf="auth.getUserData()?.role != 'ARTIST'">
                 <a (click)="buyNow(data)" href="javascript:void(0)">Buy Now</a>
