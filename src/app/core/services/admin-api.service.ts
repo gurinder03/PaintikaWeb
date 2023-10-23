@@ -53,6 +53,20 @@ export class AdminApiService {
     });
   }
 
+  updateOrderDelStatus(data:any){
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value);
+        }
+        else {
+          reject(value);
+        }
+      };
+      this.request.send('updateOrderDelStatus', data, success, null, true);
+    });
+  }
+
 
   updateSetCommision(data:any){
     return new Promise((resolve, reject) => {

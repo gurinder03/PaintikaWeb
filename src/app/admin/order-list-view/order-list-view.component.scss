@@ -22,3 +22,18 @@ h5.labels.total-font {
 .main-container{
   width: 85%;
 }
+@media screen and (max-width:768px){
+  .order-section.p-2.text-left.col-9{
+    padding-left: 15px !important;
+    width: 100%;
+  }
+  .order-section.p-2.text-left.col-9 h1{
+    text-align: center;
+  }
+  .order-section.p-2.text-right.col h1{
+    text-align: center !important;
+  }
+  img{
+    width: 100%;
+  }
+}

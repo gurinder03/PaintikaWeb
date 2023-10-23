@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthencationService } from 'src/app/core/auth/authencation.service';
 
 @Component({
@@ -7,18 +8,24 @@ import { AuthencationService } from 'src/app/core/auth/authencation.service';
   templateUrl: './admin-header.component.html',
   styleUrls: ['./admin-header.component.scss']
 })
-export class AdminHeaderComponent {
-  setEl = 3
+export class AdminHeaderComponent implements OnInit {
+  setEl:any
 
   constructor(
     public router: Router,
     public auth: AuthencationService,
-    
+    public toast: ToastrService,
+    private route: ActivatedRoute
   ){}
 
-  userLogout(){
-    this.auth.logout()
+  ngOnInit(): void {
   }
+
+  userLogout(){
+    this.auth.logout();
+    this.toast.success('Logout Sccessfully')
+  }
+
 
   navigateTo(route: string, ev:any) {
     this.setEl = ev;

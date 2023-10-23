@@ -10,7 +10,7 @@
 <div class="table-dv  animate__animated animate__bounceInUp pb-5">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" #empTbSort="matSort" matSort>
     <ng-container matColumnDef="srNo">
-      <th *matHeaderCellDef mat-header-cell mat-sort-header>Sr. No.</th>
+      <th *matHeaderCellDef mat-header-cell mat-sort-header class="sr-no">Sr. No.</th>
       <td *matCellDef="let element" mat-cell> {{element.serialNumber}}</td>
     </ng-container>
     <ng-container matColumnDef="createdAt">
@@ -44,6 +44,11 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+  <mat-paginator [length]="length"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page" (page)="getData($event)" #paginator showFirstLastButtons  class="mt-1">
+    </mat-paginator>
 </div>
 <div>
   <p><br></p>

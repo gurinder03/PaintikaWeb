@@ -13,6 +13,9 @@
   label.city-label {
     margin-bottom: 10px;
 }
+a.see-more:hover{
+  text-decoration: none  !important;
+}
 .hdng-button {
   display: flex;
   justify-content: space-between;
@@ -121,7 +124,7 @@ mat-icon.favourite-icon {
       cursor:pointer
   }
   .paintings a:hover{
-      text-decoration: underline !important;
+      // text-decoration: underline !important;
       color: red ;
       cursor:pointer
   }
@@ -135,7 +138,10 @@ mat-icon.favourite-icon {
 .paintings:hover {
     transform: scale(1.1);
 }
-
+.no-record {
+  font-size: 18px;
+  font-weight: 600;
+}
 // animation css end
   @media screen and (max-width:1137px){
       input[type="text"]{

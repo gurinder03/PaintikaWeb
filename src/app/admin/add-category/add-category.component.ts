@@ -69,7 +69,7 @@ export class AddCategoryComponent implements OnInit {
           } else if (res.statusCode === 500) {
             this.toast.error(res.message);
           } else {
-            this.toast.error('Something went wrong');
+            this.toast.error(res.message);
           }
         })
       } else{
@@ -80,7 +80,7 @@ export class AddCategoryComponent implements OnInit {
           } else if (res.statusCode === 500) {
             this.toast.error(res.message);
           } else {
-            this.toast.error('Something went wrong');
+            this.toast.error(res.message);
           }
         })
       }
@@ -98,7 +98,7 @@ export class AddCategoryComponent implements OnInit {
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
       } else {
-        this.toast.error('Something went wrong');
+        this.toast.error(res.message);
       }
     })
   }

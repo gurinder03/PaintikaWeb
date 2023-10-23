@@ -32,15 +32,18 @@ textarea#ptheme {
 }
 .cancel-btn{
     color: #ffffff;
-    background: red;
+    background: #000000;
     font-size: 20px;
     padding: 7px 4px;
 }
 .update-btn{
     color: #ffffff;
-    background: green;
+    background: #000000;
     font-size: 20px;
     padding: 7px 4px;
+}
+.update-btn:hover,.cancel-btn:hover{
+    background: lightgray;
 }
 .image-preview-container.ng-star-inserted {
     padding-top: 7px;

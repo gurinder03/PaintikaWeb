@@ -9,7 +9,6 @@
                     </svg>
                 </a>
             </mat-icon>
-
         </div>
         <h4 class="">
             Sign Up
@@ -26,9 +25,12 @@
             </div>
             <mat-form-field class="example-full-width full-w Big">
                 <mat-label>Name</mat-label>
-                <input matInput formControlName="name" placeholder="enter name" value="">
+                <input pattern="[a-zA-Z][a-zA-Z ]+" matInput formControlName="name" placeholder="enter name" value="">
                 <mat-error *ngIf="signUpForm.controls['name'].hasError('required')">
                     Name is required.
+                </mat-error>
+                <mat-error *ngIf="signUpForm.controls['name'].errors?.['pattern']">
+                    Only alphabets allowed
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="full-w ">
@@ -53,24 +55,25 @@
             </mat-form-field>
             <mat-form-field class="w-100" *ngIf="signUpForm.value.userType == true">
                 <mat-label>Select State</mat-label>
-                <select formControlName="state" matNativeControl required>
-                  <option value="Himachal Pradesh">Himachal Pradesh</option>
-                  <option value="Punjab">Punjab</option>
-                  <option value="Haryana">Haryana</option>
-                  <option value="Uttar Pradesh">Uttar Pradesh</option>
-                </select>
+                <mat-select formControlName="state" matNativeControl required>
+                    <mat-option value="Himachal Pradesh">Himachal Pradesh</mat-option>
+                    <mat-option value="Punjab">Punjab</mat-option>
+                    <mat-option value="Haryana">Haryana</mat-option>
+                    <mat-option value="Uttar Pradesh">Uttar Pradesh</mat-option>
+                  </mat-select>
                 <mat-error *ngIf="signUpForm.controls['state'].hasError('required')">
                     Field is required
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="w-100" *ngIf="signUpForm.value.userType == true">
                 <mat-label>Select City</mat-label>
-                <select formControlName="city" matNativeControl required>
-                  <option value="Mohali">Mohali</option>
-                  <option value="Kharar">Kharar</option>
-                  <option value="Panchkula">Panchkula</option>
-                  <option value="Ropar">Ropar</option>
-                </select>
+              
+                <mat-select formControlName="city" matNativeControl required>
+                    <mat-option value="Mohali">Mohali</mat-option>
+                    <mat-option value="Kharar">Kharar</mat-option>
+                    <mat-option value="Panchkula">Panchkula</mat-option>
+                    <mat-option value="Ropar">Ropar</mat-option>
+                  </mat-select>
                 <mat-error *ngIf="signUpForm.controls['city'].hasError('required')">
                     Field is required
                 </mat-error>

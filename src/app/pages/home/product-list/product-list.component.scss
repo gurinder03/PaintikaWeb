@@ -172,6 +172,10 @@ p.painting-detail {
 .paintings:hover {
     transform: scale(1.1);
 }
+.no-record h4{
+  font-size: 18px;
+  font-weight: 600;
+}
 // animation styling end
 @media screen and (max-width:1200px){
   input[type="text"]{

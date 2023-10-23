@@ -83,6 +83,11 @@ span.gender-label {
     background: #ffffff !important;
     box-shadow: -2px 0px 8px #888888;
 }
+.mat-mdc-option.mdc-list-item{
+    align-items: center;
+    padding-left: 17px;
+    padding-right: 13px;
+  }
 // .container{
 //     position: absolute;
 //     top: 50%;

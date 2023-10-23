@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthencationService } from 'src/app/core/auth/authencation.service';
 import { FunctionService } from 'src/app/core/services/function.service';
 
@@ -15,12 +16,14 @@ export class HeaderComponent {
   constructor(
     public auth: AuthencationService,
     private router: Router,
-    public fun: FunctionService
+    public fun: FunctionService,
+    public toast: ToastrService
   ){
     this.userData = this.auth.getUserData()
   }
   userLogout(){
-    this.auth.logout()
+    this.auth.logout();
+    this.toast.success('Logout Sccessfully')
   }
 
   navigateTo(route: string, ev:any) {

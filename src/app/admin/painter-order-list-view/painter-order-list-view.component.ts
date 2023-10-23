@@ -10,6 +10,7 @@ import { AdminApiService } from 'src/app/core/services/admin-api.service';
 })
 export class PainterOrderListViewComponent {
 
+  ordersData:any = {};
   constructor(
     public adminApi: AdminApiService,
     public toast: ToastrService,
@@ -25,15 +26,34 @@ export class PainterOrderListViewComponent {
 
   getOrderListView(listId:any){
     this.adminApi.orderArtView(listId).then((res:any) =>{
-      console.log('res => ', res);
       if (res && res.statusCode === 200) {
+        this.ordersData = res.data
+        console.log('res => ', this.ordersData);
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
       } else {
         this.toast.error(res.message);
       }
     })
-    
   }
 
+  changeOrderStatus(item: any) {
+    console.log('Changing order status for item: ', item);
+   let data = {
+      id: item._id,
+      status: item.status
+      //["PENDING", "ACCEPTED", "REJECTED", "ONTHEWAY", "DELIVERED", "CANCELLED"]
+    }
+    this.adminApi.updateOrderDelStatus(data).then((res:any )=>{
+      if (res && res.statusCode === 200) {
+        this.ordersData = res.data
+        console.log('res => ', this.ordersData);
+        this.toast.success(res.message)
+      } else if (res.statusCode === 500) {
+        this.toast.error(res.message);
+      } else {
+        this.toast.error(res.message);
+      }
+    })
+  }
 }

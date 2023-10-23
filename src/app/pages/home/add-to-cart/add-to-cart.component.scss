@@ -166,6 +166,9 @@ button.delete:hover {
     /* justify-content: center; */
     align-items: center;
 }
+a.edit,a.delete,a.check-out {
+    cursor: pointer;
+}
 @media screen and (max-width:1400px){
     .painting-hdng h6:after{
         left:37%;

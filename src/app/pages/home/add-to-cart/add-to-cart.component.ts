@@ -89,6 +89,7 @@ export class AddToCartComponent implements OnInit {
     this.api.addOrder(newData).then((res: any) => {
       if (res && res.statusCode === 200) {
         this.toast.success(res.message);
+        this.fun.cartCount = 0
         this.navCtrl.goTo('/page/order-status')
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);

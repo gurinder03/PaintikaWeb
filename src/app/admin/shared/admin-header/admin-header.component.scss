@@ -97,10 +97,10 @@ nav ul li a, .nav form button {
     font-weight: 500;
     margin-top: 10px;
 }
-// .btn-check:focus+.btn, .btn:focus {
-//     outline: 0;
-//     box-shadow: none;
-// }
+.btn-check:focus+.btn, .btn:focus {
+    outline: 0;
+    box-shadow: none;
+}
 @media screen and (max-width:900px){
     ul.navbar-nav.me-auto{
         margin: 0;

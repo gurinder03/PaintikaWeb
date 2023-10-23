@@ -74,8 +74,11 @@ export class UploadPaintComponent implements OnInit {
     });
   }
 
+  cancel(){
+    this.uploadPaintForm.reset()
+  }
+
   onSubmit() {
-    debugger
     this.uploadPaintForm.markAllAsTouched();
     if (this.uploadPaintForm.valid) {
       let dataVal = new FormData();

@@ -19,26 +19,41 @@
                     <div class="name col-md-4 col-sm-12 mt-3">
                         <mat-form-field class="example-full-width full-w">
                             <mat-label>Name</mat-label>
-                            <input matInput formControlName="name" placeholder="Enter your name">
+                            <input pattern="[a-zA-Z][a-zA-Z ]+" matInput formControlName="name" placeholder="Enter your name">
                             <mat-error *ngIf="addressForm.controls['name'].errors?.['required']">
                                 Field is required.
                             </mat-error>
+                            <mat-error *ngIf="addressForm.controls['name'].errors?.['pattern']">
+                                Only alphabets allowed
+                             </mat-error>
                         </mat-form-field>
                         <mat-form-field class="example-full-width full-w">
                             <mat-label>Pin Code</mat-label>
-                            <input matInput formControlName="pincode" placeholder="Enter pin code">
+                            <input  pattern="[0-9]*"  matInput formControlName="pincode" placeholder="Enter pin code">
                             <mat-error *ngIf="addressForm.controls['pincode'].errors?.['required']">
                                 Field is required.
                             </mat-error>
+                            <mat-error *ngIf="addressForm.controls['pincode'].errors?.['pattern']">
+                                Only Numbers allowed.
+                             </mat-error>
                         </mat-form-field>
                     </div>
                     <div class="code col-md-4 col-sm-12 mt-3">
                         <mat-form-field class="example-full-width full-w">
                             <mat-label>10 digit mobile number</mat-label>
-                            <input matInput formControlName="phoneNumber" placeholder="Enter mobile number">
+                            <input pattern="[0-9]*" minlength="10" maxlength="10"  matInput formControlName="phoneNumber" placeholder="Enter mobile number">
                             <mat-error *ngIf="addressForm.controls['phoneNumber'].errors?.['required']">
                                 Field is required.
                             </mat-error>
+                            <mat-error *ngIf="addressForm.controls['phoneNumber'].errors?.['pattern']">
+                               Only Numbers allowed.
+                            </mat-error>
+                            <mat-error *ngIf="addressForm.controls['phoneNumber'].errors?.['minlength']">
+                                Enter minimum 10 digits. 
+                             </mat-error>
+                             <mat-error *ngIf="addressForm.controls['phoneNumber'].errors?.['maxlength']">
+                              Enter  Maximum 10 digit.
+                             </mat-error>
                         </mat-form-field>
                         <mat-form-field class="example-full-width full-w">
                             <mat-label>Locality</mat-label>
@@ -84,14 +99,23 @@
                         </mat-form-field>
                         <mat-form-field class="example-full-width full-w">
                             <mat-label>Alternate Phone (Optional)</mat-label>
-                            <input matInput formControlName="allternatePhone" placeholder="Enter Alternate Phone">
+                            <input  pattern="[0-9]*" minlength="10" maxlength="10" matInput formControlName="allternatePhone" placeholder="Enter Alternate Phone">
+                            <mat-error *ngIf="addressForm.controls['allternatePhone'].errors?.['pattern']">
+                                Only Numbers allowed.
+                             </mat-error>
+                             <mat-error *ngIf="addressForm.controls['allternatePhone'].errors?.['minlength']">
+                                 Enter minimum 10 digits. 
+                              </mat-error>
+                              <mat-error *ngIf="addressForm.controls['allternatePhone'].errors?.['maxlength']">
+                               Enter  Maximum 10 digit.
+                              </mat-error>
                         </mat-form-field>
                     </div>
                     <div class="address-type col-md-8 col-sm-12 row mb-5">
                         <div class="home col-md-4 col-sm-12">
                             <mat-radio-group formControlName="delveryType" aria-label="Select an option">
-                                <mat-radio-button value="1">Home (all day delivery)</mat-radio-button> <br>
-                                <mat-radio-button value="2">Work (Delivery between 10 AM to 5 PM)</mat-radio-button>
+                                <mat-radio-button value="home">Home (all day delivery)</mat-radio-button> <br>
+                                <mat-radio-button value="other">Work (Delivery between 10 AM to 5 PM)</mat-radio-button>
                             </mat-radio-group>
                             <div *ngIf="addressForm.controls['delveryType'].invalid && (addressForm.controls['delveryType'].dirty || addressForm.controls['delveryType'].touched)"
                             class="alert " required>

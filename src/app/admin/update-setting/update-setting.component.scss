@@ -13,3 +13,6 @@ button.btn.submit{
 button.cancel.button.btn:hover,button.btn.submit:hover{
     background: lightgray;
 }
+.btn:focus{
+    box-shadow: none;
+}

@@ -8,17 +8,17 @@
 
   <mat-form-field class="list-data">
     <mat-label>Select List Type</mat-label>
-    <select matNativeControl (change)="changeUserType($event)" [(ngModel)]="listType">
-      <option value="USER">Users</option>
-      <option value="ARTIST">Artist</option>
-    </select>
+    <mat-select matNativeControl (selectionChange)="changeUserType($event)" [(ngModel)]="listType">
+      <mat-option value="USER">Users</mat-option>
+      <mat-option value="ARTIST">Artist</mat-option>
+    </mat-select>
   </mat-form-field>
 </div>
 
 
 <!-- #empTbSort="matSort" -->
 <div class="table-dv">
-    <table mat-table #empTbSort="matSort" [dataSource]="dataSource" class="mat-elevation-z8 animate__animated animate__bounceInDown" matSort>
+    <table mat-table #empTbSort="matSort" [dataSource]="dataSource" class="mat-elevation-z8" matSort>
       <!-- Position Column -->
       <ng-container matColumnDef="serailNo">
         <th *matHeaderCellDef mat-header-cell mat-sort-header> S.No.</th>

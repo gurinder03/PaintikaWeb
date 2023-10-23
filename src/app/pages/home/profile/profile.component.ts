@@ -43,6 +43,7 @@ export class ProfileComponent implements OnInit {
       qualifications: ['', [Validators.required]],
       country: ['', [Validators.required]],
       state: ['', [Validators.required]],
+      city: ['', [Validators.required]],
       professionalOrfreelancer: ['2', [Validators.required]],
       experience: [''],
       additional_detail: ['']
@@ -50,8 +51,6 @@ export class ProfileComponent implements OnInit {
   }
 
   pacthValue(data:any){
-    console.log('data => ', data);
-    
     this.profileForm.patchValue({ name: data.name });
     this.profileForm.patchValue({ email_or_mobile_number: data.email_or_mobile_number });
     this.profileForm.patchValue({ surname: data.surname });
@@ -61,6 +60,7 @@ export class ProfileComponent implements OnInit {
     this.profileForm.patchValue({ qualifications: data.qualifications });
     this.profileForm.patchValue({ country: data.country });
     this.profileForm.patchValue({ state: data.state });
+    this.profileForm.patchValue({ city: data.city });
     this.profileForm.patchValue({ professional: data.professional });
     this.profileForm.patchValue({ freelancer: data.freelancer });
     this.profileForm.patchValue({ experience: data.experience });
@@ -69,6 +69,8 @@ export class ProfileComponent implements OnInit {
       this.profileForm.patchValue({professionalOrfreelancer: '1' })
     }else{
       this.profileForm.patchValue({professionalOrfreelancer: '2' })
+      this.profileForm.patchValue({ experience:'' });
+      this.profileForm.patchValue({ additional_detail: '' });
     }
   }
 
@@ -109,15 +111,21 @@ export class ProfileComponent implements OnInit {
     dataVal.append('qualifications', this.profileForm.value.qualifications);
     dataVal.append('country', this.profileForm.value.country);
     dataVal.append('state', this.profileForm.value.state);
-    dataVal.append('experience', this.profileForm.value.experience);
-    dataVal.append('additional_detail', this.profileForm.value.additional_detail ? this.profileForm.value.additional_detail: ''); 
+    dataVal.append('city', this.profileForm.value.city);
     dataVal.append('id', this.auth.getUserData()._id); 
     console.log(this.profileForm);
+    debugger
     
     if(this.profileForm.value && this.profileForm.value.professionalOrfreelancer == '1'){
       dataVal.append('job_type', 'professional'); 
+      dataVal.append('experience', this.profileForm.value.experience);
+      dataVal.append('additional_detail', this.profileForm.value.additional_detail ? this.profileForm.value.additional_detail: ''); 
     }else{
-      dataVal.append('job_type', 'freelancer')
+      dataVal.append('job_type', 'freelancer');
+      dataVal.append('experience', '');
+      dataVal.append('additional_detail', '');
+      this.profileForm.patchValue({ experience:'' });
+      this.profileForm.patchValue({ additional_detail: '' });
     }
     if(this.setImg && this.setImg.length){
       dataVal.append('image', this.setImg[0]);

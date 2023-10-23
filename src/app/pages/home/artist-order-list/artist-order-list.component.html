@@ -60,7 +60,7 @@
     </table>
     <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]" (page)="getArtistList($event)" showFirstLastButtons  class="mt-1"></mat-paginator>
 </div>
-<div *ngIf="length == 0">Not Record Found! </div>
+<div *ngIf="length == 0" class="no-record text-center">Not Record Found! </div>
 <div>
     <p><br></p>
     <p><br></p>

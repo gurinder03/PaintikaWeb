@@ -19,10 +19,13 @@
                     <div class="name col-md-4 col-sm-12 ">
                         <mat-form-field class="example-full-width full-w animate__animated animate__bounceInUp">
                             <mat-label>Name</mat-label>
-                            <input style="text-transform: capitalize;" formControlName="name" matInput placeholder="enter name">
+                            <input pattern="[a-zA-Z][a-zA-Z ]+" style="text-transform: capitalize;" formControlName="name" matInput placeholder="enter name">
                             <mat-error *ngIf="uploadPaintForm.controls['name'].hasError('required')">
                                 Name is required.
                             </mat-error>
+                            <mat-error *ngIf="uploadPaintForm.controls['name'].errors?.['pattern']">
+                                Only alphabets allowed
+                             </mat-error>
                         </mat-form-field>
                     </div>
                     <div class="size col-md-4 col-sm-12">
@@ -89,7 +92,7 @@
                 </div>
                 <div class="row mx-auto justify-content-center ">
                     <div class="col-md-4 text-center animate__animated animate__bounceInUp">
-                        <button mat-button type="button" class="cancel-btn">Cancel</button>
+                        <button mat-button type="button" (click)="cancel()" class="cancel-btn">Cancel</button>
                     </div>
                     <div class="col-md-4 text-center animate__animated animate__bounceInDown">
                         <button mat-button type="submit" class="update-btn">Upload Paint</button>

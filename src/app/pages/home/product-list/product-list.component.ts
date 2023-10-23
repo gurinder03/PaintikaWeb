@@ -119,6 +119,8 @@ export class ProductListComponent implements OnInit {
       "filter": filterKey,
       "city": cityVal
     }
+    console.log('cityVal => ', cityVal);
+    
     this.api.productDataList(data).then((res: any) => {
       if (res && res.statusCode === 200) {
         // if(res && res.data && res.data.length){
@@ -153,7 +155,7 @@ export class ProductListComponent implements OnInit {
   }
 
   selectCity(ele:any){
-    this.selectedValue = ele;
+    this.selectedValue = ele.target.value;
     this.productData(this.productId, this.filterData, this.selectedValue)
   }
 

@@ -21,29 +21,25 @@ export class FunctionService {
   }
 
   confirmBox(title= '', message = '', route:any = '', okBtn = '', cancelBtn = ''){
-    Swal.fire({
-      title: title,
-      text: message,
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: okBtn,
-      cancelButtonText: cancelBtn
-    }).then((result) => {
-      if (result.value) {
-        this.navCtrl.goTo(route)
-        // Swal.fire(
-        //   'Deleted!',
-        //   'Your imaginary file has been deleted.',
-        //   'success'
-        // )
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire(
-          'Cancelled',
-          '',
-          'error'
-        )
-      }
-    })
+    return new Promise((resolve, reject) => {
+      Swal.fire({
+        title: title,
+        text: message,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: okBtn,
+        cancelButtonText: cancelBtn
+      }).then((result) => {
+        if (result.value) {
+          this.navCtrl.goTo(route)
+          resolve(result)
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire('Cancelled',  '',  'error')
+          // reject(result.dismiss)
+        }
+      })
+    });
+    
   }
 
   transformDate(date:any, sequence = 'MMM dd, yyyy') {

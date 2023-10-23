@@ -1,9 +1,17 @@
 <div class="container-fluid">
   <div class="search-container">
     <div class="select-filter">
+      <!-- <mat-form-field class="list-data">
+        <mat-label for="city" class="city-label">Select City :</mat-label>
+          <mat-select (change)="selectCity($event)"  id="pet-select">
+            <mat-option value="">--Please Select city--</mat-option>
+            <mat-option *ngFor="let city of getAllCity.cities" [value]="city">{{city}}</mat-option>
+          </mat-select>
+      </mat-form-field> -->
+
       <label for="city" class="city-label">Select City : </label>
       <select  (change)="selectCity($event)"  id="pet-select">
-        <option value="">--Please Select city--</option>
+        <option disabled selected value="">--Please Select city--</option>
         <option *ngFor="let city of getAllCity.cities" [value]="city">{{city}}</option>
       </select>
     </div>
@@ -29,7 +37,7 @@
             </ng-container>
           </div>
           <img [src]="data.image">
-          <p class="painting-detail">Set of three paintings</p>
+          <!-- <p class="painting-detail">Set of three paintings</p> -->
           <h3 class="product-rate">₹{{data.price}}</h3>
           <ng-container *ngIf="auth.getUserData()?.role != 'ARTIST'">
             <div class="buy-cart-btn">
@@ -44,7 +52,7 @@
         </div>
       </ng-container>
       <ng-container *ngIf="allData && !allData.length">
-        <div class="no_data">
+        <div class="no-record text-center">
           <h4>Data not found!</h4>
         </div>
       </ng-container>

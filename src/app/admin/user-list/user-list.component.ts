@@ -7,7 +7,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { AuthencationService } from 'src/app/core/auth/authencation.service';
 import { NavigationRouteService } from 'src/app/core/services/navigation-route.service';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { SetCommisionComponent } from '../set-commision/set-commision.component';
 
 @Component({
@@ -54,13 +54,16 @@ export class UserListComponent implements OnInit {
 	}
 
   openSetCommisionPopup(data:any){
-    const dialogRef = this.dialog.open(SetCommisionComponent, {
-      data: data,
-      hasBackdrop: false,
-      width: '650px',  
-    });
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.data = data;
+    const dialogRef: MatDialogRef<SetCommisionComponent> = this.dialog.open(SetCommisionComponent, dialogConfig);
+  
+    dialogRef.componentInstance = data;
+
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed', result );
+      this.getData();
     });
   }
 
@@ -117,7 +120,8 @@ export class UserListComponent implements OnInit {
   }
 
   changeUserType(ele:any){
-    this.listType = ele.target.value;
+    debugger
+    this.listType = ele.value;
     this.getData();
   }
   

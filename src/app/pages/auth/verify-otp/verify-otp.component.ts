@@ -51,6 +51,7 @@ export class VerifyOtpComponent implements OnInit {
           }else{
             this.navCtrl.goTo('/auth/reset-password', res.data, 'root')
           }
+          this.toast.success(res.message)
         }
         else if(res.statusCode === 500){
           this.toast.error(res.message);

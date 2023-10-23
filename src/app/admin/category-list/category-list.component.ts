@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { NavigationRouteService } from 'src/app/core/services/navigation-route.service';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
+import { FunctionService } from 'src/app/core/services/function.service';
 
 @Component({
   selector: 'app-category-list',
@@ -24,7 +25,8 @@ export class CategoryListComponent implements OnInit {
     public adminApi: AdminApiService,
     public toast: ToastrService,
     public navCtrl: NavigationRouteService,
-    public router: Router
+    public router: Router,
+    public fun: FunctionService
   ){
   }
 
@@ -88,7 +90,7 @@ export class CategoryListComponent implements OnInit {
     })
   }
 
-  removeCategory(data:any){
+  deleteCategory(data:any){
     this.adminApi.removeCategory(data._id).then((res:any)=>{
       if (res && res.statusCode === 200) {
         this.getData()
@@ -98,6 +100,15 @@ export class CategoryListComponent implements OnInit {
       } else {
         console.log('Something went wrong');
         this.toast.error(res.message);
+      }
+    })
+  }
+
+  removeCategory(data:any){
+    this.fun.confirmBox('Delete', 'Are you sure', '/admin/category-list', 'Delete', 'Cancel').then((res:any)=>{
+      console.log(res);
+      if(res && res.value == true){
+        this.deleteCategory(data)
       }
     })
   }

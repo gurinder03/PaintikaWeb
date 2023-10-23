@@ -34,7 +34,6 @@ export class SignInComponent {
   }
 
   onSubmit() {
-    console.log('this.signUpForm  => ', this.signUpForm );
     if (this.signUpForm.value.userType == true) {
       this.signUpForm.patchValue({ role: 'ARTIST' });
       // @ts-expect-error

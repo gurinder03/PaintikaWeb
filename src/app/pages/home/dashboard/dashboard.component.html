@@ -27,12 +27,12 @@
             <h3 class="text-cap">{{product.name}}</h3>
           </div>
           <img [src]="product.image">
-          <a (click)="getMore(product)">See More</a>
+          <a (click)="getMore(product)" class="see-more">See More</a>
         </div>
 
       </ng-container>
       <ng-container *ngIf="data && data.length == 0">
-        <div class="paintings col-md-3 col-sm-6 p-4 ">
+        <div class="no-record text-center">
           No Record Found!
         </div>
       </ng-container>

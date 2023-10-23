@@ -200,6 +200,11 @@ const api = {
             url: '/order/admin/user/list',
             responseInterface: []
         },
+        updateOrderDelStatus: {
+            requestType: 'post',
+            url: '/order/admin/update',
+            responseInterface: []
+        },
         artistOrderList: {
             requestType: 'post',
             url: '/order/admin/artist/list',
