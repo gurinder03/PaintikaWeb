@@ -23,6 +23,7 @@ export class PreOrderListComponent implements OnInit {
   ){}
 
   @ViewChild('empTbSort') empTbSort = new MatSort();
+
   displayedColumns: string[] = ['srNo', 'createdAt', 'description', 'image', 'updatedAt'];
   dataSource = new MatTableDataSource<any>();
 
@@ -33,8 +34,9 @@ export class PreOrderListComponent implements OnInit {
 
 
   ngAfterViewInit() {
-    this.dataSource.sort = this.empTbSort;
-  }
+		this.empTbSort.disableClear = true;
+		this.dataSource.sort = this.empTbSort;
+	}
 
 
   ngOnInit(): void {
@@ -59,9 +61,10 @@ export class PreOrderListComponent implements OnInit {
         res.data.forEach((item:any, index:any) => {
           item.serialNumber = index + 1;
         });
-        this.empTbSort.disableClear = true;
         this.length = res.total;
         this.dataSource = new MatTableDataSource(this.allData);
+        this.empTbSort.disableClear = true;
+        this.dataSource.sort = this.empTbSort;
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
       } else {

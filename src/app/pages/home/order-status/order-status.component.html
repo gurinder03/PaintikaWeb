@@ -4,36 +4,26 @@
       <div class="col-lg-10 col-xl-8 main-section">
         <div class="order-detail" *ngIf="orders && orders.data && orders.data.length > 0">
           <div  class="orders" *ngFor="let data of orders.data">
-            <div class="number-total d-flex justify-content-between">
-              <p class="">
+            <div class="d-flex justify-content-between">
+              <p class="order-number ">
                 Order Number:  {{data.order_number}}
               </p>
-               <p class="">
-                 Order Sub Total:  {{data.order_sub_total}}
-               </p>
-               <p class="">
-                 Tax:  {{data.tax}}
-               </p>
-               <p class="">
-                 Order Total:  {{data.order_total}}
-               </p>
+              
             </div>
               
               <!-- <h2>Art Order Detail</h2> -->
               <div *ngFor="let art of data?.artist_orders">
-                <div class="art-number d-flex justify-content-evenly">
+                <div class="art-number d-flex ">
                   <!-- <p class="">
                     Art Order Number:  {{art.order_number}}
                   </p> -->
-                  <p class="">
+                  <p class="status">
                     Order Status:  {{art.status}}
                   </p>
                 </div>
                
                 <div class="row" *ngFor="let item of art?.items">
-                    <div class="col-md-2 col-sm-2 order-img">
-                      <img [src]="item.image"  class="img-fluid" alt="Phone">
-                    </div>
+                    
                     <div class="col-md-2 col-sm-2 d-flex  align-items-center">
                       <p class="text-muted mb-0">{{item.name}}</p>
                     </div>
@@ -47,13 +37,28 @@
                       <p class="text-muted mb-0 small">Qty: {{item.quantity}}</p>
                     </div>
                     <div class="col-md-2 col-sm-2 d-flex  align-items-center">
-                      <p class="text-muted mb-0 small">Price :&#8377;{{item.price}}</p>
+                      <p class="text-muted mb-0 small">Price :&#8377;{{item.price*item.quantity}}</p>
+                    </div>
+                    <div class="col-md-2 col-sm-2 order-img">
+                      <p class="text-muted mt-1 mb-0 small ms-xl-5 mt-3 mb-2"><a (click)="orderView(data)" href="javascript:void(0)">View</a></p>
+                      <!-- <img [src]="item.image"  class="img-fluid" alt="Phone"> -->
+                    </div>
+                    <div class="total-detail pt-4 d-flex justify-content-between">
+                       <p class="">
+                         Order Sub Total:  {{data.order_sub_total}}
+                       </p>
+                       <p class="">
+                         Tax:  {{data.tax}}
+                       </p>
+                       <p class="">
+                         Order Total:  {{data.order_total}}
+                       </p>
                     </div>
                     <hr class="mb-2 mt-2" style="background-color: #e0e0e0; opacity: 1;">
                   </div>
                 </div>  
                 <br>
-                <p class="text-muted mt-1 mb-0 small ms-xl-5 mt-3 mb-2"><a (click)="orderView(data)" href="javascript:void(0)">View</a></p>
+               
           </div>
         </div>
         <!-- <div class="card" style="border-radius: 10px;"> -->

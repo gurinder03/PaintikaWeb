@@ -27,6 +27,15 @@ h1.no-found {
   border: 1px solid #e7e7e7;
   padding: 10px;
 }
+.status,.order-number {
+  font-weight: 700;
+}
+.total-detail{
+  font-weight: 500;
+}
+.text-muted{
+  text-transform: capitalize;
+}
 @media screen and (max-width:575px){
   .order-img{
     text-align: center;

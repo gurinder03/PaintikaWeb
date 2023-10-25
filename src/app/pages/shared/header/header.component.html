@@ -38,7 +38,7 @@
                         Welcome <span style="text-transform: capitalize;">{{auth.getUserData().name}}</span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><a class="dropdown-item" *ngIf="auth.getUserData().role != 'ARTIST'" [routerLink]="['/page/order-status']">Order Status</a></li>
+                      <li><a class="dropdown-item" *ngIf="auth.getUserData().role != 'ARTIST'" [routerLink]="['/page/order-status']">My Orders</a></li>
                       <li><a class="dropdown-item" [routerLink]="['/page/change-password']">Change Password</a></li>
                     
                     </ul>

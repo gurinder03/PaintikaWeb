@@ -11,7 +11,7 @@
 
       <label for="city" class="city-label">Select City : </label>
       <select  (change)="selectCity($event)"  id="pet-select">
-        <option disabled selected value="">--Please Select city--</option>
+        <option disabled selected value="abc">--Please Select city--</option>
         <option *ngFor="let city of getAllCity.cities" [value]="city">{{city}}</option>
       </select>
     </div>

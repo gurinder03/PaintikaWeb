@@ -75,16 +75,6 @@
                 </div>
                 <div class="mark-location row">
                     <div class="city-mark col-md-4 col-sm-12 mt-3">
-                        <mat-form-field class="example-full-width full-w">
-                            <mat-label>City/District/town</mat-label>
-                            <input matInput formControlName="city" placeholder="Enter city/district">
-                        </mat-form-field>
-                        <mat-form-field class="example-full-width full-w">
-                            <mat-label>Landmark (optional)</mat-label>
-                            <input matInput formControlName="landmark"  placeholder="Enter landmark">
-                        </mat-form-field>
-                    </div>
-                    <div class="state-alt col-md-4 col-sm-12 mt-3">
                         <mat-form-field class="full-w">
                             <mat-label>State </mat-label>
                             <mat-select formControlName="state">
@@ -97,6 +87,17 @@
                                 Field is required.
                             </mat-error>
                         </mat-form-field>
+                        <mat-form-field class="example-full-width full-w">
+                            <mat-label>Landmark (optional)</mat-label>
+                            <input matInput formControlName="landmark"  placeholder="Enter landmark">
+                        </mat-form-field>
+                    </div>
+                    <div class="state-alt col-md-4 col-sm-12 mt-3">
+                        <mat-form-field class="example-full-width full-w">
+                            <mat-label>City/District/town</mat-label>
+                            <input matInput formControlName="city" placeholder="Enter city/district">
+                        </mat-form-field>
+                        
                         <mat-form-field class="example-full-width full-w">
                             <mat-label>Alternate Phone (Optional)</mat-label>
                             <input  pattern="[0-9]*" minlength="10" maxlength="10" matInput formControlName="allternatePhone" placeholder="Enter Alternate Phone">

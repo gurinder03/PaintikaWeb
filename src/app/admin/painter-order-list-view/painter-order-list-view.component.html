@@ -48,7 +48,7 @@
                                     <p class="text-muted mb-0 small"><b>Qty:</b> {{item.quantity}}</p>
                                 </div>
                                 <div class="col-md-2  d-flex  align-items-center">
-                                    <p class="text-muted mb-0 small">&#8377;<b>Price : </b>{{item.price}}</p>
+                                    <p class="text-muted mb-0 small">&#8377;<b>Price : </b>{{item.price*item.quantity}}</p>
                                 </div>                                
                                 <hr class="mb-4" style="background-color: #e0e0e0; opacity: 1;">
                             </div>
@@ -72,9 +72,15 @@
                         <div *ngIf="ordersData.items &&  ordersData.items.length == 0">
                             <p>No Record Found !</p>
                         </div>
-                        <div class="total-status">                           
-                            <div class="amount-section  text-end ">
+                        <div class="total-status row"> 
+                               <div class="col-md-4 col-sm-12">
+                                <h5 class="labels total-font"> <b>Admin Earning: </b>{{ordersData.admin_earning}}</h5>
+                                <h5 class="labels total-font"> <b>Artist Earning: </b>{{ordersData.artist_earning}}</h5>
+
+                            </div>                          
+                            <div class="amount-section  col-md-8 text-end col-sm-12">
                                 <h5 class="labels total-font"> <b>Order Sub Total: </b>{{ordersData.order_sub_total}}</h5>
+                                <h5 class="labels total-font"> <b>Tax: </b>{{ordersData.tax}}</h5>
                                 <h5 class="labels total-font"> <b>Order Total: </b>{{ordersData.order_total}}</h5>
                             </div>
                         </div>

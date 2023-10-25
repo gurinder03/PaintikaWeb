@@ -48,7 +48,7 @@
                                     <p class="text-muted mb-0 small"><b>Qty:</b> {{item.quantity}}</p>
                                 </div>
                                 <div class="col-md-2 text-center d-flex  align-items-center">
-                                    <p class="text-muted mb-0 small">&#8377;<b>Price : </b>{{item.price}}</p>
+                                    <p class="text-muted mb-0 small">&#8377;<b>Price : </b>{{item.price*item.quantity}}</p>
                                 </div>
                                 <hr class="mb-4" style="background-color: #e0e0e0; opacity: 1;">
                             </div>
@@ -69,6 +69,7 @@
                             </div> -->
                             <div class="amount-section col-md-12 text-end col-sm-12">
                                 <h5 class="labels total-font"> <b>Order Sub Total: </b>{{orders.order_sub_total}}</h5>
+                                <h5 class="labels total-font"> <b>Tax: </b>{{orders.tax}}</h5>
                                 <h5 class="labels total-font"> <b>Order Total: </b>{{orders.order_total}}</h5>
                             </div>
                         </div>

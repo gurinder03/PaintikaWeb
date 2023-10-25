@@ -25,12 +25,9 @@
             </div>
             <mat-form-field class="example-full-width full-w Big">
                 <mat-label>Name</mat-label>
-                <input pattern="[a-zA-Z][a-zA-Z ]+" matInput formControlName="name" placeholder="enter name" value="">
+                <input matInput formControlName="name" placeholder="enter name" value="">
                 <mat-error *ngIf="signUpForm.controls['name'].hasError('required')">
                     Name is required.
-                </mat-error>
-                <mat-error *ngIf="signUpForm.controls['name'].errors?.['pattern']">
-                    Only alphabets allowed
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="full-w ">
