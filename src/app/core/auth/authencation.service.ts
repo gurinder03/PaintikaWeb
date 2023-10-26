@@ -36,7 +36,9 @@ export class AuthencationService {
         if(value.data && value.data.status === 'unblocked'){
           this.setLoggedIn(value.data.token, value.data);
           let userData = this.getUserData();
-          this.fun.getUserData = userData
+          this.fun.getUserData = userData;
+          localStorage.setItem('activeNav', '1');
+          this.fun.navValue = '1'
           if (data && data.role == 'ADMIN') {
             this.navCtrl.goTo('/admin/user-list', {}, 'root');
           } else {
@@ -60,7 +62,9 @@ export class AuthencationService {
       if (value && value.statusCode == 200) {
         this.setLoggedIn(data.authToken, value.data);
         let userData = this.getUserData();
-        this.fun.getUserData = userData
+        this.fun.getUserData = userData;
+        debugger
+        localStorage.setItem('activeNav', '1')
         if (data && data.role == 'ADMIN') {
           this.navCtrl.goTo('/admin/user-list', {}, 'root');
         } else {
@@ -110,11 +114,7 @@ export class AuthencationService {
           role: value.data.role,
           isUserSined: 'SignUp',
         };
-        this.navCtrl.goTo(
-          `/auth/verify-otp/${JSON.stringify(data)}`,
-          {},
-          'root'
-        );
+        this.navCtrl.goTo(`/auth/verify-otp/${JSON.stringify(data)}`, {}, 'root');
         this.toast.success(value.message);
       } else {
         this.toast.error(value.message);
@@ -214,6 +214,8 @@ export class AuthencationService {
     // }
     localStorage.removeItem('data');
     localStorage.removeItem('cate_id');
+    localStorage.setItem('activeNav', '1')
+    this.fun.navValue =  '1'
   }
 
   getToken(): Promise<string> {

@@ -40,9 +40,16 @@ $paindIkaWeb-theme: mat.define-light-theme((
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 
 .container{
-    background: #f0f0f0 !important;
-    
+  background: #f0f0f0 !important;
 }
+
+// @font-face {
+//   font-family: 'robotoitalic';
+//   src: url('./assets/fonts/roboto-italic/roboto-italic-webfont.woff2') format('woff2'),
+//        url('./assets/fonts/roboto-italic/roboto-italic-webfont.woff') format('woff');
+//   font-weight: normal;
+//   font-style: normal;
+// }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

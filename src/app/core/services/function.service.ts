@@ -10,6 +10,7 @@ import { DatePipe } from '@angular/common';
 export class FunctionService {
 
   cartCount:any;
+  navValue:any = '1'
   getAdminVal: boolean = false
   getUserData:any = {}
   constructor(

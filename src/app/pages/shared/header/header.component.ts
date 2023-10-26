@@ -11,7 +11,6 @@ import { FunctionService } from 'src/app/core/services/function.service';
 })
 export class HeaderComponent {
 
-  setEl = 1;
   userData: any = {}
   constructor(
     public auth: AuthencationService,
@@ -19,7 +18,9 @@ export class HeaderComponent {
     public fun: FunctionService,
     public toast: ToastrService
   ){
-    this.userData = this.auth.getUserData()
+    this.userData = this.auth.getUserData();
+    debugger
+    this.fun.navValue = localStorage.getItem('activeNav');
   }
   userLogout(){
     this.auth.logout();
@@ -27,7 +28,8 @@ export class HeaderComponent {
   }
 
   navigateTo(route: string, ev:any) {
-    this.setEl = ev;
+    localStorage.setItem('activeNav', ev)
+    this.fun.navValue = ev;
     this.router.navigate([route]);
     if(ev === 7){
       this.auth.logout()
@@ -36,6 +38,5 @@ export class HeaderComponent {
     if(ev == 5){
       this.fun.getAdminVal = false
     }
-
   }
 }

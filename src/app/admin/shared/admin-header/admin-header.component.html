@@ -9,12 +9,10 @@
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a (click)="navigateTo('/admin/category-list', 1)" [class.active]="setEl === 1"
-                        class="nav-link">Category-List</a>
+                    <a (click)="navigateTo('/admin/category-list', 1)" [class.active]="setEl === 1" class="nav-link">Category-List</a>
                 </li>
                 <li class="nav-item">
-                    <a (click)="navigateTo('/admin/order-list', 2)" [class.active]="setEl === 2"
-                        class="nav-link">User-Order-List</a>
+                    <a (click)="navigateTo('/admin/order-list', 2)" [class.active]="setEl === 2" class="nav-link">User-Order-List</a>
                 </li>
                 <li class="nav-item">
                     <a (click)="navigateTo('/admin/user-list', 3)" [class.active]="setEl === 3"
@@ -32,7 +30,6 @@
                     <a (click)="navigateTo('/admin/painter-order-list', 6)" [class.active]="setEl === 6"
                         class="nav-link">Artist-Order List</a>
                 </li>
-
             </ul>
             <form class="d-flex">
                 <div class="dropdown login-name" *ngIf="auth.getUserData() && auth.getUserData().name">
