@@ -15,7 +15,8 @@ import { FunctionService } from 'src/app/core/services/function.service';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
-  fbUser: any
+  fbUser: any;
+  checkUserType: any
   constructor(
     private fb: FormBuilder,
     private auth: AuthencationService,
@@ -39,6 +40,10 @@ export class LoginComponent implements OnInit {
       let params = queryParams.get('passcode');
       this.checkAdminLogin(params)
     });
+  }
+
+  changeUserType(ele:any){
+    this.checkUserType = ele.value
   }
 
   formData(){

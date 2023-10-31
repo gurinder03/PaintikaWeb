@@ -27,7 +27,7 @@
             <!-- {{this.adminValue | json}} -->
             <mat-form-field class="full-w" *ngIf="!fun.getAdminVal">
                 <mat-label>Select User Type</mat-label>
-                <mat-select formControlName="role" name="food">
+                <mat-select (selectionChange)="changeUserType($event)" formControlName="role" name="food">
                   <mat-option>None</mat-option>
                   <mat-option *ngFor="let type of userTyppes" [value]="type.role">
                     {{type.name}}
@@ -49,7 +49,7 @@
         <div class="have-account  mt-2" *ngIf="!fun.getAdminVal">
             <span> Don't have an account ? <a (click)="goToSignUp()">Sign Up</a></span>
         </div>
-        <div class="social-account " *ngIf="!fun.getAdminVal">
+        <div class="social-account " *ngIf="!fun.getAdminVal && checkUserType !== 'ARTIST'">
             <span>
                 Or login with social account
             </span>

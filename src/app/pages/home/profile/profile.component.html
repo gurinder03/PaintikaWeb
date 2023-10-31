@@ -187,6 +187,16 @@
                         </mat-error> -->
                     </mat-form-field>
                 </div>
+                <div class="col-md-12 mt-2 p-3 ">
+                    <mat-form-field class="example-full-width full-w">
+                        <mat-label>Pending Balance</mat-label>
+                        <input matInput formControlName="pending_balance"  placeholder="Pending Balance" >
+                        <!-- <mat-error *ngIf="profileForm.controls['additional_detail'].errors?.['required']">
+                            Additional Details is required.
+                        </mat-error> -->
+                    </mat-form-field>
+            
+                </div>
                 <div class="mt-2 mb-3 text-center ">
                     <button type="submit" mat-raised-button color="primary" class="btn btn-primary profile-button">
                         Save Profile

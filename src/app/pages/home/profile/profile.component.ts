@@ -39,6 +39,7 @@ export class ProfileComponent implements OnInit {
       surname: [''],
       dob: ['', [Validators.required]],
       address: [''],
+      pending_balance: [{value: '', disabled: true}, Validators.required],
       gender: ['1', [Validators.required]],
       qualifications: ['', [Validators.required]],
       country: ['', [Validators.required]],
@@ -56,6 +57,7 @@ export class ProfileComponent implements OnInit {
     this.profileForm.patchValue({ surname: data.surname });
     this.profileForm.patchValue({ dob: data.dob });
     this.profileForm.patchValue({ address: data.address });
+    this.profileForm.patchValue({ pending_balance: data.pending_balance });
     this.profileForm.patchValue({ gender: data.gender });
     this.profileForm.patchValue({ qualifications: data.qualifications });
     this.profileForm.patchValue({ country: data.country });
