@@ -31,11 +31,11 @@ export class HeaderComponent {
     localStorage.setItem('activeNav', ev)
     this.fun.navValue = ev;
     this.router.navigate([route]);
-    if(ev === 7){
+    if(ev === '7'){
       this.auth.logout()
       this.router.navigate([route]);
     }
-    if(ev == 5){
+    if(ev == '5'){
       this.fun.getAdminVal = false
     }
   }

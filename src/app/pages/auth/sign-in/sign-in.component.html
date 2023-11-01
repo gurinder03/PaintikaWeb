@@ -52,24 +52,19 @@
             </mat-form-field>
             <mat-form-field class="w-100" *ngIf="signUpForm.value.userType == true">
                 <mat-label>Select State</mat-label>
-                <mat-select formControlName="state" matNativeControl required>
-                    <mat-option value="Himachal Pradesh">Himachal Pradesh</mat-option>
-                    <mat-option value="Punjab">Punjab</mat-option>
-                    <mat-option value="Haryana">Haryana</mat-option>
-                    <mat-option value="Uttar Pradesh">Uttar Pradesh</mat-option>
+                <mat-select (selectionChange)="changeState($event)" formControlName="state" matNativeControl required>
+                    <mat-option selected disabled value="">Select State</mat-option>
+                    <mat-option *ngFor="let state of stateList" [value]="state">{{state}}</mat-option>
                   </mat-select>
                 <mat-error *ngIf="signUpForm.controls['state'].hasError('required')">
                     Field is required
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="w-100" *ngIf="signUpForm.value.userType == true">
-                <mat-label>Select City</mat-label>
-              
+                <mat-label>Select City</mat-label>              
                 <mat-select formControlName="city" matNativeControl required>
-                    <mat-option value="Mohali">Mohali</mat-option>
-                    <mat-option value="Kharar">Kharar</mat-option>
-                    <mat-option value="Panchkula">Panchkula</mat-option>
-                    <mat-option value="Ropar">Ropar</mat-option>
+                    <mat-option selected disabled value="">Select City</mat-option>
+                    <mat-option *ngFor="let city of cityList" [value]="city">{{city}}</mat-option>
                   </mat-select>
                 <mat-error *ngIf="signUpForm.controls['city'].hasError('required')">
                     Field is required

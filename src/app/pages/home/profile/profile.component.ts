@@ -15,6 +15,8 @@ import { NavigationRouteService } from 'src/app/core/services/navigation-route.s
 export class ProfileComponent implements OnInit {
   
   profileForm!: FormGroup;
+  stateList = [];
+  cityList = []
   userData: any = {};
   setImg: any;
   selectedFile:any;
@@ -30,6 +32,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
       this.formData()
       this.getUserProfile();
+      this.getAllState()
   } 
 
   formData(){
@@ -51,6 +54,45 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  getAllState(){
+    this.api.stateList().then((res:any)=>{
+      if (res && res.statusCode === 200) {
+        this.stateList = res.data;
+        console.log('this.stateList => ', this.stateList);
+        
+      } else if (res.statusCode === 500) {
+        this.toast.error(res.message);
+      } else {
+        this.toast.error('Something went wrong');
+      }
+    })
+  }
+
+
+  getCityList(data:any){
+    this.api.getCitiesList(data).then((res:any)=>{
+      if (res && res.statusCode === 200) {
+        this.cityList = res.data;
+        console.log('this.cityList => ', this.cityList);
+      } else if (res.statusCode === 500) {
+        this.toast.error(res.message);
+        this.cityList = []
+      } else {
+        this.cityList = []
+        this.toast.error('Something went wrong');
+      }
+    })
+  }
+
+  
+  changeState(ele:any){
+    let data = {
+      state: ele.value
+    }
+    this.getCityList(data)
+    console.log(ele);
+  }
+
   pacthValue(data:any){
     this.profileForm.patchValue({ name: data.name });
     this.profileForm.patchValue({ email_or_mobile_number: data.email_or_mobile_number });
@@ -63,6 +105,7 @@ export class ProfileComponent implements OnInit {
     this.profileForm.patchValue({ country: data.country });
     this.profileForm.patchValue({ state: data.state });
     this.profileForm.patchValue({ city: data.city });
+    this.getCityList({ state: data.state })
     this.profileForm.patchValue({ professional: data.professional });
     this.profileForm.patchValue({ freelancer: data.freelancer });
     this.profileForm.patchValue({ experience: data.experience });
@@ -115,8 +158,6 @@ export class ProfileComponent implements OnInit {
     dataVal.append('state', this.profileForm.value.state);
     dataVal.append('city', this.profileForm.value.city);
     dataVal.append('id', this.auth.getUserData()._id); 
-    console.log(this.profileForm);
-    debugger
     
     if(this.profileForm.value && this.profileForm.value.professionalOrfreelancer == '1'){
       dataVal.append('job_type', 'professional'); 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -11,8 +11,10 @@ import { NavigationRouteService } from 'src/app/core/services/navigation-route.s
   templateUrl: './delivery-address.component.html',
   styleUrls: ['./delivery-address.component.scss'],
 })
-export class DeliveryAddressComponent {
+export class DeliveryAddressComponent implements OnInit {
   addressForm!: FormGroup;
+  stateList = []
+  cityList = []
   addressAddUpdate: any = ''
   addressData:any
   constructor(
@@ -30,6 +32,10 @@ export class DeliveryAddressComponent {
         this.getSingleAddress(event?.id);
       }
     });
+  }
+
+  ngOnInit(): void {
+    this.getAllState()
   }
 
   formData() {
@@ -87,9 +93,42 @@ export class DeliveryAddressComponent {
     }
   }
 
+  changeState(ele:any){
+    let data = {
+      state: ele.value
+    }
+    this.getCityList(data)
+    console.log(ele);
+  }
+
+  getCityList(data:any){
+    this.api.getCitiesList(data).then((res:any)=>{
+      if (res && res.statusCode === 200) {
+        this.cityList = res.data;
+      } else if (res.statusCode === 500) {
+        this.toast.error(res.message);
+        this.cityList = []
+      } else {
+        this.cityList = []
+        this.toast.error('Something went wrong');
+      }
+    })
+  }
+
+
+  getAllState(){
+    this.api.stateList().then((res:any)=>{
+      if (res && res.statusCode === 200) {
+        this.stateList = res.data;
+      } else if (res.statusCode === 500) {
+        this.toast.error(res.message);
+      } else {
+        this.toast.error('Something went wrong');
+      }
+    })
+  }
+
   setAddressValue(data:any){
-    console.log('data => ', data);
-    
     this.addressForm.patchValue({user_id: data.user_id})
     this.addressForm.patchValue({id: data._id})
     this.addressForm.patchValue({name: data.name})
@@ -99,13 +138,13 @@ export class DeliveryAddressComponent {
     this.addressForm.patchValue({address: data.address.address});
     this.addressForm.patchValue({city: data.address.city});
     this.addressForm.patchValue({state: data.address.state});
+    this.getCityList({ state: data.address.state })
     this.addressForm.patchValue({landmark: data.address.landmark});
     this.addressForm.patchValue({delveryType: data.address.delveryType});
     this.addressForm.patchValue({allternatePhone: data.address.allternatePhone});
   }
 
   getSingleAddress(id: any) {
-    debugger
     this.api.getAddress(id).then((res: any) => {
       if (res && res.statusCode === 200) {
         this.addressData = res.data

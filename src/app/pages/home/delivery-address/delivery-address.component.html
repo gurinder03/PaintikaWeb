@@ -77,11 +77,9 @@
                     <div class="city-mark col-md-4 col-sm-12 mt-3">
                         <mat-form-field class="full-w">
                             <mat-label>State </mat-label>
-                            <mat-select formControlName="state">
-                                <mat-option value="punjab">Punjab</mat-option>
-                                <mat-option value="uttar_pardesh">Uttar Pardesh (Up)</mat-option>
-                                <mat-option value="haryana">Haryana</mat-option>
-                                <mat-option value="himachal">Himachal</mat-option>
+                            <mat-select (selectionChange)="changeState($event)" formControlName="state">
+                                <mat-option selected disabled value="">Select State</mat-option>
+                                <mat-option *ngFor="let state of stateList" [value]="state">{{state}}</mat-option>
                             </mat-select>
                             <mat-error *ngIf="addressForm.controls['state'].errors?.['required']">
                                 Field is required.
@@ -95,7 +93,10 @@
                     <div class="state-alt col-md-4 col-sm-12 mt-3">
                         <mat-form-field class="example-full-width full-w">
                             <mat-label>City/District/town</mat-label>
-                            <input matInput formControlName="city" placeholder="Enter city/district">
+                            <mat-select formControlName="city">
+                                <mat-option selected disabled value="">Select city/district</mat-option>
+                                <mat-option *ngFor="let city of cityList" [value]="city">{{city}}</mat-option>
+                            </mat-select>
                         </mat-form-field>
                         
                         <mat-form-field class="example-full-width full-w">

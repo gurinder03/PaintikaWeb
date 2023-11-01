@@ -215,6 +215,16 @@ const api = {
             url: '/order/view/artist/{{id}}',
             responseInterface: []
         },
+        stateList: {
+            requestType: 'get',
+            url: '/setting/states',
+            responseInterface: []
+        },
+        citiesList: {
+            requestType: 'post',
+            url: '/setting/cities',
+            responseInterface: []
+        },
         getAllCityData: {
             requestType: 'get',
             url: '/setting/cities',

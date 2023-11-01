@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AuthencationService } from 'src/app/core/auth/authencation.service';
+import { ApiService } from 'src/app/core/services/api.service';
 import { NavigationRouteService } from 'src/app/core/services/navigation-route.service';
 
 @Component({
@@ -9,16 +10,23 @@ import { NavigationRouteService } from 'src/app/core/services/navigation-route.s
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss']
 })
-export class SignInComponent {
+export class SignInComponent implements OnInit {
   signUpForm!: FormGroup;
+  stateList = [];
+  cityList = []
 
   constructor(
     private fb: FormBuilder,
     private auth: AuthencationService,
     public navCtrl: NavigationRouteService,
-    public toast: ToastrService
+    public toast: ToastrService, 
+    public api: ApiService
    ){
     this.formData();
+  }
+
+  ngOnInit(): void {
+    this.getAllState();
   }
 
   formData(){
@@ -31,6 +39,39 @@ export class SignInComponent {
       state: [{ value: '', disabled: this.signUpForm?.value?.userType ? true : false }, [Validators.required]],
       city: [{ value: '', disabled: this.signUpForm?.value?.userType ? true : false }, [Validators.required]],
     });
+  }
+
+  getAllState(){
+    this.api.stateList().then((res:any)=>{
+      if (res && res.statusCode === 200) {
+        this.stateList = res.data;
+      } else if (res.statusCode === 500) {
+        this.toast.error(res.message);
+      } else {
+        this.toast.error('Something went wrong');
+      }
+    })
+  }
+
+  changeState(ele:any){
+    let data = {
+      state: ele.value
+    }
+    this.getCityList(data)
+  }
+
+  getCityList(data:any){
+    this.api.getCitiesList(data).then((res:any)=>{
+      if (res && res.statusCode === 200) {
+        this.cityList = res.data;
+      } else if (res.statusCode === 500) {
+        this.toast.error(res.message);
+        this.cityList = []
+      } else {
+        this.cityList = []
+        this.toast.error('Something went wrong');
+      }
+    })
   }
 
   onSubmit() {

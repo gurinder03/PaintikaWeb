@@ -110,6 +110,34 @@ export class ApiService implements OnInit {
     });
   }
 
+  stateList(){
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value);
+        }
+        else {
+          reject(value.statusText);
+        }
+      };
+      this.request.send('stateList', {}, success, null, true);
+    });
+  }
+
+  getCitiesList(data:any){
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value);
+        }
+        else {
+          reject(value.statusText);
+        }
+      };
+      this.request.send('citiesList', data, success, null, true);
+    });
+  }
+  
   addPreorder(data:any){
     return new Promise((resolve, reject) => {
       const success = (value:any) => {
@@ -123,6 +151,7 @@ export class ApiService implements OnInit {
       this.request.send('addPreorder', data, success, null, true);
     });
   }
+
 
   checkOut(data:any){
     return new Promise((resolve, reject) => {

@@ -116,7 +116,10 @@
                         <div class="col-md-6 mt-2">
                             <mat-form-field class="example-full-width full-w">
                                 <mat-label>State/Region</mat-label>
-                                <input style="text-transform: capitalize;" matInput formControlName="state" placeholder="State" value="">
+                                <mat-select (selectionChange)="changeState($event)" matNativeControl formControlName="state" required>
+                                    <mat-option disabled selected value="">Select State</mat-option>
+                                    <mat-option *ngFor="let state of stateList" [value]="state">{{state}}</mat-option>
+                                </mat-select>
                                 <mat-error *ngIf="profileForm.controls['state'].errors?.['required']">
                                     State is required.
                                 </mat-error>
@@ -129,11 +132,8 @@
                         <mat-form-field class="w-100">
                             <mat-label>Select City</mat-label>
                             <mat-select matNativeControl formControlName="city" required>
-                                <mat-option value="Mohali">Mohali</mat-option>
-                                <mat-option value="Kharar">Kharar</mat-option>
-                                <mat-option value="Jalandhar">Jalandhar</mat-option>
-                                <mat-option value="Panchkula">Panchkula</mat-option>
-                                <mat-option value="Ropar">Ropar</mat-option>
+                                <mat-option disabled selected value="">Select City</mat-option>
+                                <mat-option *ngFor="let city of cityList" [value]="city">{{city}}</mat-option>
                             </mat-select>
                             <mat-error *ngIf="profileForm.controls['city'].errors?.['required']">
                                 City is required.
