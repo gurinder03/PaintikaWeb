@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthencationService } from 'src/app/core/auth/authencation.service';
-import { GoogleLoginProvider, SocialAuthService } from "@abacritt/angularx-social-login";
+import { GoogleLoginProvider, SocialAuthService, SocialUser } from "@abacritt/angularx-social-login";
 import { FacebookLoginProvider } from "@abacritt/angularx-social-login";
 import { ToastrService } from 'ngx-toastr';
 import { AdminApiService } from 'src/app/core/services/admin-api.service';
@@ -15,7 +15,9 @@ import { FunctionService } from 'src/app/core/services/function.service';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+  
   fbUser: any;
+  public user: SocialUser = new SocialUser;
   checkUserType: any
   constructor(
     private fb: FormBuilder,
@@ -36,6 +38,25 @@ export class LoginComponent implements OnInit {
   ]
 
   ngOnInit(): void {
+    if(this.user){
+      this.signOut()
+    }
+    this.authService.authState.subscribe(user => {
+      this.user = user;
+      if(user){
+        debugger
+        let data = {
+          "facebook_id": user.provider == 'FACEBOOK' ? 'FACEBOOK': '',
+          "google_id": user.provider == 'GOOGLE' ? 'GOOGLE': '',
+          "authToken": user.idToken,
+          "email_or_mobile_number": user.email,
+          "name":  user.name,
+          "role": 'USER',
+          "profile_image": user.photoUrl
+        }
+        this.auth.socialLogin(data)
+      }
+    });
     this.activatedRoute.queryParamMap.subscribe((queryParams) => {
       let params = queryParams.get('passcode');
       this.checkAdminLogin(params)
@@ -85,31 +106,29 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/auth/sign-in'])
   }
 
+  public signOut(): void {
+    this.authService.signOut();
+  }
+
   facebookLogin(){
     console.log('FB Login');
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then((res:any)=>{
-      if(res){
-        let data = {
-          "facebook_id": res.response.id,
-          "google_id":"",
-          "authToken": res.authToken,
-          "email_or_mobile_number": res.response.email,
-          "name":  res.response.name,
-          "role": 'USER',
-          "profile_image": res.response.picture.data.url
-        }
-        // this.auth.socialLogin(data)
-      }
+      console.log('FB Login dd', res);
       this.fbUser = res
     }).catch((err:any)=>{
       this.toast.error(err)
     });
   }
 
-  googleLogin(){
+
+
+  handleGoogleSignIn(){
+    debugger
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((res:any) => {
+      debugger
       console.log('Google Login', res);
     }).catch((err:any)=>{
+      debugger
       this.toast.error(err)
     });;
   }

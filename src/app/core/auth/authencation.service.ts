@@ -194,7 +194,6 @@ export class AuthencationService {
     debugger
     let u_data = this.getUserData();
     if(u_data && u_data.role == "ADMIN"){
-      // this.navCtrl.goTo('/auth/login', {}, 'root');
       this.router.navigate(['/auth/login'], {
         queryParams: {
           passcode: 123456,
@@ -205,13 +204,6 @@ export class AuthencationService {
       this.navCtrl.goTo('/dashboard', {}, 'root');
       this.authState.next(false);
     }
-    // if(this.fun.getAdminVal){
-    //    this.router.navigate(['/auth/login'], {
-    //     queryParams: {
-    //       passcode: 123456,
-    //     },
-    //   });
-    // }
     localStorage.removeItem('data');
     localStorage.removeItem('cate_id');
     localStorage.setItem('activeNav', '1')

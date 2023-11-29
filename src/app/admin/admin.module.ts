@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { CategoryListComponent } from './category-list/category-list.component';
@@ -61,6 +61,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatDialogModule,
     MatPaginatorModule, 
     MatSelectModule,
+  ],
+  providers:[
+    DatePipe 
   ]
 })
 export class AdminModule { 

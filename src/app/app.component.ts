@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthencationService } from './core/auth/authencation.service';
 import { Router } from '@angular/router';
 import { FunctionService } from './core/services/function.service';
@@ -8,7 +8,7 @@ import { FunctionService } from './core/services/function.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   show_header = true;
   title = 'paindIkaWeb';
 
@@ -17,6 +17,11 @@ export class AppComponent {
     public router: Router,
     public fun: FunctionService
   ){  }
+
+  ngOnInit(): void {
+      this.fun.requestPermission();
+      this.fun.listen()
+  }
 
   appliedData(){
     if(

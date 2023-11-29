@@ -13,7 +13,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { AdminHeaderComponent } from './admin/shared/admin-header/admin-header.component';
 import { AdminFooterComponent } from './admin/shared/admin-footer/admin-footer.component';
@@ -21,6 +20,9 @@ import { DashboardComponent } from './pages/home/dashboard/dashboard.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DatePipe } from '@angular/common';
+import { initializeApp } from 'firebase/app';
+import { environment } from 'src/environments/environment';
+initializeApp(environment.firebase);
 
 @NgModule({
   declarations: [
@@ -31,7 +33,6 @@ import { DatePipe } from '@angular/common';
     AdminHeaderComponent,
     AdminFooterComponent,
     DashboardComponent,
-  
   ],
   imports: [
     BrowserModule,
@@ -48,12 +49,11 @@ import { DatePipe } from '@angular/common';
     BrowserAnimationsModule,
     MatCardModule,
     MatFormFieldModule,
-    MatInputModule,
     MatButtonModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    DatePipe
+    DatePipe,
   ],
   bootstrap: [AppComponent],
 })

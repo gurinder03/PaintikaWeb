@@ -60,21 +60,12 @@
                             <img src="./assets/images/facebook-icon.png">
                         </a>
                     </mat-icon>
-                </span>               
-                <span class="google-icon ">
-                    <mat-icon svgIcon="google ">
-                        <!-- <a href="javascript:void(0);" (click)="googleLogin()">
-                            <img src="./assets/images/google-icon.png">
-                        </a> -->
-                        <asl-google-signin-button (click)="googleLogin()" type='icon' size='medium'></asl-google-signin-button>
-                    </mat-icon>
-                </span>
+                </span> 
+                <span class="google-icon">
+                    <asl-google-signin-button></asl-google-signin-button>
+                </span>              
             </div>
             <br>
-            <!-- <img class="profile-set" [src]="fbUser?.response?.picture?.data?.url">
-            <br>
-            <h3>{{fbUser?.name}}</h3>
-            <h3>{{fbUser?.email}}</h3> -->
         </div>
     </mat-card>
 </div>

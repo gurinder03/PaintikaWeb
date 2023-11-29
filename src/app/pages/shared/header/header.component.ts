@@ -19,7 +19,6 @@ export class HeaderComponent {
     public toast: ToastrService
   ){
     this.userData = this.auth.getUserData();
-    debugger
     this.fun.navValue = localStorage.getItem('activeNav');
   }
   userLogout(){
