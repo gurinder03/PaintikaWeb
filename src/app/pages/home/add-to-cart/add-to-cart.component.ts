@@ -5,7 +5,6 @@ import { AuthencationService } from 'src/app/core/auth/authencation.service';
 import { ApiService } from 'src/app/core/services/api.service';
 import { FunctionService } from 'src/app/core/services/function.service';
 import { NavigationRouteService } from 'src/app/core/services/navigation-route.service';
-import { WindowRefService } from 'src/app/core/services/window-ref.service';
 import { environment } from 'src/environments/environment';
 
 declare var Razorpay: any;
@@ -29,11 +28,12 @@ export class AddToCartComponent implements OnInit {
     public activatedRoute: ActivatedRoute,
     public api: ApiService,
     public toast: ToastrService,
-    private winRef: WindowRefService,
     public fun: FunctionService,
     public navCtrl: NavigationRouteService,
     public auth: AuthencationService
-  ) {}
+  ) {
+    console.log('auth.getUserData() =>', auth.getUserData());
+  }
 
   ngOnInit(): void {
     this.getCartList();
@@ -105,7 +105,7 @@ export class AddToCartComponent implements OnInit {
       amount: 200,
       currency: environment.currency,
       name: this.auth.getUserData().name,
-      description: 'Web Developer',
+      // description: 'Web Developer',
       image:
         this.auth.getUserData() && this.auth.getUserData().profile_image
           ? this.auth.getUserData().profile_image
@@ -138,7 +138,7 @@ export class AddToCartComponent implements OnInit {
     options.amount = order.order_total * 100;
     options.prefill.name = this.auth.getUserData().name;
     options.prefill.email = this.auth.getUserData().email_or_mobile_number;
-    options.prefill.contact = '9200020095';
+    // options.prefill.contact = '';
     var rzp1 = new Razorpay(options);
 
     rzp1.on('payment.failed', (response: any) => {
