@@ -4,6 +4,8 @@ import { DashboardComponent } from './pages/home/dashboard/dashboard.component';
 import { AuthGuard } from './core/guard/auth.guard';
 import { AdminGuard } from './core/guard/admin.guard';
 import { ProductListComponent } from './pages/home/product-list/product-list.component';
+import { AboutUsComponent } from './pages/home/about-us/about-us.component';
+import { ContactUsComponent } from './pages/home/contact-us/contact-us.component';
 
 const routes: Routes = [
   {
@@ -25,6 +27,14 @@ const routes: Routes = [
     path: "admin",
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
     canLoad: [AuthGuard]
+  },
+  {
+    path: 'about-us',
+    component: AboutUsComponent
+  },
+  {
+    path: 'contact-us',
+    component: ContactUsComponent
   },
   {
     path: 'dashboard',

@@ -60,10 +60,10 @@ export class AuthencationService {
   socialLogin(data: any) {
     const success = (value: any) => {
       if (value && value.statusCode == 200) {
-        this.setLoggedIn(data.authToken, value.data);
+        this.setLoggedIn(value.data.token, value.data);
         let userData = this.getUserData();
         this.fun.getUserData = userData;
-        debugger
+        this.fun.fbUserData = null;
         localStorage.setItem('activeNav', '1')
         if (data && data.role == 'ADMIN') {
           this.navCtrl.goTo('/admin/user-list', {}, 'root');
@@ -191,7 +191,7 @@ export class AuthencationService {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem(HAS_LOGGED_IN);
-    debugger
+    this.fun.fbUserData = null
     let u_data = this.getUserData();
     if(u_data && u_data.role == "ADMIN"){
       this.router.navigate(['/auth/login'], {
@@ -206,7 +206,7 @@ export class AuthencationService {
     }
     localStorage.removeItem('data');
     localStorage.removeItem('cate_id');
-    localStorage.setItem('activeNav', '1')
+    localStorage.setItem('activeNav', '1');
     this.fun.navValue =  '1'
   }
 

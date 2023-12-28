@@ -2,6 +2,14 @@
 button.btn.logout-button {
     color: #ffffff !important;
 }
+button.login-btn {
+    background: #212529;
+    color: #fff;
+    font-weight: 500;
+    box-shadow: none;
+    border: none;
+    margin-right: 10px;
+}
 .footer {
     position: fixed;
     left: 0;
@@ -106,12 +114,23 @@ ul.navbar-nav.me-auto {
     text-decoration: none;
     background-color: #000000;
 }
+@media screen and (max-width:1062px){
+    .navbar-expand-sm .navbar-nav{
+        gap: 25px;
+    }
+}
+
 @media screen and (max-width:1006px){
     ul.navbar-nav.me-auto {
         margin-left: 0%;
     }
     .navbar-expand-sm .navbar-nav{
         gap: 18px;
+    }
+}
+@media screen and (max-width:936px){
+    .navbar-expand-sm .navbar-nav{
+        gap: 13px;
     }
 }
 @media screen and (max-width:890px){

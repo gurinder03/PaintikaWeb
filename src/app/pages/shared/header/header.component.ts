@@ -27,6 +27,7 @@ export class HeaderComponent {
   }
 
   navigateTo(route: string, ev:any) {
+    console.log('dsfsdfsdff => ', ev);
     localStorage.setItem('activeNav', ev)
     this.fun.navValue = ev;
     this.router.navigate([route]);
@@ -34,8 +35,12 @@ export class HeaderComponent {
       this.auth.logout()
       this.router.navigate([route]);
     }
-    if(ev == '5'){
+    if(ev == '6'){
       this.fun.getAdminVal = false
     }
+  }
+
+  cartLogin(){
+    this.router.navigate(['/auth/login']);
   }
 }

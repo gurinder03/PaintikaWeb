@@ -3,6 +3,8 @@ import { AuthencationService } from './core/auth/authencation.service';
 import { Router } from '@angular/router';
 import { FunctionService } from './core/services/function.service';
 
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

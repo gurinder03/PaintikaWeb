@@ -22,6 +22,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { DatePipe } from '@angular/common';
 import { initializeApp } from 'firebase/app';
 import { environment } from 'src/environments/environment';
+
+
 initializeApp(environment.firebase);
 
 @NgModule({
@@ -33,6 +35,8 @@ initializeApp(environment.firebase);
     AdminHeaderComponent,
     AdminFooterComponent,
     DashboardComponent,
+   
+
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,91 @@
+
+.section-title {
+   color: #000 !important;
+}
+.first-image img {
+   height: 200px;
+   width: 350px;
+   object-fit: cover;
+   border-top-left-radius: 100px;
+}
+.second-image img{
+   height: 223px;
+   width: 257px;
+   object-fit: cover;
+   border-top-right-radius: 80px;
+
+}
+.third-image img{
+   height: 200px;
+   width: 217px;
+   border-bottom-left-radius: 80px ;
+}
+.first-image{
+   z-index: 3;
+}
+.second-image {
+   left: 50%;
+   top: 25%;
+   z-index: 2;
+}
+.third-image{
+   bottom: 0;
+   left: 18%;
+   top: 50%;
+   transform: translatey(35px);
+   z-index: 1;
+}
+
+h2.section-title{
+   font-size: 24px;
+}
+h2.artist-name{
+   font-size: 30px;
+}
+.the-art, .text{
+   color: #d0b07e;
+}
+.experience-designs{
+   gap: 89px;
+}
+
+@media screen and (max-width:545px){
+   .first-image img{
+      height: 193px;
+      width: 258px;
+   }
+   .second-image img{
+      height: 206px;
+      width: 194px;
+   }
+   .third-image img{
+      height: 174px;
+      width: 180px;
+   }
+   .second-image{
+      left: 50%;
+      top: 36%;
+   }
+   .third-image{
+      left: 10%;
+      top: 56%;
+   }
+   h2.section-title {
+      font-size: 18px;
+  }
+  h2.artist-name{
+   font-size: 23px;
+}
+  
+}
+@media screen and (max-width:400px){
+   .first-image img{
+      height: 160px;
+      width: 205px;
+  }
+  .second-image img {
+   height: 159px;
+   width: 162px;
+  }
+
+}

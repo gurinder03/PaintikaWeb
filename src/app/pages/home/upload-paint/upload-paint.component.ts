@@ -94,8 +94,10 @@ export class UploadPaintComponent implements OnInit {
       dataVal.append('status', 'active');
       dataVal.append('category', this.uploadPaintForm.value.category);
       this.api.uploadPainting(dataVal).then((res: any) => {
+        debugger
         if (res && res.statusCode === 200) {
-          this.toast.success(res.message);
+          // this.toast.success(res.message);
+          this.fun.showAlert('Painting Uploaded!', 'Your painting has been sent to Admin for review')
           this.navCtrl.goTo('/dashboard')
         } else if (res.statusCode === 500) {
           this.toast.error(res.message);

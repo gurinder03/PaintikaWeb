@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 export class FunctionService {
   cartCount: any;
   navValue: any = '1';
+  public fbUserData: any;
   message:any = null;
   getAdminVal: boolean = false;
   getUserData: any = {};
@@ -46,6 +47,14 @@ export class FunctionService {
           // reject(result.dismiss)
         }
       });
+    });
+  }
+
+  showAlert(title:any, description:any){
+    Swal.fire({
+      title: title,
+      text: description,
+      icon: "success"
     });
   }
 

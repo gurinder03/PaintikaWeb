@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-   
+
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
             <span class="navbar-toggler-icon"></span>
@@ -10,49 +10,83 @@
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" (click)="navigateTo('/dashboard', '1')" [class.active]="fun.navValue === '1'">Home</a>
+                    <a class="nav-link" (click)="navigateTo('/dashboard', '1')"
+                        [class.active]="fun.navValue === '1'">Home</a>
                 </li>
-                <li class="nav-item" *ngIf="auth.isAuthenticated()">
-                    <a class="nav-link" (click)="navigateTo('/page/profile',  '2')" [class.active]="fun.navValue === '2'">Profile</a>
+                <li class="nav-item">
+                    <a class="nav-link" [class.active]="fun.navValue === '2'" (click)="navigateTo('/about-us', '2')">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [class.active]="fun.navValue === '3'" (click)="navigateTo('/contact-us', '3')">Contact Us</a>
                 </li>
                 <li class="nav-item" *ngIf="auth.isAuthenticated() && auth.getUserData().role != 'USER'">
-                    <a class="nav-link" (click)="navigateTo('/page/upload-paint', '3')" [class.active]="fun.navValue === '3'">Upload Painting</a>
+                    <a class="nav-link" (click)="navigateTo('/page/upload-paint', '4')"
+                        [class.active]="fun.navValue === '4'">Upload Painting</a>
                 </li>
+                
                 <li class="nav-item" *ngIf="auth.isAuthenticated() && auth.getUserData().role != 'USER'">
-                    <a class="nav-link" (click)="navigateTo('/page/artist-order-list', '4')" [class.active]="fun.navValue === '4'">Artist Order List</a>
+                    <a class="nav-link" (click)="navigateTo('/page/artist-order-list', '5')"
+                        [class.active]="fun.navValue === '5'">Artist Order List</a>
                 </li>
-                <li *ngIf="!auth.isAuthenticated()" class="nav-item">
-                    <a class="nav-link" (click)="navigateTo('/auth/login', '5')" [class.active]="fun.navValue === '5'">Login</a>
+                <li class="nav-item painter-btn" *ngIf="auth.isAuthenticated() && auth.getUserData().role == 'USER'">
+                    <a (click)="navigateTo('/auth/sign-in', '7')" class="nav-link painter">Join As Painter</a>
                 </li>
-                <li *ngIf="auth.isAuthenticated() && auth.getUserData().role == 'USER'" class="nav-item">
-                    <a class="nav-link" (click)="navigateTo('/page/requirment-paint', '6')" [class.active]="fun.navValue === '6'">Pre-Order</a>
-                </li>
-                <li  class="nav-item painter-btn" *ngIf="auth.isAuthenticated() && auth.getUserData().role == 'USER'">
-                    <a (click)="navigateTo('/auth/sign-in', '7')" class="nav-link painter" >Join As Painter</a>
-                </li>
+               
             </ul>
             <form class="d-flex">
+<!--             
+                    <button  *ngIf="!auth.isAuthenticated()" class="login-btn">
+                        <a class="nav-link" (click)="navigateTo('/auth/login', '6')"
+                            [class.active]="fun.navValue === '6'">Login</a>
+                    </button> -->
+                
+              
+                    <button type="button" *ngIf="!auth.isAuthenticated()" class="login-btn"
+                        (click)="navigateTo('/auth/login', '6')"
+                            [class.active]="fun.navValue === '6'">Login
+                    </button>
+            
+              
+                <div class="cart-button">
+                    <button class="btn cart-button" type="button" *ngIf="!auth.isAuthenticated()" (click)="cartLogin()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-cart2" viewBox="0 0 16 16">
+                            <path
+                                d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                        </svg>
+                        <span class="cart-hdng">Cart</span>
+                    </button>
+                </div>
                 <div class="dropdown login-name" *ngIf="auth.getUserData() && auth.getUserData().name">
-                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="color: #ffffff;">
+                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                        aria-expanded="false" style="color: #ffffff;">
                         Welcome <span style="text-transform: capitalize;">{{auth.getUserData().name}}</span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><a class="dropdown-item" *ngIf="auth.getUserData().role != 'ARTIST'" [routerLink]="['/page/order-status']">My Orders</a></li>
-                      <li><a class="dropdown-item" [routerLink]="['/page/change-password']">Change Password</a></li>
-                    
+                        <li  *ngIf="auth.isAuthenticated()">
+                            <a class="dropdown-item" (click)="navigateTo('/page/profile',  '8')">Profile</a>
+                        </li>
+                        <li><a class="dropdown-item" *ngIf="auth.getUserData().role != 'ARTIST'"
+                                [routerLink]="['/page/order-status']">My Orders</a></li>
+                        <li><a class="dropdown-item" [routerLink]="['/page/change-password']">Change Password</a></li>
+                        <li *ngIf="auth.isAuthenticated() && auth.getUserData().role == 'USER'" >
+                            <a class="dropdown-item" (click)="navigateTo('/page/requirment-paint', '9')">Pre-Order</a>
+                        </li>
                     </ul>
-                  </div>
+                </div>
                 <div class="cart-button" *ngIf="auth.isAuthenticated() && auth.getUserData().role != 'ARTIST'">
                     <button class="btn cart-button" type="button" (click)="navigateTo('/page/add-to-cart', '8')">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
-                            <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
-                          </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-cart2" viewBox="0 0 16 16">
+                            <path
+                                d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                        </svg>
                         <span class="cart-hdng">Cart</span>
                     </button>
                     <span class="counting_cart_items">{{fun.cartCount}}</span>
                 </div>
-               
-                <div  class="logout-icon" >
+
+                <div class="logout-icon">
                     <ng-container *ngIf="auth.isAuthenticated()">
                         <button (click)="userLogout()" class="btn logout-button" type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">

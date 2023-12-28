@@ -33,6 +33,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { ViewOrderListComponent } from './view-order-list/view-order-list.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 
 @NgModule({
@@ -51,8 +53,9 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     ViewOrderComponent,
     ArtistOrderListComponent,
     ViewOrderListComponent,
-    ChangePasswordComponent
-   
+    ChangePasswordComponent,
+    AboutUsComponent,
+    ContactUsComponent
   ],
   imports: [
     CommonModule,

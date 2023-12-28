@@ -1,0 +1,16 @@
+.card {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 40px;
+  }
+  
+  .form-label {
+    font-weight: bold;
+  }
+  
+  textarea.form-control {
+    resize: none;
+  }
+.send-message-btn:hover{
+ background-color: lightgrey;
+}
