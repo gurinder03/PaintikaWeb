@@ -6,6 +6,7 @@ import { AdminGuard } from './core/guard/admin.guard';
 import { ProductListComponent } from './pages/home/product-list/product-list.component';
 import { AboutUsComponent } from './pages/home/about-us/about-us.component';
 import { ContactUsComponent } from './pages/home/contact-us/contact-us.component';
+import { ProjectsComponent } from './pages/home/projects/projects.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,10 @@ const routes: Routes = [
     path: 'product-list/:productId',
     component: ProductListComponent,
     canLoad: [AuthGuard]
+  },  
+  {
+    path: 'projects',
+    component: ProjectsComponent,
   },
 ];
 

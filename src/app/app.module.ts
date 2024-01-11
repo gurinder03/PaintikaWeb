@@ -16,7 +16,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import { AdminHeaderComponent } from './admin/shared/admin-header/admin-header.component';
 import { AdminFooterComponent } from './admin/shared/admin-footer/admin-footer.component';
-import { DashboardComponent } from './pages/home/dashboard/dashboard.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DatePipe } from '@angular/common';
@@ -34,9 +33,6 @@ initializeApp(environment.firebase);
     AdminLoginComponent,
     AdminHeaderComponent,
     AdminFooterComponent,
-    DashboardComponent,
-   
-
   ],
   imports: [
     BrowserModule,

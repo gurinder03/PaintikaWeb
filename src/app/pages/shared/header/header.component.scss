@@ -114,28 +114,43 @@ ul.navbar-nav.me-auto {
     text-decoration: none;
     background-color: #000000;
 }
-@media screen and (max-width:1062px){
+@media screen and (max-width:1145px){
     .navbar-expand-sm .navbar-nav{
         gap: 25px;
     }
 }
+@media screen and (max-width:1062px){
+    .navbar-expand-sm .navbar-nav{
+        gap: 17px;
+    }
+}
 
-@media screen and (max-width:1006px){
+@media screen and (max-width:1012px){
     ul.navbar-nav.me-auto {
         margin-left: 0%;
     }
     .navbar-expand-sm .navbar-nav{
-        gap: 18px;
+        gap: 15px;
     }
 }
-@media screen and (max-width:936px){
+@media screen and (max-width:976px){
     .navbar-expand-sm .navbar-nav{
-        gap: 13px;
+        gap: 10px;
+    }
+}
+@media screen and (max-width:960px){
+    .navbar-expand-sm .navbar-nav{
+        gap: 0px;
+    }
+}
+@media screen and (max-width:920px){
+    a.nav-link {
+        font-size: 10px;
     }
 }
 @media screen and (max-width:890px){
     .navbar-expand-sm .navbar-nav{
-        gap: 0px;
+        gap: 0px !important;
     }
     .login-name{
         margin-right: 0;

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Card Stacks</title>
+  <style>
+    /* *, *:before, *:after {
+      box-sizing: border-box;
+    } */
+
+    html {
+      min-height: 100%;
+    }
+
+    body {
+      font-size: 14px;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-weight: 300;
+      margin: 20px;
+      height: 2000px;
+      background: linear-gradient(to left top, #F5A1D5 0%, #CDD3E9 100%);
+    }
+
+    h1, h2, h3, h4, h5, h6, p {
+      font-weight: 300;
+      margin: 0;
+      padding: 0;
+    }
+
+    header.hero {
+      background: rgba(255, 255, 255, 0.6);
+      text-align: center;
+      padding: 20px 0;
+      border-bottom: 4px solid rgba(255, 255, 255, 0.6);
+    }
+
+    header.hero h1 {
+      font-size: 3em;
+      color: #555;
+      margin: 0 0 5px;
+    }
+
+    header.hero p {
+      margin: 0 0 20px;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.6);
+      padding: 0 0 20px;
+    }
+
+    ul.cards, ul.card-stacks, ul.cards-split, ul.cards-split-delay {
+      width: 660px;
+      list-style-type: none;
+      margin: 0 auto 20px;
+      padding: 0;
+      position: relative;
+      cursor: pointer;
+    }
+
+    ul.cards li.title, ul.card-stacks li.title, ul.cards-split li.title, ul.cards-split-delay li.title {
+      margin: 0 0 20px;
+    }
+
+    ul.cards li.card, ul.card-stacks li.stack, ul.cards-split li.card, ul.cards-split-delay li.card {
+      background: #FFF;
+      overflow: hidden;
+      height: 200px;
+      width: 200px;
+      border-radius: 10px;
+      position: absolute;
+      left: 0;
+      box-shadow: 1px 2px 2px 0 #aaa;
+      transition: all 0.4s cubic-bezier(.63,.15,.03,1.12);
+    }
+
+    ul.cards li.card img, ul.card-stacks li.stack ul.cards-down li.card img, ul.cards-split li.card img, ul.cards-split-delay li.card img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    ul.cards li.card div.content, ul.card-stacks li.stack ul.cards-down li.card div.content, ul.cards-split li.card div.content, ul.cards-split-delay li.card div.content {
+      padding: 5px 10px;
+    }
+
+    ul.cards li.card-1, ul.card-stacks li.stack-1 ul.cards-down li.card-1, ul.cards-split li.card-1, ul.cards-split-delay li.card-1 {
+      z-index: 10;
+      transform: rotateZ(-2deg);
+    }
+
+    ul.cards li.card-2, ul.card-stacks li.stack-2 ul.cards-down li.card-2, ul.cards-split li.card-2, ul.cards-split-delay li.card-2 {
+      z-index: 9;
+      transform: rotateZ(-7deg);
+      transition-delay: 0.05s;
+    }
+
+    ul.cards li.card-3, ul.card-stacks li.stack-3 ul.cards-down li.card-3, ul.cards-split li.card-3, ul.cards-split-delay li.card-3 {
+      z-index: 8;
+      transform: rotateZ(5deg);
+      transition-delay: 0.1s;
+    }
+
+    ul.cards.transition li.card, ul.card-stacks.transition li.stack, ul.cards-split.transition li.card, ul.cards-split-delay.transition li.card {
+      transform: rotateZ(0deg);
+    }
+
+    ul.cards.transition li.card.card-1, ul.card-stacks.transition li.stack.stack-1 ul.cards-down li.card.card-1, ul.cards-split.transition li.card.card-1, ul.cards-split-delay.transition li.card.card-1 {
+      left: 0;
+    }
+
+    ul.cards.transition li.card.card-2, ul.card-stacks.transition li.stack.stack-2 ul.cards-down li.card.card-2, ul.cards-split.transition li.card.card-2, ul.cards-split-delay.transition li.card.card-2 {
+      left: 440px;
+    }
+
+    ul.cards.transition li.card.card-3, ul.card-stacks.transition li.stack.stack-3 ul.cards-down li.card.card-3, ul.cards-split.transition li.card.card-3, ul.cards-split-delay.transition li.card.card-3 {
+      left: 220px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <ul class="cards" onclick="toggleClass(this)">
+  
+    <li class="card card-1">
+      <img src="http://lorempixel.com/400/250/city" alt="Card 1">
+      <div class="content">
+        <h1>Card 1 Title</h1>
+        <p>Card description</p>
+      </div>
+    </li>
+    <li class="card card-2">
+      <img src="http://lorempixel.com/400/250/food" alt="Card 2">
+      <div class="content">
+        <h1>Card 2 Title</h1>
+        <p>Card description</p>
+      </div>
+    </li>
+    <li class="card card-3">
+      <img src="http://lorempixel.com/400/250/animals" alt="Card 3">
+      <div class="content">
+        <h1>Card 3 Title</h1>
+        <p>Card description</p>
+      </div>
+    </li>
+  </ul>
+
+  
+
+
+
+
+  <script>
+    function toggleClass(element) {
+      debugger
+      element.classList.toggle('transition');
+    }
+  </script>
+</body>
+</html>

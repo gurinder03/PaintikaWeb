@@ -19,25 +19,131 @@
     <ng-template carouselSlide id="slide-8"><img src="./assets/images/bird.jpg" height="200"></ng-template>
     <ng-template carouselSlide id="slide-9"><img src="./assets/images/girl.jpg" height="200"></ng-template>
   </owl-carousel-o>
-  <div class="main-items-container animate__animated animate__fadeInLeft">
-    <div class="row m-4 mb-5 main-paintings">
-      <ng-container *ngIf="data && data.length">
-        <div *ngFor="let product of data" class="paintings col-md-3 col-sm-6 p-4 m-2">
-          <div class="hdng-button ">
-            <h3 class="text-cap">{{product.name}}</h3>
-          </div>
-          <img [src]="product.image">
-          <a (click)="getMore(product)" class="see-more">See More</a>
-        </div>
 
-      </ng-container>
-      <ng-container *ngIf="data && data.length == 0">
-        <div class="no-record text-center">
-          No Record Found!
-        </div>
-      </ng-container>
+  <!-- filters begin -->
+
+  <div class="filter-container container-fluid">
+    <h2>Art By Price</h2>
+    <div class="price-filter">
+      <ul >
+        <li>
+          <a href="javascript:void(0)">
+            <span>Under ₹10,000</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+            <span>₹10,000 - ₹30,000</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+            <span>₹30,000 - ₹50,000</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+            <span>₹50,000 - ₹1,00,000</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+            <span>₹50,000 - ₹1,00,000</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+            <span>₹1,00,000 - ₹3,00,000</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+            <span>₹3,00,000 - ₹5,00,000</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <h2>WHAT ARE YOU LOOKING FOR ?</h2>
+    <div class="looking-for">
+       <ul>
+        <li>
+          <a href="javascript:void(0)">
+            <span>Fruits</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+            <span>Birds</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+            <span>Flowers</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+            <span>Buildings</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+            <span>Village</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+            <span>People</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+            <span>Seaspace</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+            <span>Botanical</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+            <span>Music</span>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:void(0)">
+            <span>Figurative</span>
+          </a>
+        </li>
+       
+       </ul>
     </div>
   </div>
+
+  <!-- filters end -->
+
+    <div class="main-items-container animate__animated animate__fadeInLeft ">
+      <h1 class="text-center pt-4">Painting Categories</h1>
+      <div class="row m-4 mb-5 main-paintings">
+        <ng-container *ngIf="data && data.length">
+          <div *ngFor="let product of data" class="paintings col-md-3 col-sm-6 p-4 m-2">
+            <div class="hdng-button ">
+              <h3 class="text-cap">{{product.name}}</h3>
+            </div>
+            <img [src]="product.image">
+            <a (click)="getMore(product)" class="see-more">See More</a>
+          </div>
+
+        </ng-container>
+        <ng-container *ngIf="data && data.length == 0">
+          <div class="no-record text-center">
+            No Record Found!
+          </div>
+        </ng-container>
+      </div>
+    </div>
   <mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]"
     aria-label="Select page" (page)="getData($event)" showFirstLastButtons>
   </mat-paginator>
