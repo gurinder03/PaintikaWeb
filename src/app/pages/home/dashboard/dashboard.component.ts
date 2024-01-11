@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ToastrService } from 'ngx-toastr';
 import { AuthencationService } from 'src/app/core/auth/authencation.service';
@@ -14,6 +15,7 @@ import { NavigationRouteService } from 'src/app/core/services/navigation-route.s
 
 export class DashboardComponent implements OnInit {
 
+  selectedRange: string = '100-';
   pageIndex: number = 1;
 	pageSize: number = 10;
 	length: number = 10;
@@ -53,6 +55,7 @@ export class DashboardComponent implements OnInit {
     public toast: ToastrService,
     private auth: AuthencationService,
     public navCtrl: NavigationRouteService,
+    public raute:Router
   ){
     let userData = this.auth.getUserData();
     if( auth.isAuthenticated() && userData && userData.role === "ADMIN"){
@@ -106,5 +109,16 @@ export class DashboardComponent implements OnInit {
     }else{
       this.navCtrl.goTo(`/product-list/${product?._id}`)
     }
+  }
+
+  filterByPrice(rangeStart:any, rangeEnd:any){
+    this.selectedRange = rangeStart + '-' + rangeEnd;
+    let data = {startRange: rangeStart, endRange: rangeEnd}
+    // this.raute.navigate(['/page/product-list/'],  {
+    //   queryParams: {
+    //     dataSet: data,
+    //   },
+    // })
+    console.log('Selected Range:', this.selectedRange);
   }
 }

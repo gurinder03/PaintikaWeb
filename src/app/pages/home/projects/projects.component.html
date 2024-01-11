@@ -1,4 +1,4 @@
-<ul class="cards" (click)="toggleClass()">
+<ul class="cards" (click)="toggleClass()" [ngClass]="{'transition': transitionClass}">
     <li class="card card-1">
       <img src="http://lorempixel.com/400/250/city" alt="Card 1">
       <div class="content">

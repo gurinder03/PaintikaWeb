@@ -25,40 +25,40 @@
   <div class="filter-container container-fluid">
     <h2>Art By Price</h2>
     <div class="price-filter">
-      <ul >
-        <li>
-          <a href="javascript:void(0)">
-            <span>Under ₹10,000</span>
+      <ul>
+        <li [ngClass]="{ 'selected': selectedRange === '100-' }">
+          <a href="javascript:void(0)" (click)="filterByPrice('100', '')">
+            <span [ngClass]="{ 'selectedText': selectedRange === '100-' }">Under ₹100</span>
           </a>
         </li>
-        <li>
-          <a href="javascript:void(0)">
-            <span>₹10,000 - ₹30,000</span>
+        <li [ngClass]="{ 'selected': selectedRange === '100-500' }">
+          <a href="javascript:void(0)" (click)="filterByPrice('100', '500')">
+            <span [ngClass]="{ 'selectedText': selectedRange === '100-500' }">₹100 - ₹500</span>
           </a>
         </li>
-        <li>
-          <a href="javascript:void(0)">
-            <span>₹30,000 - ₹50,000</span>
+        <li [ngClass]="{ 'selected': selectedRange === '500-1000' }">
+          <a href="javascript:void(0)" (click)="filterByPrice('500', '1000')">
+            <span [ngClass]="{ 'selectedText': selectedRange === '500-1000' }">₹500 - ₹1,000</span>
           </a>
         </li>
-        <li>
-          <a href="javascript:void(0)">
-            <span>₹50,000 - ₹1,00,000</span>
+        <li [ngClass]="{ 'selected': selectedRange === '1000-1500' }">
+          <a href="javascript:void(0)" (click)="filterByPrice('1000', '1500')">
+            <span [ngClass]="{ 'selectedText': selectedRange === '1000-1500' }">₹1,000 - ₹1500</span>
           </a>
         </li>
-        <li>
-          <a href="javascript:void(0)">
-            <span>₹50,000 - ₹1,00,000</span>
+        <li [ngClass]="{ 'selected': selectedRange === '1500-2000' }">
+          <a href="javascript:void(0)" (click)="filterByPrice('1500', '2000')">
+            <span [ngClass]="{ 'selectedText': selectedRange === '1500-2000' }">₹1500 - ₹2,000</span>
           </a>
         </li>
-        <li>
-          <a href="javascript:void(0)">
-            <span>₹1,00,000 - ₹3,00,000</span>
+        <li [ngClass]="{ 'selected': selectedRange === '2000-2500' }">
+          <a href="javascript:void(0)" (click)="filterByPrice('2000', '2500')">
+            <span [ngClass]="{ 'selectedText': selectedRange === '2000-2500' }">₹2,000 - ₹2,500</span>
           </a>
         </li>
-        <li>
-          <a href="javascript:void(0)">
-            <span>₹3,00,000 - ₹5,00,000</span>
+        <li [ngClass]="{ 'selected': selectedRange === '3000-3500' }">
+          <a href="javascript:void(0)" (click)="filterByPrice('3000', '3500')">
+            <span [ngClass]="{ 'selectedText': selectedRange === '3000-3500' }">₹3000 - ₹3500</span>
           </a>
         </li>
       </ul>
@@ -135,7 +135,6 @@
             <img [src]="product.image">
             <a (click)="getMore(product)" class="see-more">See More</a>
           </div>
-
         </ng-container>
         <ng-container *ngIf="data && data.length == 0">
           <div class="no-record text-center">

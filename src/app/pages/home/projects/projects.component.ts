@@ -7,15 +7,12 @@ import { Component, ElementRef } from '@angular/core';
 })
 export class ProjectsComponent {
 
-  public isTransition = false;
+  transitionClass = false;
 
   constructor(public ele: ElementRef){}
 
-  public toggleClass(){
-    debugger
-    const element = this.ele.nativeElement;
-    element.classList.toggle('cards');
-    // this.isTransition = !this.isTransition;
+  toggleClass() {
+    this.transitionClass = !this.transitionClass;
   }
 
 }
