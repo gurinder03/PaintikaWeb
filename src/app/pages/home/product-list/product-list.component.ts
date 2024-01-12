@@ -114,7 +114,7 @@ export class ProductListComponent implements OnInit {
   productData(cate:any, filterKey: any, cityVal:any){
     let data = {
       "page":1,
-      "limit":10,
+      "limit":30,
       "categories": [cate],
       "filter": filterKey,
       "city": cityVal
