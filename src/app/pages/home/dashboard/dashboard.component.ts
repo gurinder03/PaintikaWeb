@@ -15,7 +15,7 @@ import { NavigationRouteService } from 'src/app/core/services/navigation-route.s
 
 export class DashboardComponent implements OnInit {
 
-  selectedRange: string = '100-';
+  selectedRange: string = '';
   pageIndex: number = 1;
 	pageSize: number = 10;
 	length: number = 10;
@@ -114,11 +114,11 @@ export class DashboardComponent implements OnInit {
   filterByPrice(rangeStart:any, rangeEnd:any){
     this.selectedRange = rangeStart + '-' + rangeEnd;
     let data = {startRange: rangeStart, endRange: rangeEnd}
-    // this.raute.navigate(['/page/product-list/'],  {
-    //   queryParams: {
-    //     dataSet: data,
-    //   },
-    // })
+    this.raute.navigate(['/page/product-list/6592672de68ffdd98a8d67f6'],  {
+      queryParams: {
+        dataSet: JSON.stringify(data)
+      },
+    })
     console.log('Selected Range:', this.selectedRange);
   }
 }

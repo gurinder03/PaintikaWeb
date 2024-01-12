@@ -12,7 +12,7 @@ import { NavigationRouteService } from 'src/app/core/services/navigation-route.s
   styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent implements OnInit {
-  allData:any = []
+  allData: any = []
   cartData: any = [];
   selectedValue: any = '';
   getAllCity: any = [];
@@ -26,14 +26,18 @@ export class ProductListComponent implements OnInit {
     private fun: FunctionService,
     public auth: AuthencationService,
     private navCtrl: NavigationRouteService
-  ){
-    // this.getCartData()
+  ) {
+    // this.getCartData()  
   }
-  
-  addToCart(item:any) {
-    if(this.auth.isAuthenticated()){
+
+
+
+
+
+  addToCart(item: any) {
+    if (this.auth.isAuthenticated()) {
       item.isLiked = !item.isLiked;
-      const index = this.cartData?.findIndex((cartItem:any) => cartItem.art_id === item?._id);
+      const index = this.cartData?.findIndex((cartItem: any) => cartItem.art_id === item?._id);
       if (index !== -1) {
         // this.cartData?.splice(index, 1);
         // this.api.removeToCart({id:item?._id}).then((res: any) => {
@@ -49,15 +53,15 @@ export class ProductListComponent implements OnInit {
         // });
       } else {
         let data = {
-          "user_id":this.auth.getUserData()?._id,
-          "art_id":item?._id,
-          "quantity":1, 
+          "user_id": this.auth.getUserData()?._id,
+          "art_id": item?._id,
+          "quantity": 1,
           "creator_id": item?.creator_id
         }
         this.api.addToCartData(data).then((res: any) => {
           if (res && res.statusCode === 200) {
             this.toast.success(res.message);
-            this.api.cartListData({user_id: this.auth.getUserData()?._id})
+            this.api.cartListData({ user_id: this.auth.getUserData()?._id })
           } else if (res.statusCode === 500) {
             this.toast.error(res.message);
           } else {
@@ -65,7 +69,7 @@ export class ProductListComponent implements OnInit {
           }
         });
       }
-    }else{
+    } else {
       this.fun.confirmBox('', 'Before Procceed you need to login', '/auth/login', 'Ok', 'Cancel')
     }
   }
@@ -81,7 +85,7 @@ export class ProductListComponent implements OnInit {
   }
 
 
- 
+
 
   // getCartData(){
   //   if(this.auth.isAuthenticated()){
@@ -103,36 +107,40 @@ export class ProductListComponent implements OnInit {
   //   }
   // }
 
-  applyFilter(event: Event){
+  applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     let filter = filterValue.trim().toLowerCase();
     this.filterData = filter;
     this.productData(this.productId, this.filterData, this.selectedValue)
-    console.log('this.data => ',  this.filterData);
+    console.log('this.data => ', this.filterData);
   }
 
-  productData(cate:any, filterKey: any, cityVal:any){
+  productData(cate: any, filterKey: any, cityVal: any) {
     let data = {
-      "page":1,
-      "limit":30,
+      "page": 1,
+      "limit": 30,
       "categories": [cate],
       "filter": filterKey,
       "city": cityVal
     }
     console.log('cityVal => ', cityVal);
-    
+
     this.api.productDataList(data).then((res: any) => {
       if (res && res.statusCode === 200) {
-        // if(res && res.data && res.data.length){
-          for (let index = 0; index < res.data.length; index++) {
-            const element = res.data[index];
-            element.isLiked = false
+        for (let index = 0; index < res.data.length; index++) {
+          const element = res.data[index];
+          element.isLiked = false
+        }
+        this.allData = res.data;
+        this.updateIsLikedStatus(this.allData, this.cartData)
+        this.activatedRoute.queryParamMap.subscribe((queryParams) => {
+          const dataView: any = queryParams.get('dataSet');
+          let parseData = JSON.parse(dataView);
+          if (parseData) {
+            this.filterPriceData(parseData, this.allData)
           }
-          this.allData = res.data;
-          console.log('this.allData => ', this.allData);
-          
-          this.updateIsLikedStatus(this.allData, this.cartData)
-        // }
+        });
+        console.log('this.allData => ', this.allData);
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
       } else {
@@ -141,7 +149,7 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  getCities(){
+  getCities() {
     this.api.getCityData().then((res: any) => {
       if (res && res.statusCode === 200) {
         this.getAllCity = res.data;
@@ -154,7 +162,9 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  selectCity(ele:any){
+
+
+  selectCity(ele: any) {
     this.selectedValue = ele.target.value;
     this.productData(this.productId, this.filterData, this.selectedValue)
   }
@@ -166,9 +176,19 @@ export class ProductListComponent implements OnInit {
     }
   }
 
-  buyNow(id:any){
+  buyNow(id: any) {
     this.navCtrl.goTo(`/page/add-to-cart`)
   }
+
+  filterPriceData(data: any, allData: any) {
+    let filteredPriceData = allData.filter((item: any) => {
+      const price = item.price;
+      return price >= data.startRange && price <= data.endRange;
+    });
+    this.allData = filteredPriceData
+    console.log('filteredPriceData =>', this.allData);
+  }
+
 }
 
 
