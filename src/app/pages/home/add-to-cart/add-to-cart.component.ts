@@ -198,7 +198,6 @@ export class AddToCartComponent implements OnInit {
     this.api.cartListData(data).then((res: any) => {
       if (res && res.statusCode === 200) {
         this.getAddressList();
-        debugger
         this.cartData = res.data;
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);

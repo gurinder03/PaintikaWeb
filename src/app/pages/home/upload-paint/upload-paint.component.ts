@@ -91,6 +91,8 @@ export class UploadPaintComponent implements OnInit {
       dataVal.append('frame_quality', this.uploadPaintForm.value.frame_quality);
       dataVal.append('price', this.uploadPaintForm.value.price);
       dataVal.append('creator_id', this.fun.getUserData._id);
+
+      
       dataVal.append('status', 'active');
       dataVal.append('category', this.uploadPaintForm.value.category);
       this.api.uploadPainting(dataVal).then((res: any) => {
