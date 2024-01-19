@@ -39,6 +39,8 @@ $paindIkaWeb-theme: mat.define-light-theme((
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 .container{
   background: #f0f0f0 !important;
 }
@@ -52,4 +54,31 @@ $paindIkaWeb-theme: mat.define-light-theme((
 // }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; 
+  font-family: "Montserrat", sans-serif !important; 
+}
+h1, h2, h3, h4, h5, h6, li, a, span, p, label, button, table {
+  font-family: "Montserrat",sans-serif !important;
+  outline: none;
+}
+.pl-0{
+  padding-left: 0;
+}
+.mt-34{
+  margin-top: 34px;
+}
+.mb-34{
+  margin-bottom: 34px;
+}
+.ml-24 {
+  margin-left: 24px;
+}
+.fs-13 {
+  font-size: 13px;
+}
+.fw-500 {
+  font-weight: 500;
+}
+.mt-60{
+  margin-top: 60px;
+}
