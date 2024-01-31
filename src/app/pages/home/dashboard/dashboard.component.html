@@ -1,11 +1,24 @@
 <div class="home-page flex-body mb-34">
   <div class="flex-content">
-    <div class="flex-inner-content">
+    <div class="flex-inner-content container">
+      <div class="home-carousel mt-5">
+        <owl-carousel-o [options]="customOptions">
+          <ng-template carouselSlide id="slide-1"><img src="./assets/images/cat.jpg" height="200"></ng-template>
+          <ng-template carouselSlide id="slide-2"><img src="./assets/images/first.jpg" height="200"></ng-template>
+          <ng-template carouselSlide id="slide-3"><img src="./assets/images/river.jpg" height="200"></ng-template>
+          <ng-template carouselSlide id="slide-4"><img src="./assets/images/nature.jpg" height="200"></ng-template>
+          <ng-template carouselSlide id="slide-5"><img src="./assets/images/vehicle.jpg" height="200"></ng-template>
+          <ng-template carouselSlide id="slide-6"><img src="./assets/images/animal.jpg" height="200"></ng-template>
+          <ng-template carouselSlide id="slide-7"><img src="./assets/images/eye.jpg" height="200"></ng-template>
+          <ng-template carouselSlide id="slide-8"><img src="./assets/images/bird.jpg" height="200"></ng-template>
+          <ng-template carouselSlide id="slide-9"><img src="./assets/images/girl.jpg" height="200"></ng-template>
+        </owl-carousel-o>
+      </div>
       <div class="category mt-60">
         <div class="home-catgry">
           <h2 class="catgry-sub-titl">Explore by Category</h2>
-          <ul class="category-grid pl-0 mt-34 lp-catg-load">
-            <li class="category-list">
+          <ul class="category-grid pl-0 mt-34 lp-catg-load row">
+            <li class="category-list col-md-3 col-sm-4">
               <a href="javascript:void(0)" class="catgry-list catgryList">
                 <div class="card-img catgry-img">
                   <img src="https://arts.mojarto.com/siteImages/category/99539/web/78/99539.jpg"
@@ -17,7 +30,7 @@
                 </div>
               </a>
             </li>
-            <li class="category-list">
+            <li class="category-list col-md-3 col-sm-4">
               <a href="javascript:void(0)" class="catgry-list catgryList">
                 <div class="card-img catgry-img">
                   <img src="https://arts.mojarto.com/siteImages/category/99545/web/78/99545.jpg"
@@ -29,7 +42,7 @@
                 </div>
               </a>
             </li>
-            <li class="category-list">
+            <li class="category-list col-md-3 col-sm-4">
               <a href="javascript:void(0)" class="catgry-list catgryList">
                 <div class="card-img catgry-img">
                   <img src="https://arts.mojarto.com/siteImages/category/99543/web/78/99543.jpg" alt="Category Drawing"
@@ -41,7 +54,7 @@
                 </div>
               </a>
             </li>
-            <li class="category-list">
+            <li class="category-list col-md-3 col-sm-4">
               <a href="javascript:void(0)" class=" catgry-list catgryList">
                 <div class="card-img catgry-img">
                   <img src="https://arts.mojarto.com/siteImages/category/99538/web/78/99538.jpg" alt="Category Painting"
@@ -53,7 +66,7 @@
                 </div>
               </a>
             </li>
-            <li class="category-list">
+            <li class="category-list col-md-3 col-sm-4 mt-5">
               <a href="javascript:void(0)" class=" catgry-list catgryList">
                 <div class="card-img catgry-img">
                   <img src="https://arts.mojarto.com/siteImages/category/99542/web/78/99542.jpg"
@@ -65,7 +78,7 @@
                 </div>
               </a>
             </li>
-            <li class="category-list">
+            <li class="category-list col-md-3 col-sm-4 mt-5">
               <a href="javascript:void(0)" class=" catgry-list catgryList">
                 <div class="card-img catgry-img">
                   <img src="https://arts.mojarto.com/siteImages/category/99540/web/78/99540.jpg"
@@ -77,7 +90,7 @@
                 </div>
               </a>
             </li>
-            <li class="category-list">
+            <li class="category-list col-md-3 col-sm-4 mt-5">
               <a href="javascript:void(0)" class=" catgry-list catgryList">
                 <div class="card-img catgry-img">
                   <img src="https://arts.mojarto.com/siteImages/category/99541/web/78/99541.jpg"

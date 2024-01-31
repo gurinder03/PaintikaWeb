@@ -39,11 +39,12 @@ $paindIkaWeb-theme: mat.define-light-theme((
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 @import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-.container{
-  background: #f0f0f0 !important;
-}
+// .container{
+//   background: #f0f0f0 !important;
+// }
 
 // @font-face {
 //   font-family: 'robotoitalic';

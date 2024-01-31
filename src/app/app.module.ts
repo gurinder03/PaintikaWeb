@@ -23,6 +23,7 @@ import { initializeApp } from 'firebase/app';
 import { environment } from 'src/environments/environment';
 
 
+
 initializeApp(environment.firebase);
 
 @NgModule({
@@ -33,6 +34,7 @@ initializeApp(environment.firebase);
     AdminLoginComponent,
     AdminHeaderComponent,
     AdminFooterComponent,
+
   ],
   imports: [
     BrowserModule,

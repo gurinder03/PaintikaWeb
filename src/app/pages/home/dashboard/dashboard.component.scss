@@ -1,19 +1,20 @@
+
 .mt-60{
     margin-top: 60px;
 }
 .flex-content{
-    display: flex;
-    min-width: 1200px;
-    max-width: 1500px;
+    // display: flex;
+    // min-width: 1200px;
+    // max-width: 1500px;
     margin: 0 auto;
     align-items: center;
     justify-content: center;
     padding: 0 20px;
 }
-.flex-inner-content{
-    flex-basis: 1200px;
-    max-width: 1200px;
-}
+// .flex-inner-content{
+//     flex-basis: 1200px;
+//     max-width: 1200px;
+// }
 .home-page h2 {
     text-transform: uppercase;
     position: relative;
@@ -23,10 +24,10 @@
 }
 
 .category-grid {
-    width: 1200px;
-    display: grid;
-    grid-gap: 24px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    max-width: 1200px;
+    // display: grid;
+    // grid-gap: 24px;
+    // grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 li {
     list-style: none;
