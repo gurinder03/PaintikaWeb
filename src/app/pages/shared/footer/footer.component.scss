@@ -1,22 +1,35 @@
-button.btn.logout-button {
-    color: #ffffff !important;
+.footer-bgcolor {
+    background-color: #e2e2e22e;
 }
-.footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #000000;
-    color: white;
-    text-align: center;
-    height: 50px;
+.log-flexcontent {
     display: flex;
+    align-items: center;
     justify-content: center;
-    z-index: 999;
- }
- .footer p {
-    margin-top: 13px;
 }
-.conatiner{
-    position: relative;
+h3.slogan {
+    font-size: 20px;
+    font-weight: 600;
+    max-width: 200px;
 }
+// button.btn.logout-button {
+//     color: #ffffff !important;
+// }
+// .footer {
+//     position: fixed;
+//     left: 0;
+//     bottom: 0;
+//     width: 100%;
+//     background-color: #000000;
+//     color: white;
+//     text-align: center;
+//     height: 50px;
+//     display: flex;
+//     justify-content: center;
+//     z-index: 999;
+//  }
+//  .footer p {
+//     margin-top: 13px;
+// }
+// .conatiner{
+//     position: relative;
+// }

@@ -1,4 +1,6 @@
-
+img{
+    width: 100%;
+}
 .mt-60{
     margin-top: 60px;
 }
@@ -135,7 +137,7 @@ h2{
 .home-need-to-see .tab-control .tabs button.tab {
     border: none;
 }
-.tab-content{
+.tabs{
     overflow: auto;
 }
 button {
@@ -170,12 +172,165 @@ button {
     border-radius: 6px;
 }
 
-.artprice,.tab-control{
-    // overflow: auto;
+// paintings cards css
+
+.artworks-card-detail {
+    cursor: pointer;
 }
-// .col-md-6{
-//     width: 48%;
-// }
+.detail-card{
+    border: 1px solid #e2e2e28a;
+    padding: 15px;
+}
+.artwork-title h3 {
+    margin-bottom: 6px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-transform: capitalize;
+    color: #1c1c1c;
+    font-weight: 600;
+}
+.artist-hover:hover {
+    color: #00f!important;
+}
+.colorDGray{
+    color:#717171;
+}
+.medium{
+    color: #717171;
+}
+p.product-artwork {
+    color: #717171;
+}
+.artwork-discount {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+span.product-discount {
+    color:red;
+    font-size: 11px;
+}
+.list-price {
+    color: #717171;
+    float: right;
+    text-decoration: line-through;
+}
+.colorblack {
+    color: #383838;
+}
+.favourite-addcart-section {
+    width: 249px;
+    height: 36px;
+    align-items: center;
+    margin-top: 12px;
+}
+.favourite-icon {
+    cursor: pointer;
+    background: #fff;
+    opacity: .74;
+    align-items: center;
+}
+ .pro-fav-clr  {
+    // width: 118px;
+    height: 36px;
+    font-size: 16px;
+    display: flex;
+    color: #717171;
+    cursor: pointer;
+    border: 1px solid #717171;
+    border-radius: 4px;
+    padding: 6px 30px;
+    align-items: center;
+    justify-content: center;
+}
+.pro-fav-clr:hover, .pro-cart-clr:hover{
+    color: Red;
+    border: 1px solid Red;
+}
+.add-to-cart-icon {
+    cursor: pointer;
+    background: #fff;
+    opacity: .74;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pro-cart-clr {
+    // width: 118px;
+    height: 36px;
+    font-size: 16px;
+    display: flex;
+    color: #717171;
+    cursor: pointer;
+    border: 1px solid #717171;
+    border-radius: 4px;
+    padding: 6px 30px;
+    align-items: center;
+    justify-content: center;
+}
+.home-testimonial{
+    margin-bottom: 80px;
+}
+.testimonial-ttl a {
+    color: red;
+    font-weight: 500;
+    text-decoration: underline;
+    font-size: 16px;
+}
+.testimonial-list{
+    border: 1px solid #E2E2E2;
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    min-height: 210px;
+}
+.testimonial-list.col-md-4{
+    width: calc(33% - 10px);
+}
+.testimonial-grid{
+    overflow: auto;
+}
+.testimonial-quote {
+    width: 34px;
+    height: 34px;
+    background-color: red;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 22%;
+}
+.quote-icon{
+    height: 20px;
+}
+.testimonial-content h3{
+    font-size: 18px;
+    text-transform: capitalize;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+.testimonial-content span{
+    font-size: 12px;
+    display: inherit;
+    color: #717171;
+    margin-bottom: 18px;
+}
+.art-tmol-content {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+span.tetmonl-boder {
+    border-right: 1px solid red;
+    position: absolute;
+    height: 190px;
+    right: -1px;
+    top: 9px;
+}
 
 @media screen and (max-width:991px) {
     .container{
@@ -184,14 +339,12 @@ button {
     }
 }
 @media screen and (max-width: 767px){
-    // .col-sm-6{
-    //     width: 47% !important;
-    // }
+    .testimonial-quote{
+        width: 14%;
+    }
 }
 @media screen and ( max-width:567px){
-    // .col-sm-6{
-    //     width: auto !important;
-    // }
+    
 }
     
 
