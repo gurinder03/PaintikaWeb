@@ -1,13 +1,13 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
   <div class="search-container">
     <div class="select-filter">
-      <!-- <mat-form-field class="list-data">
+      <mat-form-field class="list-data">
         <mat-label for="city" class="city-label">Select City :</mat-label>
           <mat-select (change)="selectCity($event)"  id="pet-select">
             <mat-option value="">--Please Select city--</mat-option>
             <mat-option *ngFor="let city of getAllCity.cities" [value]="city">{{city}}</mat-option>
           </mat-select>
-      </mat-form-field> -->
+      </mat-form-field>
 
       <label for="city" class="city-label">Select City : </label>
       <select  (change)="selectCity($event)"  id="pet-select">
@@ -26,28 +26,28 @@
     <h1 class="text-center pt-4">Paintings List</h1>
     <div class="row m-4 mb-5 main-paintings">
       <ng-container *ngIf="allData && allData.length">
-        <div class="paintings col-md-3 col-sm-6 p-4 m-2" *ngFor="let data of allData">
+        <div class="paintings  col-md-4 col-sm-6 p-4 m-2" *ngFor="let data of allData">
           <div class="hdng-button ">
             <h3 class="text-cap">{{data.name}}</h3>
             <ng-container *ngIf="auth.getUserData()?.role != 'ARTIST'">
-              <!-- <button (click)="addToCart(data)" [disabled]="data && data.isLiked == true ? true : false "
+              <button (click)="addToCart(data)" [disabled]="data && data.isLiked == true ? true : false "
                 class="heart-button" mat-raised-button aria-label="Example icon button with a heart icon">
                 <mat-icon [ngClass]="{'favourite': !data.isLiked, 'favourite text-danger': data.isLiked}"
                   class="favourite-icon">favorite</mat-icon>
-              </button> -->
+              </button>
             </ng-container>
           </div>
           <img [src]="data.image">
-          <!-- <p class="painting-detail">Set of three paintings</p> -->
+          <p class="painting-detail">Set of three paintings</p>
           <h3 class="product-rate">₹{{data.price}}</h3>
           <ng-container *ngIf="auth.getUserData()?.role != 'ARTIST'">
             <div class="buy-cart-btn">
               <div class="add-to-cart">
                 <button (click)="addToCart(data)"  [disabled]="data && data.isLiked == true ? true : false " type="button" class="add-to-cart">Add to cart</button>
               </div>
-              <!-- <div class="buy-btn" *ngIf="auth.getUserData()?.role != 'ARTIST'">
+              <div class="buy-btn" *ngIf="auth.getUserData()?.role != 'ARTIST'">
                 <a (click)="buyNow(data)" href="javascript:void(0)">Buy Now</a>
-              </div> -->
+              </div>
             </div>
           </ng-container>
         </div>
@@ -64,4 +64,381 @@
   <p>
     <br>
   </p>
+</div> -->
+
+<div class="container-fluid alfbatic">
+  <div class="container maindiv">
+    <h1>Artists Directory</h1>
+    <div class="container searchbyalfabat">
+      <a class="alfa-anchor" href="">A</a>
+      <a class="alfa-anchor" href="">B</a>
+      <a class="alfa-anchor" href="">C</a>
+      <a class="alfa-anchor" href="">D</a>
+      <a class="alfa-anchor" href="">E</a>
+      <a class="alfa-anchor" href="">F</a>
+      <a class="alfa-anchor" href="">G</a>
+      <a class="alfa-anchor" href="">H</a>
+      <a class="alfa-anchor" href="">I</a>
+      <a class="alfa-anchor" href="">J</a>
+      <a class="alfa-anchor" href="">K</a>
+      <a class="alfa-anchor" href="">L</a>
+      <a class="alfa-anchor" href="">M</a>
+      <a class="alfa-anchor" href="">N</a>
+      <a class="alfa-anchor" href="">O</a>
+      <a class="alfa-anchor" href="">P</a>
+      <a class="alfa-anchor" href="">Q</a>
+      <a class="alfa-anchor" href="">R</a>
+      <a class="alfa-anchor" href="">S</a>
+      <a class="alfa-anchor" href="">T</a>
+      <a class="alfa-anchor" href="">U</a>
+      <a class="alfa-anchor" href="">V</a>
+      <a class="alfa-anchor" href="">W</a>
+      <a class="alfa-anchor" href="">X</a>
+      <a class="alfa-anchor" href="">Y</a>
+      <a class="alfa-anchor" href="">Z</a>
+    </div>
+  </div>
+  <div class="container parent-art">
+    <div class="filter-prize">
+      <div class="price my-2">
+        <div class="price-icon">
+          <h3>Price</h3>
+          <div class="minus-icon">-</div>
+          <div class="plus-icon">+</div>
+        </div>
+
+        <span class="max-range">₹50,000/</span>
+        <input
+          type="range"
+          class="form-range ranger"
+          min="0"
+          max="50000"
+          id="customRange1"
+        />
+        <div class="range-button my-2">
+          <span class="min-range">₹00/-</span>
+          <span style="width: auto">-</span>
+          <span class="max-range2">₹50,000/</span>
+          <button class="go-btn my-2">GO</button>
+        </div>
+      </div>
+
+      <div class="framing-quality my-2 mx-2">
+        <div class="framing-icon">
+          <h3>Framing Quality</h3>
+          <div class="minus-icon">-</div>
+          <div class="plus-icon">+</div>
+        </div>
+        <div class="frame-option">
+          <input class="checkbox" type="checkbox" />
+          <label class="label">Wood</label><br />
+          <input class="checkbox" type="checkbox" />
+          <label class="label">Plastic</label><br />
+          <input class="checkbox" type="checkbox" />
+          <label class="label">Fiber </label><br />
+          <input class="checkbox" type="checkbox" />
+          <label class="label">Metal</label><br />
+          <input class="checkbox" type="checkbox" />
+          <label class="label">Other</label>
+        </div>
+      </div>
+
+      <div class="medium-select my-2">
+        <div class="medium-icon">
+          <h3>Medium</h3>
+          <div class="minus-icon">-</div>
+          <div class="plus-icon">+</div>
+        </div>
+        <div class="medium-option">
+          <input class="checkbox" type="checkbox" />
+          <label class="label">Small</label><br />
+          <input class="checkbox" type="checkbox" />
+          <label class="label">Medeum</label><br />
+          <input class="checkbox" type="checkbox" />
+          <label class="label">Large </label><br />
+          <input class="checkbox" type="checkbox" />
+          <label class="label">Extra Large</label><br />
+          <input class="checkbox" type="checkbox" />
+          <label class="label">Other</label>
+        </div>
+      </div>
+
+      <div class="category my-2">
+        <div class="category-icon">
+          <h3>Category</h3>
+          <div class="minus-icon">-</div>
+          <div class="plus-icon">+</div>
+        </div>
+        <div class="category-option">
+          <input class="checkbox" type="checkbox" />
+          <label class="label">First Category</label><br />
+          <input class="checkbox" type="checkbox" />
+          <label class="label">Second Category</label><br />
+          <input class="checkbox" type="checkbox" />
+          <label class="label">Third Category </label><br />
+          <input class="checkbox" type="checkbox" />
+          <label class="label">Fourth Category</label><br />
+          <input class="checkbox" type="checkbox" />
+          <label class="label">Other</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="art-price">
+      <div class="paintings-container">
+        <div class="paintings-section">
+          <ul class="row pl-0">
+            <li class="artworks-card-detail col-md-4 col-sm-6 my-2">
+              <a href="javascript:void(0)">
+                <div class="artwork-image">
+                  <img
+                    src="./assets/images/nature.jpg"
+                    width="282"
+                    height="280"
+                  />
+                </div>
+              </a>
+              <div class="detail-card">
+                <div class="artwork-title">
+                  <h3 class="fs-13" title="The Eternal Flute">
+                    The Eternal Flute
+                  </h3>
+                  <span class="fs-13 fw-500 colorDGray artist-hover"
+                    >By Subir Kayal</span
+                  >
+                  <div class="d-flex justify-content-between">
+                    <div class="medium w-65 pr-5">
+                      <p class="product-artwork fw-500 fs-13 mt-20 mb-0">
+                        Painitng
+                      </p>
+                      <span
+                        class="fs-13 fw-500 medium-name-text-oflow"
+                        title="Acrylic on Paper"
+                        >Acrylic on Paper</span
+                      >
+                    </div>
+                    <div class="w-35 artwork-discount">
+                      <div class="precent-amount">
+                        <span class="fs-13 d-block product-discount fw-600">
+                          20% OFF
+                        </span>
+                        <span class="fs-13 d-block list-price product-amount">
+                          ₹ 1,20,000
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="product-size-amount d-flex justify-content-between"
+                  >
+                    <span class="product-size fw-500 fs-13 colorDGray">
+                      24 X 24 In
+                    </span>
+                    <span class="product-amount fw-600 colorblack fs-14">
+                      ₹ 89,600
+                    </span>
+                  </div>
+                </div>
+                <div
+                  class="favourite-addcart-section d-flex justify-content-between w-100"
+                >
+                  <div class="favourite-icon d-flex justify-content-center">
+                    <span class="bi bi-heart-fill pro-fav-clr"></span>
+                  </div>
+                  <div class="add-to-cart-icon">
+                    <span class="bi bi-cart-fill pro-cart-clr"></span>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="artworks-card-detail col-md-4 col-sm-6 my-2">
+              <a href="javascript:void(0)">
+                <div class="artwork-image">
+                  <img src="./assets/images/hut.jpg" width="282" height="280" />
+                </div>
+              </a>
+              <div class="detail-card">
+                <div class="artwork-title">
+                  <h3 class="fs-13" title="The Eternal Flute">
+                    The Eternal Flute
+                  </h3>
+                  <span class="fs-13 fw-500 colorDGray artist-hover"
+                    >By Subir Kayal</span
+                  >
+                  <div class="d-flex justify-content-between">
+                    <div class="medium w-65 pr-5">
+                      <p class="product-artwork fw-500 fs-13 mt-20 mb-0">
+                        Painitng
+                      </p>
+                      <span
+                        class="fs-13 fw-500 medium-name-text-oflow"
+                        title="Acrylic on Paper"
+                        >Acrylic on Paper</span
+                      >
+                    </div>
+                    <div class="w-35 artwork-discount">
+                      <div class="precent-amount">
+                        <span class="fs-13 d-block product-discount fw-600">
+                          20% OFF
+                        </span>
+                        <span class="fs-13 d-block list-price product-amount">
+                          ₹ 1,20,000
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="product-size-amount d-flex justify-content-between"
+                  >
+                    <span class="product-size fw-500 fs-13 colorDGray">
+                      24 X 24 In
+                    </span>
+                    <span class="product-amount fw-600 colorblack fs-14">
+                      ₹ 89,600
+                    </span>
+                  </div>
+                </div>
+                <div
+                  class="favourite-addcart-section d-flex justify-content-between w-100"
+                >
+                  <div class="favourite-icon d-flex justify-content-center">
+                    <span class="bi bi-heart-fill pro-fav-clr"></span>
+                  </div>
+                  <div class="add-to-cart-icon">
+                    <span class="bi bi-cart-fill pro-cart-clr"></span>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="artworks-card-detail col-md-4 col-sm-6 my-2">
+              <a href="javascript:void(0)">
+                <div class="artwork-image">
+                  <img
+                    src="./assets/images/animal.jpg"
+                    width="282"
+                    height="280"
+                  />
+                </div>
+              </a>
+              <div class="detail-card">
+                <div class="artwork-title">
+                  <h3 class="fs-13" title="The Eternal Flute">
+                    The Eternal Flute
+                  </h3>
+                  <span class="fs-13 fw-500 colorDGray artist-hover"
+                    >By Subir Kayal</span
+                  >
+                  <div class="d-flex justify-content-between">
+                    <div class="medium w-65 pr-5">
+                      <p class="product-artwork fw-500 fs-13 mt-20 mb-0">
+                        Painitng
+                      </p>
+                      <span
+                        class="fs-13 fw-500 medium-name-text-oflow"
+                        title="Acrylic on Paper"
+                        >Acrylic on Paper</span
+                      >
+                    </div>
+                    <div class="w-35 artwork-discount">
+                      <div class="precent-amount">
+                        <span class="fs-13 d-block product-discount fw-600">
+                          20% OFF
+                        </span>
+                        <span class="fs-13 d-block list-price product-amount">
+                          ₹ 1,20,000
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="product-size-amount d-flex justify-content-between"
+                  >
+                    <span class="product-size fw-500 fs-13 colorDGray">
+                      24 X 24 In
+                    </span>
+                    <span class="product-amount fw-600 colorblack fs-14">
+                      ₹ 89,600
+                    </span>
+                  </div>
+                </div>
+                <div
+                  class="favourite-addcart-section d-flex justify-content-between w-100"
+                >
+                  <div class="favourite-icon d-flex justify-content-center">
+                    <span class="bi bi-heart-fill pro-fav-clr"></span>
+                  </div>
+                  <div class="add-to-cart-icon">
+                    <span class="bi bi-cart-fill pro-cart-clr"></span>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="artworks-card-detail col-md-4 col-sm-6 my-2">
+              <a href="javascript:void(0)">
+                <div class="artwork-image">
+                  <img
+                    src="./assets/images/nature.jpg"
+                    width="282"
+                    height="280"
+                  />
+                </div>
+              </a>
+              <div class="detail-card">
+                <div class="artwork-title">
+                  <h3 class="fs-13" title="The Eternal Flute">
+                    The Eternal Flute
+                  </h3>
+                  <span class="fs-13 fw-500 colorDGray artist-hover"
+                    >By Subir Kayal</span
+                  >
+                  <div class="d-flex justify-content-between">
+                    <div class="medium w-65 pr-5">
+                      <p class="product-artwork fw-500 fs-13 mt-20 mb-0">
+                        Painitng
+                      </p>
+                      <span
+                        class="fs-13 fw-500 medium-name-text-oflow"
+                        title="Acrylic on Paper"
+                        >Acrylic on Paper</span
+                      >
+                    </div>
+                    <div class="w-35 artwork-discount">
+                      <div class="precent-amount">
+                        <span class="fs-13 d-block product-discount fw-600">
+                          20% OFF
+                        </span>
+                        <span class="fs-13 d-block list-price product-amount">
+                          ₹ 1,20,000
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="product-size-amount d-flex justify-content-between"
+                  >
+                    <span class="product-size fw-500 fs-13 colorDGray">
+                      24 X 24 In
+                    </span>
+                    <span class="product-amount fw-600 colorblack fs-14">
+                      ₹ 89,600
+                    </span>
+                  </div>
+                </div>
+                <div
+                  class="favourite-addcart-section d-flex justify-content-between w-100"
+                >
+                  <div class="favourite-icon d-flex justify-content-center">
+                    <span class="bi bi-heart-fill pro-fav-clr"></span>
+                  </div>
+                  <div class="add-to-cart-icon">
+                    <span class="bi bi-cart-fill pro-cart-clr"></span>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
