@@ -37,6 +37,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { TestimonialComponent } from './testimonial/testimonial.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { ProjectsComponent } from './projects/projects.component';
     AboutUsComponent,
     ContactUsComponent,
     DashboardComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    TestimonialComponent
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   imports: [

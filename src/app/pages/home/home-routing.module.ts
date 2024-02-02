@@ -15,6 +15,7 @@ import { ViewOrderComponent } from './view-order/view-order.component';
 import { ArtistOrderListComponent } from './artist-order-list/artist-order-list.component';
 import { ViewOrderListComponent } from './view-order-list/view-order-list.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { TestimonialComponent } from './testimonial/testimonial.component';
 
 const routes: Routes = [
   {
@@ -79,6 +80,10 @@ const routes: Routes = [
       {
         path: 'change-password',
         component: ChangePasswordComponent
+      },
+      {
+        path: 'testimonial',
+        component: TestimonialComponent
       }
     ]
   },

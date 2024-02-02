@@ -1,6 +1,6 @@
-<div class="container pt-5 pb-5">
+<div class="container pt-3 pb-5">
     <form (ngSubmit)="onSubmit()" [formGroup]="uploadPaint">
-        <h2 class="text-center mt-4 animate__animated animate__fadeInDown">Required Painting Details</h2>
+        <h2 class="main-heading text-center mt-4 animate__animated animate__fadeInDown">Required Painting Details</h2>
         <div class="file-upload col-md-8 animate__animated animate__fadeInDown mx-auto">
             <input #Image type="file" formControlName="image" accept="image/*" multiple (change)="selectFiles($event)" />
             <div *ngIf="previews.length" class="image-preview-container">
@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class="col-md-8 col-sm-12 pt-3 mx-auto">
-            <mat-form-field class="example-full-width full-w animate__animated animate__fadeInUp">
+            <mat-form-field class="descripton example-full-width full-w animate__animated animate__fadeInUp">
                 <mat-label>Painting Description</mat-label>
                 <textarea style="text-transform: capitalize;" matInput formControlName="description"></textarea>
                 <mat-error *ngIf="uploadPaint.controls['description'].hasError('required')">
@@ -22,7 +22,4 @@
             </button>
         </div>
     </form>
-</div>
-<div>
-    <p><br></p>
 </div>

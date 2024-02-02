@@ -1,0 +1,85 @@
+img{
+    width: 100%;
+}
+.test-hdng{
+    font-weight: 700;
+}
+li{
+    list-style: none;
+}
+.testtab {
+    padding: 12px 40px;
+    border: 1px solid #e2e2e2;
+    border-radius: 6px;
+    color: #717171;
+    font-weight: 500;
+    cursor: pointer;
+}
+.active{
+    padding: 12px 40px;
+    background: red;
+    border-radius: 6px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+.active:hover{
+    background-color: #fff;
+    border: 1px solid red;
+    color: red;
+}
+.test-collect{
+    height: auto;
+    border: 1px solid #e2e2e2;
+    border-radius: 10px;
+    display: flex;
+    position: relative;
+}
+.testmonial-list{
+    border: 1px solid #E2E2E2;
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    min-height: 210px;
+}
+.testimonial-image {
+    max-width: 156px;
+    max-height: 168px;
+    display: flex;
+    border: 1px solid #e2e2e2;
+    position: relative;
+}
+.text-post-color{
+    color: #717171;
+}
+.text-post-margin {
+    margin-left: 4px;
+    margin-right: 4px;
+}
+.border-line{
+    border-right: 1px solid red;
+    position: absolute;
+    height: 190px;
+    right: -1px;
+    top: 9px;
+}
+.artist-image{
+   border: none;
+}
+.artist-image img{
+    border-radius: 50%;
+}
+@media screen and (max-width:657px){
+    .test-sticky{
+        flex-direction: column;
+    }
+}
+@media screen and (max-width:382px){
+    .testtab{
+        padding: 12px 12px;
+    }
+    .active{
+        padding: 12px 12px;
+    }
+}
+    
