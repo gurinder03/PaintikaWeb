@@ -344,9 +344,21 @@ span.tetmonl-boder {
     }
 }
 @media screen and ( max-width:567px){
-    
+    h2{
+        font-size: 16px;
+    }
+    .colctn-tit a, .landing-need-to-see .art-displ-titl a, .testimonial-ttl a{
+        font-size: 12px;
+    }
 }
-    
+ @media screen and (max-width:420px){
+    h2{
+        font-size: 13px;
+    }
+    .colctn-tit a{
+        font-size: 12px;
+    }
+ }   
 
 
 

@@ -10,6 +10,56 @@ h3.slogan {
     font-size: 20px;
     font-weight: 600;
     max-width: 200px;
+    
+}
+.categories a {
+    display: block;
+    text-decoration: none;
+    color: #717171;
+    padding: 6px 0;
+    text-align: center;
+}
+.art-category h3{
+    text-align: center;
+}
+.app-store{
+    gap: 15px;
+    justify-content: center;
+}
+.copyright-social{
+    border-top: 1px solid #e2e2e2;
+}
+.copy-right{
+    color: #717171;
+}
+.social-icons{
+    display: flex;
+    align-items: center;
+    width: 280px;
+    
+}
+.main-icon{
+    color: #1c1c1c8a;
+    font-size: 22px;
+}
+@media screen and (max-width:767px){
+    .main-footer {
+        display: flex;
+        flex-direction: column;
+    }
+    .categories {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .art-category h3{
+        text-align: left;
+        margin: 0 0 5px 0;
+    }
+    .copyright-social{
+        flex-direction: column;
+        gap: 20px;
+    }
 }
 // button.btn.logout-button {
 //     color: #ffffff !important;

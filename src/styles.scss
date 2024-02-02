@@ -71,6 +71,12 @@ h1, h2, h3, h4, h5, h6, li, a, span, p, label, button, table {
 .mt-30{
   margin-top: 30px;
 }
+.mt-25{
+  margin-top: 25px;
+}
+.mb-20{
+  margin-bottom: 20px;
+}
 .mb-34{
   margin-bottom: 34px;
 }
@@ -94,6 +100,9 @@ h1, h2, h3, h4, h5, h6, li, a, span, p, label, button, table {
 }
 .py-20{
   padding-top: 10px;
+  padding-bottom: 20px;
+}
+.pb-20{
   padding-bottom: 20px;
 }
 .px-16{
@@ -126,4 +135,7 @@ h1, h2, h3, h4, h5, h6, li, a, span, p, label, button, table {
 }
 .pt-45{
   padding-top: 45px;
+}
+.pt-20{
+  padding-top: 20px;
 }
