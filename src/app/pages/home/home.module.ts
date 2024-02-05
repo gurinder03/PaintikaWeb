@@ -25,7 +25,6 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { RequirmentPaintComponent } from './requirment-paint/requirment-paint.component';
-import { AddAddressComponent } from './add-address/add-address.component';
 import { OrderStatusComponent } from './order-status/order-status.component';
 import { ViewOrderComponent } from './view-order/view-order.component';
 import { ArtistOrderListComponent } from './artist-order-list/artist-order-list.component';
@@ -51,7 +50,6 @@ import { TestimonialComponent } from './testimonial/testimonial.component';
     UploadPaintComponent,
     ProductListComponent,
     RequirmentPaintComponent,
-    AddAddressComponent,
     OrderStatusComponent,
     ViewOrderComponent,
     ArtistOrderListComponent,

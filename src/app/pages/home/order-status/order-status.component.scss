@@ -4,10 +4,13 @@ html, body {
 }
 p.text-muted a {
     text-decoration: none;
-    background: #000000;
+    background: red;
     color: #ffffff;
+    font-weight: 500;
+    font-size: 17px;
+    border: 1px solid red;
+    border-radius: 44px;
     padding: 8px 12px;
-    border-radius: 10px;
 }
 p.text-muted a:hover{
   background-color: lightgray;

@@ -16,7 +16,7 @@
     position: absolute;
     width: 194px;
     height: 3px;
-    background: #000000;
+    background: red;
     left: 39%;
     top: 95%;
 }
@@ -31,16 +31,19 @@ p{
 }
 .delivery-pin-code a {
     text-decoration: none;
-    border: 1px solid #e0e0e0;
-    background-color: #000000;
-    // border-radius: 4px; 
     padding: 10px 16px;
+    background: red;
     color: #ffffff;
-    cursor: pointer;
     font-weight: 500;
+    width: 289px;
+    height: 45px;
+    font-size: 17px;
+    border: 1px solid red;
+    border-radius: 44px;
 }
 .delivery-pin-code a:hover{
-    background-color: lightgray;
+   background-color: #fff;
+   color: red;
 }
 .product-img img {
     width: 100%;
@@ -92,14 +95,19 @@ input[type="text"] {
 }
 .place-order a{
     text-decoration: none;
-    background: #000000;
-    box-shadow: 0 1px 2px 0 rgba(0,0,0,.2);
-    border: none;
-    color: #fff;
-    padding: 13px 56px;
+    background: red;
+    color: #ffffff;
+    font-weight: 500;
+    width: 289px;
+    height: 45px;
+    font-size: 17px;
+    border: 1px solid red;
+    border-radius: 44px;
+    padding: 10px 56px;
 }
 .place-order a:hover{
-    background: lightgray;
+    background: #fff;
+    color: red;
 }
 .place-order{
     background: lightgray;

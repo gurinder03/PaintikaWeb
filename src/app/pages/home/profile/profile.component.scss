@@ -9,14 +9,19 @@ body {
 .full-w{
     width: 100%;
 }
-mat-label.gender-label {
+.gender-label {
     color: rgba(0, 0, 0, 0.6);
     font-size: 17px;
 }
 .profile-button {
-    background: #000000;
-    box-shadow: none;
-    border: none
+    background: red;
+    color: #ffffff;
+    font-weight: 500;
+    width: 289px;
+    height: 45px;
+    font-size: 17px;
+    border: 1px solid red;
+    border-radius: 44px;
 }
 h4.text-center.profile-heading {
     font-size: 28px;
@@ -27,17 +32,15 @@ span.exprnc-hdng {
     font-weight: 600;
 }
 .profile-button:hover {
-    background: lightgray
+    background: #fff;
+    color:red;
+    border: 1px solid red;
 }
 
 .profile-button:focus {
-    background: #000000;
-    box-shadow: none
-}
-
-.profile-button:active {
-    background: #682773;
-    box-shadow: none
+    background: #fff;
+    box-shadow: color red;
+    border: 1px solid red;
 }
 
 .back:hover {

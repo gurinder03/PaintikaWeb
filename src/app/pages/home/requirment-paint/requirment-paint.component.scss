@@ -22,9 +22,11 @@ button.requirement-btn {
     background: red;
     color: #ffffff;
     font-weight: 500;
-    padding: 9px 18px;
+    width: 289px;
+    height: 45px;
     font-size: 17px;
     border: 1px solid red;
+    border-radius: 44px;
 }
 button.requirement-btn:hover{
     background-color: #fff;

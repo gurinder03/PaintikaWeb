@@ -8,20 +8,17 @@
     width: 100%;
     background: #009579;
   }
-  .container {
-    padding: 1rem 2rem 2rem 2rem;
-  }
-  .container{
-    // position: absolute;
-    // top: 50%;
-    // left: 50%;
-    // transform: translate(-50%,-50%);
-    max-width: 430px;
+  .container{ 
     width: 100%;
     background: #fff;
     border-radius: 7px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.3);
     margin: 4% auto;
+  }
+  .forgot-image{
+    background-image: url(../../../../assets/images/forgot-password.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   .full-w{
     width: 100% !important;
@@ -36,11 +33,13 @@
       text-align: center;
   }
   button.send-btn {
-    width: 100%;
-    height: 38px;
-    color: #ffffff;
-    background: #000000;
-    font-size: 18px;
+    width: 289px;
+    height: 45px;
+    background: red;
+    border-radius: 44px;
+    font-size: 16px;
+    color: #fff;
+    border: none;
   }
   .back-to-login {
     margin-bottom: 4px;
@@ -52,8 +51,9 @@
     margin-top: 30px;
   }
   button.send-btn:hover{
-    background: lightgray;
-    color:#000000;
+    background: #fff;
+    color: red;
+    border: 1px solid red;
   }
   label.email-label {
     font-size: 20px;
@@ -62,8 +62,15 @@
   .fa-4x {
     font-size: 3em !important;
   }
-
-
+  .w-30{
+    width: 30%;
+  }
+  .w-70{
+    width: 70%;
+  }
+  i.lock-icon{
+    color: red;
+}
 
 // toggle switch css
 .switch {
@@ -104,11 +111,11 @@
   transition: .4s;
 }
 input:checked + .slider {
-  background-color: green;
+  background-color: red;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px green;
+  box-shadow: 0 0 1px red;
 }
 
 input:checked + .slider:before {
@@ -135,3 +142,25 @@ span.hdng {
 }
 
 // toggle switch css end
+
+@media screen and (max-width:991px){
+  .forgot-image{
+    display: none;
+  }
+  .login{
+    width: 100%;
+  }
+}
+@media screen and (max-width:767px){
+  form{
+    padding: 0 10px !important;
+  }
+  .back-to-login,.toggle-switch{
+    padding: 0 10px !important;
+  }
+}
+@media screen and (max-width:400px){
+  label.email-label {
+    font-size: 13px;
+}
+}

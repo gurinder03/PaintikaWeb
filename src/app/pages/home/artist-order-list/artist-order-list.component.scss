@@ -27,11 +27,16 @@ table {
 }
 
 .update-btn {
-  background: #000000;
-  color: #000000;
+  background: red;
+  color: #fff;
   margin-right: 5px;
   color: #ffffff;
-
+  border: 1px solid red;
+}
+.update-btn:hover{
+  background-color: #fff;
+  color: red;
+  border: 1px solid red;
 }
 
 .edit-btn {

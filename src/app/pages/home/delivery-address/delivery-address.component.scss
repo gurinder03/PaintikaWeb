@@ -32,21 +32,29 @@ label.radio-level {
     width: 100%;
 }
 button.continue{
-    background: #000000;
-    font-size: 20px;
-    padding: 10px 10px;
+    background: red;
     color: #ffffff;
+    font-weight: 500;
+    width: 289px;
+    height: 45px;
+    font-size: 17px;
+    border: 1px solid red;
+    border-radius: 44px;
 }
 .update-btn{
-    background: #000000;
-    font-size: 20px;
-    padding: 10px 10px;
+    background: red;
     color: #ffffff;
-    margin-left: 5px;
+    font-weight: 500;
+    width: 289px;
+    height: 45px;
+    font-size: 17px;
+    border: 1px solid red;
+    border-radius: 44px;
 }
 button.continue:hover,.update-btn:hover {
-    background: lightgray;
-    color: #000000;
+    background: #fff;
+    color: red;
+    border: 1px solid red;
 }
 @media screen and (max-width:409px){
     .current-location a{

@@ -105,11 +105,18 @@ img.img-responsive {
 }
 a, a:hover {
      text-decoration: none;
+
+}
+a{
+    color: #000;
 }
 
 .dropdown {
     position: relative;
     display: inline-block;
+}
+ul.main-navigation-list li a.main-nav-lnk{
+    border-bottom: 2px solid #fff;
 }
 
 ul.main-navigation-list li:hover a.main-nav-lnk {
@@ -134,7 +141,7 @@ ul.main-navigation-list li:hover a.main-nav-lnk {
     background-color: #fff;
     min-width: 120px;
     box-shadow: 0 8px 16px #0003;
-    z-index: 2;
+    z-index: 999;
     left: 0;
 }
 .dropdown-content {
@@ -181,6 +188,59 @@ ul.main-navigation-list li:hover a.main-nav-lnk {
     line-height: 26px;
     color: #333;
 }
+.btn-cart{
+    border: none;
+    padding: 0 10px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 26px;
+    color: #333;
+}
+.after-login{
+    gap: 10px;
+    justify-content:center;
+    align-items: center;
+}
+.after-mobile{
+    gap: 5px !important;
+    justify-content: center;
+    align-items: baseline;
+}
+.user-symbol{
+    width: 24px;
+    height: 24px;
+    background: red;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    color: #fff;
+}
+.profile-list{
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 170px;
+    box-shadow: 0 8px 16px #0003;
+    z-index: 999;
+    right: 5%;
+    top: 28px;
+    padding: 0;
+}
+
+.user-symbol:hover .profile-list{
+    display: block;
+}
+.profile-list a{
+    color: #000;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block!important;
+    line-height: 1;
+    font-weight: 500;
+}
 button {
     color: #212529;
     background-color: #fff;
@@ -188,29 +248,30 @@ button {
 }
 .flex-content {
     display: flex;
-    min-width: 1200px;
-    max-width: 1500px;
+    min-width: 300px;
+    max-width: 300px;
     margin: 0 auto;
     align-items: center;
     justify-content: center;
     padding: 0 20px;
 }
 .flex-inner-content {
-    flex-basis: 1200px;
-    max-width: 1200px;
+    flex-basis: 900px;
+    max-width: 900px;
 }
 
 .search-input {
     position: relative;
 }
 .global-search {
-    width: 60%;
+    width: 100%;
     position: absolute;
     background-color:#fff;
     box-shadow: 0 0 6px #00000029;
     z-index: 1;
-    right: -50px;
+    right: -50%;
     top: -8px;
+    transform: translateX(100%);
 }
 .global-search-input {
     position: relative;
@@ -354,6 +415,21 @@ button {
     }
 }
 
+@media screen and (max-width:1000px){
+    .global-search{
+        transform:translateX(0)
+    }
+}
+@media screen and (max-width:700px){
+    .global-search{
+        right: 0;
+    }
+}
+@media screen and (max-width:400px){
+    .global-search{
+        width: 250px;
+    }
+}
 
 
 // button.btn.logout-button {
