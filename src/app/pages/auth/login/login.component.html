@@ -1,10 +1,44 @@
-<div class="container" style="background-color: #f0f0f0 !important;">
+<div class="container d-flex" >
+    <div class="login-image w-50">
+    </div>
     <mat-card class="login form">
         <mat-card-title class="login-heading mb-2 justify-content-center d-flex">
-           <p *ngIf="fun.getAdminVal">Admin</p>&nbsp;<p class="text-center">Login</p> 
+           <p *ngIf="fun.getAdminVal">Admin</p>&nbsp;<p class="text-center">Login With Paintika</p> 
         </mat-card-title>
-        <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
-            <mat-form-field class="full-w ">
+        <div class="social-account " *ngIf="!fun.getAdminVal && checkUserType !== 'ARTIST'">
+            <div class="social-icons">
+                <div class="google-icon">
+                    <span>
+                        <asl-google-signin-button></asl-google-signin-button>
+                    </span>
+                   <span class="text">
+                    <p class="icon-text">
+                        Login With Google
+                    </p>
+                   </span>
+                </div>    
+                <span class="facebook-icon ">
+                    <mat-icon svgIcon="facebook ">
+                        <a href="javascript:void(0);" (click)="facebookLogin()">
+                            <img src="./assets/images/facebook-icon.png">
+                        </a>
+                    </mat-icon>
+                    <span class="text">
+                        <p class="icon-text">
+                            Login With Facebook
+                        </p>
+                    </span>
+                </span>
+                         
+            </div>
+        </div>
+        <div class="using-email d-flex justify-content-center">
+            <span class="border"></span>
+            <span class="email-text">Or LogIn Using Email/Mobile</span>
+            <span class="border"></span>
+        </div>
+        <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="px-5">
+            <mat-form-field class="full-w email-field ">
                 <mat-label>Email or Mobile Number</mat-label>
                 <input matInput formControlName="email_or_mobile_number" placeholder="Email or Mobile Number">
                 <mat-error *ngIf="loginForm.controls['email_or_mobile_number'].hasError('required')">
@@ -44,29 +78,15 @@
                     </mat-icon>
                 </a>
             </div>
-            <button type="submit" mat-raised-button color="primary" class="login-btn mb-3 ">Login</button>
+            <div class="btn-main d-flex justify-content-center">
+                <button type="submit" mat-raised-button color="primary" class="login-btn mb-3 ">Login</button>
+            </div>
+            
         </form>
         <div class="have-account  mt-2" *ngIf="!fun.getAdminVal">
             <span> Don't have an account ? <a (click)="goToSignUp()">Sign Up</a></span>
         </div>
-        <div class="social-account " *ngIf="!fun.getAdminVal && checkUserType !== 'ARTIST'">
-            <span>
-                Or login with social account
-            </span>
-            <div class="social-icons">
-                <span class="facebook-icon ">
-                    <mat-icon svgIcon="facebook ">
-                        <a href="javascript:void(0);" (click)="facebookLogin()">
-                            <img src="./assets/images/facebook-icon.png">
-                        </a>
-                    </mat-icon>
-                </span>
-                <span class="google-icon">
-                    <asl-google-signin-button></asl-google-signin-button>
-                </span>              
-            </div>
-            <br>
-        </div>
+       
     </mat-card>
 </div>
 <div>
