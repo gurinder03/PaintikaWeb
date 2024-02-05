@@ -8,13 +8,14 @@ import { ApiService } from 'src/app/core/services/api.service';
 import { NavigationRouteService } from 'src/app/core/services/navigation-route.service';
 
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
 
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit {;
 
   selectedRange: string = '';
   pageIndex: number = 1;
@@ -51,6 +52,7 @@ export class DashboardComponent implements OnInit {
     nav: true
   }
   data: any = []
+
   constructor(
     private api: ApiService,
     public toast: ToastrService,
@@ -65,7 +67,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getData()
+    this.getData()  
   }
 
   applyFilter(event: Event){

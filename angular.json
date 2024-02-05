@@ -101,9 +101,13 @@
               "src/styles.scss",
               "node_modules/sweetalert2/src/sweetalert2.scss",
               "node_modules/animate.css/animate.min.css"
+
+
+  
             ],
             
-            "scripts": []
+            "scripts": [
+            ]
           }
         }
       }

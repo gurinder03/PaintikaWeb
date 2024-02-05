@@ -24,6 +24,7 @@ import { environment } from 'src/environments/environment';
 
 
 
+
 initializeApp(environment.firebase);
 
 @NgModule({
@@ -51,7 +52,8 @@ initializeApp(environment.firebase);
     BrowserAnimationsModule,
     MatCardModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
