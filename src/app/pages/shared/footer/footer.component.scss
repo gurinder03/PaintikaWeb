@@ -18,6 +18,10 @@ h3.slogan {
     color: #717171;
     padding: 6px 0;
     text-align: center;
+    font-weight: 500;
+}
+.main-cat{
+    font-weight: 600;
 }
 .art-category h3{
     text-align: center;
@@ -42,6 +46,7 @@ h3.slogan {
     color: #1c1c1c8a;
     font-size: 22px;
 }
+
 @media screen and (max-width:767px){
     .main-footer {
         display: flex;
@@ -49,7 +54,7 @@ h3.slogan {
     }
     .categories {
         display: flex;
-        justify-content: space-between;
+        gap: 15px;
         flex-wrap: wrap;
     }
     .art-category h3{

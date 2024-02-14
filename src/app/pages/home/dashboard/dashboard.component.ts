@@ -9,6 +9,7 @@ import { NavigationRouteService } from 'src/app/core/services/navigation-route.s
 
 
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -58,7 +59,7 @@ export class DashboardComponent implements OnInit {;
     public toast: ToastrService,
     private auth: AuthencationService,
     public navCtrl: NavigationRouteService,
-    public raute:Router
+    public raute:Router,
   ){
     let userData = this.auth.getUserData();
     if( auth.isAuthenticated() && userData && userData.role === "ADMIN"){

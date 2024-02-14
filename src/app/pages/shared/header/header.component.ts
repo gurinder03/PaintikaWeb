@@ -43,4 +43,5 @@ export class HeaderComponent {
   cartLogin(){
     this.router.navigate(['/auth/login']);
   }
+
 }

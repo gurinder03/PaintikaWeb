@@ -24,7 +24,7 @@
                         <div class="user-login-menu-section">
                             <ul class="user-sub-menu-list">
                                 <li class="user-login-sub-menu-list-item">
-                                    <a href="javascript:vid(0)" class="current-link my-profile-link">Log In
+                                    <a [routerLink]="['/auth/login']" class="current-link my-profile-link">Log In
                                     </a>
                                 </li>
                                 <li class="user-login-sub-menu-list-item">
@@ -192,7 +192,7 @@
             </span>
         </div>
         <div class="header-notif">
-                <button class="login btn-login ">LogIn</button>
+                <button  class="login btn-login ">LogIn</button>
         </div>
         <div class="header-notif">
                 <button class="login btn-login ">SignUp</button>
