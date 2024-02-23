@@ -7,12 +7,12 @@ import { Component, ElementRef } from '@angular/core';
 })
 export class ProjectsComponent {
 
-  transitionClass = false;
+  expandedCardIndex: number | null = null;
 
   constructor(public ele: ElementRef){}
 
-  toggleClass() {
-    this.transitionClass = !this.transitionClass;
+  toggleClass(index: number) {
+    this.expandedCardIndex = this.expandedCardIndex === index ? null : index;
   }
 
 }

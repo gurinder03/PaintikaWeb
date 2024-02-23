@@ -33,7 +33,6 @@ initializeApp(environment.firebase);
     AdminLoginComponent,
     AdminHeaderComponent,
     AdminFooterComponent,
-
   ],
   imports: [
     BrowserModule,

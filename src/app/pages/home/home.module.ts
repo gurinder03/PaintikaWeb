@@ -37,7 +37,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
-
+import {MatSliderModule} from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -80,7 +80,8 @@ import { TestimonialComponent } from './testimonial/testimonial.component';
     MatDatepickerModule,
     MatSortModule,
     MatNativeDateModule,
-    MatTableModule
+    MatTableModule,
+    MatSliderModule
   ],
   providers: [WindowRefService]
 })

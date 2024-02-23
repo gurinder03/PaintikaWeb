@@ -17,93 +17,22 @@
       <div class="category mt-60">
         <div class="home-catgry">
           <h2 class="catgry-sub-titl">Explore by Category</h2>
-          <ul class="category-grid pl-0 mt-34 lp-catg-load row ">
-            <li class="category-list col-lg-3 col-md-4 col-sm-6 my-2">
-              <a href="javascript:void(0)" class="catgry-list catgryList">
+          <ul class="category-grid pl-0 mt-34 lp-catg-load row " *ngIf="data && data.length > 0">
+            <li class="category-list col-lg-3 col-md-4 col-sm-6 my-2" *ngFor="let cate of data">
+              <a href="javascript:void(0)" (click)="getMore(cate)" class="catgry-list catgryList">
                 <div class="card-img catgry-img">
-                  <img src="https://arts.mojarto.com/siteImages/category/99539/web/78/99539.jpg"
-                    alt="Category Sculpture" title="Sculpture">
+                  <img [src]="cate.image" alt="Category Sculpture" title="Sculpture">
                 </div>
                 <div class="catgry-titl ml-24">
-                  <h3>Sculpture</h3>
+                  <h3>{{cate?.name}}</h3>
                   <span class="fs-13 cate-sub-tlt fw-500">426 Sculptures</span>
                 </div>
               </a>
             </li>
-            <li class="category-list col-lg-3 col-md-4 col-sm-6 my-2">
-              <a href="javascript:void(0)" class="catgry-list catgryList">
-                <div class="card-img catgry-img">
-                  <img src="https://arts.mojarto.com/siteImages/category/99545/web/78/99545.jpg"
-                    alt="Category Serigraph" title="Serigraph">
-                </div>
-                <div class="catgry-titl ml-24">
-                  <h3>Paintings</h3>
-                  <span class="fs-13 cate-sub-tlt fw-500">354 Paintings</span>
-                </div>
-              </a>
-            </li>
-            <li class="category-list col-lg-3 col-md-4 col-sm-6 my-2">
-              <a href="javascript:void(0)" class="catgry-list catgryList">
-                <div class="card-img catgry-img">
-                  <img src="https://arts.mojarto.com/siteImages/category/99543/web/78/99543.jpg" alt="Category Drawing"
-                    title="Drawing">
-                </div>
-                <div class="catgry-titl ml-24">
-                  <h3>Photography</h3>
-                  <span class="fs-13 cate-sub-tlt fw-500">655 Photography</span>
-                </div>
-              </a>
-            </li>
-            <li class="category-list col-lg-3 col-md-4 col-sm-6 my-2">
-              <a href="javascript:void(0)" class=" catgry-list catgryList">
-                <div class="card-img catgry-img">
-                  <img src="https://arts.mojarto.com/siteImages/category/99538/web/78/99538.jpg" alt="Category Painting"
-                    title="Painting">
-                </div>
-                <div class="catgry-titl ml-24">
-                  <h3>Graffiti</h3>
-                  <span class="fs-13 cate-sub-tlt fw-500">12904 Graffiti</span>
-                </div>
-              </a>
-            </li>
-            <li class="category-list col-lg-3 col-md-4 col-sm-6 my-2">
-              <a href="javascript:void(0)" class=" catgry-list catgryList">
-                <div class="card-img catgry-img">
-                  <img src="https://arts.mojarto.com/siteImages/category/99542/web/78/99542.jpg"
-                    alt="Category Printmaking" title="Printmaking">
-                </div>
-                <div class="catgry-titl ml-24">
-                  <h3>Printmaking</h3>
-                  <span class="fs-13 cate-sub-tlt fw-500">397 Prints</span>
-                </div>
-              </a>
-            </li>
-            <li class="category-list col-lg-3 col-md-4 col-sm-6 my-2">
-              <a href="javascript:void(0)" class=" catgry-list catgryList">
-                <div class="card-img catgry-img">
-                  <img src="https://arts.mojarto.com/siteImages/category/99540/web/78/99540.jpg"
-                    alt="Category Photography" title="Photography">
-                </div>
-                <div class="catgry-titl ml-24">
-                  <h3>Photography</h3>
-                  <span class="fs-13 cate-sub-tlt fw-500">733 Photographs</span>
-                </div>
-              </a>
-            </li>
-            <li class="category-list col-lg-3 col-md-4 col-sm-6 my-2">
-              <a href="javascript:void(0)" class=" catgry-list catgryList">
-                <div class="card-img catgry-img">
-                  <img src="https://arts.mojarto.com/siteImages/category/99541/web/78/99541.jpg"
-                    alt="Category Digital art" title="Digital art">
-                </div>
-                <div class="catgry-titl ml-24">
-                  <h3>Digital art</h3>
-                  <span class="fs-13 cate-sub-tlt fw-500">397 Digital arts</span>
-                </div>
-              </a>
-            </li>
-
           </ul>
+          <h1 class="text-center" *ngIf="data && data.length == 0">
+            No Record Found!
+          </h1>
         </div>
       </div>
       <div class="home-curated-collection mt-60">
@@ -113,342 +42,572 @@
           <a href="javascript:void(0)">View All</a>
         </div>
         <div>
-     
-          
-         
-        
-        </div>
-      <div class="home-art-price mt-60">
-        <div class="artprice">
-          <h2 class="artprice-title mb-34">Art By Price</h2>
-          <ul class="content mt-20">
-            <li class="art-price-list-item">
-              <a href="javascript:void(0)">
-                <span class="fw-500">Under ₹ 10,000</span>
-              </a>
-            </li>
-            <li class="art-price-list-item">
-              <a href="javascript:void(0)">
-                <span class="fw-500">₹ 10,000 - ₹ 50,000</span>
-              </a>
-            </li>
-            <li class="art-price-list-item">
-              <a href="javascript:void(0)">
-                <span class="fw-500">₹ 50,000 - ₹ 1,00,000</span>
-              </a>
-            </li>
-            <li class="art-price-list-item">
-              <a href="javascript:void(0)">
-                <span class="fw-500">₹ 1,00,000 - ₹ 3,00,000</span>
-              </a>
-            </li>
-            <li class="art-price-list-item">
-              <a href="javascript:void(0)">
-                <span class="fw-500">₹ 3,00,000 - ₹ 5,00,000</span>
-              </a>
-            </li>
-            <li class="art-price-list-item">
-              <a href="javascript:void(0)">
-                <span class="fw-500">₹ 5,00,000 - Above</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="home-need-to-see mt-60 landing-need-to-see">
-        <div class="d-flex art-displ-titl justify-content-between">
-          <h2 class="fw-500 art-sub-titl mb-34">Everything you need to see</h2>
-          <a href="javascript:void(0)">View All</a>
-        </div>
-        <div class="tab-content mt-20">
-          <div class="tab-control">
-            <div class="tabs">
-              <button type="button" class="tab selected">
-                <span slot="title">New Arrivals</span>
-              </button>
-              <button type="button" class="tab">
-                <span slot="title">Paintika Picks</span>
-              </button>
-              <button type="button" class="tab">
-                <span slot="title">Choose by Color</span>
-              </button>
-              <button type="button" class="tab">
-                <span slot="title">Explore by Medium</span>
-              </button>
-              <button type="button" class="tab">
-                <span slot="title">Prints for You</span>
-              </button>
-            </div>
-            <div class="paintings-container">
-              <div class="paintings-section">
-                <ul class="row pl-0">
-                  <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
-                    <a href="javascript:void(0)">
-                      <div class="artwork-image">
-                        <img src="./assets/images/nature.jpg" width="282" height="280">
-                      </div>
-                    </a>
-                    <div class="detail-card">
-                      <div class="artwork-title">
-                        <h3 class="fs-13" title="The Eternal Flute">The Eternal Flute</h3>
-                        <span class="fs-13 fw-500 colorDGray artist-hover">By Subir Kayal</span>
-                        <div class="d-flex justify-content-between">
-                          <div class="medium w-65 pr-5">
-                            <p class="product-artwork fw-500 fs-13 mt-20 mb-0">
-                              Painitng
-                            </p>
-                            <span class="fs-13 fw-500 medium-name-text-oflow" title="Acrylic on Paper">Acrylic on
-                              Paper</span>
-                          </div>
-                          <div class="w-35 artwork-discount">
-                            <div class="precent-amount">
-                              <span class="fs-13 d-block  product-discount fw-600">
-                                20% OFF
-                              </span>
-                              <span class="fs-13 d-block list-price product-amount">
-                                ₹ 1,20,000
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="product-size-amount d-flex justify-content-between">
-                          <span class="product-size fw-500 fs-13 colorDGray">
-                            24 X 24 In
-                          </span>
-                          <span class="product-amount fw-600 colorblack fs-14">
-                            ₹ 89,600
-                          </span>
-                        </div>
-                      </div>
-                      <div class="favourite-addcart-section d-flex justify-content-between w-100">
-                        <div class="favourite-icon d-flex justify-content-center">
-                          <span class="bi bi-heart-fill pro-fav-clr"></span>
-                        </div>
-                        <div class="add-to-cart-icon">
-                          <span class="bi bi-cart-fill pro-cart-clr"></span>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
-                    <a href="javascript:void(0)">
-                      <div class="artwork-image">
-                        <img src="./assets/images/hut.jpg" width="282" height="280">
-                      </div>
-                    </a>
-                    <div class="detail-card">
-                      <div class="artwork-title">
-                        <h3 class="fs-13" title="The Eternal Flute">The Eternal Flute</h3>
-                        <span class="fs-13 fw-500 colorDGray artist-hover">By Subir Kayal</span>
-                        <div class="d-flex justify-content-between">
-                          <div class="medium w-65 pr-5">
-                            <p class="product-artwork fw-500 fs-13 mt-20 mb-0">
-                              Painitng
-                            </p>
-                            <span class="fs-13 fw-500 medium-name-text-oflow" title="Acrylic on Paper">Acrylic on
-                              Paper</span>
-                          </div>
-                          <div class="w-35 artwork-discount">
-                            <div class="precent-amount">
-                              <span class="fs-13 d-block  product-discount fw-600">
-                                20% OFF
-                              </span>
-                              <span class="fs-13 d-block list-price product-amount">
-                                ₹ 1,20,000
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="product-size-amount d-flex justify-content-between">
-                          <span class="product-size fw-500 fs-13 colorDGray">
-                            24 X 24 In
-                          </span>
-                          <span class="product-amount fw-600 colorblack fs-14">
-                            ₹ 89,600
-                          </span>
-                        </div>
-                      </div>
-                      <div class="favourite-addcart-section d-flex justify-content-between w-100">
-                        <div class="favourite-icon d-flex justify-content-center">
-                          <span class="bi bi-heart-fill pro-fav-clr"></span>
-                        </div>
-                        <div class="add-to-cart-icon">
-                          <span class="bi bi-cart-fill pro-cart-clr"></span>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
-                    <a href="javascript:void(0)">
-                      <div class="artwork-image">
-                        <img src="./assets/images/animal.jpg" width="282" height="280">
-                      </div>
-                    </a>
-                    <div class="detail-card">
-                      <div class="artwork-title">
-                        <h3 class="fs-13" title="The Eternal Flute">The Eternal Flute</h3>
-                        <span class="fs-13 fw-500 colorDGray artist-hover">By Subir Kayal</span>
-                        <div class="d-flex justify-content-between">
-                          <div class="medium w-65 pr-5">
-                            <p class="product-artwork fw-500 fs-13 mt-20 mb-0">
-                              Painitng
-                            </p>
-                            <span class="fs-13 fw-500 medium-name-text-oflow" title="Acrylic on Paper">Acrylic on
-                              Paper</span>
-                          </div>
-                          <div class="w-35 artwork-discount">
-                            <div class="precent-amount">
-                              <span class="fs-13 d-block  product-discount fw-600">
-                                20% OFF
-                              </span>
-                              <span class="fs-13 d-block list-price product-amount">
-                                ₹ 1,20,000
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="product-size-amount d-flex justify-content-between">
-                          <span class="product-size fw-500 fs-13 colorDGray">
-                            24 X 24 In
-                          </span>
-                          <span class="product-amount fw-600 colorblack fs-14">
-                            ₹ 89,600
-                          </span>
-                        </div>
-                      </div>
-                      <div class="favourite-addcart-section d-flex justify-content-between w-100">
-                        <div class="favourite-icon d-flex justify-content-center">
-                          <span class="bi bi-heart-fill pro-fav-clr"></span>
-                        </div>
-                        <div class="add-to-cart-icon">
-                          <span class="bi bi-cart-fill pro-cart-clr"></span>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
-                    <a href="javascript:void(0)">
-                      <div class="artwork-image">
-                        <img src="./assets/images/nature.jpg" width="282" height="280">
-                      </div>
-                    </a>
-                    <div class="detail-card">
-                      <div class="artwork-title">
-                        <h3 class="fs-13" title="The Eternal Flute">The Eternal Flute</h3>
-                        <span class="fs-13 fw-500 colorDGray artist-hover">By Subir Kayal</span>
-                        <div class="d-flex justify-content-between">
-                          <div class="medium w-65 pr-5">
-                            <p class="product-artwork fw-500 fs-13 mt-20 mb-0">
-                              Painitng
-                            </p>
-                            <span class="fs-13 fw-500 medium-name-text-oflow" title="Acrylic on Paper">Acrylic on
-                              Paper</span>
-                          </div>
-                          <div class="w-35 artwork-discount">
-                            <div class="precent-amount">
-                              <span class="fs-13 d-block  product-discount fw-600">
-                                20% OFF
-                              </span>
-                              <span class="fs-13 d-block list-price product-amount">
-                                ₹ 1,20,000
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="product-size-amount d-flex justify-content-between">
-                          <span class="product-size fw-500 fs-13 colorDGray">
-                            24 X 24 In
-                          </span>
-                          <span class="product-amount fw-600 colorblack fs-14">
-                            ₹ 89,600
-                          </span>
-                        </div>
-                      </div>
-                      <div class="favourite-addcart-section d-flex justify-content-between w-100">
-                        <div class="favourite-icon d-flex justify-content-center">
-                          <span class="bi bi-heart-fill pro-fav-clr"></span>
-                        </div>
-                        <div class="add-to-cart-icon">
-                          <span class="bi bi-cart-fill pro-cart-clr"></span>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
 
-                </ul>
-              </div>
-            </div>
+        </div>
+        <div class="home-art-price mt-60">
+          <div class="artprice">
+            <h2 class="artprice-title mb-34">Art By Price</h2>
+            <ul class="content mt-20">
+              <li class="art-price-list-item">
+                <a href="javascript:void(0)">
+                  <span class="fw-500">Under ₹ 10,000</span>
+                </a>
+              </li>
+              <li class="art-price-list-item">
+                <a href="javascript:void(0)">
+                  <span class="fw-500">₹ 10,000 - ₹ 50,000</span>
+                </a>
+              </li>
+              <li class="art-price-list-item">
+                <a href="javascript:void(0)">
+                  <span class="fw-500">₹ 50,000 - ₹ 1,00,000</span>
+                </a>
+              </li>
+              <li class="art-price-list-item">
+                <a href="javascript:void(0)">
+                  <span class="fw-500">₹ 1,00,000 - ₹ 3,00,000</span>
+                </a>
+              </li>
+              <li class="art-price-list-item">
+                <a href="javascript:void(0)">
+                  <span class="fw-500">₹ 3,00,000 - ₹ 5,00,000</span>
+                </a>
+              </li>
+              <li class="art-price-list-item">
+                <a href="javascript:void(0)">
+                  <span class="fw-500">₹ 5,00,000 - Above</span>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
-      </div>
-      <div class="mt-30 home-testimonial-list">
-        <div class="home-testimonial">
-          <div class="testimonial-ttl d-flex justify-content-between">
-            <h2 class="mb-34">Testimonial</h2>
+        <div class="home-need-to-see mt-60 landing-need-to-see">
+          <div class="d-flex art-displ-titl justify-content-between">
+            <h2 class="fw-500 art-sub-titl mb-34">Everything you need to see</h2>
             <a href="javascript:void(0)">View All</a>
           </div>
-          <div class="testimonial-grid row">
-            <div class="testimonial col-lg-4 col-md-6 col-sm-12 p-3">
-              <div class="testimonial-list d-flex">
-                <div class="testimonial-quote">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="quote-icon">
-                    <path
-                      d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V320 288 216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H320c-35.3 0-64-28.7-64-64V320 288 216z"
-                      fill="#fff" />
-                  </svg>
-                </div>
-                <div class="testimonial-content ml-24">
-                  <h3>Very Smooth Transection</h3>
-                  <span class="fw-500">By Amar Ajmera | Posted on 9 Jan 2024</span>
-                  <div class="art-tmol-content">
-                    <p class="cont-tmol"
-                      title="The Serigraph is amazing. Feels good to have an OP Sharma Serigraph. Very Smooth transaction.">
-                      The Serigraph is amazing. Feels good to have an OP Sharma Serigraph. Very Smooth transaction.</p>
-                  </div>
-                  <span class="tetmonl-boder"></span>
+          <div class="tab-content mt-20">
+            <div class="tab-control">
+              <div class="tabs">
+                <button type="button" [class.selected]="setNumValue == 1" (click)="everythingSee(1)" class="tab selected">
+                  <span slot="title">New Arrivals</span>
+                </button>
+                <button type="button" [class.selected]="setNumValue == 2" (click)="everythingSee(2)" class="tab">
+                  <span slot="title">Filter by Theme</span>
+                </button>
+                <button type="button" [class.selected]="setNumValue == 3" (click)="everythingSee(3)" class="tab">
+                  <span slot="title">Choose by Color</span>
+                </button>
+                <button type="button" [class.selected]="setNumValue == 4" (click)="everythingSee(4)" class="tab">
+                  <span slot="title">Explore by Medium</span>
+                </button>
+                <button type="button" [class.selected]="setNumValue == 5" (click)="everythingSee(5)" class="tab">
+                  <span slot="title">Prints of Origional Artworks</span>
+                </button>
+              </div>
+              <div class="paintings-container" *ngIf="setNumValue === 1">
+                <div class="paintings-section">
+                  <ul class="row pl-0">
+                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
+                      <a href="javascript:void(0)">
+                        <div class="artwork-image">
+                          <img src="./assets/images/nature.jpg" width="282" height="280">
+                        </div>
+                      </a>
+                      <div class="detail-card">
+                        <div class="artwork-title">
+                          <h3 class="fs-13" title="The Eternal Flute">The Eternal Flute</h3>
+                          <span class="fs-13 fw-500 colorDGray artist-hover">By Subir Kayal</span>
+                          <div class="d-flex justify-content-between">
+                            <div class="medium w-65 pr-5">
+                              <p class="product-artwork fw-500 fs-13 mt-20 mb-0">
+                                Painitng
+                              </p>
+                              <span class="fs-13 fw-500 medium-name-text-oflow" title="Acrylic on Paper">Acrylic on
+                                Paper</span>
+                            </div>
+                            <div class="w-35 artwork-discount">
+                              <div class="precent-amount">
+                                <!-- <span class="fs-13 d-block  product-discount fw-600">
+                                  20% OFF
+                                </span> 
+                                <span class="fs-13 d-block list-price product-amount">
+                                  ₹ 1,20,000
+                                </span>-->
+                              </div>
+                            </div>
+                          </div>
+                          <div class="product-size-amount d-flex justify-content-between">
+                            <span class="product-size fw-500 fs-13 colorDGray">
+                              24 X 24 In
+                            </span>
+                            <span class="product-amount fw-600 colorblack fs-14">
+                              ₹ 89,600
+                            </span>
+                          </div>
+                        </div>
+                        <div class="favourite-addcart-section d-flex justify-content-between w-100">
+                          <!-- <div class="favourite-icon d-flex justify-content-center">
+                            <span class="bi bi-heart-fill pro-fav-clr"></span>
+                          </div> -->
+                          <div class="add-to-cart-icon d-flex justify-content-center w-100">
+                            <span class="bi bi-cart-fill pro-cart-clr"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
+                      <a href="javascript:void(0)">
+                        <div class="artwork-image">
+                          <img src="./assets/images/hut.jpg" width="282" height="280">
+                        </div>
+                      </a>
+                      <div class="detail-card">
+                        <div class="artwork-title">
+                          <h3 class="fs-13" title="The Eternal Flute">The Eternal Flute</h3>
+                          <span class="fs-13 fw-500 colorDGray artist-hover">By Subir Kayal</span>
+                          <div class="d-flex justify-content-between">
+                            <div class="medium w-65 pr-5">
+                              <p class="product-artwork fw-500 fs-13 mt-20 mb-0">
+                                Painitng
+                              </p>
+                              <span class="fs-13 fw-500 medium-name-text-oflow" title="Acrylic on Paper">Acrylic on
+                                Paper</span>
+                            </div>
+                            <div class="w-35 artwork-discount">
+                              <div class="precent-amount">
+                                <!-- <span class="fs-13 d-block  product-discount fw-600">
+                                  20% OFF
+                                </span> 
+                                <span class="fs-13 d-block list-price product-amount">
+                                  ₹ 1,20,000
+                                </span>-->
+                              </div>
+                            </div>
+                          </div>
+                          <div class="product-size-amount d-flex justify-content-between">
+                            <span class="product-size fw-500 fs-13 colorDGray">
+                              24 X 24 In
+                            </span>
+                            <span class="product-amount fw-600 colorblack fs-14">
+                              ₹ 89,600
+                            </span>
+                          </div>
+                        </div>
+                        <div class="favourite-addcart-section d-flex justify-content-between w-100">
+                          <!-- <div class="favourite-icon d-flex justify-content-center">
+                            <span class="bi bi-heart-fill pro-fav-clr"></span>
+                          </div> -->
+                          <div class="add-to-cart-icon d-flex justify-content-center w-100">
+                            <span class="bi bi-cart-fill pro-cart-clr"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
+                      <a href="javascript:void(0)">
+                        <div class="artwork-image">
+                          <img src="./assets/images/animal.jpg" width="282" height="280">
+                        </div>
+                      </a>
+                      <div class="detail-card">
+                        <div class="artwork-title">
+                          <h3 class="fs-13" title="The Eternal Flute">The Eternal Flute</h3>
+                          <span class="fs-13 fw-500 colorDGray artist-hover">By Subir Kayal</span>
+                          <div class="d-flex justify-content-between">
+                            <div class="medium w-65 pr-5">
+                              <p class="product-artwork fw-500 fs-13 mt-20 mb-0">
+                                Painitng
+                              </p>
+                              <span class="fs-13 fw-500 medium-name-text-oflow" title="Acrylic on Paper">Acrylic on
+                                Paper</span>
+                            </div>
+                            <div class="w-35 artwork-discount">
+                              <div class="precent-amount">
+                                <!-- <span class="fs-13 d-block  product-discount fw-600">
+                                  20% OFF
+                                </span> 
+                                <span class="fs-13 d-block list-price product-amount">
+                                  ₹ 1,20,000
+                                </span>-->
+                              </div>
+                            </div>
+                          </div>
+                          <div class="product-size-amount d-flex justify-content-between">
+                            <span class="product-size fw-500 fs-13 colorDGray">
+                              24 X 24 In
+                            </span>
+                            <span class="product-amount fw-600 colorblack fs-14">
+                              ₹ 89,600
+                            </span>
+                          </div>
+                        </div>
+                        <div class="favourite-addcart-section d-flex justify-content-between w-100">
+                          <!-- <div class="favourite-icon d-flex justify-content-center">
+                            <span class="bi bi-heart-fill pro-fav-clr"></span>
+                          </div> -->
+                          <div class="add-to-cart-icon d-flex justify-content-center w-100">
+                            <span class="bi bi-cart-fill pro-cart-clr"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
+                      <a href="javascript:void(0)">
+                        <div class="artwork-image">
+                          <img src="./assets/images/nature.jpg" width="282" height="280">
+                        </div>
+                      </a>
+                      <div class="detail-card">
+                        <div class="artwork-title">
+                          <h3 class="fs-13" title="The Eternal Flute">The Eternal Flute</h3>
+                          <span class="fs-13 fw-500 colorDGray artist-hover">By Subir Kayal</span>
+                          <div class="d-flex justify-content-between">
+                            <div class="medium w-65 pr-5">
+                              <p class="product-artwork fw-500 fs-13 mt-20 mb-0">
+                                Painitng
+                              </p>
+                              <span class="fs-13 fw-500 medium-name-text-oflow" title="Acrylic on Paper">Acrylic on
+                                Paper</span>
+                            </div>
+                            <div class="w-35 artwork-discount">
+                              <div class="precent-amount">
+                                <!-- <span class="fs-13 d-block  product-discount fw-600">
+                                  20% OFF
+                                </span> 
+                                <span class="fs-13 d-block list-price product-amount">
+                                  ₹ 1,20,000
+                                </span>-->
+                              </div>
+                            </div>
+                          </div>
+                          <div class="product-size-amount d-flex justify-content-between">
+                            <span class="product-size fw-500 fs-13 colorDGray">
+                              24 X 24 In
+                            </span>
+                            <span class="product-amount fw-600 colorblack fs-14">
+                              ₹ 89,600
+                            </span>
+                          </div>
+                        </div>
+                        <div class="favourite-addcart-section d-flex justify-content-between w-100">
+                          <!-- <div class="favourite-icon d-flex justify-content-center">
+                            <span class="bi bi-heart-fill pro-fav-clr"></span>
+                          </div> -->
+                          <div class="add-to-cart-icon d-flex justify-content-center w-100">
+                            <span class="bi bi-cart-fill pro-cart-clr"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+  
+                  </ul>
                 </div>
               </div>
+              <div class="paintings-container" *ngIf="setNumValue === 2">
+                <div class="paintings-section">
+                  <ul class="row pl-0">
+                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
+                      <a href="javascript:void(0)">
+                        <div class="artwork-image position-relative">
+                          <img src="./assets/images/nature.jpg" width="282" height="280">
+                          <div class="overlay-blend position-absolute"></div>
+                          <div class="detail position-absolute">
+                            <h4>Mountains</h4>
+                            <h6>500 Artworks</h6>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
+                      <a href="javascript:void(0)">
+                        <div class="artwork-image position-relative">
+                          <img src="./assets/images/animal.jpg" width="282" height="280">
+                          <div class="overlay-blend position-absolute"></div>
+                          <div class="detail position-absolute">
+                            <h4>Animal</h4>
+                            <h6>500 Artworks</h6>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
+                      <a href="javascript:void(0)">
+                        <div class="artwork-image position-relative">
+                          <img src="./assets/images/flower.jpg" width="282" height="280">
+                          <div class="overlay-blend position-absolute"></div>
+                          <div class="detail position-absolute">
+                            <h4>Flowers</h4>
+                            <h6>500 Artworks</h6>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
+                      <a href="javascript:void(0)">
+                        <div class="artwork-image position-relative">
+                          <img src="./assets/images/bird.jpg" width="282" height="280">
+                          <div class="overlay-blend position-absolute"></div>
+                          <div class="detail position-absolute">
+                            <h4>Birds</h4>
+                            <h6>500 Artworks</h6>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
+                      <a href="javascript:void(0)">
+                        <div class="artwork-image position-relative">
+                          <img src="./assets/images/girl.jpg" width="282" height="280">
+                          <div class="overlay-blend position-absolute"></div>
+                          <div class="detail position-absolute">
+                            <h4>Human</h4>
+                            <h6>500 Artworks</h6>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
+                      <a href="javascript:void(0)">
+                        <div class="artwork-image position-relative">
+                          <img src="./assets/images/vehicle.jpg" width="282" height="280">
+                          <div class="overlay-blend position-absolute"></div>
+                          <div class="detail position-absolute">
+                            <h4>Vehicles</h4>
+                            <h6>500 Artworks</h6>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="paintings-container" *ngIf="setNumValue === 3">
+                <div class="paintings-section">
+                  <ul class="row pl-0">
+                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
+                      <a href="javascript:void(0)">
+                        <div class="artwork-image position-relative">
+                          <img src="./assets/images/nature.jpg" width="282" height="280">
+                          <div class="overlay-blend position-absolute"></div>
+                          <div class="detail position-absolute">
+                            <h4>Red</h4>
+                            <h6>500 Artworks</h6>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
+                      <a href="javascript:void(0)">
+                        <div class="artwork-image position-relative">
+                          <img src="./assets/images/animal.jpg" width="282" height="280">
+                          <div class="overlay-blend position-absolute"></div>
+                          <div class="detail position-absolute">
+                            <h4>Orange</h4>
+                            <h6>500 Artworks</h6>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
+                      <a href="javascript:void(0)">
+                        <div class="artwork-image position-relative">
+                          <img src="./assets/images/flower.jpg" width="282" height="280">
+                          <div class="overlay-blend position-absolute"></div>
+                          <div class="detail position-absolute">
+                            <h4>Yellow</h4>
+                            <h6>500 Artworks</h6>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
+                      <a href="javascript:void(0)">
+                        <div class="artwork-image position-relative">
+                          <img src="./assets/images/bird.jpg" width="282" height="280">
+                          <div class="overlay-blend position-absolute"></div>
+                          <div class="detail position-absolute">
+                            <h4>Brown</h4>
+                            <h6>500 Artworks</h6>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
+                      <a href="javascript:void(0)">
+                        <div class="artwork-image position-relative">
+                          <img src="./assets/images/girl.jpg" width="282" height="280">
+                          <div class="overlay-blend position-absolute"></div>
+                          <div class="detail position-absolute">
+                            <h4>Black & White</h4>
+                            <h6>500 Artworks</h6>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
+                      <a href="javascript:void(0)">
+                        <div class="artwork-image position-relative">
+                          <img src="./assets/images/vehicle.jpg" width="282" height="280">
+                          <div class="overlay-blend position-absolute"></div>
+                          <div class="detail position-absolute">
+                            <h4>Green</h4>
+                            <h6>500 Artworks</h6>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="paintings-container" *ngIf="setNumValue === 4">
+                <div class="paintings-section">
+                  <ul class="row pl-0">
+                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
+                      <a href="javascript:void(0)">
+                        <div class="artwork-image position-relative">
+                          <img src="./assets/images/nature.jpg" width="282" height="280">
+                          <div class="overlay-blend position-absolute"></div>
+                          <div class="detail position-absolute">
+                            <h4>Oil</h4>
+                            <h6>500 Artworks</h6>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
+                      <a href="javascript:void(0)">
+                        <div class="artwork-image position-relative">
+                          <img src="./assets/images/animal.jpg" width="282" height="280">
+                          <div class="overlay-blend position-absolute"></div>
+                          <div class="detail position-absolute">
+                            <h4>Acrylic</h4>
+                            <h6>500 Artworks</h6>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
+                      <a href="javascript:void(0)">
+                        <div class="artwork-image position-relative">
+                          <img src="./assets/images/flower.jpg" width="282" height="280">
+                          <div class="overlay-blend position-absolute"></div>
+                          <div class="detail position-absolute">
+                            <h4>Water Color</h4>
+                            <h6>500 Artworks</h6>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
+                      <a href="javascript:void(0)">
+                        <div class="artwork-image position-relative">
+                          <img src="./assets/images/bird.jpg" width="282" height="280">
+                          <div class="overlay-blend position-absolute"></div>
+                          <div class="detail position-absolute">
+                            <h4>Sketch</h4>
+                            <h6>500 Artworks</h6>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
+                      <a href="javascript:void(0)">
+                        <div class="artwork-image position-relative">
+                          <img src="./assets/images/girl.jpg" width="282" height="280">
+                          <div class="overlay-blend position-absolute"></div>
+                          <div class="detail position-absolute">
+                            <h4>Others</h4>
+                            <h6>500 Artworks</h6>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                   
+                  </ul>
+                </div>
+              </div>
+              <div class="paintings-container" *ngIf="setNumValue === 5">
+                
+                <div class="paintings-section">
+                  <h1>No Record Found!</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-30 home-testimonial-list">
+          <div class="home-testimonial">
+            <div class="testimonial-ttl d-flex justify-content-between">
+              <h2 class="mb-34">Testimonial</h2>
+              <!-- <a href="javascript:void(0)">View All</a> -->
+            </div>
+            <div class="testimonial-grid row">
+              <div class="testimonial col-lg-4 col-md-6 col-sm-12 p-3">
+                <div class="testimonial-list d-flex">
+                  <div class="testimonial-quote">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="quote-icon">
+                      <path
+                        d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V320 288 216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H320c-35.3 0-64-28.7-64-64V320 288 216z"
+                        fill="#fff" />
+                    </svg>
+                  </div>
+                  <div class="testimonial-content ml-24">
+                    <h3>Very Smooth Transection</h3>
+                    <span class="fw-500">By Amar Ajmera | Posted on 9 Jan 2024</span>
+                    <div class="art-tmol-content">
+                      <p class="cont-tmol"
+                        title="The Serigraph is amazing. Feels good to have an OP Sharma Serigraph. Very Smooth transaction.">
+                        The Serigraph is amazing. Feels good to have an OP Sharma Serigraph. Very Smooth transaction.
+                      </p>
+                    </div>
+                    <span class="tetmonl-boder"></span>
+                  </div>
+                </div>
 
-            </div>
-            <div class="testimonial col-lg-4 col-md-6 col-sm-12 p-3">
-              <div class="testimonial-list d-flex">
-                <div class="testimonial-quote">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="quote-icon">
-                    <path
-                      d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V320 288 216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H320c-35.3 0-64-28.7-64-64V320 288 216z"
-                      fill="#fff" />
-                  </svg>
-                </div>
-                <div class="testimonial-content ml-24">
-                  <h3>Very Smooth Transection</h3>
-                  <span class="fw-500">By Amar Ajmera | Posted on 9 Jan 2024</span>
-                  <div class="art-tmol-content">
-                    <p class="cont-tmol"
-                      title="The Serigraph is amazing. Feels good to have an OP Sharma Serigraph. Very Smooth transaction.">
-                      The Serigraph is amazing. Feels good to have an OP Sharma Serigraph. Very Smooth transaction.</p>
+              </div>
+              <div class="testimonial col-lg-4 col-md-6 col-sm-12 p-3">
+                <div class="testimonial-list d-flex">
+                  <div class="testimonial-quote">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="quote-icon">
+                      <path
+                        d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V320 288 216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H320c-35.3 0-64-28.7-64-64V320 288 216z"
+                        fill="#fff" />
+                    </svg>
                   </div>
-                  <span class="tetmonl-boder"></span>
+                  <div class="testimonial-content ml-24">
+                    <h3>Very Smooth Transection</h3>
+                    <span class="fw-500">By Amar Ajmera | Posted on 9 Jan 2024</span>
+                    <div class="art-tmol-content">
+                      <p class="cont-tmol"
+                        title="The Serigraph is amazing. Feels good to have an OP Sharma Serigraph. Very Smooth transaction.">
+                        The Serigraph is amazing. Feels good to have an OP Sharma Serigraph. Very Smooth transaction.
+                      </p>
+                    </div>
+                    <span class="tetmonl-boder"></span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="testimonial col-lg-4 col-md-6 col-sm-12 p-3">
-              <div class="testimonial-list d-flex">
-                <div class="testimonial-quote">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="quote-icon">
-                    <path
-                      d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V320 288 216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H320c-35.3 0-64-28.7-64-64V320 288 216z"
-                      fill="#fff" />
-                  </svg>
-                </div>
-                <div class="testimonial-content ml-24">
-                  <h3>Very Smooth Transection</h3>
-                  <span class="fw-500">By Amar Ajmera | Posted on 9 Jan 2024</span>
-                  <div class="art-tmol-content">
-                    <p class="cont-tmol"
-                      title="The Serigraph is amazing. Feels good to have an OP Sharma Serigraph. Very Smooth transaction.">
-                      The Serigraph is amazing. Feels good to have an OP Sharma Serigraph. Very Smooth transaction.</p>
+              <div class="testimonial col-lg-4 col-md-6 col-sm-12 p-3">
+                <div class="testimonial-list d-flex">
+                  <div class="testimonial-quote">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="quote-icon">
+                      <path
+                        d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V320 288 216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H320c-35.3 0-64-28.7-64-64V320 288 216z"
+                        fill="#fff" />
+                    </svg>
                   </div>
-                  <span class="tetmonl-boder"></span>
+                  <div class="testimonial-content ml-24">
+                    <h3>Very Smooth Transection</h3>
+                    <span class="fw-500">By Amar Ajmera | Posted on 9 Jan 2024</span>
+                    <div class="art-tmol-content">
+                      <p class="cont-tmol"
+                        title="The Serigraph is amazing. Feels good to have an OP Sharma Serigraph. Very Smooth transaction.">
+                        The Serigraph is amazing. Feels good to have an OP Sharma Serigraph. Very Smooth transaction.
+                      </p>
+                    </div>
+                    <span class="tetmonl-boder"></span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -457,9 +616,11 @@
       </div>
     </div>
   </div>
-</div>
 
-<!-- <div class="container-fluid">
+
+  
+
+  <!-- <div class="container-fluid">
   <div class="search-container justify-content-end">
 
     <form>

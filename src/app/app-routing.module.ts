@@ -43,9 +43,10 @@ const routes: Routes = [
     canLoad: [AuthGuard]
   },
   {
-    path: 'product-list/:productId',
+    // path: 'product-list/:productId',
+    path: 'product-list',
     component: ProductListComponent,
-    canLoad: [AuthGuard]
+    // canLoad: [AuthGuard]
   },  
   {
     path: 'projects',

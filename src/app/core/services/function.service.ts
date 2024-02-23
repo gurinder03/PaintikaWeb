@@ -11,6 +11,8 @@ import { environment } from 'src/environments/environment';
 export class FunctionService {
   cartCount: any;
   navValue: any = '1';
+  productId:any = []
+  searchBol: boolean = false
   public fbUserData: any;
   message:any = null;
   getAdminVal: boolean = false;

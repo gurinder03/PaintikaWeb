@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {;
   selectedRange: string = '';
   pageIndex: number = 1;
 	pageSize: number = 10;
+  setNumValue: number = 1;
 	length: number = 10;
   filterData: any = '';
   pagesData:any = {}
@@ -72,7 +73,6 @@ export class DashboardComponent implements OnInit {;
   }
 
   applyFilter(event: Event){
-    debugger
     const filterValue = (event.target as HTMLInputElement).value;
     let filter = filterValue.trim().toLowerCase();
     // let filteredData = this.data.filter((item: any) => {
@@ -87,15 +87,14 @@ export class DashboardComponent implements OnInit {;
     this.pagesData = ele;
     this.pageIndex = ele?.pageIndex ?? 0;
 		this.pageSize = ele?.pageSize ?? 10;
-
-		let pageSize = ele?.pageSize ?? 10;
 		let pageNumber = ele?.pageIndex ? ele.pageIndex + 1 : 1;
     let resData = {
 			page: pageNumber,
-			limit: pageSize,
+			limit: this.pageSize,
       filter: this.filterData
 		};
     this.api.productList(resData).then((res: any) => {
+      console.log('resresres =>', res);
       if (res && res.statusCode === 200) {
         this.data = res.data;
         this.length = res.total;
@@ -109,10 +108,22 @@ export class DashboardComponent implements OnInit {;
 
   getMore(product:any){
     if(this.auth.isAuthenticated()){
-      this.navCtrl.goTo(`/page/product-list/${product?._id}`)
+      this.raute.navigate(['/product-list'], {
+        queryParams: {
+          productId: product._id
+        },
+      });
     }else{
-      this.navCtrl.goTo(`/product-list/${product?._id}`)
+      this.raute.navigate(['/product-list'], {
+        queryParams: {
+          productId: product._id
+        },
+      });
     }
+  }
+
+  everythingSee(ele:any){
+    this.setNumValue = ele
   }
 
   filterByPrice(rangeStart:any, rangeEnd:any){

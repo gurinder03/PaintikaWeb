@@ -8,7 +8,7 @@
       <h2>Chandigarh International Airport</h2>
    </div>
    <div class="images-section">
-     <ul class="cards" (click)="toggleClass()" [ngClass]="{'transition': transitionClass}">
+     <ul class="cards" (click)="toggleClass(1)" [ngClass]="{'transition': expandedCardIndex === 1}">
        <li class="card card-1">
          <img src="./assets/images/bird.jpg" alt="Card 1">
        </li>
@@ -30,7 +30,7 @@
       <h2>Glenview Resort, Kasauli</h2>
    </div>
    <div class="images-section">
-     <ul class="cards" (click)="toggleClass()" [ngClass]="{'transition': transitionClass}">
+     <ul class="cards" (click)="toggleClass(2)" [ngClass]="{'transition': expandedCardIndex === 2}">
        <li class="card card-1">
          <img src="./assets/images/animal.jpg" alt="Card 1">
        </li>
@@ -52,7 +52,7 @@
       <h2>PWD Rest House, Panchkula</h2>
    </div>
    <div class="images-section">
-     <ul class="cards" (click)="toggleClass()" [ngClass]="{'transition': transitionClass}">
+     <ul class="cards" (click)="toggleClass(3)" [ngClass]="{'transition': expandedCardIndex === 3}">
        <li class="card card-1">
          <img src="./assets/images/artist3.jpg" alt="Card 1">
        </li>
@@ -73,7 +73,7 @@
       <h2>Ashiyana Grand, Shimla</h2>
    </div>
    <div class="images-section">
-     <ul class="cards" (click)="toggleClass()" [ngClass]="{'transition': transitionClass}">
+     <ul class="cards" (click)="toggleClass(4)" [ngClass]="{'transition': expandedCardIndex === 4}">
        <li class="card card-1">
          <img src="./assets/images/free-delivery.png" alt="Card 1">
        </li>
@@ -94,7 +94,7 @@
       <h2>Alchemist Hospital, Panchkula</h2>
    </div>
    <div class="images-section">
-     <ul class="cards" (click)="toggleClass()" [ngClass]="{'transition': transitionClass}">
+     <ul class="cards" (click)="toggleClass(5)" [ngClass]="{'transition': expandedCardIndex === 5}">
        <li class="card card-1">
          <img src="./assets/images/hut.jpg" alt="Card 1">
        </li>
@@ -115,7 +115,7 @@
       <h2>Bisaat Hotel, Panchkula</h2>
    </div>
    <div class="images-section">
-     <ul class="cards" (click)="toggleClass()" [ngClass]="{'transition': transitionClass}">
+     <ul class="cards" (click)="toggleClass(6)" [ngClass]="{'transition': expandedCardIndex === 6}">
        <li class="card card-1">
          <img src="./assets/images/main-logo.png" alt="Card 1">
        </li>
@@ -136,7 +136,7 @@
       <h2>A.K Suites, Patiala</h2>
    </div>
    <div class="images-section">
-     <ul class="cards" (click)="toggleClass()" [ngClass]="{'transition': transitionClass}">
+     <ul class="cards" (click)="toggleClass(7)" [ngClass]="{'transition': expandedCardIndex === 7}">
        <li class="card card-1">
          <img src="./assets/images/new1.png" alt="Card 1">
        </li>
@@ -157,7 +157,7 @@
       <h2>Police Housing Corporation Office, Panchkula</h2>
    </div>
    <div class="images-section">
-     <ul class="cards" (click)="toggleClass()" [ngClass]="{'transition': transitionClass}">
+     <ul class="cards" (click)="toggleClass(8)" [ngClass]="{'transition': expandedCardIndex === 8}">
        <li class="card card-1">
          <img src="./assets/images/paintika.jpg" alt="Card 1">
        </li>
@@ -178,7 +178,7 @@
       <h2>Police Housing Rest House, Panchkula</h2>
    </div>
    <div class="images-section">
-     <ul class="cards" (click)="toggleClass()" [ngClass]="{'transition': transitionClass}">
+     <ul class="cards" (click)="toggleClass(9)" [ngClass]="{'transition': expandedCardIndex === 9}">
        <li class="card card-1">
          <img src="./assets/images/bird.jpg" alt="Card 1">
        </li>
@@ -199,7 +199,7 @@
       <h2>Electricity Board Rest House, Panchkula</h2>
    </div>
    <div class="images-section">
-     <ul class="cards" (click)="toggleClass()" [ngClass]="{'transition': transitionClass}">
+     <ul class="cards" (click)="toggleClass(10)" [ngClass]="{'transition': expandedCardIndex === 10}">
        <li class="card card-1">
          <img src="./assets/images/bird.jpg" alt="Card 1">
        </li>
@@ -220,7 +220,7 @@
       <h2>Shiksha Sadan Building, Panchkula</h2>
    </div>
    <div class="images-section">
-     <ul class="cards" (click)="toggleClass()" [ngClass]="{'transition': transitionClass}">
+     <ul class="cards" (click)="toggleClass(11)" [ngClass]="{'transition': expandedCardIndex === 11}">
        <li class="card card-1">
          <img src="./assets/images/bird.jpg" alt="Card 1">
        </li>
@@ -241,7 +241,7 @@
       <h2>Natraj Hotel, Dharmshala</h2>
    </div>
    <div class="images-section">
-     <ul class="cards" (click)="toggleClass()" [ngClass]="{'transition': transitionClass}">
+     <ul class="cards" (click)="toggleClass(12)" [ngClass]="{'transition': expandedCardIndex === 12}">
        <li class="card card-1">
          <img src="./assets/images/bird.jpg" alt="Card 1">
        </li>
@@ -262,7 +262,7 @@
       <h2>Marriot, Jammu</h2>
    </div>
    <div class="images-section">
-     <ul class="cards" (click)="toggleClass()" [ngClass]="{'transition': transitionClass}">
+     <ul class="cards" (click)="toggleClass(13)" [ngClass]="{'transition': expandedCardIndex === 13}">
        <li class="card card-1">
          <img src="./assets/images/bird.jpg" alt="Card 1">
        </li>
@@ -283,7 +283,7 @@
       <h2>GST Department, Chandigarh</h2>
    </div>
    <div class="images-section">
-     <ul class="cards" (click)="toggleClass()" [ngClass]="{'transition': transitionClass}">
+     <ul class="cards" (click)="toggleClass(14)" [ngClass]="{'transition': expandedCardIndex === 14}">
        <li class="card card-1">
          <img src="./assets/images/bird.jpg" alt="Card 1">
        </li>
@@ -304,7 +304,7 @@
       <h2>Clubs and Lounges: Chandiland and , Purple Frog , Mobe 26 , Hard Rock Cafe</h2>
    </div>
    <div class="images-section">
-     <ul class="cards" (click)="toggleClass()" [ngClass]="{'transition': transitionClass}">
+     <ul class="cards" (click)="toggleClass(15)" [ngClass]="{'transition': expandedCardIndex === 15}">
        <li class="card card-1">
          <img src="./assets/images/bird.jpg" alt="Card 1">
        </li>
@@ -325,7 +325,7 @@
     <h2>JK Clarks Inn, Dalhousie</h2>
  </div>
  <div class="images-section">
-   <ul class="cards" (click)="toggleClass()" [ngClass]="{'transition': transitionClass}">
+   <ul class="cards" (click)="toggleClass(16)" [ngClass]="{'transition': expandedCardIndex === 16}">
      <li class="card card-1">
        <img src="./assets/images/bird.jpg" alt="Card 1">
      </li>

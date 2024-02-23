@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthencationService } from 'src/app/core/auth/authencation.service';
+import { AdminApiService } from 'src/app/core/services/admin-api.service';
 import { ApiService } from 'src/app/core/services/api.service';
 import { FunctionService } from 'src/app/core/services/function.service';
 import { NavigationRouteService } from 'src/app/core/services/navigation-route.service';
@@ -14,24 +16,55 @@ import { NavigationRouteService } from 'src/app/core/services/navigation-route.s
 export class ProductListComponent implements OnInit {
   allData: any = []
   cartData: any = [];
+  minPrice: number = 0;
+  maxPrice: number = 50000;
+  pageIndex: number = 1;
+	pageSize: number = 10;
+	length: number = 10;
+  selectedPrice: number = 0;
+  selectedMinimunPrice: number = 0;
   selectedValue: any = '';
   getAllCity: any = [];
+  categoryList: any = [];
   filterData: any = '';
-  productId: any;
+  alphabetArray: string[] = [];
+  activeLetter: string = '';
   cart: any[] = [];
   constructor(
     public activatedRoute: ActivatedRoute,
     public api: ApiService,
     public toast: ToastrService,
-    private fun: FunctionService,
+    public fun: FunctionService,
+    public adminApi: AdminApiService,
     public auth: AuthencationService,
     private navCtrl: NavigationRouteService
   ) {
     // this.getCartData()  
+    this.generateAlphabetArray();
   }
 
 
+  updateRange() {
+    // this.minPrice = this.selectedPrice;
+  }
 
+  updateMinimumRange(){
+
+  }
+
+  generateAlphabetArray() {
+    for (let i = 65; i <= 90; i++) {
+      this.alphabetArray.push(String.fromCharCode(i));
+    }
+  }
+
+  setActive(letter: string) {
+    this.activeLetter = letter;
+  }
+
+  applyRange() {
+    console.log('Selected price range:', this.selectedMinimunPrice, '-', this.selectedPrice);
+  }
 
 
   addToCart(item: any) {
@@ -75,17 +108,54 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((event: any) => {
-      if (event) {
-        this.productId = event.productId
-        this.productData(this.productId, this.filterData, this.selectedValue);
-      }
+    this.activatedRoute.queryParamMap.subscribe((queryParams:any) => {
+      this.fun.productId = [];
+      this.fun.productId.push(queryParams?.params?.productId)
+      this.productData();
     });
     this.getCities();
+    this.getCategoryList()
   }
 
 
+  getCategoryList() {
+    let data = {
+      page: 1,
+      limit: 100,
+    };
+    this.api.productList(data).then((res: any) => {
+      console.log('resresres =>', res);
+      if (res && res.statusCode === 200) {
+        this.categoryList = res.data;
+        this.length = res.total;
+      } else if (res.statusCode === 500) {
+        this.toast.error(res.message);
+      } else {
+        this.toast.error('Something went wrong');
+      }
+    });
+  }
 
+  // toggleCheck(ev: any, data: any) {
+  //   console.log('toggleCheck => ', ev, "Setle =>", data);
+  //   const uniqueProductIds = new Set(this.productId);
+  //   if (!uniqueProductIds.has(data._id)) {
+  //     uniqueProductIds.add(data._id);
+  //   }
+  //   this.productId = Array.from(uniqueProductIds);
+  //   this.productData();
+  // }
+
+  toggleCheck(ev: any, cat: any) {
+    if (ev.checked) {
+      this.fun.productId.push(cat._id);
+    } else {
+      this.fun.productId = this.fun.productId.filter((item:any) => item !== cat._id);
+    }
+    if(this.fun.productId && this.fun.productId.length > 0){
+      this.productData();
+    }
+  }
 
   // getCartData(){
   //   if(this.auth.isAuthenticated()){
@@ -111,26 +181,31 @@ export class ProductListComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     let filter = filterValue.trim().toLowerCase();
     this.filterData = filter;
-    this.productData(this.productId, this.filterData, this.selectedValue)
+    // this.productData(this.productId, this.filterData, this.selectedValue)
     console.log('this.data => ', this.filterData);
   }
 
-  productData(cate: any, filterKey: any, cityVal: any) {
-    let data = {
-      "page": 1,
-      "limit": 30,
-      "categories": [cate],
-      "filter": filterKey,
-      "city": cityVal
-    }
-    console.log('cityVal => ', cityVal);
+  productData(ele?: PageEvent) {
+    this.pageIndex = ele?.pageIndex ?? 0;
+	  this.pageIndex = ele?.pageIndex ?? 0;
+		this.pageSize = ele?.pageSize ?? 10;
+		let pageNumber = ele?.pageIndex ? ele.pageIndex + 1 : 1;
+    let resData = {
+			page: pageNumber,
+			limit: this.pageSize,
+      filter: this.filterData,
+      categories: this.fun.productId,
+		};
 
-    this.api.productDataList(data).then((res: any) => {
+    this.api.productDataList(resData).then((res: any) => {
+      console.log('sssss', res);
+      
       if (res && res.statusCode === 200) {
         for (let index = 0; index < res.data.length; index++) {
           const element = res.data[index];
           element.isLiked = false
         }
+        this.length = res.total;
         this.allData = res.data;
         this.updateIsLikedStatus(this.allData, this.cartData)
         this.activatedRoute.queryParamMap.subscribe((queryParams) => {
@@ -149,6 +224,7 @@ export class ProductListComponent implements OnInit {
     });
   }
 
+
   getCities() {
     this.api.getCityData().then((res: any) => {
       if (res && res.statusCode === 200) {
@@ -166,7 +242,7 @@ export class ProductListComponent implements OnInit {
 
   selectCity(ele: any) {
     this.selectedValue = ele.target.value;
-    this.productData(this.productId, this.filterData, this.selectedValue)
+    // this.productData(this.productId, this.filterData, this.selectedValue)
   }
 
   updateIsLikedStatus(array1: any[], array2: any[]) {
@@ -188,7 +264,6 @@ export class ProductListComponent implements OnInit {
     this.allData = filteredPriceData
     console.log('filteredPriceData =>', this.allData);
   }
-
 }
 
 

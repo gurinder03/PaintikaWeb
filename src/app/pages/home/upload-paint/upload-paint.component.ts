@@ -80,6 +80,7 @@ export class UploadPaintComponent implements OnInit {
 
   onSubmit() {
     this.uploadPaintForm.markAllAsTouched();
+    console.log('this.uploadPaintForm=>', this.uploadPaintForm);
     if (this.uploadPaintForm.valid) {
       let dataVal = new FormData();
       dataVal.append('role', 'ARTIST');

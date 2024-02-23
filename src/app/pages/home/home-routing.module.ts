@@ -50,7 +50,7 @@ const routes: Routes = [
         component: UploadPaintComponent
       },
       {
-        path: 'product-list/:productId',
+        path: 'product-list',
         component: ProductListComponent
       },
       {

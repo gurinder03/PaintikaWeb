@@ -13,7 +13,9 @@ p.text-muted a {
     padding: 8px 12px;
 }
 p.text-muted a:hover{
-  background-color: lightgray;
+  background-color: #fff;
+  border: 1px solid red;
+  color: red ;
 }
 .container{
   background: #ffffff !important;

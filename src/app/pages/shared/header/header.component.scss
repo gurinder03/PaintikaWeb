@@ -192,9 +192,9 @@ ul.main-navigation-list li:hover a.main-nav-lnk {
 .btn-cart{
     border: none;
     padding: 0 10px;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 500;
-    line-height: 26px;
+    // line-height: 26px;
     color: #333;
 }
 .after-login{
@@ -227,7 +227,7 @@ ul.main-navigation-list li:hover a.main-nav-lnk {
     box-shadow: 0 8px 16px #0003;
     z-index: 999;
     right: 5%;
-    top: 28px;
+    top: 23px;
     padding: 0;
 }
 
@@ -407,6 +407,16 @@ button {
     display: none;
 }
 
+.active{
+    color: #d81717 !important;
+    font-weight: 500;
+    border-bottom: 2px solid red !important;
+}
+.close-icon{
+    width: 13px;
+    z-index: 999;
+}
+
 @media screen and (max-width:1200px){
     .small-navbar{
         display: block;
@@ -486,11 +496,7 @@ button {
 //     cursor: pointer;
 // }
 
-// .active{
-//     color: #ffffff;
-//     background: #000000;
-//     font-weight: 500;
-// }
+
 
 // span.cart-hdng {
 //     padding-left: 12px;

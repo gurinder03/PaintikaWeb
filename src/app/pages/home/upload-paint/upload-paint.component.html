@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container mt-4">
     <div class="field-section p-5">
         <form (ngSubmit)="onSubmit()" [formGroup]="uploadPaintForm">
             <div class="row justify-content-center">
                 <div class="file-upload col-md-8 animate__animated animate__bounceInDown">
-                    <input #Image type="file" formControlName="image"  accept="image/png, image/jpeg" multiple
+                    <input #Image type="file" formControlName="image" accept="image/png, image/jpeg" multiple
                         (change)="selectFiles($event)" />
                     <div *ngIf="uploadPaintForm.controls['image'].invalid && (uploadPaintForm.controls['image'].dirty || uploadPaintForm.controls['image'].touched)"
                         class="alert " required>
@@ -19,21 +19,22 @@
                     <mat-form-field class="full-w">
                         <mat-label>Select Category</mat-label>
                         <mat-select formControlName="category" name="food">
-                          <mat-option>None</mat-option>
-                          <mat-option *ngFor="let cate of categoryList" [value]="cate._id">
-                            {{cate.name}}
-                          </mat-option>
+                            <mat-option>None</mat-option>
+                            <mat-option *ngFor="let cate of categoryList" [value]="cate._id">
+                                {{cate.name}}
+                            </mat-option>
                         </mat-select>
                         <mat-error *ngIf="uploadPaintForm.controls['category'].hasError('required')">
                             Category is required.
                         </mat-error>
                     </mat-form-field>
                 </div>
-                <div class="row pt-3  justify-content-center">
+                <div class="row pt-3 medium-framing justify-content-center">
                     <div class="name col-md-4 col-sm-12 ">
                         <mat-form-field class="example-full-width full-w animate__animated animate__bounceInUp">
                             <mat-label>Painting Theme</mat-label>
-                            <input pattern="[a-zA-Z][a-zA-Z ]+" style="text-transform: capitalize;" formControlName="theme" matInput placeholder="enter theme">
+                            <input pattern="[a-zA-Z][a-zA-Z ]+" style="text-transform: capitalize;"
+                                formControlName="theme" matInput placeholder="enter theme">
                             <mat-error *ngIf="uploadPaintForm.controls['theme'].hasError('required')">
                                 Painting Theme is required.
                             </mat-error>
@@ -43,11 +44,9 @@
                         <mat-form-field class="example-full-width full-w animate__animated animate__bounceInDown">
                             <mat-label>Size</mat-label>
                             <mat-select formControlName="size" placeholder="Select Size">
-                              
                                 <mat-option value="1">10 Inch</mat-option>
                                 <mat-option value="2">20 Inch</mat-option>
                                 <mat-option value="3">30 Inch</mat-option>
-                              
                             </mat-select>
                             <mat-error *ngIf="uploadPaintForm.controls['size'].hasError('required')">
                                 Size is required.
@@ -64,7 +63,7 @@
                         </mat-error>
                     </mat-form-field>
                 </div>
-                <div class="row pt-3  justify-content-center">
+                <div class="row pt-3 medium-framing justify-content-center">
                     <div class="size col-md-4 col-sm-12">
                         <mat-form-field class="example-full-width full-w animate__animated animate__bounceInDown">
                             <mat-label>Medium</mat-label>
@@ -90,29 +89,72 @@
                                 <mat-option value="wood">Wood</mat-option>
                                 <mat-option value="others">Others</mat-option>
                             </mat-select>
-
                         </mat-form-field>
                     </div> -->
                     <div class="framing-quality col-md-4 col-sm-12 animate__animated animate__bounceInUp">
-                        <mat-form-field class="example-full-width full-w">
+                        <mat-form-field class="example-full-width full-w animate__animated animate__bounceInDown">
+                            <mat-label>Framing Quality</mat-label>
+                            <mat-select formControlName="frame_quality" placeholder="Select Framing Quality">
+                                <mat-option value="oil">Wood</mat-option>
+                                <mat-option value="acrylic">Metal</mat-option>
+                                <mat-option value="water">Plastic</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="uploadPaintForm.controls['frame_quality'].hasError('required')">
+                                Framing quality is required.
+                            </mat-error>
+                        </mat-form-field>
+                        <!-- <mat-form-field class="example-full-width full-w">
                             <mat-label>Framing Quality</mat-label>
                             <input style="text-transform: capitalize;" formControlName="frame_quality" matInput>
                             <mat-error *ngIf="uploadPaintForm.controls['frame_quality'].hasError('required')">
                                 Framing Quality is required.
                             </mat-error>
+                        </mat-form-field> -->
+                    </div>
+                </div>
+                <div class="row pt-3 medium-framing justify-content-center">
+                    <div class="framing-quality col-md-4 col-sm-12 pt-3 animate__animated animate__bounceInUp">
+                        <mat-form-field class="example-full-width full-w animate__animated animate__bounceInDown">
+                            <mat-label>Theme Color</mat-label>
+                            <mat-select placeholder="Select theme color">
+                                <mat-option value="red">Red</mat-option>
+                                <mat-option value="acrylic">Yellow</mat-option>
+                                <mat-option value="water">Green</mat-option>
+                                <mat-option value="water">Balck</mat-option>
+                                <mat-option value="water">Orange</mat-option>
+                                <mat-option value="water">Pink</mat-option>
+                                <mat-option value="water">Brown</mat-option>
+                                <mat-option value="water">Blue</mat-option>
+                                <mat-option value="water">Purple</mat-option>
+                                <mat-option value="water">Silver</mat-option>
+                                <mat-option value="water">Golden</mat-option>
+                            </mat-select>
+                            <mat-error>
+                                Theme color is required.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-4 col-sm-12 pt-3  mb-2">
+                        <mat-form-field class="example-full-width full-w animate__animated animate__bounceInDown">
+                            <mat-label>Price</mat-label>
+                            <input style="text-transform: capitalize;" matInput formControlName="price">
+                            <mat-error *ngIf="uploadPaintForm.controls['price'].hasError('required')">
+                                Price is required.
+                            </mat-error>
                         </mat-form-field>
                     </div>
                 </div>
-                <div class="col-md-8 col-sm-12 pt-3 mx-auto mb-2">
-                    <mat-form-field class="example-full-width full-w animate__animated animate__bounceInDown">
-                        <mat-label>Price</mat-label>
-                        <input style="text-transform: capitalize;" matInput formControlName="price">
-                        <mat-error *ngIf="uploadPaintForm.controls['price'].hasError('required')">
-                            Price is required.
-                        </mat-error>
-                    </mat-form-field>
+                <div class="row mx-auto justify-content-center mb-4 mt-2">
+                    <div class="copy-paint d-flex justify-content-center col-md-12 col-sm-12 text-center">
+                        <ng-container>
+                            <mat-checkbox class="custom-checkbox" color="primary">I am uploading a copy of the origional
+                                painting.</mat-checkbox><br />
+                        </ng-container>
+                        <!-- <input class="copy-check" type="checkbox" name="acceptInstructions">
+                        <label class="copy-label" for="acceptInstructions">I am uploading a copy of the original
+                            painting.</label><br> -->
+                    </div>
                 </div>
-                
                 <div class="row mx-auto justify-content-center ">
                     <div class="col-md-4 text-center animate__animated animate__bounceInUp my-3">
                         <button mat-button type="button" (click)="cancel()" class="cancel-btn">Cancel</button>

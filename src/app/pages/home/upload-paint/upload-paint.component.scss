@@ -60,3 +60,18 @@ textarea#ptheme {
     padding-top: 7px;
     text-align: center;
 }
+.medium-framing{
+    padding: 0 !important;
+}
+.copy-paint{
+    gap: 15px;
+}
+.copy-check{
+    min-height: 25px;
+    min-width: 25px;
+}
+label.copy-label {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
