@@ -82,10 +82,6 @@ const routes: Routes = [
       {
         path: 'testimonial',
         component: TestimonialComponent
-      },
-      {
-        path: 'privacy-policy',
-        component: PrivacyPolicyComponent
       }
     ]
   },

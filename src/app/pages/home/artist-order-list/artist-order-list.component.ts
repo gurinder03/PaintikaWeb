@@ -28,7 +28,7 @@ export class ArtistOrderListComponent implements OnInit {
     public auth: AuthencationService
   ) {}
 
-  displayedColumns: string[] = ['serialNo', 'order_number','order_total', 'payment_status', 'created_at', 'payment_id', 'payment_method', 'action'];
+  displayedColumns: string[] = ['serialNo', 'order_number','order_total', 'payment_status', 'created_at', 'payment_method', 'action'];
 
   ngOnInit(): void {
     this.getArtistList();
