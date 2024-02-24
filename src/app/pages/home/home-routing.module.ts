@@ -16,6 +16,7 @@ import { ArtistOrderListComponent } from './artist-order-list/artist-order-list.
 import { ViewOrderListComponent } from './view-order-list/view-order-list.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 const routes: Routes = [
   {
@@ -81,6 +82,10 @@ const routes: Routes = [
       {
         path: 'testimonial',
         component: TestimonialComponent
+      },
+      {
+        path: 'privacy-policy',
+        component: PrivacyPolicyComponent
       }
     ]
   },

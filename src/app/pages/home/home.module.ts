@@ -38,6 +38,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
 import {MatSliderModule} from '@angular/material/slider';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import {MatSliderModule} from '@angular/material/slider';
     ContactUsComponent,
     DashboardComponent,
     ProjectsComponent,
-    TestimonialComponent
+    TestimonialComponent,
+    PrivacyPolicyComponent,
+
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
   imports: [
