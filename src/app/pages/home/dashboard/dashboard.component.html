@@ -35,15 +35,13 @@
           </h1>
         </div>
       </div>
-      <div class="home-curated-collection mt-60">
+      <!-- <div class="home-curated-collection mt-60">
         <div class="colctn-tit d-flex justify-content-between">
           <h2 class="mb-34">Curated Collections
           </h2>
           <a href="javascript:void(0)">View All</a>
         </div>
-        <div>
-
-        </div>
+        </div> -->
         <div class="home-art-price mt-60">
           <div class="artprice">
             <h2 class="artprice-title mb-34">Art By Price</h2>
@@ -89,7 +87,8 @@
           <div class="tab-content mt-20">
             <div class="tab-control">
               <div class="tabs">
-                <button type="button" [class.selected]="setNumValue == 1" (click)="everythingSee(1)" class="tab selected">
+                <button type="button" [class.selected]="setNumValue == 1" (click)="everythingSee(1)"
+                  class="tab selected">
                   <span slot="title">New Arrivals</span>
                 </button>
                 <button type="button" [class.selected]="setNumValue == 2" (click)="everythingSee(2)" class="tab">
@@ -300,7 +299,7 @@
                         </div>
                       </div>
                     </li>
-  
+
                   </ul>
                 </div>
               </div>
@@ -523,12 +522,12 @@
                         </div>
                       </a>
                     </li>
-                   
+
                   </ul>
                 </div>
               </div>
               <div class="paintings-container" *ngIf="setNumValue === 5">
-                
+
                 <div class="paintings-section">
                   <h1>No Record Found!</h1>
                 </div>
@@ -618,7 +617,7 @@
   </div>
 
 
-  
+
 
   <!-- <div class="container-fluid">
   <div class="search-container justify-content-end">
