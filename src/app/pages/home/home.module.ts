@@ -39,6 +39,7 @@ import { ProjectsComponent } from './projects/projects.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
 import {MatSliderModule} from '@angular/material/slider';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { TermsConditionComponent } from './terms-condition/terms-condition.component';
 
 
 @NgModule({
@@ -63,6 +64,7 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
     ProjectsComponent,
     TestimonialComponent,
     PrivacyPolicyComponent,
+    TermsConditionComponent,
 
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],

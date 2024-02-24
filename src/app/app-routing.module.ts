@@ -8,6 +8,7 @@ import { AboutUsComponent } from './pages/home/about-us/about-us.component';
 import { ContactUsComponent } from './pages/home/contact-us/contact-us.component';
 import { ProjectsComponent } from './pages/home/projects/projects.component';
 import { PrivacyPolicyComponent } from './pages/home/privacy-policy/privacy-policy.component';
+import { TermsConditionComponent } from './pages/home/terms-condition/terms-condition.component';
 
 const routes: Routes = [
   {
@@ -53,10 +54,14 @@ const routes: Routes = [
     path: 'projects',
     component: ProjectsComponent,
   },
-      {
-        path: 'privacy-policy',
-        component: PrivacyPolicyComponent
-      }
+  {
+    path: 'privacy-policy',
+    component: PrivacyPolicyComponent
+  },
+  {
+    path: 'terms-condition',
+    component: TermsConditionComponent
+  }
 ];
 
 @NgModule({
