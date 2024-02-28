@@ -40,7 +40,7 @@ import { TestimonialComponent } from './testimonial/testimonial.component';
 import {MatSliderModule} from '@angular/material/slider';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { TermsConditionComponent } from './terms-condition/terms-condition.component';
-
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 @NgModule({
   declarations: [
@@ -73,6 +73,7 @@ import { TermsConditionComponent } from './terms-condition/terms-condition.compo
     HomeRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxSliderModule,
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,

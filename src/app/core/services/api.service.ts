@@ -377,5 +377,18 @@ export class ApiService implements OnInit {
       this.request.send("getSingleAddress", { id }, success, null, true);
     });
   }
+
+  async dashboardFilter(data: any) {
+    return new Promise((resolve, reject) => {
+      const success = (value:any) => {
+        if (value) {
+          resolve(value)
+        } else {
+          reject(value.statusText)
+        }
+      };
+      this.request.send("dashboardFilter", data, success, null, true);
+    });
+  }
  
 }

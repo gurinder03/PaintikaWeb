@@ -21,9 +21,10 @@ export class DashboardComponent implements OnInit {;
   selectedRange: string = '';
   pageIndex: number = 1;
 	pageSize: number = 10;
-  setNumValue: number = 1;
 	length: number = 10;
   filterData: any = '';
+  filter_data_by_color: string = 'new_arrivals'
+  fileterData:any
   pagesData:any = {}
   customOptions: OwlOptions = {
     loop: true,
@@ -69,7 +70,8 @@ export class DashboardComponent implements OnInit {;
   }
 
   ngOnInit(): void {
-    this.getData()  
+    this.getData();
+    this.everythingSee(this.filter_data_by_color)
   }
 
   applyFilter(event: Event){
@@ -122,8 +124,31 @@ export class DashboardComponent implements OnInit {;
     }
   }
 
-  everythingSee(ele:any){
-    this.setNumValue = ele
+  everythingSee(dataVal:any){
+    this.filter_data_by_color = dataVal;
+    let sendData = {
+      filter:dataVal
+    }
+    this.api.dashboardFilter(sendData).then((res: any) => {
+      if (res && res.statusCode === 200) {
+        // this.toast.success(res.message);
+        console.log('resresres sssssssss', res.data);
+        this.fileterData = res.data
+      } else if (res.statusCode === 500) {
+        this.toast.error(res.message);
+      } else {
+        this.toast.error('Something went wrong');
+      }
+    });
+  }
+
+  artByPrice(rangeStart:any, rangeEnd:any){
+    this.raute.navigate(['/page/product-list'],  {
+      queryParams: {
+        start: rangeStart,
+        end:rangeEnd
+      },
+    })
   }
 
   filterByPrice(rangeStart:any, rangeEnd:any){

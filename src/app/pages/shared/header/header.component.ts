@@ -33,8 +33,7 @@ export class HeaderComponent {
     if (
       route == '6592522ee68ffdd98a8d6716' ||
       route == '658bd173e68ffdd98a8d6458' ||
-      route == '658bd143e68ffdd98a8d6453' ||
-      route == '6592672de68ffdd98a8d67f6'
+      route == '658bd143e68ffdd98a8d6453'
     ) {
       console.log('Idsss => ', route, ev);
       this.fun.productId = [];

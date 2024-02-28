@@ -264,6 +264,11 @@ const api = {
             requestType: 'delete',
             url: '/category/remove/{{id}}',
             responseInterface: []
+        },
+        dashboardFilter: {
+            requestType: 'post',
+            url: '/home/dashboard',
+            responseInterface: []
         }
     },
     defaultDomain: environment.API_URL

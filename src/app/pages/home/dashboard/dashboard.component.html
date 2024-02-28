@@ -47,32 +47,32 @@
             <h2 class="artprice-title mb-34">Art By Price</h2>
             <ul class="content mt-20">
               <li class="art-price-list-item">
-                <a href="javascript:void(0)">
+                <a href="javascript:void(0)" (click)="artByPrice(0, 10000)">
                   <span class="fw-500">Under ₹ 10,000</span>
                 </a>
               </li>
               <li class="art-price-list-item">
-                <a href="javascript:void(0)">
+                <a href="javascript:void(0)" (click)="artByPrice(10000, 50000)">
                   <span class="fw-500">₹ 10,000 - ₹ 50,000</span>
                 </a>
               </li>
               <li class="art-price-list-item">
-                <a href="javascript:void(0)">
+                <a href="javascript:void(0)" (click)="artByPrice(50000, 100000)">
                   <span class="fw-500">₹ 50,000 - ₹ 1,00,000</span>
                 </a>
               </li>
               <li class="art-price-list-item">
-                <a href="javascript:void(0)">
+                <a href="javascript:void(0)" (click)="artByPrice(100000, 300000)">
                   <span class="fw-500">₹ 1,00,000 - ₹ 3,00,000</span>
                 </a>
               </li>
               <li class="art-price-list-item">
-                <a href="javascript:void(0)">
+                <a href="javascript:void(0)" (click)="artByPrice(300000, 500000)">
                   <span class="fw-500">₹ 3,00,000 - ₹ 5,00,000</span>
                 </a>
               </li>
               <li class="art-price-list-item">
-                <a href="javascript:void(0)">
+                <a href="javascript:void(0)" (click)="artByPrice(500000, 10000000)">
                   <span class="fw-500">₹ 5,00,000 - Above</span>
                 </a>
               </li>
@@ -87,43 +87,42 @@
           <div class="tab-content mt-20">
             <div class="tab-control">
               <div class="tabs">
-                <button type="button" [class.selected]="setNumValue == 1" (click)="everythingSee(1)"
+                <button type="button" [class.selected]="filter_data_by_color == 'new_arrivals'" (click)="everythingSee('new_arrivals')"
                   class="tab selected">
                   <span slot="title">New Arrivals</span>
                 </button>
-                <button type="button" [class.selected]="setNumValue == 2" (click)="everythingSee(2)" class="tab">
+                <button type="button" [class.selected]="filter_data_by_color == 'filter_by_theme'" (click)="everythingSee('filter_by_theme')" class="tab">
                   <span slot="title">Filter by Theme</span>
                 </button>
-                <button type="button" [class.selected]="setNumValue == 3" (click)="everythingSee(3)" class="tab">
+                <button type="button" [class.selected]="filter_data_by_color == 'choose_by_color'" (click)="everythingSee('choose_by_color')" class="tab">
                   <span slot="title">Choose by Color</span>
                 </button>
-                <button type="button" [class.selected]="setNumValue == 4" (click)="everythingSee(4)" class="tab">
+                <button type="button" [class.selected]="filter_data_by_color == 'explore_by_medium'" (click)="everythingSee('explore_by_medium')" class="tab">
                   <span slot="title">Explore by Medium</span>
                 </button>
-                <button type="button" [class.selected]="setNumValue == 5" (click)="everythingSee(5)" class="tab">
+                <button type="button" [class.selected]="filter_data_by_color == 'prints_of_original_artworks'" (click)="everythingSee('prints_of_original_artworks')" class="tab">
                   <span slot="title">Prints of Origional Artworks</span>
                 </button>
               </div>
-              <div class="paintings-container" *ngIf="setNumValue === 1">
+              <div class="paintings-container" *ngIf="filter_data_by_color === 'new_arrivals'">
                 <div class="paintings-section">
-                  <ul class="row pl-0">
-                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
+                  <ul class="row pl-0" *ngIf="fileterData && fileterData.new_arrivals && fileterData.new_arrivals.length > 0">
+                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2" *ngFor="let arriivals of fileterData.new_arrivals">
                       <a href="javascript:void(0)">
                         <div class="artwork-image">
-                          <img src="./assets/images/nature.jpg" width="282" height="280">
+                          <img [src]="arriivals?.image" width="282" height="280">
                         </div>
                       </a>
                       <div class="detail-card">
                         <div class="artwork-title">
-                          <h3 class="fs-13" title="The Eternal Flute">The Eternal Flute</h3>
+                          <h3 class="fs-13" title="The Eternal Flute">{{arriivals?.name}}</h3>
                           <span class="fs-13 fw-500 colorDGray artist-hover">By Subir Kayal</span>
                           <div class="d-flex justify-content-between">
                             <div class="medium w-65 pr-5">
                               <p class="product-artwork fw-500 fs-13 mt-20 mb-0">
                                 Painitng
                               </p>
-                              <span class="fs-13 fw-500 medium-name-text-oflow" title="Acrylic on Paper">Acrylic on
-                                Paper</span>
+                              <span class="fs-13 fw-500 medium-name-text-oflow" title="Acrylic on Paper">{{arriivals?.medium}}</span>
                             </div>
                             <div class="w-35 artwork-discount">
                               <div class="precent-amount">
@@ -138,10 +137,10 @@
                           </div>
                           <div class="product-size-amount d-flex justify-content-between">
                             <span class="product-size fw-500 fs-13 colorDGray">
-                              24 X 24 In
+                              {{arriivals?.size}}
                             </span>
                             <span class="product-amount fw-600 colorblack fs-14">
-                              ₹ 89,600
+                              {{ arriivals?.price | currency: 'INR' }}
                             </span>
                           </div>
                         </div>
@@ -155,380 +154,69 @@
                         </div>
                       </div>
                     </li>
-                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
-                      <a href="javascript:void(0)">
-                        <div class="artwork-image">
-                          <img src="./assets/images/hut.jpg" width="282" height="280">
-                        </div>
-                      </a>
-                      <div class="detail-card">
-                        <div class="artwork-title">
-                          <h3 class="fs-13" title="The Eternal Flute">The Eternal Flute</h3>
-                          <span class="fs-13 fw-500 colorDGray artist-hover">By Subir Kayal</span>
-                          <div class="d-flex justify-content-between">
-                            <div class="medium w-65 pr-5">
-                              <p class="product-artwork fw-500 fs-13 mt-20 mb-0">
-                                Painitng
-                              </p>
-                              <span class="fs-13 fw-500 medium-name-text-oflow" title="Acrylic on Paper">Acrylic on
-                                Paper</span>
-                            </div>
-                            <div class="w-35 artwork-discount">
-                              <div class="precent-amount">
-                                <!-- <span class="fs-13 d-block  product-discount fw-600">
-                                  20% OFF
-                                </span> 
-                                <span class="fs-13 d-block list-price product-amount">
-                                  ₹ 1,20,000
-                                </span>-->
-                              </div>
-                            </div>
-                          </div>
-                          <div class="product-size-amount d-flex justify-content-between">
-                            <span class="product-size fw-500 fs-13 colorDGray">
-                              24 X 24 In
-                            </span>
-                            <span class="product-amount fw-600 colorblack fs-14">
-                              ₹ 89,600
-                            </span>
-                          </div>
-                        </div>
-                        <div class="favourite-addcart-section d-flex justify-content-between w-100">
-                          <!-- <div class="favourite-icon d-flex justify-content-center">
-                            <span class="bi bi-heart-fill pro-fav-clr"></span>
-                          </div> -->
-                          <div class="add-to-cart-icon d-flex justify-content-center w-100">
-                            <span class="bi bi-cart-fill pro-cart-clr"></span>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
-                      <a href="javascript:void(0)">
-                        <div class="artwork-image">
-                          <img src="./assets/images/animal.jpg" width="282" height="280">
-                        </div>
-                      </a>
-                      <div class="detail-card">
-                        <div class="artwork-title">
-                          <h3 class="fs-13" title="The Eternal Flute">The Eternal Flute</h3>
-                          <span class="fs-13 fw-500 colorDGray artist-hover">By Subir Kayal</span>
-                          <div class="d-flex justify-content-between">
-                            <div class="medium w-65 pr-5">
-                              <p class="product-artwork fw-500 fs-13 mt-20 mb-0">
-                                Painitng
-                              </p>
-                              <span class="fs-13 fw-500 medium-name-text-oflow" title="Acrylic on Paper">Acrylic on
-                                Paper</span>
-                            </div>
-                            <div class="w-35 artwork-discount">
-                              <div class="precent-amount">
-                                <!-- <span class="fs-13 d-block  product-discount fw-600">
-                                  20% OFF
-                                </span> 
-                                <span class="fs-13 d-block list-price product-amount">
-                                  ₹ 1,20,000
-                                </span>-->
-                              </div>
-                            </div>
-                          </div>
-                          <div class="product-size-amount d-flex justify-content-between">
-                            <span class="product-size fw-500 fs-13 colorDGray">
-                              24 X 24 In
-                            </span>
-                            <span class="product-amount fw-600 colorblack fs-14">
-                              ₹ 89,600
-                            </span>
-                          </div>
-                        </div>
-                        <div class="favourite-addcart-section d-flex justify-content-between w-100">
-                          <!-- <div class="favourite-icon d-flex justify-content-center">
-                            <span class="bi bi-heart-fill pro-fav-clr"></span>
-                          </div> -->
-                          <div class="add-to-cart-icon d-flex justify-content-center w-100">
-                            <span class="bi bi-cart-fill pro-cart-clr"></span>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
-                      <a href="javascript:void(0)">
-                        <div class="artwork-image">
-                          <img src="./assets/images/nature.jpg" width="282" height="280">
-                        </div>
-                      </a>
-                      <div class="detail-card">
-                        <div class="artwork-title">
-                          <h3 class="fs-13" title="The Eternal Flute">The Eternal Flute</h3>
-                          <span class="fs-13 fw-500 colorDGray artist-hover">By Subir Kayal</span>
-                          <div class="d-flex justify-content-between">
-                            <div class="medium w-65 pr-5">
-                              <p class="product-artwork fw-500 fs-13 mt-20 mb-0">
-                                Painitng
-                              </p>
-                              <span class="fs-13 fw-500 medium-name-text-oflow" title="Acrylic on Paper">Acrylic on
-                                Paper</span>
-                            </div>
-                            <div class="w-35 artwork-discount">
-                              <div class="precent-amount">
-                                <!-- <span class="fs-13 d-block  product-discount fw-600">
-                                  20% OFF
-                                </span> 
-                                <span class="fs-13 d-block list-price product-amount">
-                                  ₹ 1,20,000
-                                </span>-->
-                              </div>
-                            </div>
-                          </div>
-                          <div class="product-size-amount d-flex justify-content-between">
-                            <span class="product-size fw-500 fs-13 colorDGray">
-                              24 X 24 In
-                            </span>
-                            <span class="product-amount fw-600 colorblack fs-14">
-                              ₹ 89,600
-                            </span>
-                          </div>
-                        </div>
-                        <div class="favourite-addcart-section d-flex justify-content-between w-100">
-                          <!-- <div class="favourite-icon d-flex justify-content-center">
-                            <span class="bi bi-heart-fill pro-fav-clr"></span>
-                          </div> -->
-                          <div class="add-to-cart-icon d-flex justify-content-center w-100">
-                            <span class="bi bi-cart-fill pro-cart-clr"></span>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-
                   </ul>
+                  <h1 *ngIf="fileterData && fileterData.new_arrivals && fileterData.new_arrivals.length == 0">Data Not Found!</h1>
                 </div>
               </div>
-              <div class="paintings-container" *ngIf="setNumValue === 2">
+              <div class="paintings-container" *ngIf="filter_data_by_color === 'filter_by_theme'">
                 <div class="paintings-section">
-                  <ul class="row pl-0">
-                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
+                  <ul class="row pl-0" *ngIf="fileterData && fileterData.filter_by_theme && fileterData.filter_by_theme.length > 0">
+                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2" *ngFor="let filterTheme of fileterData.filter_by_theme">
                       <a href="javascript:void(0)">
                         <div class="artwork-image position-relative">
-                          <img src="./assets/images/nature.jpg" width="282" height="280">
+                          <img [src]="filterTheme?.art?.image" width="282" height="280">
                           <div class="overlay-blend position-absolute"></div>
                           <div class="detail position-absolute">
-                            <h4>Mountains</h4>
-                            <h6>500 Artworks</h6>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
-                      <a href="javascript:void(0)">
-                        <div class="artwork-image position-relative">
-                          <img src="./assets/images/animal.jpg" width="282" height="280">
-                          <div class="overlay-blend position-absolute"></div>
-                          <div class="detail position-absolute">
-                            <h4>Animal</h4>
-                            <h6>500 Artworks</h6>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
-                      <a href="javascript:void(0)">
-                        <div class="artwork-image position-relative">
-                          <img src="./assets/images/flower.jpg" width="282" height="280">
-                          <div class="overlay-blend position-absolute"></div>
-                          <div class="detail position-absolute">
-                            <h4>Flowers</h4>
-                            <h6>500 Artworks</h6>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
-                      <a href="javascript:void(0)">
-                        <div class="artwork-image position-relative">
-                          <img src="./assets/images/bird.jpg" width="282" height="280">
-                          <div class="overlay-blend position-absolute"></div>
-                          <div class="detail position-absolute">
-                            <h4>Birds</h4>
-                            <h6>500 Artworks</h6>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
-                      <a href="javascript:void(0)">
-                        <div class="artwork-image position-relative">
-                          <img src="./assets/images/girl.jpg" width="282" height="280">
-                          <div class="overlay-blend position-absolute"></div>
-                          <div class="detail position-absolute">
-                            <h4>Human</h4>
-                            <h6>500 Artworks</h6>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
-                      <a href="javascript:void(0)">
-                        <div class="artwork-image position-relative">
-                          <img src="./assets/images/vehicle.jpg" width="282" height="280">
-                          <div class="overlay-blend position-absolute"></div>
-                          <div class="detail position-absolute">
-                            <h4>Vehicles</h4>
+                            <h4>{{filterTheme?.art?.name}}</h4>
                             <h6>500 Artworks</h6>
                           </div>
                         </div>
                       </a>
                     </li>
                   </ul>
+                  <h1 *ngIf="fileterData && fileterData.filter_by_theme && fileterData.filter_by_theme.length == 0">Data Not Found!</h1>
                 </div>
               </div>
-              <div class="paintings-container" *ngIf="setNumValue === 3">
+              <div class="paintings-container" *ngIf="filter_data_by_color === 'choose_by_color'">
                 <div class="paintings-section">
-                  <ul class="row pl-0">
-                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
+                  <ul class="row pl-0" *ngIf="fileterData && fileterData.choose_by_color && fileterData.choose_by_color.length > 0">
+                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2" *ngFor="let filterColor of fileterData.choose_by_color">
                       <a href="javascript:void(0)">
                         <div class="artwork-image position-relative">
-                          <img src="./assets/images/nature.jpg" width="282" height="280">
+                          <img [src]="filterColor?.art?.image" width="282" height="280">
                           <div class="overlay-blend position-absolute"></div>
                           <div class="detail position-absolute">
-                            <h4>Red</h4>
-                            <h6>500 Artworks</h6>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
-                      <a href="javascript:void(0)">
-                        <div class="artwork-image position-relative">
-                          <img src="./assets/images/animal.jpg" width="282" height="280">
-                          <div class="overlay-blend position-absolute"></div>
-                          <div class="detail position-absolute">
-                            <h4>Orange</h4>
-                            <h6>500 Artworks</h6>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
-                      <a href="javascript:void(0)">
-                        <div class="artwork-image position-relative">
-                          <img src="./assets/images/flower.jpg" width="282" height="280">
-                          <div class="overlay-blend position-absolute"></div>
-                          <div class="detail position-absolute">
-                            <h4>Yellow</h4>
-                            <h6>500 Artworks</h6>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
-                      <a href="javascript:void(0)">
-                        <div class="artwork-image position-relative">
-                          <img src="./assets/images/bird.jpg" width="282" height="280">
-                          <div class="overlay-blend position-absolute"></div>
-                          <div class="detail position-absolute">
-                            <h4>Brown</h4>
-                            <h6>500 Artworks</h6>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
-                      <a href="javascript:void(0)">
-                        <div class="artwork-image position-relative">
-                          <img src="./assets/images/girl.jpg" width="282" height="280">
-                          <div class="overlay-blend position-absolute"></div>
-                          <div class="detail position-absolute">
-                            <h4>Black & White</h4>
-                            <h6>500 Artworks</h6>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
-                      <a href="javascript:void(0)">
-                        <div class="artwork-image position-relative">
-                          <img src="./assets/images/vehicle.jpg" width="282" height="280">
-                          <div class="overlay-blend position-absolute"></div>
-                          <div class="detail position-absolute">
-                            <h4>Green</h4>
+                            <h4>{{filterColor?.art?.name}}</h4>
                             <h6>500 Artworks</h6>
                           </div>
                         </div>
                       </a>
                     </li>
                   </ul>
+                  <h1 *ngIf="fileterData && fileterData.choose_by_color && fileterData.choose_by_color.length == 0">Data Not Found!</h1>
                 </div>
               </div>
-              <div class="paintings-container" *ngIf="setNumValue === 4">
+              <div class="paintings-container" *ngIf="filter_data_by_color === 'explore_by_medium'">
                 <div class="paintings-section">
-                  <ul class="row pl-0">
-                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
+                  <ul class="row pl-0" *ngIf="fileterData && fileterData.explore_by_medium && fileterData.explore_by_medium.length > 0">
+                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2" *ngFor="let filterMedium of fileterData.explore_by_medium">
                       <a href="javascript:void(0)">
                         <div class="artwork-image position-relative">
-                          <img src="./assets/images/nature.jpg" width="282" height="280">
+                          <img [src]="filterMedium?.art?.image" width="282" height="280">
                           <div class="overlay-blend position-absolute"></div>
                           <div class="detail position-absolute">
-                            <h4>Oil</h4>
+                            <h4>{{filterMedium?.art?.name}}</h4>
                             <h6>500 Artworks</h6>
                           </div>
                         </div>
                       </a>
                     </li>
-                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
-                      <a href="javascript:void(0)">
-                        <div class="artwork-image position-relative">
-                          <img src="./assets/images/animal.jpg" width="282" height="280">
-                          <div class="overlay-blend position-absolute"></div>
-                          <div class="detail position-absolute">
-                            <h4>Acrylic</h4>
-                            <h6>500 Artworks</h6>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
-                      <a href="javascript:void(0)">
-                        <div class="artwork-image position-relative">
-                          <img src="./assets/images/flower.jpg" width="282" height="280">
-                          <div class="overlay-blend position-absolute"></div>
-                          <div class="detail position-absolute">
-                            <h4>Water Color</h4>
-                            <h6>500 Artworks</h6>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
-                      <a href="javascript:void(0)">
-                        <div class="artwork-image position-relative">
-                          <img src="./assets/images/bird.jpg" width="282" height="280">
-                          <div class="overlay-blend position-absolute"></div>
-                          <div class="detail position-absolute">
-                            <h4>Sketch</h4>
-                            <h6>500 Artworks</h6>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2">
-                      <a href="javascript:void(0)">
-                        <div class="artwork-image position-relative">
-                          <img src="./assets/images/girl.jpg" width="282" height="280">
-                          <div class="overlay-blend position-absolute"></div>
-                          <div class="detail position-absolute">
-                            <h4>Others</h4>
-                            <h6>500 Artworks</h6>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-
                   </ul>
+                  <h1 *ngIf="fileterData && fileterData.explore_by_medium && fileterData.explore_by_medium.length == 0">Data Not Found!</h1>
                 </div>
               </div>
-              <div class="paintings-container" *ngIf="setNumValue === 5">
-
-                <div class="paintings-section">
+              <div class="paintings-container" *ngIf="filter_data_by_color === 'prints_of_original_artworks'">
+                <div class="paintings-section" *ngIf="fileterData && fileterData.prints_of_original_artworks && fileterData.prints_of_original_artworks.length == 0">
                   <h1>No Record Found!</h1>
                 </div>
               </div>

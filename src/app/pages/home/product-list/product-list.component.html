@@ -88,21 +88,11 @@
           </div>
         </div>
         <div class="custom-slider">
-          <label class="mb-2">Minimum</label>
-          <input type="range" id="customRange1" [(ngModel)]="selectedMinimunPrice" min="0" max="500" (input)="updateMinimumRange()">
-
-          <label class="mt-2">Maximum</label>
-          <input class="mt-3 mb-3" type="range" id="customRange2" min="0" max="100000"  [(ngModel)]="selectedPrice"
-          (input)="updateRange()">
-        </div>
-        <!-- <span class="max-range">{{ maxPrice | currency: 'INR' }}/</span>
-        <input type="range" class="form-range ranger" min="0" max="50000" id="customRange1" [(ngModel)]="selectedPrice"
-          (input)="updateRange()" /> -->
-        <div class="range-button my-2">
-          <span class="min-range">{{ selectedMinimunPrice | currency: 'INR' }}/</span>
-          <span class="d-flex highfun" style="width: auto">-</span>
-          <span class="max-range2">{{ selectedPrice | currency: 'INR' }}/</span>
-          <button class="go-btn my-2" (click)="applyRange()">GO</button>
+          <ngx-slider [(value)]="minPrice" [(highValue)]="maxPrice" [options]="options"></ngx-slider>
+          <div class="range-button my-2">
+            <button class="go-btn my-2" (click)="updateRange()">GO</button>
+          </div>
+          
         </div>
       </div>
 
@@ -118,13 +108,13 @@
         </div>
         <div class="frame-option">
           <ng-container>
-            <mat-checkbox color="primary">Wood</mat-checkbox><br />
+            <mat-checkbox color="primary" (change)="toggleCheckFarme($event, 'Wood')">Wood</mat-checkbox><br />
           </ng-container>
           <ng-container>
-            <mat-checkbox color="primary">Plastic</mat-checkbox><br />
+            <mat-checkbox color="primary" (change)="toggleCheckFarme($event, 'Plastic')">Plastic</mat-checkbox><br />
           </ng-container>
           <ng-container>
-            <mat-checkbox color="primary">Metal</mat-checkbox><br />
+            <mat-checkbox color="primary" (change)="toggleCheckFarme($event, 'Metal')">Metal</mat-checkbox><br />
           </ng-container>
         </div>
       </div>
@@ -141,13 +131,13 @@
         </div>
         <div class="medium-option">
           <ng-container>
-            <mat-checkbox color="primary">Acrylic</mat-checkbox><br />
+            <mat-checkbox color="primary" (change)="toggleCheckMedium($event, 'Acrylic')">Acrylic</mat-checkbox><br />
           </ng-container>
           <ng-container>
-            <mat-checkbox color="primary">Oil</mat-checkbox><br />
+            <mat-checkbox color="primary" (change)="toggleCheckMedium($event, 'Oil')">Oil</mat-checkbox><br />
           </ng-container>
           <ng-container>
-            <mat-checkbox color="primary">Water Color</mat-checkbox><br />
+            <mat-checkbox color="primary" (change)="toggleCheckMedium($event, 'Water Color')">Water Color</mat-checkbox><br />
           </ng-container>
         </div>
       </div>
@@ -236,9 +226,11 @@
             <h1 *ngIf="allData && allData.length == 0" class="text-center">No Record Found!</h1>
           </div>
         </div>
-        <mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]"
-          aria-label="Select page" (page)="productData($event)" showFirstLastButtons>
-        </mat-paginator>
+        <ng-container *ngIf="allData && allData.length > 0">
+          <mat-paginator #paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]"
+            aria-label="Select page" (page)="productData($event, resDataSearch)" showFirstLastButtons>
+          </mat-paginator>
+        </ng-container>
       </div>
     </div>
   </div>
