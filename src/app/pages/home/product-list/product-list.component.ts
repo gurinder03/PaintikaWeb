@@ -51,9 +51,10 @@ export class ProductListComponent implements OnInit {
     is_copy_sale: '',
     frame_quality: [],
     color: [],
+    artists_dictionary:"",
     size: [],
     medium: [],
-    price: {min:this.minPrice, max:this.maxPrice},
+    price: {},
   };
   filterData: any = '';
   alphabetArray: string[] = [];
@@ -91,7 +92,7 @@ export class ProductListComponent implements OnInit {
 
   setActive(letter: string) {
     this.activeLetter = letter;
-    this.resDataSearch.filter = letter;
+    this.resDataSearch.artists_dictionary = letter;
     this.productData(PageEvent, this.resDataSearch);
   }
 
@@ -224,7 +225,7 @@ export class ProductListComponent implements OnInit {
         this.resDataSearch.frame_quality = this.frameQuality;
         this.productData(PageEvent, this.resDataSearch);
       }else{
-        this.resDataSearch.medium = []
+        this.resDataSearch.frame_quality = []
         this.productData(PageEvent, this.resDataSearch);
       }
   }

@@ -143,7 +143,7 @@ export class DashboardComponent implements OnInit {;
   }
 
   artByPrice(rangeStart:any, rangeEnd:any){
-    this.raute.navigate(['/page/product-list'],  {
+    this.raute.navigate(['/product-list'],  {
       queryParams: {
         start: rangeStart,
         end:rangeEnd
