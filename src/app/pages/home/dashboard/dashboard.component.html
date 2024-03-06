@@ -17,20 +17,20 @@
       <div class="category mt-60">
         <div class="home-catgry">
           <h2 class="catgry-sub-titl">Explore by Category</h2>
-          <ul class="category-grid pl-0 mt-34 lp-catg-load row " *ngIf="data && data.length > 0">
-            <li class="category-list col-lg-3 col-md-4 col-sm-6 my-2" *ngFor="let cate of data">
+          <ul class="category-grid pl-0 mt-34 lp-catg-load row " *ngIf="data && fileterData?.categories?.length > 0">
+            <li class="category-list col-lg-3 col-md-4 col-sm-6 my-2" *ngFor="let cate of fileterData?.categories">
               <a href="javascript:void(0)" (click)="getMore(cate)" class="catgry-list catgryList">
                 <div class="card-img catgry-img">
-                  <img [src]="cate.image" alt="Category Sculpture" title="Sculpture">
+                  <img [src]="cate?.category?.image" alt="Category Sculpture" title="Sculpture">
                 </div>
                 <div class="catgry-titl ml-24">
-                  <h3>{{cate?.name}}</h3>
-                  <span class="fs-13 cate-sub-tlt fw-500">426 Sculptures</span>
+                  <h3>{{cate?.category?.name}}</h3>
+                  <span class="fs-13 cate-sub-tlt fw-500">{{cate?.count}} Sculptures</span>
                 </div>
               </a>
             </li>
           </ul>
-          <h1 class="text-center" *ngIf="data && data.length == 0">
+          <h1 class="text-center" *ngIf="data && fileterData?.categories?.length == 0">
             No Record Found!
           </h1>
         </div>
@@ -108,19 +108,19 @@
                 <div class="paintings-section">
                   <ul class="row pl-0" *ngIf="fileterData && fileterData.new_arrivals && fileterData.new_arrivals.length > 0">
                     <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2" *ngFor="let arriivals of fileterData.new_arrivals">
-                      <a href="javascript:void(0)">
+                      <a href="javascript:void(0)" (click)="newArivals(arriivals)">
                         <div class="artwork-image">
                           <img [src]="arriivals?.image" width="282" height="280">
                         </div>
                       </a>
                       <div class="detail-card">
                         <div class="artwork-title">
-                          <h3 class="fs-13" title="The Eternal Flute">{{arriivals?.name}}</h3>
+                          <h3 class="fs-13" title="The Eternal Flute">{{arriivals?.theme}}</h3>
                           <span class="fs-13 fw-500 colorDGray artist-hover">By Subir Kayal</span>
                           <div class="d-flex justify-content-between">
                             <div class="medium w-65 pr-5">
                               <p class="product-artwork fw-500 fs-13 mt-20 mb-0">
-                                Painitng
+                                Painting
                               </p>
                               <span class="fs-13 fw-500 medium-name-text-oflow" title="Acrylic on Paper">{{arriivals?.medium}}</span>
                             </div>
@@ -144,11 +144,11 @@
                             </span>
                           </div>
                         </div>
-                        <div class="favourite-addcart-section d-flex justify-content-between w-100">
+                        <div class="favourite-addcart-section d-flex justify-content-between w-100" *ngIf="auth.getUserData().role !== 'ARTIST'">
                           <!-- <div class="favourite-icon d-flex justify-content-center">
                             <span class="bi bi-heart-fill pro-fav-clr"></span>
                           </div> -->
-                          <div class="add-to-cart-icon d-flex justify-content-center w-100">
+                          <div (click)="addToCart(arriivals)" class="add-to-cart-icon d-flex justify-content-center w-100">
                             <span class="bi bi-cart-fill pro-cart-clr"></span>
                           </div>
                         </div>
@@ -162,13 +162,13 @@
                 <div class="paintings-section">
                   <ul class="row pl-0" *ngIf="fileterData && fileterData.filter_by_theme && fileterData.filter_by_theme.length > 0">
                     <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2" *ngFor="let filterTheme of fileterData.filter_by_theme">
-                      <a href="javascript:void(0)">
+                      <a href="javascript:void(0)" (click)="getDataByTheme(filterTheme)">
                         <div class="artwork-image position-relative">
                           <img [src]="filterTheme?.art?.image" width="282" height="280">
                           <div class="overlay-blend position-absolute"></div>
                           <div class="detail position-absolute">
                             <h4>{{filterTheme?.art?.name}}</h4>
-                            <h6>500 Artworks</h6>
+                            <h6>{{filterTheme?.count}} Artworks</h6>
                           </div>
                         </div>
                       </a>
@@ -181,13 +181,14 @@
                 <div class="paintings-section">
                   <ul class="row pl-0" *ngIf="fileterData && fileterData.choose_by_color && fileterData.choose_by_color.length > 0">
                     <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2" *ngFor="let filterColor of fileterData.choose_by_color">
-                      <a href="javascript:void(0)">
+                      <a href="javascript:void(0)" (click)="getColorsData(filterColor)">
                         <div class="artwork-image position-relative">
                           <img [src]="filterColor?.art?.image" width="282" height="280">
                           <div class="overlay-blend position-absolute"></div>
                           <div class="detail position-absolute">
                             <h4>{{filterColor?.art?.name}}</h4>
-                            <h6>500 Artworks</h6>
+                            <!-- <h4>Colors:  {{ filterColor?._id.join(', ') }}</h4> -->
+                            <h6>{{filterColor?.count}} Artworks</h6>
                           </div>
                         </div>
                       </a>
@@ -200,13 +201,13 @@
                 <div class="paintings-section">
                   <ul class="row pl-0" *ngIf="fileterData && fileterData.explore_by_medium && fileterData.explore_by_medium.length > 0">
                     <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2" *ngFor="let filterMedium of fileterData.explore_by_medium">
-                      <a href="javascript:void(0)">
+                      <a href="javascript:void(0)" (click)="filterByMedium(filterMedium)">
                         <div class="artwork-image position-relative">
                           <img [src]="filterMedium?.art?.image" width="282" height="280">
                           <div class="overlay-blend position-absolute"></div>
                           <div class="detail position-absolute">
                             <h4>{{filterMedium?.art?.name}}</h4>
-                            <h6>500 Artworks</h6>
+                            <h6>{{filterMedium?.count}} Artworks</h6>
                           </div>
                         </div>
                       </a>
@@ -216,7 +217,45 @@
                 </div>
               </div>
               <div class="paintings-container" *ngIf="filter_data_by_color === 'prints_of_original_artworks'">
-                <div class="paintings-section" *ngIf="fileterData && fileterData.prints_of_original_artworks && fileterData.prints_of_original_artworks.length == 0">
+                <div class="paintings-section">
+                  <ul class="row pl-0" *ngIf="fileterData && fileterData.prints_of_original_artworks && fileterData.prints_of_original_artworks.length > 0">
+                    <li class="artworks-card-detail col-lg-3 col-md-4 col-sm-6 my-2" *ngFor="let prints of fileterData.prints_of_original_artworks">
+                      <a href="javascript:void(0)" (click)="filterByOriginalArtWork(prints)">
+                        <div class="artwork-image">
+                          <img [src]="prints?.art?.image" width="282" height="280">
+                        </div>
+                      </a>
+                      <div class="detail-card">
+                        <div class="artwork-title">
+                          <h3 class="fs-13" title="The Eternal Flute">{{prints?.art?.theme}}</h3>
+                          <span class="fs-13 fw-500 colorDGray artist-hover">{{prints?.art?.artist[0]?.name}}</span>
+                          <div class="d-flex justify-content-between">
+                            <div class="medium w-65 pr-5">
+                              <p class="product-artwork fw-500 fs-13 mt-20 mb-0">
+                                Painting
+                              </p>
+                              <span class="fs-13 fw-500 medium-name-text-oflow" title="Acrylic on Paper">{{prints?.art?.medium}}</span>
+                            </div>
+                          </div>
+                          <div class="product-size-amount d-flex justify-content-between">
+                            <span class="product-size fw-500 fs-13 colorDGray">
+                              {{prints?.art?.size}}
+                            </span>
+                            <span class="product-amount fw-600 colorblack fs-14">
+                              {{ prints?.art?.price | currency: 'INR' }}
+                            </span>
+                          </div>
+                        </div>
+                        <div class="favourite-addcart-section d-flex justify-content-between w-100" *ngIf="auth.getUserData().role !== 'ARTIST'">
+                          <div (click)="addToCart(prints)" class="add-to-cart-icon d-flex justify-content-center w-100">
+                            <span class="bi bi-cart-fill pro-cart-clr"></span>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div *ngIf="fileterData && fileterData.prints_of_original_artworks && fileterData.prints_of_original_artworks.length == 0">
                   <h1>No Record Found!</h1>
                 </div>
               </div>

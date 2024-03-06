@@ -67,54 +67,85 @@
 </div> -->
 
 <div class="container-fluid alfbatic">
-  <div class="container maindiv">
-    <h1>Artists Directory</h1>
+  <div class="container maindiv mt-4">
+    <div class="search-directory d-flex justify-content-between">
+      <div class="heading">
+        <h1>Artists Directory</h1>
+      </div>
+      <div class="mr-14 ml-30 search-icon">
+        <span class="material-icons-outlined" (click)="serachData(true)">
+          <i class="bi bi-search"></i>
+        </span>
+      </div>
+     
+    </div>
+    <div class="header-search">
+      <div role="search" id="header_search" class="flex-content">
+        <div class="search-input flex-inner-content">
+          <div class="global-search">
+            <div class="global-search-input" *ngIf="fun.searchBol == true">
+              <input autofocus="" type="text" (keyup)="applyFilter($event)" placeholder="Search for Art"
+                class="global_search_input">
+              <span class="material-icons-outlined">
+                <i class="bi bi-search"></i>
+              </span>
+              <span class="search-clear-btn" (click)="closeSearch(false)">
+                <img class="close-icon" src="./assets/images/cross.png">
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="container searchbyalfabat">
       <a class="alfa-anchor" href="javascript:void(0)" *ngFor="let letter of alphabetArray"
         [class.active]="activeLetter === letter" (click)="setActive(letter)"
-        [style.color]="activeLetter === letter ? 'red' : 'black'">{{ letter }}</a>
+        [style.color]="activeLetter === letter ? 'red' : 'black'">{{ letter }}
+      </a>
+      <a href="javascript:void(0)" class="all-paints alfa-anchor" (click)="allDataGet()">All</a>
     </div>
   </div>
+  
   <div class="container parent-art">
     <div class="filter-prize">
       <div class="price my-2">
         <div class="price-icon">
           <h3>Price</h3>
-          <div class="minus-icon">
+          <!-- <div class="minus-icon">
             <button type="button">-</button>
           </div>
           <div class="plus-icon">
             <button type="button">+</button>
-          </div>
+          </div> -->
         </div>
         <div class="custom-slider">
           <ngx-slider [(value)]="minPrice" [(highValue)]="maxPrice" [options]="options"></ngx-slider>
           <div class="range-button my-2">
             <button class="go-btn my-2" (click)="updateRange()">GO</button>
           </div>
-          
+
         </div>
       </div>
 
       <div class="framing-quality my-2">
         <div class="framing-icon">
           <h3>Framing Quality</h3>
-          <div class="minus-icon">
+          <!-- <div class="minus-icon">
             <button type="button">-</button>
           </div>
           <div class="plus-icon">
             <button type="button">+</button>
-          </div>
+          </div> -->
         </div>
         <div class="frame-option">
           <ng-container>
-            <mat-checkbox color="primary" (change)="toggleCheckFarme($event, 'Wood')">Wood</mat-checkbox><br />
+            <mat-checkbox color="primary" (change)="toggleCheckFarme($event, 'wood')">Wood</mat-checkbox><br />
           </ng-container>
           <ng-container>
-            <mat-checkbox color="primary" (change)="toggleCheckFarme($event, 'Plastic')">Plastic</mat-checkbox><br />
+            <mat-checkbox color="primary" (change)="toggleCheckFarme($event, 'plastic')">Plastic</mat-checkbox><br />
           </ng-container>
           <ng-container>
-            <mat-checkbox color="primary" (change)="toggleCheckFarme($event, 'Metal')">Metal</mat-checkbox><br />
+            <mat-checkbox color="primary" (change)="toggleCheckFarme($event, 'metal')">Metal</mat-checkbox><br />
           </ng-container>
         </div>
       </div>
@@ -122,12 +153,6 @@
       <div class="medium-select my-2">
         <div class="medium-icon">
           <h3>Medium</h3>
-          <div class="minus-icon">
-            <button type="button">-</button>
-          </div>
-          <div class="plus-icon">
-            <button type="button">+</button>
-          </div>
         </div>
         <div class="medium-option">
           <ng-container>
@@ -137,7 +162,8 @@
             <mat-checkbox color="primary" (change)="toggleCheckMedium($event, 'Oil')">Oil</mat-checkbox><br />
           </ng-container>
           <ng-container>
-            <mat-checkbox color="primary" (change)="toggleCheckMedium($event, 'Water Color')">Water Color</mat-checkbox><br />
+            <mat-checkbox color="primary" (change)="toggleCheckMedium($event, 'Water Color')">Water
+              Color</mat-checkbox><br />
           </ng-container>
         </div>
       </div>
@@ -145,17 +171,12 @@
       <div class="category my-2">
         <div class="category-icon">
           <h3>Category</h3>
-          <div class="minus-icon">
-            <button type="button">-</button>
-          </div>
-          <div class="plus-icon">
-            <button type="button">+</button>
-          </div>
         </div>
         <div class="category-option">
           <ng-container *ngIf="categoryList && categoryList.length > 0">
             <ng-container *ngFor="let cat of categoryList">
-              <mat-checkbox color="primary" [checked]="fun.productId.includes(cat._id)" (change)="toggleCheck($event, cat)">{{cat.name}}</mat-checkbox><br />
+              <mat-checkbox color="primary" [checked]="fun.productId.includes(cat._id)"
+                (change)="toggleCheck($event, cat)">{{cat.name}}</mat-checkbox><br />
             </ng-container>
           </ng-container>
           <ng-container *ngIf="categoryList && categoryList.length == 0">
@@ -166,11 +187,11 @@
     </div>
 
     <div class="art-price">
-     
+
       <div class="paintings-container">
-       
+
         <div class="paintings-section">
-          
+
           <ul class="row pl-0" *ngIf="allData && allData.length > 0">
             <li class="artworks-card-detail col-md-4 col-sm-6 my-2" *ngFor="let data of allData">
               <a href="javascript:void(0)">
@@ -181,7 +202,7 @@
               <div class="detail-card">
                 <div class="artwork-title">
                   <h3 class="fs-13" title="The Eternal Flute">
-                    {{data?.name}}
+                    {{data?.theme}}
                   </h3>
                   <span class="fs-13 fw-500 colorDGray artist-hover">{{data?.artist?.name}}</span>
                   <div class="d-flex justify-content-between">
@@ -211,7 +232,8 @@
                     </span>
                   </div>
                 </div>
-                <div class="favourite-addcart-section d-flex justify-content-between w-100" *ngIf="auth.getUserData()?.role != 'ARTIST'">
+                <div class="favourite-addcart-section d-flex justify-content-between w-100"
+                  *ngIf="auth.getUserData()?.role != 'ARTIST'">
                   <!-- <div class="favourite-icon d-flex justify-content-center">
                     <span class="bi bi-heart-fill pro-fav-clr"></span>
                   </div> -->

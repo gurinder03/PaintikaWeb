@@ -136,7 +136,8 @@ export class AddToCartComponent implements OnInit {
 
     this.paymentId = '';
     this.error = '';
-    options.amount = order.order_total * 100;
+    // options.amount = order.order_total * 100;
+    options.amount = this.cartData.order_total * 100;
     options.prefill.name = this.auth.getUserData().name;
     options.prefill.email = this.auth.getUserData().email_or_mobile_number;
     // options.prefill.contact = '';
@@ -157,6 +158,7 @@ export class AddToCartComponent implements OnInit {
   }
 
   getTopayment() {
+    debugger
     if(this.selectedRadioValue){
       const newData = this.cartData.carts.reduce(
         (acc: any, element: any) => {

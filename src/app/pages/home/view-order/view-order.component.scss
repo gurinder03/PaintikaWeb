@@ -22,3 +22,8 @@ h5.labels.total-font {
 h5.status-label {
     font-size: 15px;
 }
+.amount-section {
+    display: flex;
+    flex-direction: column;
+    text-align: end;
+}

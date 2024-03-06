@@ -57,8 +57,8 @@
                 <div class="col-md-8 col-sm-12 pt-3 mx-auto">
                     <mat-form-field class="example-full-width full-w animate__animated animate__bounceInUp">
                         <mat-label>Painting Description</mat-label>
-                        <textarea style="text-transform: capitalize;" formControlName="theme" matInput></textarea>
-                        <mat-error *ngIf="uploadPaintForm.controls['theme'].hasError('required')">
+                        <textarea style="text-transform: capitalize;" formControlName="desc" matInput></textarea>
+                        <mat-error *ngIf="uploadPaintForm.controls['desc'].hasError('required')">
                             Painting description required.
                         </mat-error>
                     </mat-form-field>
@@ -95,9 +95,9 @@
                         <mat-form-field class="example-full-width full-w animate__animated animate__bounceInDown">
                             <mat-label>Framing Quality</mat-label>
                             <mat-select formControlName="frame_quality" placeholder="Select Framing Quality">
-                                <mat-option value="oil">Wood</mat-option>
-                                <mat-option value="acrylic">Metal</mat-option>
-                                <mat-option value="water">Plastic</mat-option>
+                                <mat-option value="wood">Wood</mat-option>
+                                <mat-option value="metal">Metal</mat-option>
+                                <mat-option value="plastic">Plastic</mat-option>
                             </mat-select>
                             <mat-error *ngIf="uploadPaintForm.controls['frame_quality'].hasError('required')">
                                 Framing quality is required.
@@ -116,18 +116,18 @@
                     <div class="framing-quality col-md-4 col-sm-12 pt-3 animate__animated animate__bounceInUp">
                         <mat-form-field class="example-full-width full-w animate__animated animate__bounceInDown">
                             <mat-label>Color</mat-label>
-                            <mat-select placeholder="Select color">
+                            <mat-select (selectionChange)="changeUserType($event)" placeholder="Select color" multiple>
                                 <mat-option value="red">Red</mat-option>
-                                <mat-option value="acrylic">Yellow</mat-option>
-                                <mat-option value="water">Green</mat-option>
-                                <mat-option value="water">Balck</mat-option>
-                                <mat-option value="water">Orange</mat-option>
-                                <mat-option value="water">Pink</mat-option>
-                                <mat-option value="water">Brown</mat-option>
-                                <mat-option value="water">Blue</mat-option>
-                                <mat-option value="water">Purple</mat-option>
-                                <mat-option value="water">Silver</mat-option>
-                                <mat-option value="water">Golden</mat-option>
+                                <mat-option value="yellow">Yellow</mat-option>
+                                <mat-option value="green">Green</mat-option>
+                                <mat-option value="black">Black</mat-option>
+                                <mat-option value="orange">Orange</mat-option>
+                                <mat-option value="pink">Pink</mat-option>
+                                <mat-option value="brown">Brown</mat-option>
+                                <mat-option value="blue">Blue</mat-option>
+                                <mat-option value="purple">Purple</mat-option>
+                                <mat-option value="silver">Silver</mat-option>
+                                <mat-option value="golden">Golden</mat-option>
                             </mat-select>
                             <mat-error>
                                 Theme color is required.
@@ -147,7 +147,7 @@
                 <div class="row mx-auto justify-content-center mb-4 mt-2">
                     <div class="copy-paint d-flex justify-content-center col-md-12 col-sm-12 text-center">
                         <ng-container>
-                            <mat-checkbox class="custom-checkbox" color="primary">I am uploading a copy of the origional
+                            <mat-checkbox (change)="getCheckbox($event)" class="custom-checkbox" color="primary">I am uploading a copy of the origional
                                 painting.</mat-checkbox><br />
                         </ng-container>
                         <!-- <input class="copy-check" type="checkbox" name="acceptInstructions">

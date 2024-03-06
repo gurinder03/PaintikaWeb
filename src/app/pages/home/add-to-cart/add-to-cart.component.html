@@ -64,8 +64,7 @@
                   </div>
                   <div class="detail-container col-md-8 col-sm-12 ">
                      <p class="product-hdng">
-                        NovexArt Beautiful Eye Modern Art Canvas Painting for Living Room/Drawing Room (24in x 48in /
-                        61cm x 122cm) (Canvas Roll)
+                       {{cart?.name}}
                      </p>
                      <!-- <p class="brand">Brand:Novex Art</p>
                      <p class="brand">Seller : SVPeripherals</p> -->
@@ -101,19 +100,19 @@
                <h5 class="prc-dtl  ">Price Detail</h5>
                <div class="price-itm p-3">
                   <p>Price (1 item)</p>
-                  <p>₹{{cartData.order_total}}</p>
+                  <p>₹{{cartData.order_sub_total}}</p>
                </div>
                <div class="delivery-chrgs p-3">
                   <p>Delivery Charges</p>
-                  <p>Free Delivery</p>
+                  <p>0</p>
                </div>
                <div class="delivery-chrgs p-3">
                   <p>Tax</p>
-                  <p>40</p>
+                  <p>₹{{cartData?.tax}}</p>
                </div>
-               <div class="total-amt p-3">
-                  <h5>Total Amount :</h5>
-                  <h5>{{cartData.order_total}}</h5>
+               <div class="total-amt delivery-chrgs p-3">
+                  <p>Total Amount :</p>
+                  <p>{{cartData.order_total}}</p>
                </div>
             </div>
             <div class="safe-payment mt-5 p-3">

@@ -5,6 +5,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ToastrService } from 'ngx-toastr';
 import { AuthencationService } from 'src/app/core/auth/authencation.service';
 import { ApiService } from 'src/app/core/services/api.service';
+import { FunctionService } from 'src/app/core/services/function.service';
 import { NavigationRouteService } from 'src/app/core/services/navigation-route.service';
 
 
@@ -59,9 +60,10 @@ export class DashboardComponent implements OnInit {;
   constructor(
     private api: ApiService,
     public toast: ToastrService,
-    private auth: AuthencationService,
+    public auth: AuthencationService,
     public navCtrl: NavigationRouteService,
     public raute:Router,
+    public fun: FunctionService
   ){
     let userData = this.auth.getUserData();
     if( auth.isAuthenticated() && userData && userData.role === "ADMIN"){
@@ -83,6 +85,67 @@ export class DashboardComponent implements OnInit {;
     this.filterData = filter;
     this.getData()
     console.log('this.data => ',  this.filterData);
+  }
+
+  addToCart(item: any) {
+    if (this.auth.isAuthenticated()) {
+      item.isLiked = !item.isLiked;
+      const index = this.fun.cartData?.findIndex((cartItem: any) => cartItem.art_id === item?._id);
+      if (index !== -1) {
+     
+      } else {
+        let data = {
+          user_id: this.auth.getUserData()?._id,
+          art_id: item?._id,
+          quantity: 1,
+          creator_id: item?.creator_id,
+        };
+        this.api.addToCartData(data).then((res: any) => {
+          if (res && res.statusCode === 200) {
+            this.toast.success(res.message);
+            this.api.cartListData({ user_id: this.auth.getUserData()?._id });
+          } else if (res.statusCode === 500) {
+            this.toast.error(res.message);
+          } else {
+            this.toast.error('Something went wrong');
+          }
+        });
+      }
+    } else {
+      this.fun.confirmBox('','Before Procceed you need to login','/auth/login','Ok','Cancel');
+    }
+  }
+
+  filterByMedium(ele:any){
+    this.raute.navigate(['/product-list'], {
+      queryParams: {
+        medium: ele?.art?.medium
+      },
+    });
+  }
+
+  filterByOriginalArtWork(ele:any){
+    this.raute.navigate(['/product-list'], {
+      queryParams: {
+        is_copy_sale: ele?.is_copy_sale
+      },
+    });
+  }
+
+  getDataByTheme(ele:any){
+    this.raute.navigate(['/product-list'], {
+      queryParams: {
+        theme: ele?.art?.theme
+      },
+    });
+  }
+  
+  newArivals(ele:any){
+    this.raute.navigate(['/product-list'], {
+      queryParams: {
+        new_arivals: 'yes'
+      },
+    });
   }
 
   getData(ele?: PageEvent){
@@ -132,8 +195,8 @@ export class DashboardComponent implements OnInit {;
     this.api.dashboardFilter(sendData).then((res: any) => {
       if (res && res.statusCode === 200) {
         // this.toast.success(res.message);
-        console.log('resresres sssssssss', res.data);
         this.fileterData = res.data
+        console.log('resresres sssssssss', this.fileterData);
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
       } else {
@@ -147,6 +210,14 @@ export class DashboardComponent implements OnInit {;
       queryParams: {
         start: rangeStart,
         end:rangeEnd
+      },
+    })
+  }
+
+  getColorsData(ele:any){
+    this.raute.navigate(['/product-list'],  {
+      queryParams: {
+        colors: JSON.stringify(ele?.art?.color)
       },
     })
   }

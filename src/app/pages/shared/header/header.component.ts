@@ -65,6 +65,10 @@ export class HeaderComponent {
     this.router.navigate(['/auth/login']);
   }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+  }
+
   serachData(ele:any){
     this.fun.searchBol = ele;
   }

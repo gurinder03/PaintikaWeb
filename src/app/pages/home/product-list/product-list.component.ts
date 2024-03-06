@@ -16,7 +16,6 @@ import { Options, LabelType } from '@angular-slider/ngx-slider';
 })
 export class ProductListComponent implements OnInit {
   allData: any = [];
-  cartData: any = [];
   minPrice: number = 0;
   maxPrice: number = 50000;
   pageIndex: number = 1;
@@ -51,7 +50,9 @@ export class ProductListComponent implements OnInit {
     is_copy_sale: '',
     frame_quality: [],
     color: [],
+    theme: [],
     artists_dictionary:"",
+    new_arivals:"",
     size: [],
     medium: [],
     price: {},
@@ -99,9 +100,7 @@ export class ProductListComponent implements OnInit {
   addToCart(item: any) {
     if (this.auth.isAuthenticated()) {
       item.isLiked = !item.isLiked;
-      const index = this.cartData?.findIndex(
-        (cartItem: any) => cartItem.art_id === item?._id
-      );
+      const index = this.fun.cartData?.findIndex((cartItem: any) => cartItem.art_id === item?._id);
       if (index !== -1) {
         // this.cartData?.splice(index, 1);
         // this.api.removeToCart({id:item?._id}).then((res: any) => {
@@ -148,7 +147,23 @@ export class ProductListComponent implements OnInit {
         this.resDataSearch.categories = [];
         this.resDataSearch.price = {min:Number(queryParams?.params?.start), max:Number(queryParams?.params?.end)},
         this.productData(PageEvent, this.resDataSearch);
-      } 
+      }else if(queryParams && queryParams.params && queryParams.params.colors){
+        let colorsData = JSON.parse(queryParams.params.colors)
+        this.resDataSearch.color = colorsData;
+        this.productData(PageEvent, this.resDataSearch);
+      }else if(queryParams && queryParams.params && queryParams.params.medium){
+        this.resDataSearch.medium.push(queryParams.params.medium)
+        this.productData(PageEvent, this.resDataSearch);
+      }else if(queryParams && queryParams.params && queryParams.params.is_copy_sale){
+        this.resDataSearch.is_copy_sale = queryParams.params.is_copy_sale
+        this.productData(PageEvent, this.resDataSearch);
+      }else if(queryParams && queryParams.params && queryParams.params.theme){
+        this.resDataSearch.theme.push(queryParams.params.theme)
+        this.productData(PageEvent, this.resDataSearch);
+      }else if(queryParams && queryParams.params && queryParams.params.new_arivals){
+        this.resDataSearch.new_arivals = queryParams.params.new_arivals
+        this.productData(PageEvent, this.resDataSearch);
+      }
       else {
         this.resDataSearch.categories = [];
       }
@@ -197,6 +212,27 @@ export class ProductListComponent implements OnInit {
       this.resDataSearch.categories = this.fun.productId;
       this.productData(PageEvent, this.resDataSearch);
     }
+  }
+
+  allDataGet(){
+    console.log('resDataSearch => ', this.resDataSearch);
+    this.activeLetter = '';
+    this.resDataSearch = {
+      page: this.pageIndex,
+      limit: this.pageSize,
+      filter: '',
+      categories: [],
+      is_copy_sale: '',
+      frame_quality: [],
+      color: [],
+      artists_dictionary:"",
+      size: [],
+      medium: [],
+      new_arivals:"",
+      theme: [],
+      price: {},
+    };
+    this.productData(PageEvent, this.resDataSearch);
   }
 
   toggleCheckMedium(ev: any, medium: any){
@@ -253,7 +289,8 @@ export class ProductListComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     let filter = filterValue.trim().toLowerCase();
-    this.filterData = filter;
+    this.resDataSearch.filter = filter
+    // this.filterData = filter;
     this.productData(PageEvent, this.resDataSearch);
   }
 
@@ -265,7 +302,6 @@ export class ProductListComponent implements OnInit {
     this.resDataSearch.page = pageNumber;
     this.resDataSearch.limit = this.pageSize;
     this.api.productDataList(this.resDataSearch).then((res: any) => {
-      console.log('sssss', res);
       if (res && res.statusCode === 200) {
         for (let index = 0; index < res.data.length; index++) {
           const element = res.data[index];
@@ -273,7 +309,7 @@ export class ProductListComponent implements OnInit {
         }
         this.length = res.total;
         this.allData = res.data;
-        this.updateIsLikedStatus(this.allData, this.cartData);
+        this.updateIsLikedStatus(this.allData, this.fun.cartData);
         this.activatedRoute.queryParamMap.subscribe((queryParams) => {
           const dataView: any = queryParams.get('dataSet');
           let parseData = JSON.parse(dataView);
@@ -302,6 +338,16 @@ export class ProductListComponent implements OnInit {
     });
   }
 
+  
+  serachData(ele:any){
+    this.fun.searchBol = ele;
+  }
+  closeSearch(ele:any){
+    this.resDataSearch.filter = '';
+    this.productData(PageEvent, this.resDataSearch);
+    this.fun.searchBol = ele;
+  }
+
   selectCity(ele: any) {
     this.selectedValue = ele.target.value;
     // this.productData(this.productId, this.filterData, this.selectedValue)
@@ -324,6 +370,5 @@ export class ProductListComponent implements OnInit {
       return price >= data.startRange && price <= data.endRange;
     });
     this.allData = filteredPriceData;
-    console.log('filteredPriceData =>', this.allData);
   }
 }

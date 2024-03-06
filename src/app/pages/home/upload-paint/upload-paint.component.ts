@@ -15,7 +15,8 @@ export class UploadPaintComponent implements OnInit {
   uploadPaintForm!: FormGroup;
   previews: string[] = [];
   selectedFiles?: any;
-
+  checkedVal: any;
+  colorAdd:any = [];
   categoryList: any = [];
 
   constructor(
@@ -64,14 +65,19 @@ export class UploadPaintComponent implements OnInit {
   formData() {
     this.uploadPaintForm = this.fb.group({
       image: ['', [Validators.required]],
-      name: ['', [Validators.required]],
+      // name: ['', [Validators.required]],
       size: ['', [Validators.required]],
       theme: ['', [Validators.required]],
       medium: ['', [Validators.required]],
       frame_quality: ['', [Validators.required]],
       price: ['', [Validators.required]],
       category: ['', [Validators.required]],
+      desc: ['', [Validators.required]],
     });
+  }
+
+  changeUserType(ele:any){
+    this.colorAdd = ele.value;
   }
 
   cancel(){
@@ -85,15 +91,17 @@ export class UploadPaintComponent implements OnInit {
       let dataVal = new FormData();
       dataVal.append('role', 'ARTIST');
       dataVal.append('image', this.selectedFiles[0]);
-      dataVal.append('name', this.uploadPaintForm.value.name);
+      // dataVal.append('name', this.uploadPaintForm.value.name);
       dataVal.append('size', this.uploadPaintForm.value.size);
       dataVal.append('theme', this.uploadPaintForm.value.theme);
       dataVal.append('medium', this.uploadPaintForm.value.medium);
       dataVal.append('frame_quality', this.uploadPaintForm.value.frame_quality);
       dataVal.append('price', this.uploadPaintForm.value.price);
       dataVal.append('creator_id', this.fun.getUserData._id);
-
-      
+      dataVal.append('is_copy_sale', this.checkedVal == true ? "yes":"no");
+      let colors = JSON.stringify(this.colorAdd)
+      dataVal.append('color', colors);
+      dataVal.append('desc', this.uploadPaintForm.value.desc);
       dataVal.append('status', 'active');
       dataVal.append('category', this.uploadPaintForm.value.category);
       this.api.uploadPainting(dataVal).then((res: any) => {
@@ -111,6 +119,10 @@ export class UploadPaintComponent implements OnInit {
     } else {
       this.toast.error('Form is not valid');
     }
+  }
+
+  getCheckbox(ele: any) {
+   this.checkedVal = ele.checked
   }
 
   getCategoryList() {

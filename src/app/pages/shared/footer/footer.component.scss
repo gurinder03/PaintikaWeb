@@ -46,6 +46,10 @@ h3.slogan {
     color: #1c1c1c8a;
     font-size: 22px;
 }
+.active{
+    color: #d81717 !important;
+    font-weight: 500;
+}
 
 @media screen and (max-width:767px){
     .main-footer {

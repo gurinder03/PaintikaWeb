@@ -5,17 +5,17 @@
         <div class="container layout-center">
             <div class="top-header d-flex justify-content-between py-20">
                 <div class="logo px-16">
-                    <a href="javascript:void(0)">
+                    <a href="javascript:void(0)" (click)="navigateTo('/dashboard', '0')">
                         <img src="./assets/images/new.png"  alt="Main Logo" height="50" width="150" >
                     </a>
                 </div>
                 <div class="d-flex justify-content-between px-16 pb-2 pt-2">
                     <div class="search-icon pt-3">
-                        <span class="material-icons-outlined">
+                        <span class="material-icons-outlined" (click)="serachData(true)">
                             <i class="bi bi-search"></i>
                         </span>
                     </div>
-                    <!-- <div class="user-icon user-sign-signup px-16">
+                    <div class="user-icon user-sign-signup px-16" *ngIf="!auth.isAuthenticated()">
                         <span class="user-profile-icon">
                             <span class="material-icons ma-noti-icon">
                                 <i class="bi bi-person-fill"></i>
@@ -28,16 +28,15 @@
                                     </a>
                                 </li>
                                 <li class="user-login-sub-menu-list-item">
-                                    <a  href="javascript:vid(0)" class="current-link wishlist-link">
+                                    <a href="javascript:vid(0)" [routerLink]="['/auth/sign-in']" class="current-link wishlist-link">
                                         <span class="signup-text">Sign Up</span>
                                     </a>
                                 </li>
                             </ul>
                         </div>
-                       
-                    </div> -->
-                    <div class="after-login d-flex after-mobile">
-                        <button class="cart btn-cart">
+                    </div>
+                    <div class="after-login d-flex after-mobile"  *ngIf="auth.isAuthenticated()">
+                        <button class="cart btn-cart" *ngIf="auth.getUserData().role !== 'ARTIST'"  (click)="navigateTo('/page/add-to-cart', '12')">
                             <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor"
                             class="bi bi-cart2" viewBox="0 0 16 16">
                             <path
@@ -47,16 +46,16 @@
                         <div class="user-symbol">
                             <span class="f-18 fw-700">A</span>
                             <ul class="profile-list">
-                                <li>
-                                    <a href="javascript:void(0)">My Profile</a>
+                                <li (click)="navigateTo('/page/profile', '13')">
+                                    <a href="javascript:void(0)" [class.active]="fun.navValue === '13'">My Profile</a>
                                 </li>
-                                <li>
-                                    <a href="javascript:void(0)">Change Password</a>
+                                <li (click)="navigateTo('/page/change-password', '14')">
+                                    <a href="javascript:void(0)" [class.active]="fun.navValue === '14'">Change Password</a>
                                 </li>
-                                <li>
-                                    <a href="javascript:void(0)">My Orders</a>
+                                <li (click)="navigateTo('/page/order-status', '15')" *ngIf="auth.getUserData().role !== 'ARTIST'">
+                                    <a href="javascript:void(0)" [class.active]="fun.navValue === '15'">My Orders</a>
                                 </li>
-                                <li>
+                                <li (click)="userLogout()">
                                     <a href="javascript:void(0)">Logout</a>
                                 </li>
                             </ul>
@@ -67,32 +66,32 @@
             <div class="nav pl-16 header-nav-menu">
                 <ul class="d-flex main-menu noscrollbar">
                     <li>
-                        <a href="javascript:void(0)">Painting</a>
+                        <a href="javascript:void(0)" [class.active]="fun.navValue === '1'" (click)="navigateTo('/product-list', '1')">Painting</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" [class.active]="fun.navValue === '2'" (click)="navigateTo('6592522ee68ffdd98a8d6716', '2')">Graffiti</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" [class.active]="fun.navValue === '3'" (click)="navigateTo('658bd173e68ffdd98a8d6458', '3')">Photography</a>
                     </li> 
                     <li>
-                        <a href="javascript:void(0)">Printmaking</a>
+                        <a href="javascript:void(0)"  [class.active]="fun.navValue === '4'" (click)="navigateTo('658bd143e68ffdd98a8d6453', '4')">Sculpture</a>
                     </li> 
                     <li>
-                        <a href="javascript:void(0)">Digital Art</a>
+                        <a href="javascript:void(0)" [class.active]="fun.navValue === '5'" (click)="navigateTo('/projects', '5')">Projects</a>
                     </li> 
+                    <li *ngIf="auth.isAuthenticated() && auth.getUserData().role != 'USER'">
+                        <a href="javascript:void(0)" [class.active]="fun.navValue === '6'" (click)="navigateTo('/page/upload-paint', '6')">Upload Painting</a>
+                    </li>
+                    <li *ngIf="auth.isAuthenticated() && auth.getUserData().role != 'USER'">
+                        <a href="javascript:void(0)" [class.active]="fun.navValue === '7'" (click)="navigateTo('/page/artist-order-list', '7')">Artist Order List</a>
+                    </li>
                     <li>
-                        <a href="javascript:void(0)">Drawing</a>
+                        <a href="javascript:void(0)" [class.active]="fun.navValue === '8'" (click)="navigateTo('/page/requirment-paint', '8')">Advisory</a>
                     </li> 
-                    <li>
-                        <a href="javascript:void(0)">Prints</a>
-                    </li> 
-                    <li>
-                        <a href="javascript:void(0)">Sculpture</a>
-                    </li> 
-                    <li>
-                        <a href="javascript:void(0)">Photography</a>
-                    </li> 
-                    <li>
-                        <a href="javascript:void(0)">Projects</a>
-                    </li> 
-                    <li>
-                        <a href="javascript:void(0)">Advisory</a>
-                    </li> 
+                    <li class="">
+                        <a [class.active]="fun.navValue === '9'" (click)="navigateTo('/auth/sign-in', '9')" href="javascript:void(0)">Join As Artist</a>
+                    </li>
                     <!-- <li>
                         <a href="javascript:void(0)">Blog And Video</a>
                     </li> 
@@ -186,11 +185,11 @@
                 </li>
             </ul>
         </nav>
-        <div class="mr-14 ml-30 search-icon">
+        <!-- <div class="mr-14 ml-30 search-icon">
             <span (click)="serachData(true)" class="material-icons-outlined">
                 <i class="bi bi-search"></i>
             </span>
-        </div>
+        </div> -->
         <div class="header-notif" *ngIf="!auth.isAuthenticated()">
             <button class="login btn-login" [class.active]="fun.navValue === '10'" (click)="navigateTo('/auth/login', '10')">LogIn</button>
         </div>
@@ -228,12 +227,12 @@
     </div>
 </header>
 
-<div class="header-search">
+<!-- <div class="header-search">
     <div role="search" id="header_search" class="flex-content">
         <div class="search-input flex-inner-content">
             <div class="global-search">
                 <div class="global-search-input" *ngIf="fun.searchBol == true">
-                    <input autofocus="" type="text" placeholder="Search for Art, Artist" class="global_search_input"> 
+                    <input autofocus="" type="text" (keyup)="applyFilter($event)" placeholder="Search for Art, Artist" class="global_search_input"> 
                     <span class="material-icons-outlined">
                         <i class="bi bi-search"></i>
                     </span>
@@ -244,7 +243,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 
 
