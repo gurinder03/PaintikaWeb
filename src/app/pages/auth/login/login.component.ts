@@ -131,7 +131,6 @@ export class LoginComponent implements OnInit {
 
   facebookLogin() {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then((res: any) => {
-      console.log('FB Login dd', res);
       this.fun.fbUserData = res;
     }).catch((err: any) => {
       console.log('Err ---', err);

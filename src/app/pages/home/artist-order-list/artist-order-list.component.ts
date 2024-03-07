@@ -57,8 +57,6 @@ export class ArtistOrderListComponent implements OnInit {
 		};
     
     this.api.artistList(resData).then((res: any) => {
-      console.log('res => ', res);
-      
       if (res && res.statusCode === 200) {
         res.data.forEach((item:any, index:any) => {
           item.serialNumber = index + 1;
@@ -67,7 +65,6 @@ export class ArtistOrderListComponent implements OnInit {
         this.empTbSort.disableClear = true;
         this.length = res.total;
         this.dataSource.sort = this.empTbSort;
-        console.log('res list => ', res);
         this.orderList = res;
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
@@ -78,7 +75,6 @@ export class ArtistOrderListComponent implements OnInit {
   }
 
   viewOrderList(data:any){
-    console.log(data);
     this.router.navigate(['/page/view-order-list'], {
       queryParams: {
         listId: data._id,

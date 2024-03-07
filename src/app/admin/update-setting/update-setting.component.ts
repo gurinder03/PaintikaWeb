@@ -31,7 +31,6 @@ export class UpdateSettingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('Thius => ', this.data);
     this.formData()
   } 
 

@@ -47,7 +47,6 @@ export class SetCommisionComponent implements OnInit {
     this.commisionForm.markAllAsTouched();
     if (this.commisionForm.valid) {
       this.apiAdmin.updateSetCommision(this.commisionForm.value).then((res:any)=>{
-        console.log('res => ', res);
         if(res && res.statusCode == 200){
           this.dialogRef.close();
           this.toast.success(res.message)

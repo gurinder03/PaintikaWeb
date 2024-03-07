@@ -77,7 +77,6 @@ export class FunctionService {
     const messaging = getMessaging();
     getToken(messaging, { vapidKey: environment.firebase.vapidKey }).then((currentToken) => {
       if (currentToken) {
-        console.log('Hurraaa!!! we got the token.....');
         console.log(currentToken);
       } else {
         console.log('No registration token available. Request permission to generate one.');
@@ -90,8 +89,6 @@ export class FunctionService {
   listen() {
     const messaging = getMessaging();
     onMessage(messaging, (payload) => {
-      debugger
-      console.log('Message received. ', payload);
       this.message=payload;
     });
   }

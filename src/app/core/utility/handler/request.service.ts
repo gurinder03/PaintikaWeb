@@ -44,13 +44,10 @@ export class RequestService {
     let loader:any = null;
     if(backgroundmode === false) {
       console.log('Doone');
-      
     }
-
     const closeLoader= () => {
       console.log('Closed');
     };
-
     const errorHandlerDefault = (error:any) => {
       if(error.ok !== undefined && error.ok === false) {
         console.log(error);

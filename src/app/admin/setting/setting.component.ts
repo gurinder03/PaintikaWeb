@@ -44,7 +44,6 @@ export class SettingComponent implements OnInit {
       width: '650px',
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result );
       this.getAdminSetting()
     });
   }

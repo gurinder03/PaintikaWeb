@@ -26,7 +26,6 @@ export class CategoryViewComponent {
     this.adminApi.singleCategory(cateId).then((res:any)=>{
       if (res && res.statusCode === 200) {
         this.getData = res.data;
-        console.log('this.getData => ', this.getData);
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
       } else {

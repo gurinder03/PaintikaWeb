@@ -73,7 +73,6 @@ export class PainterOrderListComponent {
         this.empTbSort.disableClear = true;
         this.length = res.total;
         this.dataSource.sort = this.empTbSort;
-        console.log('res list => ', res);
         this.orderList = res;
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);

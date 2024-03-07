@@ -28,7 +28,6 @@ export class PainterOrderListViewComponent {
     this.adminApi.orderArtView(listId).then((res:any) =>{
       if (res && res.statusCode === 200) {
         this.ordersData = res.data
-        console.log('res => ', this.ordersData);
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
       } else {
@@ -38,7 +37,6 @@ export class PainterOrderListViewComponent {
   }
 
   changeOrderStatus(item: any) {
-    console.log('Changing order status for item: ', item);
    let data = {
       id: item._id,
       status: item.status
@@ -47,7 +45,6 @@ export class PainterOrderListViewComponent {
     this.adminApi.updateOrderDelStatus(data).then((res:any )=>{
       if (res && res.statusCode === 200) {
         this.ordersData = res.data
-        console.log('res => ', this.ordersData);
         this.toast.success(res.message)
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);

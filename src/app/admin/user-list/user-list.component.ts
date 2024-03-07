@@ -60,7 +60,6 @@ export class UserListComponent implements OnInit {
     const dialogRef: MatDialogRef<SetCommisionComponent> = this.dialog.open(SetCommisionComponent, dialogConfig);
     dialogRef.componentInstance = data;
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result );
       this.getData();
     });
   }

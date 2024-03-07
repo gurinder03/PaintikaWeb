@@ -215,7 +215,6 @@ export class ProductListComponent implements OnInit {
   }
 
   allDataGet(){
-    console.log('resDataSearch => ', this.resDataSearch);
     this.activeLetter = '';
     this.resDataSearch = {
       page: this.pageIndex,
@@ -256,7 +255,6 @@ export class ProductListComponent implements OnInit {
       } else {
         this.frameQuality = this.frameQuality.filter((item: any) => item !== quality);
       }
-      console.log('this.frameQuality', this.frameQuality);
       if (this.frameQuality && this.frameQuality.length > 0) {
         this.resDataSearch.frame_quality = this.frameQuality;
         this.productData(PageEvent, this.resDataSearch);
@@ -329,7 +327,6 @@ export class ProductListComponent implements OnInit {
     this.api.getCityData().then((res: any) => {
       if (res && res.statusCode === 200) {
         this.getAllCity = res.data;
-        console.log('res', this.getAllCity);
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
       } else {

@@ -19,7 +19,6 @@ export class HeaderComponent {
   ) {
     this.userData = this.auth.getUserData();
     this.fun.navValue = localStorage.getItem('activeNav');
-    console.log('this.userData ', this.userData);
   }
   userLogout() {
     this.auth.logout();
@@ -27,7 +26,6 @@ export class HeaderComponent {
   }
 
   navigateTo(route: string, ev: any) {
-    console.log('dsfsdfsdff => ', route);
     localStorage.setItem('activeNav', ev);
     this.fun.navValue = ev;
     if (
@@ -35,7 +33,6 @@ export class HeaderComponent {
       route == '658bd173e68ffdd98a8d6458' ||
       route == '658bd143e68ffdd98a8d6453'
     ) {
-      console.log('Idsss => ', route, ev);
       this.fun.productId = [];
       this.router.navigate(['/product-list'], {
         queryParams: {

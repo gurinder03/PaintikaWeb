@@ -73,7 +73,6 @@ export class OrderListComponent implements OnInit {
   }
 
   dataView(data:any){
-    console.log(data);
     this.router.navigate(['/admin/order-list-view'], {
       queryParams: {
         orderId: data._id,

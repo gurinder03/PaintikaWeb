@@ -106,7 +106,6 @@ export class CategoryListComponent implements OnInit {
 
   removeCategory(data:any){
     this.fun.confirmBox('Delete', 'Are you sure', '/admin/category-list', 'Delete', 'Cancel').then((res:any)=>{
-      console.log(res);
       if(res && res.value == true){
         this.deleteCategory(data)
       }
@@ -114,7 +113,6 @@ export class CategoryListComponent implements OnInit {
   }
 
   viewCategory(data:any){
-    console.log(data);
     this.router.navigate(['/admin/category-view'], {
       queryParams: {
         cateId: data._id,

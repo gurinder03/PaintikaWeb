@@ -58,8 +58,6 @@ export class ProfileComponent implements OnInit {
     this.api.stateList().then((res:any)=>{
       if (res && res.statusCode === 200) {
         this.stateList = res.data;
-        console.log('this.stateList => ', this.stateList);
-        
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
       } else {
@@ -73,7 +71,6 @@ export class ProfileComponent implements OnInit {
     this.api.getCitiesList(data).then((res:any)=>{
       if (res && res.statusCode === 200) {
         this.cityList = res.data;
-        console.log('this.cityList => ', this.cityList);
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
         this.cityList = []
@@ -90,7 +87,6 @@ export class ProfileComponent implements OnInit {
       state: ele.value
     }
     this.getCityList(data)
-    console.log(ele);
   }
 
   pacthValue(data:any){

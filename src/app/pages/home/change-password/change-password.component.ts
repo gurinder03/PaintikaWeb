@@ -44,7 +44,6 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log('this.passwordForm => ', this.passwordForm);
     this.passwordForm.markAsTouched()
     this.passwordForm.patchValue({id: this.auth.getUserData()._id})
     if(this.passwordForm.valid){

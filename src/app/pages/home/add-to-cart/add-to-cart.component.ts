@@ -32,7 +32,6 @@ export class AddToCartComponent implements OnInit {
     public navCtrl: NavigationRouteService,
     public auth: AuthencationService
   ) {
-    console.log('auth.getUserData() =>', auth.getUserData());
   }
 
   ngOnInit(): void {
@@ -144,7 +143,6 @@ export class AddToCartComponent implements OnInit {
     var rzp1 = new Razorpay(options);
 
     rzp1.on('payment.failed', (response: any) => {
-      console.log(response);
       this.message = 'Payment Failed';
       console.log(response.error.code);
       console.log(response.error.description);

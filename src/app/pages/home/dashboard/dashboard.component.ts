@@ -79,12 +79,8 @@ export class DashboardComponent implements OnInit {;
   applyFilter(event: Event){
     const filterValue = (event.target as HTMLInputElement).value;
     let filter = filterValue.trim().toLowerCase();
-    // let filteredData = this.data.filter((item: any) => {
-    //   return item.name.toLowerCase().includes(filter);
-    // });
     this.filterData = filter;
     this.getData()
-    console.log('this.data => ',  this.filterData);
   }
 
   addToCart(item: any) {
@@ -159,7 +155,6 @@ export class DashboardComponent implements OnInit {;
       filter: this.filterData
 		};
     this.api.productList(resData).then((res: any) => {
-      console.log('resresres =>', res);
       if (res && res.statusCode === 200) {
         this.data = res.data;
         this.length = res.total;
@@ -194,9 +189,7 @@ export class DashboardComponent implements OnInit {;
     }
     this.api.dashboardFilter(sendData).then((res: any) => {
       if (res && res.statusCode === 200) {
-        // this.toast.success(res.message);
         this.fileterData = res.data
-        console.log('resresres sssssssss', this.fileterData);
       } else if (res.statusCode === 500) {
         this.toast.error(res.message);
       } else {
@@ -230,6 +223,5 @@ export class DashboardComponent implements OnInit {;
         dataSet: JSON.stringify(data)
       },
     })
-    console.log('Selected Range:', this.selectedRange);
   }
 }
