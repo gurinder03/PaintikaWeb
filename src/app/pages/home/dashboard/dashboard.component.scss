@@ -335,13 +335,13 @@ span.tetmonl-boder {
 // filter by theme css
 .detail.position-absolute {
     position: absolute!important;
-    top: 80%;
+    top: 72%;
     width: 100%;
     text-align: center;
     color: #fff;
 }
 .detail h4 {
-    font-size: 23px;
+    font-size: 19px;
     text-transform: capitalize;
     font-weight: 600;
     margin: 0;
@@ -357,9 +357,6 @@ span.tetmonl-boder {
     height: 100%;
     background-image: linear-gradient(to top,#0000008c,transparent);
 }
-
-
-
 
 @media screen and (max-width:991px) {
     .container{
